@@ -70,12 +70,14 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSError* error;
 	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: self.receivedData options: 0 error: &error];
-/*
+
 	if(doc == nil) {
+		NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
+		NSLog(response);
 		[[self handler] onerror: error];
 		return;
 	}
-*/
+
 	SoapFault* fault = [SoapFault faultWithXMLDocument: doc];
 	if([fault hasFault]) {
 		[[self handler] onfault: fault];

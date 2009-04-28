@@ -13,42 +13,35 @@
 @implementation Soap
 
 // Creates the XML request for the SOAP envelope.
-+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing
++ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params
 {
 	NSMutableString* s = [[NSMutableString alloc] init];
 	[s appendString: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"];
 	[s appendFormat: @"<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns=\"%@\">", ns];
 	[s appendString: @"<soap:Body>"];
-	[s appendFormat: @"<%@>", method];
-	
-	for(id key in containing) {
-		[s appendFormat: @"<%@>%@</%@>", key, [Soap serialize:[containing objectForKey: key]], key];
-	}
-
-	[s appendFormat: @"</%@>", method];
+	[s appendFormat: @"<%@>%@</%@>", method, params, method];
 	[s appendString: @"</soap:Body>"];
 	[s appendString: @"</soap:Envelope>"];
 
 	return s;
 }
 
+// Creates the XML request for the SOAP envelope.
++ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing
+{
+	NSMutableString* s = [[NSMutableString alloc] init];
+	for(id key in containing) {
+		[s appendFormat: @"<%@>%@</%@>", key, [Soap serialize:[containing objectForKey: key]], key];
+	}
+	return [Soap createEnvelope: method forNamespace: ns forParameters: s];
+}
+
 // Creates the XML request for the SOAP envelope. - Karl
 + (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing
 {
-	
 	NSMutableString* s = [[NSMutableString alloc] init];
-	[s appendString: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"];
-	[s appendFormat: @"<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns=\"%@\">", ns];
-	[s appendString: @"<soap:Body>"];
-	[s appendFormat: @"<%@>", action];
-	
 	[s appendFormat: @"<%@>%@</%@>", method, [containing serialize], method];
-	
-	[s appendFormat: @"</%@>", action];
-	[s appendString: @"</soap:Body>"];
-	[s appendString: @"</soap:Envelope>"];
-	
-	return s;
+	return [Soap createEnvelope: action forNamespace: ns forParameters: s];
 }
 
 // Serializes an object to a string, XML representation.
@@ -169,12 +162,12 @@
 
 // Determines if an object is an array.
 + (BOOL) isArray: (NSObject*) value {
-	return (value->isa == [NSArray class]);
+	return ([value class] == [NSArray class]);
 }
 
 // Determines if an object is an object with properties.
 + (BOOL) isObject: (NSObject*) value {
-	return (value->isa == [NSArray class]);
+	return ([value class] == [SoapObject class]);
 }
 
 // Gets the value of a named node from a parent node.

@@ -33,7 +33,7 @@
 }
 
 // This will get called when traversing objects, returning nothing is ok - Karl
-- (NSString*) serialize
+- (NSMutableString*) serialize
 {
 	return @"";
 }

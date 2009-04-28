@@ -12,6 +12,6 @@
 
 + (id) newWithNode: (CXMLNode*) node;
 - (id) initWithNode: (CXMLNode*) node;
-- (NSString*) serialize;
+- (NSMutableString*) serialize;
 
 @end

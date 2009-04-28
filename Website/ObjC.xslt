@@ -340,7 +340,7 @@
 	@property (retain, nonatomic) NSMutableArray *items;
 	+ (NSMutableArray*) newWithNode: (CXMLNode*) node;
 	- (NSMutableArray*) initWithNode: (CXMLNode*) node;
-	- (NSMutableString*) serialize: (NSMutableArray*) array;
+	+ (NSMutableString*) serialize: (NSMutableArray*) array;
 
 @end
 	</xsl:template>
@@ -382,7 +382,7 @@
 		return items;
 	}
 	
-	- (NSMutableString*) serialize: (NSMutableArray*) array
+	+ (NSMutableString*) serialize: (NSMutableArray*) array
 	{
 		NSMutableString* s = [[NSMutableString alloc] init];
 		for(id item in array) {

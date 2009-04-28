@@ -87,7 +87,25 @@
 			output = doc;
 		} else {
 			CXMLNode* element = [[Soap getNode: [doc rootElement] withName: @"Body"] childAtIndex:0];
-			output = [deserializeTo initWithNode: element];
+			if(deserializeTo == @"NSString*") {
+				output = [element stringValue];
+			} else if(deserializeTo == @"BOOL") {
+				output = ([element stringValue] == @"true") ? YES : NO;
+			} else if(deserializeTo == @"int") {
+				output = [[element stringValue] intValue];
+			} else if(deserializeTo == @"long") {
+				output = [[element stringValue] longLongValue];
+			} else if(deserializeTo == @"double") {
+				output = [[element stringValue] doubleValue];
+			} else if(deserializeTo == @"float") {
+				output = [[element stringValue] floatValue];
+			} else if(deserializeTo == @"NSDecimalNumber*") {
+				output = [NSDecimalNumber decimalNumberWithString: [element stringValue]];
+			} else if(deserializeTo == @"NSDate*") {
+				output = [NSDate dateWithString: [element stringValue]];
+			} else {
+				output = [deserializeTo initWithNode: element];
+			}
 		}
 		[[self handler] onload: output];
 	}

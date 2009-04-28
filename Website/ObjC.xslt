@@ -233,7 +233,7 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="contains($type, '*')">[<xsl:value-of select="$deserializer"/> alloc]</xsl:when>
-			<xsl:otherwise>nil</xsl:otherwise>
+			<xsl:otherwise>@"<xsl:value-of select="$deserializer"/>"</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
@@ -296,7 +296,7 @@
 	{
 		if(self = [super init])
 		{
-			<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="implementation_alloc"/>
+<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="implementation_alloc"/>
 		}
 		return self;
 	}
@@ -340,7 +340,7 @@
 	@property (retain, nonatomic) NSMutableArray *items;
 	+ (NSMutableArray*) newWithNode: (CXMLNode*) node;
 	- (NSMutableArray*) initWithNode: (CXMLNode*) node;
-	+ (NSMutableString*) serialize: (NSMutableArray*) array;
+	+ (NSMutableString*) serialize: (NSArray*) array;
 
 @end
 	</xsl:template>
@@ -382,7 +382,7 @@
 		return items;
 	}
 	
-	+ (NSMutableString*) serialize: (NSMutableArray*) array
+	+ (NSMutableString*) serialize: (NSArray*) array
 	{
 		NSMutableString* s = [[NSMutableString alloc] init];
 		for(id item in array) {
@@ -422,11 +422,11 @@
 		<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
 		<xsl:if test="contains($type,'*')">
 			<xsl:choose>
-				<xsl:when test="$type = 'NSMutableArray*'">self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
+				<xsl:when test="$type = 'NSMutableArray*'">			self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
 </xsl:when>
-				<xsl:when test="starts-with($type,'NS')">self.<xsl:value-of select="$name"/> = nil;
+				<xsl:when test="starts-with($type,'NS')">			self.<xsl:value-of select="$name"/> = nil;
 </xsl:when>
-				<xsl:otherwise>self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
+				<xsl:otherwise>			self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
 </xsl:otherwise>
 			</xsl:choose>
 		</xsl:if>

@@ -8,15 +8,15 @@
 
 @implementation SoapHandler
 
+- (void) onload: (NSObject*) value
+{
+}
+
 - (void) onerror: (NSError*) error
 {
 }
 
 - (void) onfault: (SoapFault*) fault
-{
-}
-
-- (void) onload: (NSObject*) value
 {
 }
 

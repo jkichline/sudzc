@@ -35,7 +35,7 @@
 // This will get called when traversing objects, returning nothing is ok - Karl
 - (NSMutableString*) serialize
 {
-	return @"";
+	return [[NSMutableString alloc] initWithString: @""];
 }
 
 - (void) dealloc

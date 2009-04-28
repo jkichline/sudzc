@@ -1,0 +1,2 @@
+﻿* Figure out how to drill in an additional level when a web service call requires us to go in another level when dealing with arrays.
+* Test delegate use

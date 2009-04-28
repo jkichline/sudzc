@@ -1,0 +1,18 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949\cocoasubrtf430
+{\fonttbl\f0\fnil\fcharset0 Tahoma;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\b\fs24 \cf0 Adding Sudz-C Files to Xcode
+\b0 \
+\
+Copy the files contained in the archive into your Xcode project tree.  You may want to add them in their own folder group to make managing your project a little easier in the future.\
+\
+In order to compile the project, you must add a header to the project settings so that TouchXML works correctly.  To do this, choose "Edit Project Settings" from the "Project" menu in the menubar.  Navigate to the "Build" tab and make the following changes, without quotes.\
+\
+In the "Linking" section, go to the "Other Linker Flags" section and add the value "-lxml2".\
+\
+In the "Search Paths" section add a new search path to the "Header Search Paths" for "/usr/include/libxml2". This will include the proper C libraries for compiling TouchXML.\
+\
+}

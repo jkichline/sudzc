@@ -1,0 +1,54 @@
+﻿/* RESET STYLES v1.0 | 20080212 | http://meyerweb.com/eric/tools/css/reset/ */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body { line-height: 1; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ''; content: none; }
+a:focus { outline: 1px dotted; }
+ins { text-decoration: none; }
+del { text-decoration: line-through; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+
+/* CLEARFIX */
+.clearfix:after {
+	content: "."; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+}
+.clearfix { display: inline-block; }
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%; }
+.clearfix { display:block; }
+/* End hide from IE-mac */
+
+/* GENERAL SELECTORS */
+
+body { margin: 0 0; width: auto; position: relative; background: #6ccff6 url(../images/gradient.jpg) repeat-x; color: #398fc1; font-family: Helvetica, Arial, sans-serif; font-size: 62.5%; }
+#content { width: auto; height: 830px; background-image: url(../images/bkg.png); background-repeat: no-repeat; }
+#logo { margin: 15px 0 0 75px; }
+#form { margin: 170px 0 0 50px; padding-left: 140px; background: url(../images/icon.png) no-repeat 0 -10px; }
+label { font-size: 12pt; display: block; font-weight: bold; margin: 10px 0 3px 0; }
+#wsdl, #ns { width: 650px; font-size: 13.5pt; color: #779; }
+#shortns { width: 100px; font-size: 13.5pt; color: #779; margin-right: 6pt; }
+#type { width: 590px; font-size: 13.5pt; color: #779; }
+#objcns { display: none; font-weight: normal; color: #5AC; font-size: 12pt; }

@@ -33,9 +33,10 @@
 }
 
 // This will get called when traversing objects, returning nothing is ok - Karl
-- (NSString*) serialize
+- (NSMutableString*) serialize
 {
-	return @"";
+	NSMutableString* s = [[[NSMutableString alloc] init] autorelease];
+	return s;
 }
 
 - (void) dealloc

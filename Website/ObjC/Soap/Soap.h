@@ -13,6 +13,9 @@
 }
 
 // Creates the XML request for the SOAP envelope.
++ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params;
+
+// Creates the XML request for the SOAP envelope.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing;
 
 // Creates the XML request for the SOAP envelope. - Karl

@@ -17,8 +17,8 @@ public class TestService : System.Web.Services.WebService {
 	public TestService() {
 	}
 
-	[WebMethod]
-	public TestResult Test(int count, string name, string description) {
+	[WebMethod(Description="Creates a test object.")]
+	public TestResult Create(int count, string name, string description) {
 		TestResult result = new TestResult();
 		result.Name = name;
 		result.Description = description;
@@ -29,6 +29,13 @@ public class TestService : System.Web.Services.WebService {
 			}
 		}
 		return result;
+	}
+
+	[WebMethod(Description="Determines if the result was sent correctly.")]
+	public bool Validate(TestResult result, int headerCount) {
+		if (result == null) { return false; }
+		if (result.Headers == null) { return false; }
+		return (result.Headers.Count == headerCount);
 	}
 
 	public class TestResult : TestResultBase {

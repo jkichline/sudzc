@@ -110,7 +110,6 @@
 + (CXMLNode*) getNode: (CXMLNode*) element withName: (NSString*) name {
 	for(CXMLNode* child in [element children]) {
 		if([[child name] isEqual: name]) {
-			NSLog([NSString stringWithFormat: @"Found %@!", name]);
 			return (CXMLNode*)child;
 		}
 	}
@@ -192,6 +191,35 @@
 		return [child stringValue];
 	}
 	return nil;
+}
+
++ (id) convert: (NSString*) value toType: (NSString*) toType {
+	toType = [toType lowercaseString];
+	if([toType isEqualToString: @"nsstring*"]) {
+		return value;
+	}
+	if([toType isEqualToString: @"bool"]) {
+		return [NSNumber numberWithBool:(([[value lowercaseString] isEqualToString: @"true"]) ? YES : NO)];
+	}
+	if([toType isEqualToString: @"int"]) {
+		return [NSNumber numberWithInt:[value intValue]];
+	}
+	if([toType isEqualToString: @"long"]) {
+		return [NSNumber numberWithLong:[value longLongValue]];
+	}
+	if([toType isEqualToString: @"double"]) {
+		return [NSNumber numberWithDouble:[value doubleValue]];
+	}
+	if([toType isEqualToString: @"float"]) {
+		return [NSNumber numberWithFloat:[value floatValue]];
+	}
+	if([toType isEqualToString: @"nsdecimalnumber*"]) {
+		return [NSDecimalNumber decimalNumberWithString: value];
+	}
+	if([toType isEqualToString: @"nsdate*"]) {
+		return [NSDate dateWithString: value];
+	}
+	return value;
 }
 
 @end

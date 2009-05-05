@@ -69,11 +69,12 @@
 // Called when the connection has finished loading.
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSError* error;
+
+	NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
+	NSLog(response);
 	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: self.receivedData options: 0 error: &error];
 
 	if(doc == nil) {
-		NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
-		NSLog(response);
 		[[self handler] onerror: error];
 		return;
 	}
@@ -87,24 +88,15 @@
 			output = doc;
 		} else {
 			CXMLNode* element = [[Soap getNode: [doc rootElement] withName: @"Body"] childAtIndex:0];
-			if(deserializeTo == @"NSString*") {
-				output = [element stringValue];
-			} else if(deserializeTo == @"BOOL") {
-				output = ([element stringValue] == @"true") ? YES : NO;
-			} else if(deserializeTo == @"int") {
-				output = [[element stringValue] intValue];
-			} else if(deserializeTo == @"long") {
-				output = [[element stringValue] longLongValue];
-			} else if(deserializeTo == @"double") {
-				output = [[element stringValue] doubleValue];
-			} else if(deserializeTo == @"float") {
-				output = [[element stringValue] floatValue];
-			} else if(deserializeTo == @"NSDecimalNumber*") {
-				output = [NSDecimalNumber decimalNumberWithString: [element stringValue]];
-			} else if(deserializeTo == @"NSDate*") {
-				output = [NSDate dateWithString: [element stringValue]];
-			} else {
-				output = [deserializeTo initWithNode: element];
+			if(deserializeTo != nil) {
+				if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
+					NSLog([NSString stringWithFormat: @"Deserialize to... %@", deserializeTo]);
+					output = [deserializeTo initWithNode: element];					
+				} else {
+					NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
+					NSLog([NSString stringWithFormat: @"Deserialize %@ to... %@", value, deserializeTo]);
+					output = [Soap convert: value toType: deserializeTo];
+				}
 			}
 		}
 		[[self handler] onload: output];

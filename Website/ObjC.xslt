@@ -96,7 +96,7 @@
 
 	<!-- SERVICE INTERFACE AND IMPLEMENTATION -->
 	<xsl:template match="wsdl:service" mode="interface">
-@interface <xsl:value-of select="@name"/> : NSObject
+@interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : NSObject
 {
 	NSString* serviceUrl;
 	NSString* namespace;
@@ -113,7 +113,7 @@
 	</xsl:template>
 
 	<xsl:template match="wsdl:service" mode="implementation">
-@implementation <xsl:value-of select="@name"/>
+@implementation <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>
 
 	@synthesize serviceUrl, namespace, logXMLInOut;
 

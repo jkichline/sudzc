@@ -50,12 +50,12 @@
 			<xsl:call-template name="imports"/>
 			<xsl:apply-templates select="wsdl:documentation"/>
 /* Add class references */
-			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="class_reference">
+			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema[0]/s:complexType[@name]" mode="class_reference">
 				<xsl:sort select="count(descendant::s:element[substring-before(@type, ':') != 's'])"/>
 			</xsl:apply-templates>
 
 /* Interfaces for complex objects */
-			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="interface">
+			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema[0]/s:complexType[@name]" mode="interface">
 				<xsl:sort select="position()" order="descending"/>
 			</xsl:apply-templates>
 
@@ -75,7 +75,7 @@
 #import "<xsl:value-of select="wsdl:service/@name"/>.h"
 
 /* Implementation for complex objects */
-			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="implementation">
+			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema[0]/s:complexType[@name]" mode="implementation">
 				<xsl:sort select="position()" order="descending"/>
 			</xsl:apply-templates>
 
@@ -141,7 +141,7 @@
 		<xsl:variable name="elementName">
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
-		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
+		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema[0]/s:element[@name = $elementName]"/>
 
 	- (void) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler <xsl:apply-templates select="$element" mode="param_selectors"/>;</xsl:template>
 
@@ -153,7 +153,7 @@
 		<xsl:variable name="elementName">
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
-		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
+		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema[0]/s:element[@name = $elementName]"/>
 		<xsl:variable name="action">
 			<xsl:value-of select="/wsdl:definitions/wsdl:binding/wsdl:operation[@name = $name]/soap:operation/@soapAction"/>
 		</xsl:variable>
@@ -219,7 +219,7 @@
 		<xsl:variable name="elementName">
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
-		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
+		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema[0]/s:element[@name = $elementName]"/>
 		<xsl:variable name="type">
 			<xsl:call-template name="getType">
 				<xsl:with-param name="value" select="$element/s:complexType/s:sequence/s:element/@type"/>
@@ -492,7 +492,7 @@
 	<xsl:template name="getType">
 		<xsl:param name="value"/>
 		<xsl:variable name="type" select="substring-after($value,':')"/>
-		<xsl:variable name="complexType" select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $type]"/>
+		<xsl:variable name="complexType" select="/wsdl:definitions/wsdl:types/s:schema[0]/s:complexType[@name = $type]"/>
 		<xsl:variable name="isArray" select="$complexType/s:sequence/s:element[@maxOccurs = 'unbounded']"/>
 		<xsl:choose>
 			<xsl:when test="$isArray">NSMutableArray*</xsl:when>

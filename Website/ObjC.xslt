@@ -185,7 +185,7 @@
 	
 	<!-- SERIALIZER TEMPLATE -->
 	
-	<xsl:template match="s:element" mode="serialize">
+	<xsl:template match="s:element|s:attribute" mode="serialize">
 		<xsl:param name="prefix"/>
 		<xsl:call-template name="serialize">
 			<xsl:with-param name="name"><xsl:value-of select="$prefix"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:with-param>

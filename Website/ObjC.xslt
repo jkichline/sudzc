@@ -382,10 +382,14 @@
 				<xsl:when test="$declaredType = 'NSDate*'">[NSDate dateWithString: [child stringValue]];</xsl:when>
 				<xsl:otherwise>[<xsl:value-of select="substring-before($declaredType, '*')"/> newWithNode: child];</xsl:otherwise>
 			</xsl:choose>
+			<xsl:choose>
+				<xsl:when test="contains($declaredType, '*') and not(starts-with($declaredType, 'NS'))">
 			if(value != nil) {
 				[items addObject: value];
 			}
-			[value release];
+			[value release];</xsl:when>
+				<xsl:otherwise>
+			[items addObject: value];</xsl:otherwise></xsl:choose>		
 		}
 		return items;
 	}

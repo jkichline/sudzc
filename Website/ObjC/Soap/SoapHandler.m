@@ -8,7 +8,7 @@
 
 @implementation SoapHandler
 
-- (void) onload: (NSObject*) value
+- (void) onload: (id) value
 {
 }
 

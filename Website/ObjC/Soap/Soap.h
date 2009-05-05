@@ -48,4 +48,7 @@
 // Gets the value of a named node from a parent node.
 + (NSString*) getNodeValue: (CXMLNode*) node withName: (NSString*) name;
 
+// Converts a string to a specific type.
++ (id) convert: (NSString*) value toType: (NSString*) toType;
+
 @end

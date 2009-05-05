@@ -8,7 +8,7 @@
 
 @protocol SoapDelegate <NSObject>
 
-- (void) onload: (NSObject*) value;
+- (void) onload: (id) value;
 
 @optional
 - (void) onerror: (NSError*) error;
@@ -20,7 +20,7 @@
 {
 }
 
-- (void) onload: (NSObject*) value;
+- (void) onload: (id) value;
 - (void) onerror: (NSError*) error;
 - (void) onfault: (SoapFault*) fault;
 

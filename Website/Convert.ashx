@@ -46,9 +46,19 @@ public class Convert : IHttpHandler {
 		// See if the output is an XML document
 		XmlDocument outputDoc = new XmlDocument();
 		try {
+			context.Response.ContentType = "text/xml";
 			outputDoc.LoadXml(output);
 		} catch (Exception) { }
 
+		// If in test mode, output the XML
+		bool testMode = false;
+		Boolean.TryParse(System.Configuration.ConfigurationManager.AppSettings["TestMode"], out testMode);
+		if (testMode) {
+			outputDoc.Save(context.Response.OutputStream);
+			return;
+		}
+
+		// Otherwise create the package
 		if (outputDoc.DocumentElement != null && outputDoc.DocumentElement.Name == "package") {
 
 			// Create a temporary directory

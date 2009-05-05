@@ -18,7 +18,7 @@
 	<xsl:variable name="portType" select="/wsdl:definitions/wsdl:portType[@name = $soapPortName]"/>
 	<xsl:param name="shortns"/>
 
-	<xsl:key name="className" match="s:element" use="@name"/>
+	<xsl:key name="className" match="s:complexType" use="@name"/>
 
 	<xsl:template match="/">
 		<package>

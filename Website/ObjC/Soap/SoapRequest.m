@@ -5,6 +5,7 @@
 */
 
 #import "SoapRequest.h"
+#import "SoapArray.h"
 #import "SoapFault.h"
 #import "Soap.h"
 

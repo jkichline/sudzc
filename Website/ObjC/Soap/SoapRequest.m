@@ -91,6 +91,9 @@
 			if(deserializeTo != nil) {
 				if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
 					NSLog([NSString stringWithFormat: @"Deserialize to... %@", deserializeTo]);
+					if([deserializeTo isKindOfClass: [SoapArray class]]) {
+						element = [element childAtIndex:0];
+					}
 					output = [deserializeTo initWithNode: element];					
 				} else {
 					NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];

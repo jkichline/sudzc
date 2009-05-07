@@ -35,6 +35,7 @@
 #import "Soap.h";
 #import "SoapFault.h";
 #import "SoapObject.h";
+#import "SoapArray.h";
 #import "SoapHandler.h";
 #import "SoapRequest.h";
 	</xsl:template>
@@ -340,7 +341,7 @@
 	<!-- CREATES AN ARRAY -->
 
 	<xsl:template match="s:complexType" mode="interface_array"><xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
-@interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapObject
+@interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapArray
 {
 	NSMutableArray *items;
 }
@@ -371,13 +372,13 @@
 		items = [[NSMutableArray alloc] init];
 		for(CXMLElement* child in [node children])
 		{
-			<xsl:value-of select="$declaredType"/> value = <xsl:choose>
+			id value = <xsl:choose>
 				<xsl:when test="$declaredType = 'NSString*'">[child stringValue];</xsl:when>
-				<xsl:when test="$declaredType = 'BOOL'">[[child stringValue] boolValue];</xsl:when>
-				<xsl:when test="$declaredType = 'int'">[[child stringValue] intValue];</xsl:when>
-				<xsl:when test="$declaredType = 'long'">[[child stringValue] longLongValue];</xsl:when>
-				<xsl:when test="$declaredType = 'double'">[[child stringValue] doubleValue];</xsl:when>
-				<xsl:when test="$declaredType = 'float'">[[child stringValue] floatValue];</xsl:when>
+				<xsl:when test="$declaredType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
+				<xsl:when test="$declaredType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
+				<xsl:when test="$declaredType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
+				<xsl:when test="$declaredType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
+				<xsl:when test="$declaredType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'NSDate*'">[NSDate dateWithString: [child stringValue]];</xsl:when>
 				<xsl:otherwise>[<xsl:value-of select="substring-before($declaredType, '*')"/> newWithNode: child];</xsl:otherwise>

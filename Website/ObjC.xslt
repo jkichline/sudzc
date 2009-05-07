@@ -175,7 +175,7 @@
 
 	<xsl:template match="s:element" mode="param_selectors">
 		<xsl:for-each select="s:complexType/s:sequence/s:element">
-			<xsl:value-of select="concat(' ', @name)"/>: (<xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template>) <xsl:value-of select="@name"/>
+			<xsl:value-of select="concat(' ', @name)"/>: (<xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template>) <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
 		</xsl:for-each>
 	</xsl:template>
 	
@@ -451,6 +451,8 @@
 		<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
 
 		<xsl:choose>
+			<xsl:when test="$type = 'NSMutableArray*'">		if (self.<xsl:value-of select="$name"/> != nil &amp;&amp; self.<xsl:value-of select="$name"/>.count &gt; 0) [s appendFormat: @"&lt;<xsl:value-of select="$name"/>&gt;%@&lt;/<xsl:value-of select="$name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
+</xsl:when>
 			<xsl:when test="not(contains($type, '*'))">		[s appendFormat: @"&lt;<xsl:value-of select="@name"/>&gt;%@&lt;/<xsl:value-of select="@name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
 </xsl:when>
 			<xsl:otherwise>		if (self.<xsl:value-of select="$name"/> != nil) [s appendFormat: @"&lt;<xsl:value-of select="$name"/>&gt;%@&lt;/<xsl:value-of select="$name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];

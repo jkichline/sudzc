@@ -208,6 +208,7 @@
 			<xsl:when test="$type = 'long'">[NSString stringWithFormat: @"%ld", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'double'">[NSString stringWithFormat: @"%d", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'float'">[NSString stringWithFormat: @"%f", <xsl:value-of select="$name"/>]</xsl:when>
+			<xsl:when test="$type = 'NSNumber*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSDecimalNumber*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSDate*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSMutableArray*'">[<xsl:value-of select="$shortns"/><xsl:value-of select="$xsdType"/> serialize: <xsl:value-of select="$name"/>]</xsl:when>
@@ -357,6 +358,16 @@
 		<xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
 			<xsl:variable name="actualType"><xsl:value-of select="substring-after(descendant::s:element/@type, ':')"/></xsl:variable>
 			<xsl:variable name="declaredType"><xsl:call-template name="getType"><xsl:with-param name="value" select="descendant::s:element/@type"/></xsl:call-template></xsl:variable>
+			<xsl:variable name="arrayType">
+				<xsl:choose>
+					<xsl:when test="$declaredType = 'BOOL'">NSNumber*;</xsl:when>
+					<xsl:when test="$declaredType = 'int'">NSNumber*</xsl:when>
+					<xsl:when test="$declaredType = 'long'">NSNumber*</xsl:when>
+					<xsl:when test="$declaredType = 'double'">NSNumber*</xsl:when>
+					<xsl:when test="$declaredType = 'float'">NSNumber*</xsl:when>
+					<xsl:otherwise><xsl:value-of select="$declaredType"/></xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
 @implementation <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>
 
 	@synthesize items;
@@ -372,7 +383,7 @@
 		items = [[NSMutableArray alloc] init];
 		for(CXMLElement* child in [node children])
 		{
-			id value = <xsl:choose>
+			<xsl:value-of select="$arrayType"/> value = <xsl:choose>
 				<xsl:when test="$declaredType = 'NSString*'">[child stringValue];</xsl:when>
 				<xsl:when test="$declaredType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
@@ -401,7 +412,7 @@
 		for(id item in array) {
 			[s appendFormat: @"&lt;<xsl:value-of select="$actualType"/>&gt;%@&lt;/<xsl:value-of select="$actualType"/>&gt;", <xsl:call-template name="serialize">
 				<xsl:with-param name="name">item</xsl:with-param>
-				<xsl:with-param name="type"><xsl:value-of select="$declaredType"/></xsl:with-param>
+				<xsl:with-param name="type"><xsl:value-of select="$arrayType"/></xsl:with-param>
 				<xsl:with-param name="xsdType"><xsl:value-of select="$actualType"/></xsl:with-param>
 			</xsl:call-template>];
 		}

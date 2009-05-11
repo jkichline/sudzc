@@ -145,8 +145,9 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
-
-	- (void) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler <xsl:apply-templates select="$element" mode="param_selectors"/>;</xsl:template>
+	/* Returns <xsl:apply-templates select="wsdl:output" mode="object_type"/>. <xsl:value-of select="wsdl:documentation"/> */
+	- (void) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler <xsl:apply-templates select="$element" mode="param_selectors"/>;
+</xsl:template>
 
 	<xsl:template match="wsdl:operation" mode="implementation">
 		<xsl:variable name="name" select="@name"/>
@@ -161,7 +162,7 @@
 			<xsl:value-of select="/wsdl:definitions/wsdl:binding/wsdl:operation[@name = $name]/soap:operation/@soapAction"/>
 		</xsl:variable>
 
-		<xsl:apply-templates select="wsdl:documentation"/>
+	/* Returns <xsl:apply-templates select="wsdl:output" mode="object_type"/>. <xsl:value-of select="wsdl:documentation"/> */
 	- (void) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="$element" mode="param_selectors"/>
 	{
 		NSMutableString* _params = [[NSMutableString alloc] init];

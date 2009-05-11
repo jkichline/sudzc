@@ -52,3 +52,5 @@ label { font-size: 12pt; display: block; font-weight: bold; margin: 10px 0 3px 0
 #shortns { width: 100px; font-size: 13.5pt; color: #779; margin-right: 6pt; }
 #type { width: 590px; font-size: 13.5pt; color: #779; }
 #objcns { display: none; font-weight: normal; color: #5AC; font-size: 12pt; }
+p, blockquote { font-weight: normal; color: #333; font-size: 12pt; }
+blockquote { margin: 15pt; font-weight: bold; color: #666; }

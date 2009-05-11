@@ -51,9 +51,9 @@ public class Convert : IHttpHandler {
 		} catch (Exception) { }
 
 		// If in test mode, output the XML
-		bool testMode = false;
-		Boolean.TryParse(System.Configuration.ConfigurationManager.AppSettings["TestMode"], out testMode);
-		if (testMode) {
+		string mimeType = System.Configuration.ConfigurationManager.AppSettings["OutputMimetype"];
+		if (String.IsNullOrEmpty(mimeType) == false) {
+			context.Response.ContentType = mimeType;
 			outputDoc.Save(context.Response.OutputStream);
 			return;
 		}

@@ -16,7 +16,7 @@
 			}
 			function adjustNS(el){
 				var opt=el.options[el.selectedIndex];
-				var useShort=(opt.value=="ObjC");
+				var useShort=(opt.value.substring(0,4)=="ObjC");
 				$("ns").style.display=useShort?"none":"block";
 				$("objcns").style.display=useShort?"block":"none";
 			}

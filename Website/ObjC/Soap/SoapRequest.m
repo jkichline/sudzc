@@ -11,16 +11,21 @@
 
 @implementation SoapRequest
 
-@synthesize handler, url, soapAction, postData, receivedData, username, password, deserializeTo;
+@synthesize handler, url, soapAction, postData, receivedData, username, password, deserializeTo, action;
 
 // Creates a request to submit from discrete values.
 + (SoapRequest*) create: (SoapHandler*) handler urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
+	[SoapRequest create: handler action: nil urlString: urlString soapAction: soapAction postData: postData deserializeTo: deserializeTo];
+}
+
++ (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
 	SoapRequest* request = [[SoapRequest alloc] init];
 	request.url = [NSURL URLWithString: urlString];
 	request.soapAction = soapAction;
 	request.postData = postData;
 	request.handler = handler;
 	request.deserializeTo = deserializeTo;
+	request.action = action;
 	return request;
 }
 
@@ -71,8 +76,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSError* error;
 
-	NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
-	NSLog(response);
+//	NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
 	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: self.receivedData options: 0 error: &error];
 
 	if(doc == nil) {
@@ -80,30 +84,45 @@
 		return;
 	}
 
+	id output = nil;
 	SoapFault* fault = [SoapFault faultWithXMLDocument: doc];
+
 	if([fault hasFault]) {
-		[[self handler] onfault: fault];
+		if(self.action == nil) {
+			if([self.handler respondsToSelector:@selector(onfault:)]) {
+				[self.handler onfault: fault];
+			}
+		} else {
+			output = fault;
+		}
 	} else {
-		id output = nil;
 		if(deserializeTo == nil) {
 			output = doc;
 		} else {
 			CXMLNode* element = [[Soap getNode: [doc rootElement] withName: @"Body"] childAtIndex:0];
 			if(deserializeTo != nil) {
 				if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
-					NSLog([NSString stringWithFormat: @"Deserialize to... %@", deserializeTo]);
 					if([deserializeTo isKindOfClass: [SoapArray class]]) {
 						element = [element childAtIndex:0];
 					}
 					output = [deserializeTo initWithNode: element];					
 				} else {
 					NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
-					NSLog([NSString stringWithFormat: @"Deserialize %@ to... %@", value, deserializeTo]);
 					output = [Soap convert: value toType: deserializeTo];
 				}
 			}
 		}
-		[[self handler] onload: output];
+		
+		if(self.action == nil) { self.action = @selector(onload:); }
+		if(self.handler != nil) {
+			NSMethodSignature * sig = [[self.handler class] instanceMethodSignatureForSelector: self.action];
+			NSInvocation* invoke = [NSInvocation invocationWithMethodSignature: sig];
+			[invoke setTarget: self.handler];
+			[invoke setSelector: self.action];
+			[invoke setArgument: &output atIndex: 2];
+			[invoke retainArguments];
+			[invoke invoke];
+		}
 	}
 
 	[conn release];

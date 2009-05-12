@@ -51,7 +51,9 @@
 	} else {
 		// We will want to call the onerror method selector here...
 		NSError* error = [NSError errorWithDomain:@"SoapRequest" code:404 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not create connection", NSLocalizedDescriptionKey]];
-		[handler onerror: error];
+		SEL onerror = @selector(onerror:);
+		if(self.action != nil) { onerror = self.action; }
+		[self invoke: onerror withReturn: error];
 	}
 }
 
@@ -114,19 +116,24 @@
 		}
 		
 		if(self.action == nil) { self.action = @selector(onload:); }
-		if(self.handler != nil) {
-			NSMethodSignature * sig = [[self.handler class] instanceMethodSignatureForSelector: self.action];
-			NSInvocation* invoke = [NSInvocation invocationWithMethodSignature: sig];
-			[invoke setTarget: self.handler];
-			[invoke setSelector: self.action];
-			[invoke setArgument: &output atIndex: 2];
-			[invoke retainArguments];
-			[invoke invoke];
-		}
+		[self invoke: self.action withReturn: output];
 	}
 
 	[conn release];
 	[self.receivedData release];
+}
+
+// Invokes the selector for the given data
+- (void) invoke: (SEL) action withReturn: (id) output {
+	if(self.handler != nil) {
+		NSMethodSignature * sig = [[self.handler class] instanceMethodSignatureForSelector: action];
+		NSInvocation* invoke = [NSInvocation invocationWithMethodSignature: sig];
+		[invoke setTarget: self.handler];
+		[invoke setSelector: action];
+		[invoke setArgument: &output atIndex: 2];
+		[invoke retainArguments];
+		[invoke invoke];
+	}
 }
 
 // Called if the HTTP request receives an authentication challenge.

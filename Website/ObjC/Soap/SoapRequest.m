@@ -124,12 +124,14 @@
 }
 
 // Invokes the selector for the given data
-- (void) invoke: (SEL) action withReturn: (id) output {
+- (void) invoke: (SEL) selector withReturn: (id) output {
 	if(self.handler != nil) {
-		NSMethodSignature * sig = [[self.handler class] instanceMethodSignatureForSelector: action];
+		NSMethodSignature* sig = [[self.handler class] instanceMethodSignatureForSelector: selector];
+		if(sig == nil) { return; }
 		NSInvocation* invoke = [NSInvocation invocationWithMethodSignature: sig];
+		if(invoke == nil) { return; }
 		[invoke setTarget: self.handler];
-		[invoke setSelector: action];
+		[invoke setSelector: selector];
 		[invoke setArgument: &output atIndex: 2];
 		[invoke retainArguments];
 		[invoke invoke];

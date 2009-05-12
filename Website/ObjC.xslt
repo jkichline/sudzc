@@ -146,7 +146,8 @@
 		</xsl:variable>
 		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
 	/* Returns <xsl:apply-templates select="wsdl:output" mode="object_type"/>. <xsl:value-of select="wsdl:documentation"/> */
-	- (void) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler <xsl:apply-templates select="$element" mode="param_selectors"/>;
+	- (void) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="$element" mode="param_selectors"/>;
+	- (void) <xsl:value-of select="$name"/>: (id) target action: (SEL) action<xsl:apply-templates select="$element" mode="param_selectors"/>;
 </xsl:template>
 
 	<xsl:template match="wsdl:operation" mode="implementation">
@@ -165,14 +166,25 @@
 	/* Returns <xsl:apply-templates select="wsdl:output" mode="object_type"/>. <xsl:value-of select="wsdl:documentation"/> */
 	- (void) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="$element" mode="param_selectors"/>
 	{
+		[self <xsl:value-of select="$name"/>: handler action: nil<xsl:apply-templates select="$element" mode="param_names"/>];
+	}
+
+	- (void) <xsl:value-of select="$name"/>: (id) target action: (SEL) action<xsl:apply-templates select="$element" mode="param_selectors"/>
+	{
 		NSMutableString* _params = [[NSMutableString alloc] init];
 <xsl:apply-templates select="$element" mode="param_xml"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace forParameters: _params];
 		if(logXMLInOut) { NSLog(_envelope); }
-		SoapRequest* _request = [SoapRequest create: handler urlString: serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
+		SoapRequest* _request = [SoapRequest create: target action: action urlString: serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
 		[_request send];
 	}
 </xsl:template>
+	
+		<xsl:template match="s:element" mode="param_names">
+		<xsl:for-each select="s:complexType/s:sequence/s:element">
+			<xsl:value-of select="concat(' ', @name)"/>: <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
+		</xsl:for-each>
+	</xsl:template>
 
 	<xsl:template match="s:element" mode="param_selectors">
 		<xsl:for-each select="s:complexType/s:sequence/s:element">

@@ -430,6 +430,7 @@
 					<xsl:when test="$declaredType = 'long'">NSNumber*</xsl:when>
 					<xsl:when test="$declaredType = 'double'">NSNumber*</xsl:when>
 					<xsl:when test="$declaredType = 'float'">NSNumber*</xsl:when>
+					<xsl:when test="$declaredType = 'short'">NSNumber*</xsl:when>
 					<xsl:otherwise><xsl:value-of select="$declaredType"/></xsl:otherwise>
 				</xsl:choose>
 			</xsl:variable>
@@ -461,6 +462,7 @@
 				<xsl:when test="$declaredType = 'NSString*'">[child stringValue];</xsl:when>
 				<xsl:when test="$declaredType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
+				<xsl:when test="$declaredType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>

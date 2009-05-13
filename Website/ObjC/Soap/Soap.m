@@ -222,4 +222,19 @@
 	return value;
 }
 
+// Invokes the selector for the given data
++ (void) invoke: (id) target selector: (SEL) selector withReturn: (id) output {
+	if(target != nil) {
+		NSMethodSignature* sig = [[target class] instanceMethodSignatureForSelector: selector];
+		if(sig == nil) { return; }
+		NSInvocation* invoke = [NSInvocation invocationWithMethodSignature: sig];
+		if(invoke == nil) { return; }
+		[invoke setTarget: target];
+		[invoke setSelector: selector];
+		[invoke setArgument: &output atIndex: 2];
+		[invoke retainArguments];
+		[invoke invoke];
+	}
+}
+
 @end

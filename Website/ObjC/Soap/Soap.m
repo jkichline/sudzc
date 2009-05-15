@@ -217,24 +217,20 @@
 		return [NSDecimalNumber decimalNumberWithString: value];
 	}
 	if([toType isEqualToString: @"nsdate*"]) {
-		return [NSDate dateWithString: value];
+		return [Soap getDate: value];
 	}
 	return value;
 }
 
-// Invokes the selector for the given data
-+ (void) invoke: (id) target selector: (SEL) selector withReturn: (id) output {
-	if(target != nil) {
-		NSMethodSignature* sig = [[target class] instanceMethodSignatureForSelector: selector];
-		if(sig == nil) { return; }
-		NSInvocation* invoke = [NSInvocation invocationWithMethodSignature: sig];
-		if(invoke == nil) { return; }
-		[invoke setTarget: target];
-		[invoke setSelector: selector];
-		[invoke setArgument: &output atIndex: 2];
-		[invoke retainArguments];
-		[invoke invoke];
-	}
+// Converts a string to a date.
++ (NSDate*) dateFromString: (NSString*) value {
+	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+	NSLocale* enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+	[formatter setLocale: enUS];
+	[enUS release];
+	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+	NSDate* outputDate = [formatter dateFromString: value];
+	return outputDate;
 }
 
 @end

@@ -245,7 +245,8 @@
 		<xsl:variable name="deserializer">
 			<xsl:choose>
 				<xsl:when test="$type = 'NSMutableArray*'"><xsl:value-of select="$shortns"/><xsl:value-of select="substring-after($element/s:complexType/s:sequence/s:element/@type, ':')"/></xsl:when>
-				<xsl:otherwise><xsl:value-of select="substring-before($type, '*')"/></xsl:otherwise>
+				<xsl:when test="contains($type, '*')"><xsl:value-of select="substring-before($type, '*')"/></xsl:when>
+				<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>

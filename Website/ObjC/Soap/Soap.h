@@ -51,7 +51,7 @@
 // Converts a string to a specific type.
 + (id) convert: (NSString*) value toType: (NSString*) toType;
 
-// Invokes a method on a class based on a selector.
-+ (void) invoke: (id) target selector: (SEL) selector withReturn: (id) output;
+// Converts a string to a date.
++ (NSDate*) dateFromString: (NSString*) value;
 
 @end

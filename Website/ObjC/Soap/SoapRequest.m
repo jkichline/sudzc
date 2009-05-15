@@ -79,10 +79,14 @@
 	NSError* error;
 
 //	NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
+//	NSLog(response);
+	
 	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: self.receivedData options: 0 error: &error];
 
 	if(doc == nil) {
-		[[self handler] onerror: error];
+		if([self.handler respondsToSelector:@selector(onerror:)]) {
+			[self.handler onerror: error];
+		}
 		return;
 	}
 
@@ -107,7 +111,7 @@
 					if([deserializeTo isKindOfClass: [SoapArray class]]) {
 						element = [element childAtIndex:0];
 					}
-					output = [deserializeTo initWithNode: element];					
+					output = [deserializeTo initWithNode: element];	
 				} else {
 					NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
 					output = [Soap convert: value toType: deserializeTo];
@@ -116,26 +120,13 @@
 		}
 		
 		if(self.action == nil) { self.action = @selector(onload:); }
-		[self invoke: self.action withReturn: output];
+		if([self.handler respondsToSelector: self.action]) {
+			[self.handler performSelector: self.action withObject: output];
+		}
 	}
 
 	[conn release];
 	[self.receivedData release];
-}
-
-// Invokes the selector for the given data
-- (void) invoke: (SEL) selector withReturn: (id) output {
-	if(self.handler != nil) {
-		NSMethodSignature* sig = [[self.handler class] instanceMethodSignatureForSelector: selector];
-		if(sig == nil) { return; }
-		NSInvocation* invoke = [NSInvocation invocationWithMethodSignature: sig];
-		if(invoke == nil) { return; }
-		[invoke setTarget: self.handler];
-		[invoke setSelector: selector];
-		[invoke setArgument: &output atIndex: 2];
-		[invoke retainArguments];
-		[invoke invoke];
-	}
 }
 
 // Called if the HTTP request receives an authentication challenge.

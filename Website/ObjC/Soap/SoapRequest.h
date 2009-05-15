@@ -29,7 +29,6 @@
 @property (retain, nonatomic) id deserializeTo;
 @property SEL action;
 
-- (void) invoke: (SEL) action withReturn: (id) output;
 + (SoapRequest*) create: (SoapHandler*) handler urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo;
 + (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo;
 

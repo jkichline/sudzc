@@ -223,13 +223,15 @@
 }
 
 // Converts a string to a date.
-+ (NSDate*) dateFromString: (NSString*) value {
++ (NSDate*) getDate: (NSString*) value {
+	if(value == nil || [value isEqualToString:@""]) { return nil; }
 	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
 	NSLocale* enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 	[formatter setLocale: enUS];
 	[enUS release];
 	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
 	NSDate* outputDate = [formatter dateFromString: value];
+	[formatter release];
 	return outputDate;
 }
 

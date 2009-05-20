@@ -15,11 +15,11 @@
 
 // Creates a request to submit from discrete values.
 + (SoapRequest*) create: (SoapHandler*) handler urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
-	[SoapRequest create: handler action: nil urlString: urlString soapAction: soapAction postData: postData deserializeTo: deserializeTo];
+	return [SoapRequest create: handler action: nil urlString: urlString soapAction: soapAction postData: postData deserializeTo: deserializeTo];
 }
 
 + (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
-	SoapRequest* request = [[SoapRequest alloc] init];
+	SoapRequest* request = [[[SoapRequest alloc] init] autorelease];
 	request.url = [NSURL URLWithString: urlString];
 	request.soapAction = soapAction;
 	request.postData = postData;
@@ -50,10 +50,14 @@
 		receivedData = [[NSMutableData data] retain];
 	} else {
 		// We will want to call the onerror method selector here...
-		NSError* error = [NSError errorWithDomain:@"SoapRequest" code:404 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not create connection", NSLocalizedDescriptionKey]];
-		SEL onerror = @selector(onerror:);
-		if(self.action != nil) { onerror = self.action; }
-		[self invoke: onerror withReturn: error];
+		if(self.handler != nil) {
+			NSError* error = [NSError errorWithDomain:@"SoapRequest" code:404 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not create connection", NSLocalizedDescriptionKey]];
+			SEL onerror = @selector(onerror:);
+			if(self.action != nil) { onerror = self.action; }
+			if([self.handler respondsToSelector: onerror]) {
+				[self.handler performSelector: onerror withObject: error];
+			}
+		}
 	}
 }
 
@@ -111,7 +115,7 @@
 					if([deserializeTo isKindOfClass: [SoapArray class]]) {
 						element = [element childAtIndex:0];
 					}
-					output = [deserializeTo initWithNode: element];	
+					output = [deserializeTo initWithNode: element];
 				} else {
 					NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
 					output = [Soap convert: value toType: deserializeTo];
@@ -125,6 +129,7 @@
 		}
 	}
 
+	[doc release];
 	[conn release];
 	[self.receivedData release];
 }

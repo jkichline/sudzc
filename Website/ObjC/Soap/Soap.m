@@ -217,13 +217,13 @@
 		return [NSDecimalNumber decimalNumberWithString: value];
 	}
 	if([toType isEqualToString: @"nsdate*"]) {
-		return [Soap getDate: value];
+		return [Soap dateFromString: value];
 	}
 	return value;
 }
 
 // Converts a string to a date.
-+ (NSDate*) getDate: (NSString*) value {
++ (NSDate*) dateFromString: (NSString*) value {
 	if(value == nil || [value isEqualToString:@""]) { return nil; }
 	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
 	NSLocale* enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];

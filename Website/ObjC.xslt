@@ -314,6 +314,19 @@
 		</xsl:call-template>
 	</xsl:template>
 
+	<xsl:template match="wsdl:output" mode="object_type">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
+		<xsl:call-template name="getType">
+			<xsl:with-param name="value" select="$element/s:complexType/s:sequence/s:element/@type"/>
+		</xsl:call-template>
+	</xsl:template>
+
 
 	<!-- COMPLEX TYPES INTERFACE AND IMPLEMENTATION -->
 

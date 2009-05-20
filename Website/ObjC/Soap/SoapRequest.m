@@ -44,7 +44,7 @@
 		[request addValue: @"text/xml" forHTTPHeaderField: @"Content-Type"];
 		[request setHTTPBody: [postData dataUsingEncoding: NSUTF8StringEncoding]];
 		if(self.logging) {
-			NSLog([postData dataUsingEncoding: NSUTF8StringEncoding]);
+			NSLog([NSString stringWithFormat: @"%@", postData]);
 		}
 	}
 	

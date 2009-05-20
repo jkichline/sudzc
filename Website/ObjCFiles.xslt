@@ -140,42 +140,27 @@
 	</xsl:template>
 
 	<xsl:template match="wsdl:operation" mode="interface">
-		<xsl:variable name="name" select="@name"/>
-		<xsl:variable name="messageName">
-			<xsl:value-of select="substring-after(wsdl:input/@message, ':')"/>
-		</xsl:variable>
-		<xsl:variable name="elementName">
-			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
-		</xsl:variable>
-		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
 	/* Returns <xsl:apply-templates select="wsdl:output" mode="object_type"/>. <xsl:value-of select="wsdl:documentation"/> */
-	- (SoapRequest*) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="$element" mode="param_selectors"/>;
-	- (SoapRequest*) <xsl:value-of select="$name"/>: (id) target action: (SEL) action<xsl:apply-templates select="$element" mode="param_selectors"/>;
+	- (SoapRequest*) <xsl:value-of select="@name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>;
+	- (SoapRequest*) <xsl:value-of select="@name"/>: (id) target action: (SEL) action<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>;
 </xsl:template>
 
 	<xsl:template match="wsdl:operation" mode="implementation">
 		<xsl:variable name="name" select="@name"/>
-		<xsl:variable name="messageName">
-			<xsl:value-of select="substring-after(wsdl:input/@message, ':')"/>
-		</xsl:variable>
-		<xsl:variable name="elementName">
-			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
-		</xsl:variable>
-		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
 		<xsl:variable name="action">
 			<xsl:value-of select="/wsdl:definitions/wsdl:binding/wsdl:operation[@name = $name]/soap:operation/@soapAction"/>
 		</xsl:variable>
 
 	/* Returns <xsl:apply-templates select="wsdl:output" mode="object_type"/>. <xsl:value-of select="wsdl:documentation"/> */
-	- (SoapRequest*) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="$element" mode="param_selectors"/>
+	- (SoapRequest*) <xsl:value-of select="@name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>
 	{
-		return [self <xsl:value-of select="$name"/>: handler action: nil<xsl:apply-templates select="$element" mode="param_names"/>];
+		return [self <xsl:value-of select="@name"/>: handler action: nil<xsl:apply-templates select="wsdl:input" mode="param_names"/>];
 	}
 
-	- (SoapRequest*) <xsl:value-of select="$name"/>: (id) target action: (SEL) action<xsl:apply-templates select="$element" mode="param_selectors"/>
+	- (SoapRequest*) <xsl:value-of select="@name"/>: (id) target action: (SEL) action<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>
 	{
 		NSMutableString* _params = [[NSMutableString alloc] init];
-<xsl:apply-templates select="$element" mode="param_xml"/>
+<xsl:apply-templates select="wsdl:input" mode="param_xml"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace forParameters: _params];
 		SoapRequest* _request = [SoapRequest create: target action: action urlString: serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
 		_request.logging = self.logging;
@@ -204,8 +189,8 @@
 	
 	
 	<!-- SERIALIZER TEMPLATE -->
-	
-	<xsl:template match="s:element|s:attribute" mode="serialize">
+
+	<xsl:template match="s:element|s:attribute|wsdl:part" mode="serialize">
 		<xsl:param name="prefix"/>
 		<xsl:call-template name="serialize">
 			<xsl:with-param name="name"><xsl:value-of select="$prefix"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:with-param>

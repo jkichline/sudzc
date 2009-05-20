@@ -43,6 +43,9 @@
 		[request setHTTPMethod: @"POST"];
 		[request addValue: @"text/xml" forHTTPHeaderField: @"Content-Type"];
 		[request setHTTPBody: [postData dataUsingEncoding: NSUTF8StringEncoding]];
+		if(self.logging) {
+			NSLog([postData dataUsingEncoding: NSUTF8StringEncoding]);
+		}
 	}
 	
 	conn = [[NSURLConnection alloc] initWithRequest: request delegate: self];
@@ -82,8 +85,12 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSError* error;
 
-//	NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
-//	NSLog(response);
+	if(self.logging == YES) {
+		NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
+		NSLog(response);
+		[response release];
+	}
+
 	
 	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: self.receivedData options: 0 error: &error];
 

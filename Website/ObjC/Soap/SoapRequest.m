@@ -11,7 +11,7 @@
 
 @implementation SoapRequest
 
-@synthesize handler, url, soapAction, postData, receivedData, username, password, deserializeTo, action;
+@synthesize handler, url, soapAction, postData, receivedData, username, password, deserializeTo, action, logging;
 
 // Creates a request to submit from discrete values.
 + (SoapRequest*) create: (SoapHandler*) handler urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {

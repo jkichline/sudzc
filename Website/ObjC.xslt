@@ -14,7 +14,8 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output version="1.0" encoding="iso-8859-1" method="xml" omit-xml-declaration="no" indent="yes"/>
 
-	<xsl:variable name="soapPortName" select="/wsdl:definitions/wsdl:binding[soap:binding][1]/@name"/>
+	<xsl:variable name="soapPortType" select="/wsdl:definitions/wsdl:binding[soap:binding][1]/@type"/>
+	<xsl:variable name="soapPortName" select="substring-after($soapPortType, ':')"/>
 	<xsl:variable name="portType" select="/wsdl:definitions/wsdl:portType[@name = $soapPortName]"/>
 	<xsl:param name="shortns"/>
 
@@ -103,12 +104,12 @@
 {
 	NSString* serviceUrl;
 	NSString* namespace;
-	BOOL logXMLInOut;
+	BOOL logging;
 }
 
 	@property (retain) NSString* serviceUrl;
 	@property (retain) NSString* namespace;
-	@property BOOL logXMLInOut;
+	@property BOOL logging;
 
 		<xsl:apply-templates select="$portType/wsdl:operation" mode="interface"/>
 
@@ -118,7 +119,7 @@
 	<xsl:template match="wsdl:service" mode="implementation">
 @implementation <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>
 
-	@synthesize serviceUrl, namespace, logXMLInOut;
+	@synthesize serviceUrl, namespace, logging;
 
 	- (id) init
 	{
@@ -126,7 +127,7 @@
 		{
 			serviceUrl = @"<xsl:value-of select="wsdl:port/soap:address/@location"/>";
 			namespace = @"<xsl:value-of select="/wsdl:definitions/@targetNamespace"/>";
-			logXMLInOut = NO;
+			logging = NO;
 		}
 		return self;
 	}
@@ -137,6 +138,7 @@
 	</xsl:template>
 
 	<xsl:template match="wsdl:operation" mode="interface">
+		<!--
 		<xsl:variable name="name" select="@name"/>
 		<xsl:variable name="messageName">
 			<xsl:value-of select="substring-after(wsdl:input/@message, ':')"/>
@@ -144,10 +146,10 @@
 		<xsl:variable name="elementName">
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
-		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
+		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/> -->
 	/* Returns <xsl:apply-templates select="wsdl:output" mode="object_type"/>. <xsl:value-of select="wsdl:documentation"/> */
-	- (void) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="$element" mode="param_selectors"/>;
-	- (void) <xsl:value-of select="$name"/>: (id) target action: (SEL) action<xsl:apply-templates select="$element" mode="param_selectors"/>;
+	- (SoapRequest*) <xsl:value-of select="@name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>;
+	- (SoapRequest*) <xsl:value-of select="@name"/>: (id) target action: (SEL) action<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>;
 </xsl:template>
 
 	<xsl:template match="wsdl:operation" mode="implementation">
@@ -164,38 +166,82 @@
 		</xsl:variable>
 
 	/* Returns <xsl:apply-templates select="wsdl:output" mode="object_type"/>. <xsl:value-of select="wsdl:documentation"/> */
-	- (void) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="$element" mode="param_selectors"/>
+	- (SoapRequest*) <xsl:value-of select="$name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>
 	{
-		[self <xsl:value-of select="$name"/>: handler action: nil<xsl:apply-templates select="$element" mode="param_names"/>];
+		return [self <xsl:value-of select="$name"/>: handler action: nil<xsl:apply-templates select="$element" mode="param_names"/>];
 	}
 
-	- (void) <xsl:value-of select="$name"/>: (id) target action: (SEL) action<xsl:apply-templates select="$element" mode="param_selectors"/>
+	- (SoapRequest*) <xsl:value-of select="$name"/>: (id) target action: (SEL) action<xsl:apply-templates select="$element" mode="param_selectors"/>
 	{
 		NSMutableString* _params = [[NSMutableString alloc] init];
 <xsl:apply-templates select="$element" mode="param_xml"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace forParameters: _params];
-		if(logXMLInOut) { NSLog(_envelope); }
 		SoapRequest* _request = [SoapRequest create: target action: action urlString: serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
+		_request.logging = self.logging;
 		[_request send];
+		return _request;
 	}
 </xsl:template>
+
 	
-		<xsl:template match="s:element" mode="param_names">
-		<xsl:for-each select="s:complexType/s:sequence/s:element">
-			<xsl:value-of select="concat(' ', @name)"/>: <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
-		</xsl:for-each>
+	<!-- PARAMETER SELECTORS -->
+	
+	<xsl:template match="wsdl:input" mode="param_selectors">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element" mode="param_selectors"/></xsl:when>
+			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_selectors"/></xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="s:element" mode="param_selectors">
-		<xsl:for-each select="s:complexType/s:sequence/s:element">
-			<xsl:value-of select="concat(' ', @name)"/>: (<xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template>) <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
-		</xsl:for-each>
+	<xsl:template match="s:element|wsdl:part" mode="param_selectors">
+		<xsl:value-of select="concat(' ', @name)"/>: (<xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template>) <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
+	</xsl:template>
+
+
+	<!-- PARAMETER NAMES -->
+	
+	<xsl:template match="wsdl:input" mode="param_names">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element" mode="param_names"/></xsl:when>
+			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_names"/></xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 	
-	<xsl:template match="s:element" mode="param_xml">
-		<xsl:for-each select="s:complexType/s:sequence/s:element">		[_params appendFormat: @"&lt;<xsl:value-of select="@name"/>&gt;%@&lt;/<xsl:value-of select="@name"/>&gt;", <xsl:apply-templates select="." mode="serialize"/>];
-</xsl:for-each>
+	<xsl:template match="s:element|wsdl:part" mode="param_names">
+		<xsl:value-of select="concat(' ', @name)"/>: <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
 	</xsl:template>
+
+
+
+	<!-- PARAMETER XML -->
+	
+	<xsl:template match="wsdl:input" mode="param_xml">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element" mode="param_xml"/></xsl:when>
+			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_xml"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="s:element|wsdl:part" mode="param_xml">
+		[_params appendFormat: @"&lt;<xsl:value-of select="@name"/>&gt;%@&lt;/<xsl:value-of select="@name"/>&gt;", <xsl:apply-templates select="." mode="serialize"/>];</xsl:template>
 
 	
 	
@@ -277,7 +323,7 @@
 	<xsl:template match="s:complexType" mode="interface">
 		<xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
 			<xsl:choose>
-				<xsl:when test="s:sequence/s:element[@maxOccurs = 'unbounded']">
+				<xsl:when test="s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType]">
 					<xsl:apply-templates select="." mode="interface_array"/>
 				</xsl:when>
 				<xsl:otherwise>
@@ -290,7 +336,7 @@
 	<xsl:template match="s:complexType" mode="implementation">
 		<xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
 			<xsl:choose>
-				<xsl:when test="s:sequence/s:element[@maxOccurs = 'unbounded']">
+				<xsl:when test="s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType]">
 					<xsl:apply-templates select="." mode="implementation_array"/>
 				</xsl:when>
 				<xsl:otherwise>
@@ -454,60 +500,67 @@
 @end
 </xsl:if></xsl:template>
 
-	<xsl:template match="s:element|s:attribute" mode="interface_variables">
-		<xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template><xsl:value-of select="' '"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>;
-	</xsl:template>
+	<xsl:template match="s:element|s:attribute" mode="interface_variables"><xsl:if test="@name">
+	<xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template><xsl:value-of select="' '"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>;
+	</xsl:if></xsl:template>		
 
 	<xsl:template match="s:element|s:attribute" mode="interface_properties">
-		<xsl:variable name="type">
-			<xsl:call-template name="getType">
-				<xsl:with-param name="value" select="@type"/>
-			</xsl:call-template>
-		</xsl:variable>
-	@property <xsl:if test="contains($type, '*')">(retain, nonatomic)</xsl:if><xsl:value-of select="concat(' ', $type)"/> <xsl:value-of select="' '"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>;</xsl:template>
+		<xsl:if test="@name">
+			<xsl:variable name="type">
+				<xsl:call-template name="getType">
+					<xsl:with-param name="value" select="@type"/>
+				</xsl:call-template>
+			</xsl:variable>
+	@property <xsl:if test="contains($type, '*')">(retain, nonatomic) </xsl:if><xsl:value-of select="concat($type, ' ')"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>;</xsl:if></xsl:template>
 
-	<xsl:template match="s:element|s:attribute" mode="implementation_synthesize">
-	@synthesize <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>;</xsl:template>
+	<xsl:template match="s:element|s:attribute" mode="implementation_synthesize"><xsl:if test="@name">
+	@synthesize <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>;</xsl:if></xsl:template>
 
 	<xsl:template match="s:element|s:attribute" mode="implementation_alloc">
-		<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
-		<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
-		<xsl:if test="contains($type,'*')">
-			<xsl:choose>
-				<xsl:when test="$type = 'NSMutableArray*'">			self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
+		<xsl:if test="@name">
+			<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
+			<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
+			<xsl:if test="contains($type,'*')">
+				<xsl:choose>
+					<xsl:when test="$type = 'NSMutableArray*'">			self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
 </xsl:when>
-				<xsl:when test="starts-with($type,'NS')">			self.<xsl:value-of select="$name"/> = nil;
+					<xsl:when test="starts-with($type,'NS')">			self.<xsl:value-of select="$name"/> = nil;
 </xsl:when>
-				<xsl:otherwise>			self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
+					<xsl:otherwise>			self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
 </xsl:otherwise>
-			</xsl:choose>
+				</xsl:choose>
+			</xsl:if>
 		</xsl:if>
 	</xsl:template>
 
 <!-- addition to create serialize methods for each sub class -->
 	<xsl:template match="s:element|s:attribute" mode="implementation_serialize">
-		<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
-		<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
+		<xsl:if test="@name">
+			<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
+			<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
 
-		<xsl:choose>
-			<xsl:when test="$type = 'NSMutableArray*'">		if (self.<xsl:value-of select="$name"/> != nil &amp;&amp; self.<xsl:value-of select="$name"/>.count &gt; 0) [s appendFormat: @"&lt;<xsl:value-of select="$name"/>&gt;%@&lt;/<xsl:value-of select="$name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
+			<xsl:choose>
+				<xsl:when test="$type = 'NSMutableArray*'">		if (self.<xsl:value-of select="$name"/> != nil &amp;&amp; self.<xsl:value-of select="$name"/>.count &gt; 0) [s appendFormat: @"&lt;<xsl:value-of select="$name"/>&gt;%@&lt;/<xsl:value-of select="$name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
 </xsl:when>
-			<xsl:when test="not(contains($type, '*'))">		[s appendFormat: @"&lt;<xsl:value-of select="@name"/>&gt;%@&lt;/<xsl:value-of select="@name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
+				<xsl:when test="not(contains($type, '*'))">		[s appendFormat: @"&lt;<xsl:value-of select="@name"/>&gt;%@&lt;/<xsl:value-of select="@name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
 </xsl:when>
-			<xsl:otherwise>		if (self.<xsl:value-of select="$name"/> != nil) [s appendFormat: @"&lt;<xsl:value-of select="$name"/>&gt;%@&lt;/<xsl:value-of select="$name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
+				<xsl:otherwise>		if (self.<xsl:value-of select="$name"/> != nil) [s appendFormat: @"&lt;<xsl:value-of select="$name"/>&gt;%@&lt;/<xsl:value-of select="$name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
 </xsl:otherwise>
-		</xsl:choose>
+			</xsl:choose>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template match="s:element|s:attribute" mode="implementation">
-		<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
-			self.<xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template> = <xsl:call-template name="getNodeValue"><xsl:with-param name="declaredType" select="$type"/><xsl:with-param name="actualType" select="@type"/><xsl:with-param name="name" select="@name"/></xsl:call-template>;</xsl:template>
+		<xsl:if test="@name">
+			<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
+			self.<xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template> = <xsl:call-template name="getNodeValue"><xsl:with-param name="declaredType" select="$type"/><xsl:with-param name="actualType" select="@type"/><xsl:with-param name="name" select="@name"/></xsl:call-template>;</xsl:if></xsl:template>
 	
 	<xsl:template match="s:element|s:attribute" mode="dealloc">
-		<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
-		<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
-		<xsl:if test="contains($type,'*')">
-		if(self.<xsl:value-of select="$name"/> != nil) { [self.<xsl:value-of select="$name"/> release]; }</xsl:if>
+		<xsl:if test="@name">
+			<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
+			<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
+			<xsl:if test="contains($type,'*')">
+		if(self.<xsl:value-of select="$name"/> != nil) { [self.<xsl:value-of select="$name"/> release]; }</xsl:if></xsl:if>
 	</xsl:template>
 
 	<xsl:template name="getNodeValue">
@@ -546,38 +599,43 @@
 
 	<xsl:template name="getType">
 		<xsl:param name="value"/>
-		<xsl:variable name="type" select="substring-after($value,':')"/>
-		<xsl:variable name="complexType" select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $type]"/>
-		<xsl:variable name="isArray" select="$complexType/s:sequence/s:element[@maxOccurs = 'unbounded']"/>
 		<xsl:choose>
-			<xsl:when test="$isArray">NSMutableArray*</xsl:when>
-			<xsl:when test="$complexType"><xsl:value-of select="$shortns"/><xsl:value-of select="$type"/>*</xsl:when>
+			<xsl:when test="$value = ''">id</xsl:when>
 			<xsl:otherwise>
+				<xsl:variable name="type" select="substring-after($value,':')"/>
+				<xsl:variable name="complexType" select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $type]"/>
+				<xsl:variable name="isArray" select="$complexType/s:sequence/s:element[@maxOccurs = 'unbounded'] or $complexType/s:restriction/s:attribute[@wsdl:arrayType]"/>
 				<xsl:choose>
-					<xsl:when test="$type = 'string'">NSString*</xsl:when>
-					<xsl:when test="$type = 'normalizedString'">NSString*</xsl:when>
-					<xsl:when test="$type = 'token'">NSString*</xsl:when>
-					<xsl:when test="$type = 'integer'">int</xsl:when>
-					<xsl:when test="$type = 'int'">int</xsl:when>
-					<xsl:when test="$type = 'positiveInteger'">int</xsl:when>
-					<xsl:when test="$type = 'negativeInteger'">int</xsl:when>
-					<xsl:when test="$type = 'nonPositiveInteger'">int</xsl:when>
-					<xsl:when test="$type = 'nonNegativeInteger'">int</xsl:when>
-					<xsl:when test="$type = 'long'">long</xsl:when>
-					<xsl:when test="$type = 'unsignedLong'">long</xsl:when>
-					<xsl:when test="$type = 'short'">short</xsl:when>
-					<xsl:when test="$type = 'unsignedShort'">short</xsl:when>
-					<xsl:when test="$type = 'float'">float</xsl:when>
-					<xsl:when test="$type = 'double'">double</xsl:when>
-					<xsl:when test="$type = 'byte'">byte</xsl:when>
-					<xsl:when test="$type = 'unsignedByte'">byte</xsl:when>
-					<xsl:when test="$type = 'decimal'">NSDecimalNumber*</xsl:when>
-					<xsl:when test="$type = 'boolean'">BOOL</xsl:when>
-					<xsl:when test="$type = 'dateTime'">NSDate*</xsl:when>
-					<xsl:when test="$type = 'date'">NSDate*</xsl:when>
-					<xsl:when test="$type = 'time'">NSDate*</xsl:when>
-					<xsl:otherwise>NSString*</xsl:otherwise>
-				</xsl:choose>
+					<xsl:when test="$isArray">NSMutableArray*</xsl:when>
+					<xsl:when test="$complexType"><xsl:value-of select="$shortns"/><xsl:value-of select="$type"/>*</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when test="$type = 'string'">NSString*</xsl:when>
+							<xsl:when test="$type = 'normalizedString'">NSString*</xsl:when>
+							<xsl:when test="$type = 'token'">NSString*</xsl:when>
+							<xsl:when test="$type = 'integer'">int</xsl:when>
+							<xsl:when test="$type = 'int'">int</xsl:when>
+							<xsl:when test="$type = 'positiveInteger'">int</xsl:when>
+							<xsl:when test="$type = 'negativeInteger'">int</xsl:when>
+							<xsl:when test="$type = 'nonPositiveInteger'">int</xsl:when>
+							<xsl:when test="$type = 'nonNegativeInteger'">int</xsl:when>
+							<xsl:when test="$type = 'long'">long</xsl:when>
+							<xsl:when test="$type = 'unsignedLong'">long</xsl:when>
+							<xsl:when test="$type = 'short'">short</xsl:when>
+							<xsl:when test="$type = 'unsignedShort'">short</xsl:when>
+							<xsl:when test="$type = 'float'">float</xsl:when>
+							<xsl:when test="$type = 'double'">double</xsl:when>
+							<xsl:when test="$type = 'byte'">byte</xsl:when>
+							<xsl:when test="$type = 'unsignedByte'">byte</xsl:when>
+							<xsl:when test="$type = 'decimal'">NSDecimalNumber*</xsl:when>
+							<xsl:when test="$type = 'boolean'">BOOL</xsl:when>
+							<xsl:when test="$type = 'dateTime'">NSDate*</xsl:when>
+							<xsl:when test="$type = 'date'">NSDate*</xsl:when>
+							<xsl:when test="$type = 'time'">NSDate*</xsl:when>
+							<xsl:otherwise>NSString*</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>				
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>

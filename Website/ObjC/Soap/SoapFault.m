@@ -21,7 +21,7 @@
 }
 
 + (SoapFault*) faultWithXMLDocument: (CXMLDocument*) document {
-	return [SoapFault faultWithXMLElement: [Soap findNode: document xpath: @"//*/fault"]];
+	return [SoapFault faultWithXMLElement: [Soap getNode: [document rootElement] withName: @"Fault"]];
 }
 
 + (SoapFault*) faultWithXMLElement: (CXMLNode*) element {
@@ -30,6 +30,7 @@
 	if(element == nil) {
 		return this;
 	}
+
 	this.faultCode = [Soap getNodeValue: element withName: @"faultcode"];
 	this.faultString = [Soap getNodeValue: element withName: @"faultstring"];
 	this.faultActor = [Soap getNodeValue: element withName: @"faultactor"];

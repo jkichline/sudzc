@@ -639,6 +639,7 @@
 					<xsl:when test="$complexType"><xsl:value-of select="$shortns"/><xsl:value-of select="$type"/>*</xsl:when>
 					<xsl:otherwise>
 						<xsl:choose>
+							<xsl:when test="$type = ''">void</xsl:when>
 							<xsl:when test="$type = 'string'">NSString*</xsl:when>
 							<xsl:when test="$type = 'normalizedString'">NSString*</xsl:when>
 							<xsl:when test="$type = 'token'">NSString*</xsl:when>

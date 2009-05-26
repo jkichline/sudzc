@@ -32,6 +32,22 @@ public class Convert : IHttpHandler {
 			}
 		}
 		
+		MemoryStream ms;
+		
+		// Expand the imports
+		ms = new MemoryStream();
+		XslTransform expander = new XslTransform();
+		expander.Load(context.Server.MapPath("ExpandImports.xslt"));
+		expander.Transform(doc, null, ms);
+		string input = System.Text.Encoding.ASCII.GetString(ms.ToArray());
+
+		// See if the input is an XML document
+		XmlDocument inputDoc = new XmlDocument();
+		try {
+			context.Response.ContentType = "text/xml";
+			inputDoc.LoadXml(input);
+		} catch (Exception) { }
+		
 		// Transform it all to a nice memory stream
 		XslTransform xfrm = new XslTransform();
 		xfrm.Load(context.Server.MapPath(type + ".xslt"));
@@ -39,8 +55,10 @@ public class Convert : IHttpHandler {
 		foreach(string key in context.Request.Params.AllKeys) {
 			args.AddParam(key, String.Empty, context.Request.Params[key]);
 		}
-		MemoryStream ms = new MemoryStream();
-		xfrm.Transform(doc, args, ms);
+		
+		//
+		ms = new MemoryStream();
+		xfrm.Transform(inputDoc, args, ms);
 		string output = System.Text.Encoding.ASCII.GetString(ms.ToArray());
 		
 		// See if the output is an XML document

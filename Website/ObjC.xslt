@@ -614,6 +614,7 @@
 		<xsl:param name="value"/>
 		<xsl:variable name="property" select="translate($value, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')"/>
 		<xsl:choose>
+			<xsl:when test="$property = 'comment'"><xsl:value-of select="$value"/>Value</xsl:when>
 			<xsl:when test="$property = 'id'"><xsl:value-of select="$value"/>Value</xsl:when>
 			<xsl:when test="$property = 'entertainment'"><xsl:value-of select="$value"/>Value</xsl:when>
 			<xsl:when test="$property = 'location'"><xsl:value-of select="$value"/>Value</xsl:when>

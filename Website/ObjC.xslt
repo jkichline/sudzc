@@ -173,13 +173,6 @@
 				<xsl:otherwise><xsl:value-of select="/wsdl:definitions/wsdl:binding/wsdl:operation[@name = $name]/soap:operation/@soapAction"/></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="url">
-			<xsl:choose>
-				<xsl:when test="wsdl:input/@wsaw:Action">@"<xsl:value-of select="wsdl:input/@wsaw:Action"/>"</xsl:when>
-				<xsl:otherwise>serviceUrl</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-
 	/* Returns <xsl:apply-templates select="wsdl:output" mode="object_type"/>. <xsl:value-of select="wsdl:documentation"/> */
 	- (SoapRequest*) <xsl:value-of select="@name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>
 	{
@@ -188,10 +181,10 @@
 
 	- (SoapRequest*) <xsl:value-of select="@name"/>: (id) target action: (SEL) action<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>
 	{
-		NSMutableString* _params = [[NSMutableString alloc] init];
+		NSMutableString* _params = [NSMutableString string];
 <xsl:apply-templates select="wsdl:input" mode="param_xml"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace forParameters: _params];
-		SoapRequest* _request = [SoapRequest create: target action: action urlString: <xsl:value-of select="$url"/> soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
+		SoapRequest* _request = [SoapRequest create: target action: action urlString: serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
 		_request.logging = self.logging;
 		[_request send];
 		return _request;
@@ -511,7 +504,7 @@
 	
 	+ (NSMutableString*) serialize: (NSArray*) array
 	{
-		NSMutableString* s = [[NSMutableString alloc] init];
+		NSMutableString* s = [NSMutableString string];
 		for(id item in array) {
 			[s appendFormat: @"&lt;<xsl:value-of select="$actualType"/>&gt;%@&lt;/<xsl:value-of select="$actualType"/>&gt;", <xsl:call-template name="serialize">
 				<xsl:with-param name="name">item</xsl:with-param>

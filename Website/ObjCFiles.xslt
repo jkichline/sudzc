@@ -28,7 +28,7 @@
 	<xsl:variable name="defaultServiceName">Service</xsl:variable>
 	<xsl:variable name="serviceName">
 		<xsl:choose>
-			<xsl:when test="/wsdl:definitions/wsdl:service/@name"><xsl:value-of select="wsdl:service/@name"/></xsl:when>
+			<xsl:when test="/wsdl:definitions/wsdl:service/@name"><xsl:value-of select="/wsdl:definitions/wsdl:service/@name"/></xsl:when>
 			<xsl:otherwise><xsl:value-of select="$defaultServiceName"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>

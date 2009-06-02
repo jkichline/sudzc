@@ -15,33 +15,34 @@
 // Creates the XML request for the SOAP envelope.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params
 {
-	NSMutableString* s = [[NSMutableString alloc] init];
+	NSMutableString* s = [[NSMutableString string] autorelease];
 	[s appendString: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"];
 	[s appendFormat: @"<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns=\"%@\">", ns];
 	[s appendString: @"<soap:Body>"];
 	[s appendFormat: @"<%@>%@</%@>", method, params, method];
 	[s appendString: @"</soap:Body>"];
 	[s appendString: @"</soap:Envelope>"];
-
 	return s;
 }
 
 // Creates the XML request for the SOAP envelope.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing
 {
-	NSMutableString* s = [[NSMutableString alloc] init];
+	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
 	for(id key in containing) {
 		[s appendFormat: @"<%@>%@</%@>", key, [Soap serialize:[containing objectForKey: key]], key];
 	}
-	return [Soap createEnvelope: method forNamespace: ns forParameters: s];
+	NSString* envelope = [Soap createEnvelope: method forNamespace: ns forParameters: s];
+	return envelope;
 }
 
 // Creates the XML request for the SOAP envelope. - Karl
 + (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing
 {
-	NSMutableString* s = [[NSMutableString alloc] init];
+	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
 	[s appendFormat: @"<%@>%@</%@>", method, [containing serialize], method];
-	return [Soap createEnvelope: action forNamespace: ns forParameters: s];
+	NSString* envelope = [Soap createEnvelope: action forNamespace: ns forParameters: s];
+	return envelope;
 }
 
 // Serializes an object to a string, XML representation.
@@ -59,7 +60,7 @@
 
 	// Otherwise we need to serialize the object as XML.
 	unsigned int outCount, i;
-	NSMutableString* s = [[NSMutableString alloc] init];
+	NSMutableString* s = [NSMutableString string];
 	NSMutableDictionary* keys = [[NSMutableDictionary alloc] init];
 
 	Class currentClass = [object class];
@@ -76,7 +77,8 @@
 		}
 	}
 	[keys release];
-	return (NSString*)s;}
+	return (NSString*)s;
+}
 
 // Calls an HTTP service.
 + (NSMutableData*) callService: (NSString*) urlString data: (NSString*) data action: (NSString*) action delegate: (SEL) handler {
@@ -161,12 +163,12 @@
 
 // Determines if an object is an array.
 + (BOOL) isArray: (NSObject*) value {
-	return ([value class] == [NSArray class]);
+	return [value isKindOfClass: [NSArray class]];
 }
 
 // Determines if an object is an object with properties.
 + (BOOL) isObject: (NSObject*) value {
-	return ([value class] == [SoapObject class]);
+	return [value isKindOfClass: [SoapObject class]];
 }
 
 // Gets the value of a named node from a parent node.
@@ -177,7 +179,7 @@
 	CXMLNode* child = nil;
 	
 	// If it's an attribute get it
-	if([node class] == [CXMLElement class])
+	if([node isKindOfClass: [CXMLElement class]])
 	{
 		child = [(CXMLElement*)node attributeForName: name];
 		if(child != nil) {
@@ -194,6 +196,7 @@
 }
 
 + (id) convert: (NSString*) value toType: (NSString*) toType {
+	if(toType == nil || value == nil) { return value; }
 	toType = [toType lowercaseString];
 	if([toType isEqualToString: @"nsstring*"]) {
 		return value;

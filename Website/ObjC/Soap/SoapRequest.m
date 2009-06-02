@@ -31,8 +31,10 @@
 
 // Sends the request via HTTP.
 - (void) send {
-	if(handler == nil) {
-		handler = [[SoapHandler alloc] init];
+	if(self.handler == nil) {
+		self.handler = [[SoapHandler alloc] init];
+	} else {
+		[self.handler retain];
 	}
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL: url];
 	
@@ -71,29 +73,26 @@
 
 // Called when the HTTP socket received data.
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)value {
-    [receivedData appendData:value];
+    [self.receivedData appendData:value];
 }
 
 // Called when the HTTP request fails.
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[conn release];
 	[self.receivedData release];
-	[handler onerror: error];
+	[self.handler onerror:error];
 }
 
 // Called when the connection has finished loading.
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSError* error;
-
 	if(self.logging == YES) {
 		NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
 		NSLog(response);
 		[response release];
 	}
 
-	
 	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: self.receivedData options: 0 error: &error];
-
 	if(doc == nil) {
 		if([self.handler respondsToSelector:@selector(onerror:)]) {
 			[self.handler onerror: error];
@@ -131,11 +130,12 @@
 		}
 		
 		if(self.action == nil) { self.action = @selector(onload:); }
-		if([self.handler respondsToSelector: self.action]) {
+		if(self.handler != nil && [self.handler respondsToSelector: self.action]) {
 			[self.handler performSelector: self.action withObject: output];
 		}
 	}
 
+	[self.handler release];
 	[doc release];
 	[conn release];
 	[self.receivedData release];
@@ -145,7 +145,7 @@
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
 	if([challenge previousFailureCount] == 0) {
 		NSURLCredential *newCredential;
-        newCredential=[NSURLCredential credentialWithUser:[self username] password:[self password] persistence:NSURLCredentialPersistenceNone];
+        newCredential=[NSURLCredential credentialWithUser:self.username password:self.password persistence:NSURLCredentialPersistenceNone];
         [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
     } else {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
@@ -158,6 +158,7 @@
 - (BOOL) cancel {
 	if(conn == nil) { return NO; }
 	[conn cancel];
+	[conn release];
 	return YES;
 }
 

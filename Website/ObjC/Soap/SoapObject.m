@@ -20,7 +20,7 @@
 // Static method for initializing from a node.
 + (id) newWithNode: (CXMLNode*) node
 {
-	return (id)[[SoapObject alloc] initWithNode: node];
+	return (id)[[[SoapObject alloc] initWithNode: node] autorelease];
 }
 
 // Called when initializing the object from a node
@@ -35,7 +35,7 @@
 // This will get called when traversing objects, returning nothing is ok - Karl
 - (NSMutableString*) serialize
 {
-	return [[NSMutableString alloc] initWithString: @""];
+	return [[[NSMutableString alloc] initWithString: @""] autorelease];
 }
 
 - (void) dealloc

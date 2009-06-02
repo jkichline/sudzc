@@ -16,7 +16,9 @@
 + (SoapFault*) faultWithData: (NSMutableData*) data {
 	NSError* error;
 	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: data options: 0 error: &error];
-	if(doc == nil) { return [[SoapFault alloc] init]; }
+	if(doc == nil) {
+		return [[[SoapFault alloc] init] autorelease];
+	}
 	return [SoapFault faultWithXMLDocument: doc];
 }
 
@@ -25,18 +27,26 @@
 }
 
 + (SoapFault*) faultWithXMLElement: (CXMLNode*) element {
-	SoapFault* this = [[SoapFault alloc] init];
-	this.hasFault = NO;
+	SoapFault* fault = [[[SoapFault alloc] init] autorelease];
+	fault.hasFault = NO;
 	if(element == nil) {
-		return this;
+		return fault;
 	}
 
-	this.faultCode = [Soap getNodeValue: element withName: @"faultcode"];
-	this.faultString = [Soap getNodeValue: element withName: @"faultstring"];
-	this.faultActor = [Soap getNodeValue: element withName: @"faultactor"];
-	this.detail = [Soap getNodeValue: element withName: @"detail"];
-	this.hasFault = YES;
-	return this;
+	fault.faultCode = [Soap getNodeValue: element withName: @"faultcode"];
+	fault.faultString = [Soap getNodeValue: element withName: @"faultstring"];
+	fault.faultActor = [Soap getNodeValue: element withName: @"faultactor"];
+	fault.detail = [Soap getNodeValue: element withName: @"detail"];
+	fault.hasFault = YES;
+	return fault;
+}
+
+- (NSString*) description {
+	if(self.hasFault) {
+		return [NSString stringWithFormat: @"%@ %@\n%@", self.faultCode, self.faultString, self.detail];
+	} else {
+		return nil;
+	}
 }
 
 @end

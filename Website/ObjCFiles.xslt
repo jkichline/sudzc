@@ -209,25 +209,69 @@
 	}
 </xsl:template>
 	
-		<xsl:template match="s:element" mode="param_names">
-		<xsl:for-each select="s:complexType/s:sequence/s:element">
-			<xsl:value-of select="concat(' ', @name)"/>: <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
-		</xsl:for-each>
-	</xsl:template>
-
-	<xsl:template match="s:element" mode="param_selectors">
-		<xsl:for-each select="s:complexType/s:sequence/s:element">
-			<xsl:value-of select="concat(' ', @name)"/>: (<xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template>) <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
-		</xsl:for-each>
-	</xsl:template>
-	
-	<xsl:template match="s:element" mode="param_xml">
-		<xsl:for-each select="s:complexType/s:sequence/s:element">		[_params appendFormat: @"&lt;<xsl:value-of select="@name"/>&gt;%@&lt;/<xsl:value-of select="@name"/>&gt;", <xsl:apply-templates select="." mode="serialize"/>];
-</xsl:for-each>
-	</xsl:template>
 
 	
+	<!-- PARAMETER SELECTORS -->
 	
+	<xsl:template match="wsdl:input|wsdl:output|wsdl:fault" mode="param_selectors">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element" mode="param_selectors"/></xsl:when>
+			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_selectors"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="s:element|wsdl:part" mode="param_selectors">
+		<xsl:value-of select="concat(' ', @name)"/>: (<xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template>) <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
+	</xsl:template>
+
+
+	<!-- PARAMETER NAMES -->
+	
+	<xsl:template match="wsdl:input|wsdl:output|wsdl:fault" mode="param_names">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element" mode="param_names"/></xsl:when>
+			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_names"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
+	<xsl:template match="s:element|wsdl:part" mode="param_names">
+		<xsl:value-of select="concat(' ', @name)"/>: <xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template>
+	</xsl:template>
+
+
+
+	<!-- PARAMETER XML -->
+	
+	<xsl:template match="wsdl:input|wsdl:output|wsdl:fault" mode="param_xml">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element" mode="param_xml"/></xsl:when>
+			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_xml"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="s:element|wsdl:part" mode="param_xml">
+		[_params appendFormat: @"&lt;<xsl:value-of select="@name"/>&gt;%@&lt;/<xsl:value-of select="@name"/>&gt;", <xsl:apply-templates select="." mode="serialize"/>];</xsl:template>
+
+	
+
 	<!-- SERIALIZER TEMPLATE -->
 
 	<xsl:template match="s:element|s:attribute|wsdl:part" mode="serialize">
@@ -413,6 +457,7 @@
 
 	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) newWithNode: (CXMLNode*) node
 	{
+		if(node == nil) { return nil; }
 		return (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*)[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node];
 	}
 
@@ -502,6 +547,7 @@
 	{
 		[super initWithNode: node];
 		items = [[NSMutableArray alloc] init];
+		if(node == nil) { return items; }
 		for(CXMLElement* child in [node children])
 		{
 			<xsl:value-of select="$arrayType"/> value = <xsl:choose>
@@ -574,7 +620,7 @@
 </xsl:when>
 					<xsl:when test="starts-with($type,'NS')">			self.<xsl:value-of select="$name"/> = nil;
 </xsl:when>
-					<xsl:otherwise>			self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
+					<xsl:otherwise>			self.<xsl:value-of select="$name"/> = nil; // [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
 </xsl:otherwise>
 				</xsl:choose>
 			</xsl:if>

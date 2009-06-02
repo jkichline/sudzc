@@ -411,6 +411,7 @@
 
 	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) newWithNode: (CXMLNode*) node
 	{
+		if(node == nil) { return nil; }
 		return (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*)[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node];
 	}
 
@@ -474,6 +475,7 @@
 
 	+ (NSMutableArray*) newWithNode: (CXMLNode*) node
 	{
+		if(node == nil) { return nil; }
 		return (NSMutableArray*)[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node];
 	}
 
@@ -481,6 +483,7 @@
 	{
 		[super initWithNode: node];
 		items = [[NSMutableArray alloc] init];
+		if(node == nil) { return items; }
 		for(CXMLElement* child in [node children])
 		{
 			<xsl:value-of select="$arrayType"/> value = <xsl:choose>
@@ -553,7 +556,7 @@
 </xsl:when>
 					<xsl:when test="starts-with($type,'NS')">			self.<xsl:value-of select="$name"/> = nil;
 </xsl:when>
-					<xsl:otherwise>			self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
+					<xsl:otherwise>			self.<xsl:value-of select="$name"/> = nil; // [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
 </xsl:otherwise>
 				</xsl:choose>
 			</xsl:if>

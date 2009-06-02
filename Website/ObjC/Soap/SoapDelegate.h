@@ -1,17 +1,16 @@
 /*
  SoapDelegate.h
- Interfaces for the concrete SoapHandler class.
+ Interfaces for the SoapDelegate protocol.
  Author:	Jason Kichline, andCulture - Harrisburg, Pennsylvania USA
-*/
+ */
 
 #import "SoapFault.h"
-#import "SoapDelegate.h"
 
-@interface SoapHandler : NSObject <SoapDelegate>
-{
-}
+@protocol SoapDelegate <NSObject>
 
 - (void) onload: (id) value;
+
+@optional
 - (void) onerror: (NSError*) error;
 - (void) onfault: (SoapFault*) fault;
 

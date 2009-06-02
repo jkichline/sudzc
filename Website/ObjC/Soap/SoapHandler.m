@@ -1,5 +1,5 @@
 /*
-	SoapDelegate.m
+	SoapHandler.m
 	Implementation of a blank SOAP handler.
 	Author:	Jason Kichline, andCulture - Harrisburg, Pennsylvania USA
 */

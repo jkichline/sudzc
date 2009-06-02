@@ -55,6 +55,7 @@
 #import "SoapFault.h";
 #import "SoapObject.h";
 #import "SoapArray.h";
+#import "SoapDelegate.h";
 #import "SoapHandler.h";
 #import "SoapRequest.h";
 	</xsl:template>
@@ -121,12 +122,16 @@
 {
 	NSString* serviceUrl;
 	NSString* namespace;
+	NSDictionary* headers;
 	BOOL logging;
 }
 
 	@property (retain) NSString* serviceUrl;
 	@property (retain) NSString* namespace;
+	@property (retain) NSDictionary* headers;
 	@property BOOL logging;
+	
+	- (id) initWithUrl: (NSString*) url;
 
 		<xsl:apply-templates select="$portType/wsdl:operation" mode="interface"/>
 
@@ -139,7 +144,7 @@
 		<xsl:variable name="url" select="$service/wsdl:port/soap:address/@location"/>
 @implementation <xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>
 
-	@synthesize serviceUrl, namespace, logging;
+	@synthesize serviceUrl, namespace, logging, headers;
 
 	- (id) init
 	{
@@ -147,7 +152,17 @@
 		{
 			serviceUrl = @"<xsl:value-of select="$url"/>";
 			namespace = @"<xsl:value-of select="/wsdl:definitions/@targetNamespace"/>";
+			headers = nil;
 			logging = NO;
+		}
+		return self;
+	}
+	
+	- (id) initWithUrl: (NSString*) url
+	{
+		if(self = [self init])
+		{
+			serviceUrl = url;
 		}
 		return self;
 	}
@@ -181,7 +196,7 @@
 	{
 		NSMutableString* _params = [NSMutableString string];
 <xsl:apply-templates select="wsdl:input" mode="param_xml"/>
-		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace forParameters: _params];
+		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace forParameters: _params withHeaders: headers];
 		SoapRequest* _request = [SoapRequest create: target action: action urlString: serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
 		_request.logging = self.logging;
 		[_request send];

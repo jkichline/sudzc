@@ -277,9 +277,15 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
-		<xsl:call-template name="getType">
-			<xsl:with-param name="value" select="$element/s:complexType/s:sequence/s:element/@type"/>
-		</xsl:call-template>
+		<xsl:variable name="type">
+			<xsl:call-template name="getType">
+				<xsl:with-param name="value" select="$element/s:complexType/s:sequence/s:element/@type"/>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$type = ''">void</xsl:when>
+			<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 
@@ -637,7 +643,6 @@
 					<xsl:when test="$complexType"><xsl:value-of select="$shortns"/><xsl:value-of select="$type"/>*</xsl:when>
 					<xsl:otherwise>
 						<xsl:choose>
-							<xsl:when test="$type = ''">void</xsl:when>
 							<xsl:when test="$type = 'string'">NSString*</xsl:when>
 							<xsl:when test="$type = 'normalizedString'">NSString*</xsl:when>
 							<xsl:when test="$type = 'token'">NSString*</xsl:when>

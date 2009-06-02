@@ -15,9 +15,22 @@
 // Creates the XML request for the SOAP envelope.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params
 {
+	return [self createEnvelope: method forNamespace: ns forParameters: params withHeaders: nil];
+}
+
+// Creates the XML request for the SOAP envelope with optional SOAP headers.
++ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params withHeaders: (NSDictionary*) headers
+{
 	NSMutableString* s = [[NSMutableString string] autorelease];
 	[s appendString: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"];
 	[s appendFormat: @"<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns=\"%@\">", ns];
+	if(headers != nil && headers.count > 0) {
+		[s appendString: @"<soap:Header>"];
+		for(id key in [headers allKeys]) {
+			[s appendFormat: @"<%@>%@</%@>", key, [Soap	 serialize: [headers objectForKey: key]], key];
+		}
+		[s appendString: @"</soap:Header>"];
+	}
 	[s appendString: @"<soap:Body>"];
 	[s appendFormat: @"<%@>%@</%@>", method, params, method];
 	[s appendString: @"</soap:Body>"];
@@ -28,20 +41,32 @@
 // Creates the XML request for the SOAP envelope.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing
 {
+	return [self createEnvelope: method forNamespace: ns containing: containing withHeaders: nil];
+}
+
+// Creates the XML request for the SOAP envelope with optional SOAP headers.
++ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing withHeaders: (NSDictionary*) headers
+{
 	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
 	for(id key in containing) {
 		[s appendFormat: @"<%@>%@</%@>", key, [Soap serialize:[containing objectForKey: key]], key];
 	}
-	NSString* envelope = [Soap createEnvelope: method forNamespace: ns forParameters: s];
+	NSString* envelope = [Soap createEnvelope: method forNamespace: ns forParameters: s withHeaders: headers];
 	return envelope;
 }
 
-// Creates the XML request for the SOAP envelope. - Karl
+// Creates the XML request for the SOAP envelope.
 + (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing
+{
+	return [self createEnvelope: method ofAction: action forNamespace: ns containing: containing];
+}
+
+// Creates the XML request for the SOAP envelope with optional SOAP headers.
++ (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing withHeaders: (NSDictionary*) headers
 {
 	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
 	[s appendFormat: @"<%@>%@</%@>", method, [containing serialize], method];
-	NSString* envelope = [Soap createEnvelope: action forNamespace: ns forParameters: s];
+	NSString* envelope = [Soap createEnvelope: action forNamespace: ns forParameters: s withHeaders: headers];
 	return envelope;
 }
 

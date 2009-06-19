@@ -323,7 +323,7 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="contains($type, '*')">[<xsl:value-of select="$deserializer"/> alloc]</xsl:when>
+			<xsl:when test="contains($type, '*') and starts-with($type, 'NS') = false">[<xsl:value-of select="$deserializer"/> alloc]</xsl:when>
 			<xsl:otherwise>@"<xsl:value-of select="$deserializer"/>"</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>

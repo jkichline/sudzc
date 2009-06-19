@@ -154,10 +154,10 @@
 	{
 		if(self = [super init])
 		{
-			serviceUrl = @"<xsl:value-of select="$url"/>";
-			namespace = @"<xsl:value-of select="/wsdl:definitions/@targetNamespace"/>";
-			headers = nil;
-			logging = NO;
+			self.serviceUrl = @"<xsl:value-of select="$url"/>";
+			self.namespace = @"<xsl:value-of select="/wsdl:definitions/@targetNamespace"/>";
+			self.headers = nil;
+			self.logging = NO;
 		}
 		return self;
 	}
@@ -166,7 +166,7 @@
 	{
 		if(self = [self init])
 		{
-			serviceUrl = url;
+			self.serviceUrl = url;
 		}
 		return self;
 	}
@@ -202,7 +202,7 @@
 		NSMutableString* _params = [NSMutableString string];
 <xsl:apply-templates select="wsdl:input" mode="param_xml"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace forParameters: _params withHeaders: headers];
-		SoapRequest* _request = [SoapRequest create: target action: action urlString: serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
+		SoapRequest* _request = [SoapRequest create: target action: action urlString: self.serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
 		_request.logging = self.logging;
 		[_request send];
 		return _request;

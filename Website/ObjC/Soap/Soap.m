@@ -27,7 +27,7 @@
 	if(headers != nil && headers.count > 0) {
 		[s appendString: @"<soap:Header>"];
 		for(id key in [headers allKeys]) {
-			[s appendFormat: @"<%@>%@</%@>", key, [Soap	 serialize: [headers objectForKey: key]], key];
+			[s appendFormat: @"<%@>%@</%@>", key, [Soap	serialize: [headers objectForKey: key]], key];
 		}
 		[s appendString: @"</soap:Header>"];
 	}
@@ -222,8 +222,12 @@
 
 + (id) convert: (NSString*) value toType: (NSString*) toType {
 	if(toType == nil || value == nil) { return value; }
+
 	toType = [toType lowercaseString];
 	if([toType isEqualToString: @"nsstring*"]) {
+		return value;
+	}
+	if([toType isEqualToString: @"nsplaceholderstring*"]) {
 		return value;
 	}
 	if([toType isEqualToString: @"bool"]) {

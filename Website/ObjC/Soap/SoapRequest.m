@@ -36,6 +36,9 @@
 	} else {
 		[self.handler retain];
 	}
+	if(logging) {
+		NSLog(url.absoluteString);
+	}
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL: url];
 	
 	if(soapAction != nil) {

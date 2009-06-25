@@ -323,6 +323,7 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
+			<xsl:when test="$type = 'nil'">nil</xsl:when>
 			<xsl:when test="contains($type, '*') and starts-with($type, 'NS') = false">[<xsl:value-of select="$deserializer"/> alloc]</xsl:when>
 			<xsl:otherwise>@"<xsl:value-of select="$deserializer"/>"</xsl:otherwise>
 		</xsl:choose>
@@ -726,7 +727,7 @@
 							<xsl:when test="$type = 'dateTime'">NSDate*</xsl:when>
 							<xsl:when test="$type = 'date'">NSDate*</xsl:when>
 							<xsl:when test="$type = 'time'">NSDate*</xsl:when>
-							<xsl:otherwise>NSString*</xsl:otherwise>
+							<xsl:otherwise>nil</xsl:otherwise>
 						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>				

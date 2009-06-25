@@ -17,6 +17,9 @@ public class Convert : IHttpHandler {
 		// Get the WSDL value
 		string wsdl = context.Request["wsdl"];
 		wsdl = this.getAbsoluteUrl(context, wsdl);
+
+		// Get the mimetype
+		string mimeType = System.Configuration.ConfigurationManager.AppSettings["OutputMimetype"];
 		
 		// Load up the WSDL from the URL
 		XmlDocument doc = new XmlDocument();
@@ -47,6 +50,11 @@ public class Convert : IHttpHandler {
 			context.Response.ContentType = "text/xml";
 			inputDoc.LoadXml(input);
 		} catch (Exception) { }
+
+		// If we only want to see the input then do only that
+		if (mimeType == "input") {
+			inputDoc.Save(context.Response.OutputStream);
+		}
 		
 		// Transform it all to a nice memory stream
 		XslTransform xfrm = new XslTransform();
@@ -69,13 +77,12 @@ public class Convert : IHttpHandler {
 		} catch (Exception) { }
 
 		// If in test mode, output the XML
-		string mimeType = System.Configuration.ConfigurationManager.AppSettings["OutputMimetype"];
 		if (String.IsNullOrEmpty(mimeType) == false) {
 			context.Response.ContentType = mimeType;
 			outputDoc.Save(context.Response.OutputStream);
 			return;
 		}
-
+		
 		// Otherwise create the package
 		if (outputDoc.DocumentElement != null && outputDoc.DocumentElement.Name == "package") {
 

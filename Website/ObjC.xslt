@@ -636,9 +636,11 @@
 			<xsl:otherwise>
 				<xsl:variable name="type" select="substring-after($value,':')"/>
 				<xsl:variable name="complexType" select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $type]"/>
+				<xsl:variable name="simpleType" select="/wsdl:definitions/wsdl:types/s:schema/s:simpleType[@name = $type]"/>
 				<xsl:variable name="isArray" select="$complexType/s:sequence/s:element[@maxOccurs = 'unbounded'] or $complexType/s:restriction/s:attribute[@wsdl:arrayType]"/>
 				<xsl:choose>
 					<xsl:when test="$isArray">NSMutableArray*</xsl:when>
+					<xsl:when test="$simpleType"><xsl:call-template name="getType"><xsl:with-param name="value" select="$simpleType//*/s:restriction/@base"/></xsl:call-template></xsl:when>
 					<xsl:when test="$complexType"><xsl:value-of select="$shortns"/><xsl:value-of select="$type"/>*</xsl:when>
 					<xsl:otherwise>
 						<xsl:choose>
@@ -664,7 +666,12 @@
 							<xsl:when test="$type = 'dateTime'">NSDate*</xsl:when>
 							<xsl:when test="$type = 'date'">NSDate*</xsl:when>
 							<xsl:when test="$type = 'time'">NSDate*</xsl:when>
-							<xsl:otherwise>nil</xsl:otherwise>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when test="$type = ''">nil</xsl:when>
+									<xsl:otherwise><xsl:value-of select="$shortns"/><xsl:value-of select="$type"/>*</xsl:otherwise>
+								</xsl:choose>
+							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>				

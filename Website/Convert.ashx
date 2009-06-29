@@ -61,7 +61,9 @@ public class Convert : IHttpHandler {
 		xfrm.Load(context.Server.MapPath(type + ".xslt"));
 		XsltArgumentList args = new XsltArgumentList();
 		foreach(string key in context.Request.Params.AllKeys) {
-			args.AddParam(key, String.Empty, context.Request.Params[key]);
+			try {
+				args.AddParam(key, String.Empty, context.Request.Params[key]);
+			} catch (Exception) { }
 		}
 		
 		//

@@ -96,7 +96,7 @@ public class Convert : IHttpHandler {
 			FileInfo file;
 			string source, target;
 
-			foreach (XmlElement child in outputDoc.DocumentElement.ChildNodes) {
+			foreach (XmlNode child in outputDoc.DocumentElement.ChildNodes) {
 				switch (child.Name.ToLower()) {
 						
 					// If a folder is to be included, copy the whole folder

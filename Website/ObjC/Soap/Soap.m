@@ -176,6 +176,20 @@
 }
 
 // Deserializes a node into an object.
++ (NSObject*) deserialize: (CXMLNode*) element {
+	NSString* className = [Soap getNodeValue:element withName:@"xsi:type"];
+	NSRange range = [className rangeOfString:@":"];
+	if(range.length > 0) {
+		className = [className substringFromIndex:range.location+range.length];
+		return [Soap convert:[element stringValue] toType: className];
+	} else {
+		Class class = NSClassFromString(className);
+		NSObject* object = [[class performSelector: @selector(alloc)] init];
+		return [Soap deserialize: element forObject: object];
+	}
+}
+
+// Deserializes a node into an object.
 + (NSObject*) deserialize: (CXMLNode*) element forObject: (NSObject*) object {
 	NSError* error;
 	NSObject* value;

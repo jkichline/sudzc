@@ -27,7 +27,11 @@
 	if(headers != nil && headers.count > 0) {
 		[s appendString: @"<soap:Header>"];
 		for(id key in [headers allKeys]) {
-			[s appendFormat: @"<%@>%@</%@>", key, [Soap	serialize: [headers objectForKey: key]], key];
+			if([headers objectForKey: key] == nil) {
+				[s appendFormat: @"<%@ xsi:nil=\"true\"/>", key];
+			} else {
+				[s appendFormat: @"<%@>%@</%@>", key, [Soap	serialize: [headers objectForKey: key]], key];
+			}
 		}
 		[s appendString: @"</soap:Header>"];
 	}
@@ -49,7 +53,11 @@
 {
 	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
 	for(id key in containing) {
-		[s appendFormat: @"<%@>%@</%@>", key, [Soap serialize:[containing objectForKey: key]], key];
+		if([containing objectForKey: key] == nil) {
+			[s appendFormat: @"<%@ xsi:nil=\"true\"/>", key];
+		} else {
+			[s appendFormat: @"<%@>%@</%@>", key, [Soap serialize:[containing objectForKey: key]], key];
+		}
 	}
 	NSString* envelope = [Soap createEnvelope: method forNamespace: ns forParameters: s withHeaders: headers];
 	return envelope;

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 #import "Soap.h"
+#import "SoapNil.h"
 
 @implementation Soap
 
@@ -27,7 +28,7 @@
 	if(headers != nil && headers.count > 0) {
 		[s appendString: @"<soap:Header>"];
 		for(id key in [headers allKeys]) {
-			if([headers objectForKey: key] == nil) {
+			if([[headers objectForKey: key] isMemberOfClass: [SoapNil class]]) {
 				[s appendFormat: @"<%@ xsi:nil=\"true\"/>", key];
 			} else {
 				[s appendFormat: @"<%@>%@</%@>", key, [Soap	serialize: [headers objectForKey: key]], key];
@@ -53,7 +54,7 @@
 {
 	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
 	for(id key in containing) {
-		if([containing objectForKey: key] == nil) {
+		if([[containing objectForKey: key] isMemberOfClass: [SoapNil class]]) {
 			[s appendFormat: @"<%@ xsi:nil=\"true\"/>", key];
 		} else {
 			[s appendFormat: @"<%@>%@</%@>", key, [Soap serialize:[containing objectForKey: key]], key];
@@ -103,7 +104,11 @@
 			for(i = 0; i < outCount; i++) {
 				NSString *name = [NSString stringWithCString: property_getName(properties[i])];
 				if([keys valueForKey: name] == nil) {
-					[s appendFormat: @"<%@>%@</%@>", name, [Soap serialize: (id)properties[i]], name];
+					if([(id)properties[i] isMemberOfClass: [SoapNil class]]) {
+						[s appendFormat: @"<%@ xsi:nil=\"true\"/>", name];
+					} else {
+						[s appendFormat: @"<%@>%@</%@>", name, [Soap serialize: (id)properties[i]], name];
+					}
 					[keys setValue: name forKey: name];
 				}
 			}

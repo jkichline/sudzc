@@ -65,6 +65,23 @@
 }
 
 // Creates the XML request for the SOAP envelope.
++ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns withParameters: (NSArray*) params
+{
+	return [self createEnvelope: method forNamespace: ns withParameters: params withHeaders: nil];
+}
+
+// Creates the XML request for the SOAP envelope with optional SOAP headers.
++ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns withParameters: (NSArray*) params withHeaders: (NSDictionary*) headers
+{
+	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
+	for(SoapParameter* p in params) {
+		[s appendString: p.xml];
+	}
+	NSString* envelope = [Soap createEnvelope: method forNamespace: ns forParameters: s withHeaders: headers];
+	return envelope;
+}
+
+// Creates the XML request for the SOAP envelope.
 + (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing
 {
 	return [self createEnvelope: method ofAction: action forNamespace: ns containing: containing];
@@ -103,16 +120,11 @@
 		if(outCount > 0) {
 			for(i = 0; i < outCount; i++) {
 				NSString *name = [NSString stringWithCString: property_getName(properties[i])];
-				if([keys valueForKey: name] == nil) {
-					if([(id)properties[i] isMemberOfClass: [SoapNil class]]) {
-						[s appendFormat: @"<%@ xsi:nil=\"true\"/>", name];
-					} else {
-						[s appendFormat: @"<%@>%@</%@>", name, [Soap serialize: (id)properties[i]], name];
-					}
-					[keys setValue: name forKey: name];
-				}
+				[s appendFormat: @"<%@>%@</%@>", name, [Soap serialize: (id)properties[i]], name];
+				[keys setValue: name forKey: name];
 			}
 		}
+		free(properties);
 	}
 	[keys release];
 	return (NSString*)s;
@@ -173,20 +185,6 @@
 		return (CXMLNode*)[a objectAtIndex:0];
 	}
 	return nil;
-}
-
-// Deserializes a node into an object.
-+ (NSObject*) deserialize: (CXMLNode*) element {
-	NSString* className = [Soap getNodeValue:element withName:@"xsi:type"];
-	NSRange range = [className rangeOfString:@":"];
-	if(range.length > 0) {
-		className = [className substringFromIndex:range.location+range.length];
-		return [Soap convert:[element stringValue] toType: className];
-	} else {
-		Class class = NSClassFromString(className);
-		NSObject* object = [[class performSelector: @selector(alloc)] init];
-		return [Soap deserialize: element forObject: object];
-	}
 }
 
 // Deserializes a node into an object.

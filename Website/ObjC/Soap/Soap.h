@@ -7,6 +7,7 @@
 
 #import "TouchXML.h"
 #import "SoapObject.h"
+#import "SoapParameter.h"
 
 @interface Soap : NSObject {
 	
@@ -14,7 +15,6 @@
 
 // Creates the XML request for the SOAP envelope.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params;
-
 
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params withHeaders: (NSDictionary*) headers;
@@ -24,6 +24,12 @@
 
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing withHeaders: (NSDictionary*) headers;
+
+// Creates the XML request for the SOAP envelope.
++ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns withParameters: (NSArray*) params;
+
+// Creates the XML request for the SOAP envelope with optional SOAP headers.
++ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns withParameters: (NSArray*) params withHeaders: (NSDictionary*) headers;
 
 // Creates the XML request for the SOAP envelope. - Karl
 + (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing;

@@ -322,6 +322,27 @@
 		</xsl:if>
 	</xsl:template>
 
+	<xsl:template match="s:element" mode="class_reference">
+		<xsl:variable name="type">
+			<xsl:call-template name="getType">
+				<xsl:with-param name="value" select="@type"/>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:if test="$type = 'NSMutableArray*' or (contains($type, '*') and not(starts-with($type, 'NS')))">
+@class <xsl:value-of select="$shortns"/><xsl:value-of select="substring-after(@type, ':')"/>;</xsl:if></xsl:template>
+	
+	<xsl:template match="s:element" mode="import_reference">
+		<xsl:variable name="type">
+			<xsl:call-template name="getType">
+				<xsl:with-param name="value" select="@type"/>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:if test="$type = 'NSMutableArray*' or (contains($type, '*') and not(starts-with($type, 'NS')))">
+#import "<xsl:value-of select="$shortns"/><xsl:value-of select="substring-after(@type, ':')"/>.h";</xsl:if></xsl:template>
+	
+	<xsl:template match="s:complexType" mode="import_reference">
+#import "<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>.h";</xsl:template>
+
 	<xsl:template match="s:complexType" mode="implementation">
 		<xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
 			<xsl:choose>

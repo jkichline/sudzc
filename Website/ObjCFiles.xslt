@@ -47,7 +47,7 @@
 			<xsl:call-template name="imports"/>
 			<xsl:apply-templates select="wsdl:documentation"/>
 /* Add class references */
-			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="class_reference">
+			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="import_reference">
 				<xsl:sort select="count(descendant::s:element[substring-before(@type, ':') != 's'])"/>
 			</xsl:apply-templates>
 
@@ -102,10 +102,7 @@
 */
 <xsl:call-template name="imports"/>
 
-<!-- <xsl:apply-templates select="descendant::s:element" mode="class_reference_all"/> -->
-<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="class_reference_all">
-	<xsl:sort select="count(descendant::s:element[substring-before(@type, ':') != 's'])"/>
-</xsl:apply-templates>
+<xsl:apply-templates select="descendant::s:element" mode="import_reference"/>
 
 @interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : <xsl:value-of select="$baseType"/>
 {
@@ -183,10 +180,7 @@
 */
 <xsl:call-template name="imports"/>
 
-<!-- <xsl:apply-templates select="descendant::s:element" mode="class_reference"/> -->
-<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="class_reference_all">
-	<xsl:sort select="count(descendant::s:element[substring-before(@type, ':') != 's'])"/>
-</xsl:apply-templates>
+<xsl:apply-templates select="descendant::s:element" mode="import_reference"/>
 
 @interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapArray
 {
@@ -283,13 +277,5 @@
 	}
 @end</file>
 </xsl:if></xsl:template>
-
-	<xsl:template match="s:complexType" mode="class_reference_all">
-@class <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>;</xsl:template>
-
-	<xsl:template match="s:element" mode="class_reference_all">
-		<xsl:variable name="type" select="substring-after(@type, ':')"/>
-		<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $type]" mode="class_reference_all"/>
-	</xsl:template>
 
 </xsl:stylesheet>

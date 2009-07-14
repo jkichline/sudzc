@@ -277,5 +277,8 @@
 	}
 @end</file>
 </xsl:if></xsl:template>
+	
+	<xsl:template match="s:complexType" mode="class_reference">
+@class <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>;</xsl:template>
 
 </xsl:stylesheet>

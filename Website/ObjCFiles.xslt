@@ -281,4 +281,9 @@
 	<xsl:template match="s:complexType" mode="class_reference_all">
 @class <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>;</xsl:template>
 
+	<xsl:template match="s:element" mode="class_reference_all">
+		<xsl:variable name="type" select="substring-after(@type, ':')"/>
+		<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $type]" mode="class_reference_all"/>
+	</xsl:template>
+
 </xsl:stylesheet>

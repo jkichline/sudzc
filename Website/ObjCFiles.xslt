@@ -102,7 +102,7 @@
 */
 <xsl:call-template name="imports"/>
 
-<xsl:apply-templates select="descendant::s:element" mode="class_reference"/>
+<xsl:apply-templates select="descendant::s:element" mode="class_reference_all"/>
 
 @interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : <xsl:value-of select="$baseType"/>
 {
@@ -277,8 +277,8 @@
 	}
 @end</file>
 </xsl:if></xsl:template>
-	
-	<xsl:template match="s:complexType" mode="class_reference">
+
+	<xsl:template match="s:complexType" mode="class_reference_all">
 @class <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>;</xsl:template>
 
 </xsl:stylesheet>

@@ -80,8 +80,5 @@
 			<xsl:call-template name="createImplementation"><xsl:with-param name="service" select="wsdl:service"/></xsl:call-template>
 		</file>
 	</xsl:template>
-	
-	<xsl:template match="s:complexType" mode="class_reference"><xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
-@class <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>;</xsl:if></xsl:template>
 
 </xsl:stylesheet>

@@ -305,6 +305,10 @@
 
 
 	<!-- COMPLEX TYPES INTERFACE AND IMPLEMENTATION -->
+
+	<xsl:template match="s:complexType" mode="class_reference"><xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
+@class <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>;</xsl:if></xsl:template>
+	
 	<xsl:template match="s:complexType" mode="interface">
 		<xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
 			<xsl:choose>

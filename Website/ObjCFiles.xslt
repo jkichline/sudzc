@@ -183,7 +183,10 @@
 */
 <xsl:call-template name="imports"/>
 
-<xsl:apply-templates select="descendant::s:element" mode="class_reference"/>
+<!-- <xsl:apply-templates select="descendant::s:element" mode="class_reference"/> -->
+<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="class_reference_all">
+	<xsl:sort select="count(descendant::s:element[substring-before(@type, ':') != 's'])"/>
+</xsl:apply-templates>
 
 @interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapArray
 {

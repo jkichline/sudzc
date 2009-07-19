@@ -277,6 +277,9 @@
 	if([toType isEqualToString: @"nsdate*"]) {
 		return [Soap dateFromString: value];
 	}
+	if([toType isEqualToString: @"nsdata*"]) {
+		return [Soap dataFromString: value];
+	}
 	return value;
 }
 

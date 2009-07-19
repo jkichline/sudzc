@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "Soap.h"
 #import "SoapNil.h"
+#import "NSData+Base64.h"
 
 @implementation Soap
 
@@ -290,6 +291,14 @@
 	NSDate* outputDate = [formatter dateFromString: value];
 	[formatter release];
 	return outputDate;
+}
+
++(NSData*) dataFromString:(NSString*) value{
+	return [[NSData alloc]initWithBase64EncodedString:value];
+}
+
++(NSString*)getBase64String:(NSData*)value{
+	return	[value base64Encoding];
 }
 
 @end

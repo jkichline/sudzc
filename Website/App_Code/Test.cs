@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.IO;
+using System.Drawing;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
@@ -29,6 +31,14 @@ public class TestService : System.Web.Services.WebService {
 			}
 		}
 		return result;
+	}
+
+	[WebMethod(Description = "Tests receiving byte arrays")]
+	public byte[] GetData() {
+		Image image = new Bitmap(this.Context.Server.MapPath("~/assets/images/icon.png"));
+		MemoryStream ms = new MemoryStream();
+		image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+		return ms.ToArray();
 	}
 
 	[WebMethod(Description="Determines if the result was sent correctly.")]

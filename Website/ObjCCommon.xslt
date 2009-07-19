@@ -251,6 +251,7 @@
 			<xsl:when test="$type = 'NSNumber*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSDecimalNumber*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSDate*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
+			<xsl:when test="$type = 'NSData*'">[Soap getBase64String: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSMutableArray*'">[<xsl:value-of select="$shortns"/><xsl:value-of select="$xsdType"/> serialize: <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'id' or $type = 'nil'">[Soap serialize: <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:otherwise>[<xsl:value-of select="$name"/> serialize]</xsl:otherwise>
@@ -481,6 +482,7 @@
 				<xsl:when test="$declaredType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
+				<xsl:when test="$declaredType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
 				<xsl:otherwise>[<xsl:value-of select="substring-before($declaredType, '*')"/> newWithNode: child];</xsl:otherwise>
 			</xsl:choose>
 			<xsl:choose>
@@ -595,6 +597,7 @@
 			<xsl:when test="$declaredType = 'float'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] floatValue]</xsl:when>
 			<xsl:when test="$declaredType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
 			<xsl:when test="$declaredType = 'NSDate*'">[Soap dateFromString: [Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
+			<xsl:when test="$declaredType = 'NSData*'">[Soap dataFromString: [Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
 			<xsl:when test="$declaredType = 'nil' or $declaredType = 'id'">[Soap deserialize: [Soap getNode: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
 			<xsl:otherwise>[<xsl:value-of select="$shortns"/><xsl:value-of select="substring-after($actualType, ':')"/> newWithNode: [Soap getNode: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:otherwise>
 		</xsl:choose>
@@ -657,6 +660,7 @@
 							<xsl:when test="$type = 'dateTime'">NSDate*</xsl:when>
 							<xsl:when test="$type = 'date'">NSDate*</xsl:when>
 							<xsl:when test="$type = 'time'">NSDate*</xsl:when>
+							<xsl:when test="$type = 'base64Binary'">NSData*</xsl:when>
 							<xsl:otherwise>
 								<xsl:choose>
 									<xsl:when test="$type = ''">

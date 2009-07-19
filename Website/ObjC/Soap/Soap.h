@@ -70,4 +70,10 @@
 // Converts a string to a date.
 + (NSDate*) dateFromString: (NSString*) value;
 
+// Return NSData from a string.
++(NSData*) dataFromString:(NSString*) value;
+
+// Returns a string version of binary data.
++(NSString*)getBase64String:(NSData*) value;
+
 @end

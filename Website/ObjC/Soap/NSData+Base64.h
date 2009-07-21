@@ -3,7 +3,7 @@
 + (NSData *)dataWithBase64EncodedString:(NSString *)string;
 - (id)initWithBase64EncodedString:(NSString *)string;
 
-- (NSString *)base64Encodeing;
-- (NSString *)base64EncodeingWithLineLength:(unsigned int) lineLength;
+- (NSString *)base64Encoding;
+- (NSString *)base64EncodingWithLineLength:(unsigned int) lineLength;
 
 @end

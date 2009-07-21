@@ -251,7 +251,7 @@
 			<xsl:when test="$type = 'NSNumber*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSDecimalNumber*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSDate*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
-			<xsl:when test="$type = 'NSData*'">[Soap getBase64String: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
+			<xsl:when test="$type = 'NSData*'">[Soap getBase64String: <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSMutableArray*'">[<xsl:value-of select="$shortns"/><xsl:value-of select="$xsdType"/> serialize: <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'id' or $type = 'nil'">[Soap serialize: <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:otherwise>[<xsl:value-of select="$name"/> serialize]</xsl:otherwise>

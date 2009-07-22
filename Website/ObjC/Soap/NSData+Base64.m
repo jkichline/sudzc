@@ -148,3 +148,5 @@ static char encodingTable[64] = {
  	
 	return [NSString stringWithString:result];
 }
+
+@end

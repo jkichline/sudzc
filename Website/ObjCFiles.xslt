@@ -103,6 +103,8 @@
 <xsl:call-template name="imports"/>
 
 <xsl:apply-templates select="descendant::s:element" mode="import_reference"/>
+<xsl:if test="$baseType != 'SoapObject'">
+#import "<xsl:value-of select="$baseType"/>.h"</xsl:if>
 
 @interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : <xsl:value-of select="$baseType"/>
 {

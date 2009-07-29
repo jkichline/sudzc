@@ -28,10 +28,10 @@
 }
 
 -(NSString*)xml{
-	if(null) {
+	if(self.value == nil) {
 		return [NSString stringWithFormat:@"<%@ xsi:nil=\"true\"/>", name];
 	} else {
-		return [NSString stringWithFormat:@"<%@>%@</%@>", name, [Soap serialize: value], name];
+		return [NSString stringWithFormat:@"<%@>%@</%@>", name, [Soap serialize: self.value], name];
 	}
 }
 

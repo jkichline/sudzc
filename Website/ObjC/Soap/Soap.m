@@ -99,6 +99,9 @@
 
 // Serializes an object to a string, XML representation.
 + (NSString*) serialize: (id) object {
+	if([object respondsToSelector:@selector(serialize)]) {
+		return [object serialize];
+	}
 
 	// If it's not an object, just return it as a string.
 	if([Soap isObject: object] == NO) {
@@ -285,11 +288,18 @@
 
 // Converts a string to a date.
 + (NSDate*) dateFromString: (NSString*) value {
+	if([value rangeOfString:@"T"].length != 1) {
+		value = [NSString stringWithFormat:@"%@T00:00:00.000", value];
+	}
+	if([value rangeOfString:@"."].length != 1) {
+		value = [NSString stringWithFormat:@"%@.000", value];
+	}
 	if(value == nil || [value isEqualToString:@""]) { return nil; }
 	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
 	NSLocale* enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 	[formatter setLocale: enUS];
 	[enUS release];
+	[formatter setLenient: YES];
 	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
 	NSDate* outputDate = [formatter dateFromString: value];
 	[formatter release];

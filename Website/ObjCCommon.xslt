@@ -48,6 +48,7 @@
 #import "SoapHandler.h";
 #import "SoapRequest.h";
 #import "SoapNil.h"
+#import "SoapService.h"
 	</xsl:template>
 
 	<!-- DOCUMENTATION TEMPLATE -->
@@ -58,23 +59,8 @@
 	<!-- SERVICE INTERFACE -->
 	<xsl:template name="createInterface">
 		<xsl:param name="service"/>
-@interface <xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> : NSObject
-{
-	NSString* serviceUrl;
-	NSString* namespace;
-	NSDictionary* headers;
-	BOOL logging;
-}
-
-	@property (retain) NSString* serviceUrl;
-	@property (retain) NSString* namespace;
-	@property (retain) NSDictionary* headers;
-	@property BOOL logging;
-	
-	- (id) initWithUrl: (NSString*) url;
-
+@interface <xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> : SoapService
 		<xsl:apply-templates select="$portType/wsdl:operation" mode="interface"/>
-
 @end
 	</xsl:template>
 	
@@ -84,8 +70,6 @@
 		<xsl:variable name="url" select="$service/wsdl:port/soap:address/@location"/>
 @implementation <xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>
 
-	@synthesize serviceUrl, namespace, logging, headers;
-
 	- (id) init
 	{
 		if(self = [super init])
@@ -94,15 +78,6 @@
 			self.namespace = @"<xsl:value-of select="/wsdl:definitions/@targetNamespace"/>";
 			self.headers = nil;
 			self.logging = NO;
-		}
-		return self;
-	}
-	
-	- (id) initWithUrl: (NSString*) url
-	{
-		if(self = [self init])
-		{
-			self.serviceUrl = url;
 		}
 		return self;
 	}
@@ -367,9 +342,8 @@
 					<xsl:otherwise>SoapObject</xsl:otherwise>
 				</xsl:choose>
 			</xsl:variable>
-
 			<xsl:if test="$baseType != 'SoapObject' and $templateName = 'ObjCFiles'">#import "<xsl:value-of select="$baseType"/>.h"</xsl:if>
-			
+
 @interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : <xsl:value-of select="$baseType"/>
 {
 	<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="interface_variables"/>
@@ -634,7 +608,7 @@
 				<xsl:variable name="isArray" select="$complexType/s:sequence/s:element[@maxOccurs = 'unbounded'] or $complexType/s:restriction/s:attribute[@wsdl:arrayType]"/>
 				<xsl:choose>
 					<xsl:when test="$isArray">NSMutableArray*</xsl:when>
-					<xsl:when test="$simpleType"><xsl:call-template name="getType"><xsl:with-param name="value" select="$simpleType//*/s:restriction/@base"/></xsl:call-template></xsl:when>
+					<xsl:when test="$simpleType"><xsl:call-template name="getType"><xsl:with-param name="value" select="$simpleType/descendant::s:restriction/@base"/></xsl:call-template></xsl:when>
 					<xsl:when test="$complexType"><xsl:value-of select="$shortns"/><xsl:value-of select="$type"/>*</xsl:when>
 					<xsl:otherwise>
 						<xsl:choose>

@@ -83,7 +83,13 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[conn release];
 	[self.receivedData release];
-	[self.handler onerror:error];
+	if([self.handler respondsToSelector:@selector(onerror)]) {
+		[self.handler onerror:error];
+	} else {
+		if(self.logging) {
+			NSLog(error.localizedDescription);
+		}
+	}
 }
 
 // Called when the connection has finished loading.
@@ -121,9 +127,7 @@
 			CXMLNode* element = [[Soap getNode: [doc rootElement] withName: @"Body"] childAtIndex:0];
 			if(deserializeTo != nil) {
 				if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
-					if([deserializeTo isKindOfClass: [SoapArray class]]) {
-						element = [element childAtIndex:0];
-					}
+					element = [element childAtIndex:0];
 					output = [deserializeTo initWithNode: element];
 				} else {
 					NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];

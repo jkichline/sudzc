@@ -115,6 +115,7 @@
 	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) newWithNode: (CXMLNode*) node;
 	- (id) initWithNode: (CXMLNode*) node;
 	- (NSMutableString*) serialize;
+	- (NSMutableString*) serialize: (NSString*) nodeName;
 
 @end</file>
 </xsl:if></xsl:template>
@@ -157,7 +158,18 @@
 	- (NSMutableString*) serialize
 	{
 		NSMutableString* s = [super serialize];
-<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="implementation_serialize"/>
+<xsl:apply-templates select="descendant::s:element" mode="implementation_serialize"/>
+		return s;
+	}
+  
+	- (NSMutableString*) serialize: (NSString*) nodeName
+	{
+		NSMutableString* s = [super serialize];
+		[s appendFormat: @"&lt;%@", nodeName];
+<xsl:apply-templates select="descendant::s:attribute" mode="implementation_serialize"/>
+		[s appendString: @"&gt;"];
+<xsl:apply-templates select="descendant::s:element" mode="implementation_serialize"/>
+		[s appendFormat: @"&lt;/%@&gt;", nodeName];
 		return s;
 	}
 	

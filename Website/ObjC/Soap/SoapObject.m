@@ -38,6 +38,10 @@
 	return [[[NSMutableString alloc] initWithString: @""] autorelease];
 }
 
+- (NSMutableString*) serialize: (NSString*) nodeName {
+	return [[[NSMutableString alloc] initWithString: @""] autorelease];
+}
+
 - (void) dealloc
 {
 	[super dealloc];

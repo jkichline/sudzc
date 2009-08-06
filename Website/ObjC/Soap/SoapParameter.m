@@ -31,7 +31,7 @@
 	if(self.value == nil) {
 		return [NSString stringWithFormat:@"<%@ xsi:nil=\"true\"/>", name];
 	} else {
-		return [NSString stringWithFormat:@"<%@>%@</%@>", name, [Soap serialize: self.value], name];
+		return [Soap serialize: self.value withName: name];
 	}
 }
 

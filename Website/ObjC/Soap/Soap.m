@@ -97,6 +97,14 @@
 	return envelope;
 }
 
+// Serializes an object to a string, XML representation with a specific node name.
++ (NSString*) serialize: (id) object withName: (NSString*) nodeName {
+	if([object respondsToSelector:@selector(serialize:)]) {
+		return [object serialize: nodeName];
+	}
+	return [NSString stringWithFormat:@"<%@>%@</%@>", nodeName, [Soap serialize: object], nodeName];
+}
+
 // Serializes an object to a string, XML representation.
 + (NSString*) serialize: (id) object {
 	if([object respondsToSelector:@selector(serialize)]) {
@@ -286,6 +294,19 @@
 	return value;
 }
 
++ (NSDateFormatter*)dateFormatter {
+	static NSDateFormatter* formatter;
+	if(formatter == nil) {
+		formatter = [[NSDateFormatter alloc] init];
+		NSLocale* enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+		[formatter setLocale: enUS];
+		[enUS release];
+		[formatter setLenient: YES];
+		[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+	}
+	return formatter;
+}
+
 // Converts a string to a date.
 + (NSDate*) dateFromString: (NSString*) value {
 	if([value rangeOfString:@"T"].length != 1) {
@@ -295,15 +316,12 @@
 		value = [NSString stringWithFormat:@"%@.000", value];
 	}
 	if(value == nil || [value isEqualToString:@""]) { return nil; }
-	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-	NSLocale* enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-	[formatter setLocale: enUS];
-	[enUS release];
-	[formatter setLenient: YES];
-	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
-	NSDate* outputDate = [formatter dateFromString: value];
-	[formatter release];
+	NSDate* outputDate = [[Soap dateFormatter] dateFromString: value];
 	return outputDate;
+}
+
++ (NSString*) getDateString: (NSDate*) value {
+	return [[Soap dateFormatter] stringFromDate:value];
 }
 
 +(NSData*) dataFromString:(NSString*) value{

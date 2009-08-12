@@ -83,12 +83,11 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[conn release];
 	[self.receivedData release];
-	if([self.handler respondsToSelector:@selector(onerror)]) {
+	if([self.handler respondsToSelector:@selector(onerror:)]) {
 		[self.handler onerror:error];
-	} else {
-		if(self.logging) {
-			NSLog(error.localizedDescription);
-		}
+	}
+	if(self.logging) {
+		NSLog(error.localizedDescription);
 	}
 }
 
@@ -106,6 +105,9 @@
 		if([self.handler respondsToSelector:@selector(onerror:)]) {
 			[self.handler onerror: error];
 		}
+		if(self.logging) {
+			NSLog(error.localizedDescription);
+		}
 		return;
 	}
 
@@ -116,6 +118,9 @@
 		if(self.action == nil) {
 			if([self.handler respondsToSelector:@selector(onfault:)]) {
 				[self.handler onfault: fault];
+			}
+			if(self.logging) {
+				NSLog([NSString stringWithFormat:@"%@", fault]);
 			}
 		} else {
 			output = fault;

@@ -432,7 +432,7 @@
 		}
 		return self;
 	}
-	
+
 	- (NSMutableString*) serialize
 	{
 		return [self serialize: @"<xsl:value-of select="@name"/>"];

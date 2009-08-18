@@ -42,6 +42,14 @@
 	return [[[NSMutableString alloc] initWithString: @""] autorelease];
 }
 
+- (NSMutableString*) serializeElements {
+	return [[[NSMutableString alloc] initWithString: @""] autorelease];
+}
+
+- (NSMutableString*) serializeAttributes {
+	return [[[NSMutableString alloc] initWithString: @""] autorelease];
+}
+
 - (void) dealloc
 {
 	[super dealloc];

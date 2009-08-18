@@ -82,4 +82,10 @@
 // Returns a string version of binary data.
 +(NSString*)getBase64String:(NSData*) value;
 
+// Generates an MD5 hash
++(NSString*)md5:(NSString*)value;
+
+// Creates a unique hash for the object's contents.
++(NSUInteger)generateHash:(SoapObject*)value;
+
 @end

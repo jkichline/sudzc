@@ -470,6 +470,11 @@
 		return NO;
 	}
 	
+	-(NSUInteger)hash{
+		return [Soap generateHash:self];
+
+	}
+	
 	- (void) dealloc
 	{<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="dealloc"/>
 		[super dealloc];

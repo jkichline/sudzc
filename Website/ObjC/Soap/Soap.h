@@ -6,8 +6,15 @@
 */
 
 #import "TouchXML.h"
+#import "SoapArray.h"
+#import "SoapDelegate.h"
+#import "SoapFault.h"
+#import "SoapHandler.h"
+#import "SoapNil.h"
 #import "SoapObject.h"
 #import "SoapParameter.h"
+#import "SoapRequest.h"
+#import "SoapService.h"
 
 @interface Soap : NSObject {
 	

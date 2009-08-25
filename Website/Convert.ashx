@@ -88,7 +88,7 @@ public class Convert : IHttpHandler {
 			
 			// Get a decent package name
 			packageName = lastPackageName;
-			if (wsdlList.Length > 1) { packageName = "ServicesBundle"; }
+			if (wsdlList.Length > 1) { packageName = this.GetPackageName(wsdls); }
 
 			// Zip everything up
 			string zipFileName = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
@@ -183,6 +183,15 @@ public class Convert : IHttpHandler {
 
 	public bool IsPackage(XmlDocument document) {
 		return (document.DocumentElement != null && document.DocumentElement.Name == "package");
+	}
+
+	public string GetPackageName(string url) {
+		url = url.Substring(url.IndexOf("://") + 3) + "?";
+		url = url.Substring(0, url.IndexOf("?"));
+		string[] p1 = url.Split(("/\\.:;").ToCharArray());
+		string[] p2 = new string[p1.Length - 1];
+		Array.Copy(p1, p2, p1.Length - 1);
+		return String.Join("_", p2);
 	}
 
 	public string ConvertWsdlToXmlString(string wsdl) {

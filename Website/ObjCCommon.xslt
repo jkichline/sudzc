@@ -107,12 +107,12 @@
 		return [self <xsl:value-of select="@name"/>: handler action: nil<xsl:apply-templates select="wsdl:input" mode="param_names"/>];
 	}
 
-	- (SoapRequest*) <xsl:value-of select="@name"/>: (id) target action: (SEL) action<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>
+	- (SoapRequest*) <xsl:value-of select="@name"/>: (id) _target action: (SEL) _action<xsl:apply-templates select="wsdl:input" mode="param_selectors"/>
 		{
 		NSMutableArray* _params = [NSMutableArray array];
 		<xsl:apply-templates select="wsdl:input" mode="param_array"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace withParameters: _params withHeaders: headers];
-		SoapRequest* _request = [SoapRequest create: target action: action urlString: self.serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
+		SoapRequest* _request = [SoapRequest create: _target action: _action urlString: self.serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
 		_request.logging = self.logging;
 		[_request send];
 		return _request;

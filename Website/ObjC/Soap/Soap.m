@@ -114,6 +114,16 @@
 
 	// If it's not an object, just return it as a string.
 	if([Soap isObject: object] == NO) {
+		@try{
+			if([object isKindOfClass:[NSDate class]]) {
+				return [Soap getDateString:object];
+			}
+			if([object isKindOfClass:[NSData class]]) {
+				return [Soap getBase64String:object];
+			}
+		}@catch (NSError* error) {
+			return (NSString*)object;
+		}
 		return (NSString*)object;
 	}
 	

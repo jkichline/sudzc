@@ -62,6 +62,9 @@
 // Finds a single node with the given XPath query
 + (CXMLNode*) findNode: (CXMLNode*) node xpath: (NSString*) xpath;
 
+// Deserializes an element to a string value.
++ (NSObject*) deserialize: (CXMLNode*) element;
+
 // Deserializes a node into an object.
 + (NSObject*) deserialize: (CXMLNode*) element forObject: (NSObject*) object;
 

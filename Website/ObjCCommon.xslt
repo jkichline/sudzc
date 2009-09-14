@@ -296,7 +296,7 @@
 	<xsl:template match="s:complexType" mode="interface">
 		<xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
 			<xsl:choose>
-				<xsl:when test="s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType]">
+				<xsl:when test="(count(*)=1) and (s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType])">
 					<xsl:apply-templates select="." mode="interface_array"/>
 				</xsl:when>
 				<xsl:otherwise>

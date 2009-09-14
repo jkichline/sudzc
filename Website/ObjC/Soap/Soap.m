@@ -210,6 +210,10 @@
 	return nil;
 }
 
++ (NSObject*) deserialize: (CXMLNode*) element{
+	return [element stringValue];
+}
+
 // Deserializes a node into an object.
 + (NSObject*) deserialize: (CXMLNode*) element forObject: (NSObject*) object {
 	NSError* error;

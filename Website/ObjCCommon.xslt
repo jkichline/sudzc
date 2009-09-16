@@ -414,7 +414,7 @@
 	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*)[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node];
+		return (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*)[[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node {

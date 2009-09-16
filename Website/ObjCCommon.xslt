@@ -414,7 +414,7 @@
 	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*)[[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
+		return (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*)[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node {
@@ -551,7 +551,7 @@
 	+ (NSMutableArray*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (NSMutableArray*)[[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
+		return (NSMutableArray*)[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node];
 	}
 
 	- (NSMutableArray*) initWithNode: (CXMLNode*) node

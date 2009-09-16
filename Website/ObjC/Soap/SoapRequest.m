@@ -19,14 +19,14 @@
 }
 
 + (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
-	SoapRequest* request = [[[SoapRequest alloc] init] autorelease];
+	SoapRequest* request = [[SoapRequest alloc] init];
 	request.url = [NSURL URLWithString: urlString];
 	request.soapAction = soapAction;
-	request.postData = postData;
+	request.postData = [postData retain];
 	request.handler = handler;
 	request.deserializeTo = deserializeTo;
 	request.action = action;
-	return request;
+	return [request autorelease];
 }
 
 // Sends the request via HTTP.
@@ -172,6 +172,17 @@
 	[conn cancel];
 	[conn release];
 	return YES;
+}
+
+// Deallocates the object
+- (void) dealloc {
+	[url release];
+	[soapAction release];
+	[username release];
+	[password release];
+	[deserializeTo release];
+	[postData release];
+	[super dealloc];
 }
 
 @end

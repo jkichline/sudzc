@@ -39,16 +39,7 @@
 	
 	<!-- TEMPLATE TO INCLUDE FOR IMPORTS -->
 	<xsl:template name="imports">
-#import "TouchXML.h"
 #import "Soap.h";
-#import "SoapFault.h";
-#import "SoapObject.h";
-#import "SoapArray.h";
-#import "SoapDelegate.h";
-#import "SoapHandler.h";
-#import "SoapRequest.h";
-#import "SoapNil.h"
-#import "SoapService.h"
 	</xsl:template>
 
 	<!-- DOCUMENTATION TEMPLATE -->
@@ -173,7 +164,7 @@
 	</xsl:template>
 
 	<xsl:template match="s:element|wsdl:part" mode="param_array">
-		[_params addObject: [[SoapParameter alloc] initWithValue: <xsl:apply-templates select="." mode="getValueForParameter"/> forName: @"<xsl:value-of select="@name"/>"]];</xsl:template>
+		[_params addObject: [[[SoapParameter alloc] initWithValue: <xsl:apply-templates select="." mode="getValueForParameter"/> forName: @"<xsl:value-of select="@name"/>"] autorelease]];</xsl:template>
 	
 	
 	<!-- DICTIONARY ADDITION TEMPLATE -->
@@ -560,7 +551,7 @@
 	+ (NSMutableArray*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (NSMutableArray*)[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node];
+		return (NSMutableArray*)[[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
 	}
 
 	- (NSMutableArray*) initWithNode: (CXMLNode*) node
@@ -610,6 +601,7 @@
 
 	- (void) dealloc
 	{
+		[items release];
 		[super dealloc];
 	}
 @end

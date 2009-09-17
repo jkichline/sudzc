@@ -33,8 +33,6 @@
 - (void) send {
 	if(self.handler == nil) {
 		self.handler = [[SoapHandler alloc] init];
-	} else {
-		[self.handler retain];
 	}
 	if(logging) {
 		NSLog(url.absoluteString);
@@ -127,7 +125,7 @@
 		}
 	} else {
 		if(deserializeTo == nil) {
-			output = doc;
+			output = nil;
 		} else {
 			CXMLNode* element = [[Soap getNode: [doc rootElement] withName: @"Body"] childAtIndex:0];
 			if(deserializeTo != nil) {

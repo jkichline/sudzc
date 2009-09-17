@@ -103,7 +103,7 @@
 		NSMutableArray* _params = [NSMutableArray array];
 		<xsl:apply-templates select="wsdl:input" mode="param_array"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace withParameters: _params withHeaders: headers];
-		SoapRequest* _request = [SoapRequest create: _target action: _action urlString: self.serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:apply-templates select="wsdl:output" mode="object_name"/>];
+		SoapRequest* _request = [SoapRequest create: _target action: _action urlString: self.serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: [<xsl:apply-templates select="wsdl:output" mode="object_name"/> autorelease]];
 		_request.logging = self.logging;
 		[_request send];
 		return _request;
@@ -414,7 +414,7 @@
 	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*)[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node];
+		return (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*)[[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node {
@@ -551,7 +551,7 @@
 	+ (NSMutableArray*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (NSMutableArray*)[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node];
+		return (NSMutableArray*)[[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] autorelease] initWithNode: node];
 	}
 
 	- (NSMutableArray*) initWithNode: (CXMLNode*) node
@@ -578,8 +578,7 @@
 				<xsl:when test="contains($declaredType, '*') and not(starts-with($declaredType, 'NS'))">
 			if(value != nil) {
 				[items addObject: value];
-			}
-			[value release];</xsl:when>
+			}</xsl:when>
 				<xsl:otherwise>
 			[items addObject: value];</xsl:otherwise></xsl:choose>		
 		}
@@ -630,7 +629,7 @@
 			<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
 			<xsl:if test="contains($type,'*')">
 				<xsl:choose>
-					<xsl:when test="$type = 'NSMutableArray*'">			self.<xsl:value-of select="$name"/> = [[<xsl:value-of select="translate($type,'*','')"/> alloc] init];
+					<xsl:when test="$type = 'NSMutableArray*'">			self.<xsl:value-of select="$name"/> = [[[<xsl:value-of select="translate($type,'*','')"/> alloc] init] autorelease];
 </xsl:when>
 					<xsl:when test="starts-with($type,'NS')">			self.<xsl:value-of select="$name"/> = nil;
 </xsl:when>

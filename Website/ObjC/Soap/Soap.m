@@ -340,7 +340,7 @@
 }
 
 +(NSData*) dataFromString:(NSString*) value{
-	return [[NSData alloc]initWithBase64EncodedString:value];
+	return [[[NSData alloc]initWithBase64EncodedString:value] autorelease];
 }
 
 +(NSString*)getBase64String:(NSData*)value{

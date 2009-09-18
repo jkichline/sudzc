@@ -31,8 +31,8 @@
 
 // Sends the request via HTTP.
 - (void) send {
-	if(self.handler == nil) {
-		self.handler = [[SoapHandler alloc] init];
+	if(handler == nil) {
+		handler = [[SoapHandler alloc] init];
 	}
 	if(logging) {
 		NSLog(url.absoluteString);

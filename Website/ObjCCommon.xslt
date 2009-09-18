@@ -86,6 +86,13 @@
 
 	<xsl:template match="wsdl:operation" mode="implementation">
 		<xsl:variable name="name" select="@name"/>
+		<xsl:variable name="objectType"><xsl:apply-templates select="wsdl:output" mode="object_name"/></xsl:variable>
+		<xsl:variable name="deserializeTo">
+			<xsl:choose>
+				<xsl:when test="contains($objectType, 'alloc]')">[<xsl:value-of select="$objectType"/> autorelease]</xsl:when>
+				<xsl:otherwise><xsl:value-of select="$objectType"/></xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="action">
 			<xsl:choose>
 				<xsl:when test="wsdl:input/@wsaw:Action"><xsl:value-of select="wsdl:input/@wsaw:Action"/></xsl:when>
@@ -103,7 +110,7 @@
 		NSMutableArray* _params = [NSMutableArray array];
 		<xsl:apply-templates select="wsdl:input" mode="param_array"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace withParameters: _params withHeaders: headers];
-		SoapRequest* _request = [SoapRequest create: _target action: _action urlString: self.serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: [<xsl:apply-templates select="wsdl:output" mode="object_name"/> autorelease]];
+		SoapRequest* _request = [SoapRequest create: _target action: _action urlString: self.serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:value-of select="$deserializeTo"/>];
 		_request.logging = self.logging;
 		[_request send];
 		return _request;
@@ -437,7 +444,7 @@
 		[s appendString: @"&gt;"];
 		[s appendString: [self serializeElements]];
 		[s appendFormat: @"&lt;/%@&gt;", nodeName];
-		return s;
+		return [s autorelease];
 	}
 	
 	- (NSMutableString*) serializeElements

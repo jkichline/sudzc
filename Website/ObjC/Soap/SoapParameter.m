@@ -14,8 +14,9 @@
 @synthesize name, value, null, xml;
 
 -(void)setValue:(id)valueParam{
-	[value autorelease];
-	value = [valueParam retain];
+	[valueParam retain];
+	[value release];
+	value = valueParam;
 	null = (value == nil);
 }
 

@@ -15,6 +15,7 @@
 #import "SoapParameter.h"
 #import "SoapRequest.h"
 #import "SoapService.h"
+#import "SoapReachability.h"
 
 @interface Soap : NSObject {
 	

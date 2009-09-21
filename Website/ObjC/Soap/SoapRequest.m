@@ -38,6 +38,18 @@
 		handler = [[SoapHandler alloc] init];
 	}
 	
+	// Make sure the network is available
+	if([SoapReachability connectedToNetwork] == NO) {
+		NSError* error = [NSError errorWithDomain:@"SudzC" code:400 userInfo:[NSDictionary dictionaryWithObject:@"The network is not available" forKey:NSLocalizedDescriptionKey]];
+		[self handleError: error];
+	}
+	
+	// Make sure we can reach the host
+	if([SoapReachability hostAvailable:url.host] == NO) {
+		NSError* error = [NSError errorWithDomain:@"SudzC" code:410 userInfo:[NSDictionary dictionaryWithObject:@"The host is not available" forKey:NSLocalizedDescriptionKey]];
+		[self handleError: error];
+	}
+	
 	// Output the URL if logging is enabled
 	if(logging) {
 		NSLog(@"Loading: %@", url.absoluteString);
@@ -65,16 +77,34 @@
 		// We will want to call the onerror method selector here...
 		if(self.handler != nil) {
 			NSError* error = [NSError errorWithDomain:@"SoapRequest" code:404 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not create connection", NSLocalizedDescriptionKey,nil]];
-			SEL onerror = @selector(onerror:);
-			if(self.action != nil) { onerror = self.action; }
-			if([self.handler respondsToSelector: onerror]) {
-				[self.handler performSelector: onerror withObject: error];
-			} else {
-				if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:onerror]) {
-					[self.defaultHandler performSelector:onerror withObject: error];
-				}
-			}
+			[self handleError: error];
 		}
+	}
+}
+
+-(void)handleError:(NSError*)error{
+	SEL onerror = @selector(onerror:);
+	if(self.action != nil) { onerror = self.action; }
+	if([self.handler respondsToSelector: onerror]) {
+		[self.handler performSelector: onerror withObject: error];
+	} else {
+		if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:onerror]) {
+			[self.defaultHandler performSelector:onerror withObject: error];
+		}
+	}
+	if(self.logging) {
+		NSLog(@"Error: %@", error.localizedDescription);
+	}
+}
+
+-(void)handleFault:(SoapFault*)fault{
+	if([self.handler respondsToSelector:@selector(onfault:)]) {
+		[self.handler onfault: fault];
+	} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onfault:)]) {
+		[self.defaultHandler onfault:fault];
+	}
+	if(self.logging) {
+		NSLog(@"Fault: %@", fault);
 	}
 }
 
@@ -92,14 +122,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[conn release];
 	[self.receivedData release];
-	if([self.handler respondsToSelector:@selector(onerror:)]) {
-		[self.handler onerror:error];
-	} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onerror:)]) {
-		[self.defaultHandler onerror:error];
-	}
-	if(self.logging) {
-		NSLog(@"Error Connecting: %@", error.localizedDescription);
-	}
+	[self handleError:error];
 }
 
 // Called when the connection has finished loading.
@@ -113,14 +136,7 @@
 
 	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: self.receivedData options: 0 error: &error];
 	if(doc == nil) {
-		if([self.handler respondsToSelector:@selector(onerror:)]) {
-			[self.handler onerror: error];
-		} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onerror:)]) {
-			[self.defaultHandler onerror:error];
-		}
-		if(self.logging) {
-			NSLog(@"XML document expected: %@", error.localizedDescription);
-		}
+		[self handleError:error];
 		return;
 	}
 
@@ -129,14 +145,7 @@
 
 	if([fault hasFault]) {
 		if(self.action == nil) {
-			if([self.handler respondsToSelector:@selector(onfault:)]) {
-				[self.handler onfault: fault];
-			} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onfault:)]) {
-				[self.defaultHandler onfault:fault];
-			}
-			if(self.logging) {
-				NSLog(@"Fault: %@", fault);
-			}
+			[self handleFault: fault];
 		} else {
 			output = fault;
 		}
@@ -177,7 +186,7 @@
     } else {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
 		NSError* error = [NSError errorWithDomain:@"SoapRequest" code:403 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not authenticate this request", NSLocalizedDescriptionKey,nil]];
-		[handler onerror: error];
+		[self handleError:error];
     }
 }
 

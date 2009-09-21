@@ -38,5 +38,7 @@
 
 - (BOOL) cancel;
 - (void) send;
+- (void)handleError:(NSError*)error;
+- (void)handleFault:(SoapFault*)fault;
 
 @end

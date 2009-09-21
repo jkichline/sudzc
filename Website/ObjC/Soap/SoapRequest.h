@@ -18,6 +18,7 @@
 	id deserializeTo;
 	SEL action;
 	BOOL logging;
+	id<SoapDelegate> defaultHandler;
 }
 
 @property (retain, nonatomic) NSURL* url;
@@ -30,6 +31,7 @@
 @property (retain, nonatomic) id deserializeTo;
 @property SEL action;
 @property BOOL logging;
+@property (retain, nonatomic) id<SoapDelegate> defaultHandler;
 
 + (SoapRequest*) create: (SoapHandler*) handler urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo;
 + (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo;

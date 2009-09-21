@@ -111,6 +111,7 @@
 		<xsl:apply-templates select="wsdl:input" mode="param_array"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace withParameters: _params withHeaders: headers];
 		SoapRequest* _request = [SoapRequest create: _target action: _action urlString: self.serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:value-of select="$deserializeTo"/>];
+		_request.defaultHandler = self.defaultHandler;
 		_request.logging = self.logging;
 		[_request send];
 		return _request;

@@ -34,7 +34,12 @@ public class Convert : IHttpHandler {
 		// If we only have one, let's see if it's a list
 		if (wsdlList.Length == 1) {
 			WebClient client = new WebClient();
-			string imports = client.DownloadString(this.getAbsoluteUrl(context, wsdls));
+			string imports = null;
+			try {
+				imports = client.DownloadString(this.getAbsoluteUrl(context, wsdls));
+			} catch (WebException ex) {
+				this.displayError(context, ex.Message); return;
+			}
 			if (imports.Contains("<") == false) {
 				wsdlList = imports.Split((";,\n\t|\r").ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 			}

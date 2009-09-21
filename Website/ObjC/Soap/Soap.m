@@ -142,7 +142,7 @@
 		objc_property_t *properties = class_copyPropertyList([object class], &outCount);
 		if(outCount > 0) {
 			for(i = 0; i < outCount; i++) {
-				NSString *name = [NSString stringWithCString: property_getName(properties[i])];
+				NSString *name = [NSString stringWithCString: property_getName(properties[i]) encoding: NSUTF8StringEncoding];
 				[s appendFormat: @"<%@>%@</%@>", name, [Soap serialize: (id)properties[i]], name];
 				[keys setValue: name forKey: name];
 			}
@@ -210,7 +210,9 @@
 	return nil;
 }
 
+// Deserialize an object as a generic object
 + (NSObject*) deserialize: (CXMLNode*) element{
+	// Not implemented.
 	return [element stringValue];
 }
 

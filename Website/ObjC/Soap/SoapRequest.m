@@ -11,7 +11,7 @@
 
 @implementation SoapRequest
 
-@synthesize handler, url, soapAction, postData, receivedData, username, password, deserializeTo, action, logging;
+@synthesize handler, url, soapAction, postData, receivedData, username, password, deserializeTo, action, logging, defaultHandler;
 
 // Creates a request to submit from discrete values.
 + (SoapRequest*) create: (SoapHandler*) handler urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
@@ -26,19 +26,25 @@
 	request.handler = handler;
 	request.deserializeTo = deserializeTo;
 	request.action = action;
+	request.defaultHandler = nil;
 	return [request autorelease];
 }
 
 // Sends the request via HTTP.
 - (void) send {
+	
+	// If we don't have a handler, create a default one
 	if(handler == nil) {
 		handler = [[SoapHandler alloc] init];
 	}
-	if(logging) {
-		NSLog(url.absoluteString);
-	}
-	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL: url];
 	
+	// Output the URL if logging is enabled
+	if(logging) {
+		NSLog(@"Loading: %@", url.absoluteString);
+	}
+	
+	// Create the request
+	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL: url];
 	if(soapAction != nil) {
 		[request addValue: soapAction forHTTPHeaderField: @"SOAPAction"];
 	}
@@ -47,21 +53,26 @@
 		[request addValue: @"text/xml" forHTTPHeaderField: @"Content-Type"];
 		[request setHTTPBody: [postData dataUsingEncoding: NSUTF8StringEncoding]];
 		if(self.logging) {
-			NSLog([NSString stringWithFormat: @"%@", postData]);
+			NSLog(@"%@", postData);
 		}
 	}
 	
+	// Create the connection
 	conn = [[NSURLConnection alloc] initWithRequest: request delegate: self];
 	if(conn) {
 		receivedData = [[NSMutableData data] retain];
 	} else {
 		// We will want to call the onerror method selector here...
 		if(self.handler != nil) {
-			NSError* error = [NSError errorWithDomain:@"SoapRequest" code:404 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not create connection", NSLocalizedDescriptionKey]];
+			NSError* error = [NSError errorWithDomain:@"SoapRequest" code:404 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not create connection", NSLocalizedDescriptionKey,nil]];
 			SEL onerror = @selector(onerror:);
 			if(self.action != nil) { onerror = self.action; }
 			if([self.handler respondsToSelector: onerror]) {
 				[self.handler performSelector: onerror withObject: error];
+			} else {
+				if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:onerror]) {
+					[self.defaultHandler performSelector:onerror withObject: error];
+				}
 			}
 		}
 	}
@@ -83,9 +94,11 @@
 	[self.receivedData release];
 	if([self.handler respondsToSelector:@selector(onerror:)]) {
 		[self.handler onerror:error];
+	} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onerror:)]) {
+		[self.defaultHandler onerror:error];
 	}
 	if(self.logging) {
-		NSLog(error.localizedDescription);
+		NSLog(@"Error Connecting: %@", error.localizedDescription);
 	}
 }
 
@@ -94,7 +107,7 @@
 	NSError* error;
 	if(self.logging == YES) {
 		NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
-		NSLog(response);
+		NSLog(@"%@", response);
 		[response release];
 	}
 
@@ -102,9 +115,11 @@
 	if(doc == nil) {
 		if([self.handler respondsToSelector:@selector(onerror:)]) {
 			[self.handler onerror: error];
+		} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onerror:)]) {
+			[self.defaultHandler onerror:error];
 		}
 		if(self.logging) {
-			NSLog(error.localizedDescription);
+			NSLog(@"XML document expected: %@", error.localizedDescription);
 		}
 		return;
 	}
@@ -116,32 +131,34 @@
 		if(self.action == nil) {
 			if([self.handler respondsToSelector:@selector(onfault:)]) {
 				[self.handler onfault: fault];
+			} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onfault:)]) {
+				[self.defaultHandler onfault:fault];
 			}
 			if(self.logging) {
-				NSLog([NSString stringWithFormat:@"%@", fault]);
+				NSLog(@"Fault: %@", fault);
 			}
 		} else {
 			output = fault;
 		}
 	} else {
+		CXMLNode* element = [[Soap getNode: [doc rootElement] withName: @"Body"] childAtIndex:0];
 		if(deserializeTo == nil) {
-			output = nil;
+			output = [Soap deserialize:element];
 		} else {
-			CXMLNode* element = [[Soap getNode: [doc rootElement] withName: @"Body"] childAtIndex:0];
-			if(deserializeTo != nil) {
-				if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
-					element = [element childAtIndex:0];
-					output = [deserializeTo initWithNode: element];
-				} else {
-					NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
-					output = [Soap convert: value toType: deserializeTo];
-				}
+			if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
+				element = [element childAtIndex:0];
+				output = [deserializeTo initWithNode: element];
+			} else {
+				NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
+				output = [Soap convert: value toType: deserializeTo];
 			}
 		}
 		
 		if(self.action == nil) { self.action = @selector(onload:); }
 		if(self.handler != nil && [self.handler respondsToSelector: self.action]) {
-			[self.handler performSelector: self.action withObject: output];
+ 			[self.handler performSelector: self.action withObject: output];
+		} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onload:)]) {
+			[self.defaultHandler onload:output];
 		}
 	}
 
@@ -159,7 +176,7 @@
         [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
     } else {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
-		NSError* error = [NSError errorWithDomain:@"SoapRequest" code:403 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not authenticate this request", NSLocalizedDescriptionKey]];
+		NSError* error = [NSError errorWithDomain:@"SoapRequest" code:403 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not authenticate this request", NSLocalizedDescriptionKey,nil]];
 		[handler onerror: error];
     }
 }
@@ -174,6 +191,7 @@
 
 // Deallocates the object
 - (void) dealloc {
+	[defaultHandler release];
 	[url release];
 	[soapAction release];
 	[username release];

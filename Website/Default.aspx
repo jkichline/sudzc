@@ -58,8 +58,8 @@
 				<div>
 					<label for="type">Choose the type of code bundle to create</label>
 					<select id="type" name="type" onchange="adjustNS(this);">
-						<option value="ObjC">Objective-C for iPhone - Single File (alpha)</option>
 						<option value="ObjCFiles">Objective-C for iPhone - Multiple Files (alpha)</option>
+						<option value="ObjC">Objective-C for iPhone - Single File (alpha)</option>
 						<option value="Javascript">Javascript for web development (alpha)</option>
 						<option value="ActionScript">ActionScript for Flash/Flex (alpha)</option>
 					</select>

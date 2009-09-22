@@ -211,13 +211,92 @@
 }
 
 // Deserialize an object as a generic object
-+ (NSObject*) deserialize: (CXMLNode*) element{
-	// Not implemented.
-	return [element stringValue];
++ (id) deserialize: (CXMLNode*) element{
+	
+	// Get the type
+	NSString* type = [Soap getNodeValue:element withName:@"type"];
+	if(type == nil || type.length == 0) {
+		if([element children].count < 1) {
+			return [element stringValue];
+			
+		// Render as a complex object
+		} else {
+			return [[element children] objectAtIndex:0];
+		}
+
+	} else {
+		NSString* value = [element stringValue];
+		type = [[type substringFromIndex:[type rangeOfString:@":"].location+1] lowercaseString];
+		
+		// Return as string
+		if([type isEqualToString:@"string"] || [type isEqualToString:@"token"] || [type isEqualToString:@"normalizedstring"]) {
+			return value;
+		}
+		
+		// Return as integer
+		if([type isEqualToString:@"int"] || 
+		   [type isEqualToString:@"integer"] || 
+		   [type isEqualToString:@"positiveinteger"] ||
+		   [type isEqualToString:@"negativeinteger"] ||
+		   [type isEqualToString:@"nonpositiveinteger"] ||
+		   [type isEqualToString:@"nonnegativeinteger"])
+		{
+			return [NSNumber numberWithInt:[value intValue]];
+		}
+		
+		// Return as long
+		if([type isEqualToString:@"long"] || [type isEqualToString:@"unsignedlong"]) {
+			return [NSNumber numberWithLong:[value longLongValue]];
+		}
+		
+		// Return as short
+		if([type isEqualToString:@"short"] || [type isEqualToString:@"unsignedshort"]) {
+			return [NSNumber numberWithShort:(short)[value intValue]];
+		}
+		
+		// Return as float
+		if([type isEqualToString:@"float"]) {
+			return [NSNumber numberWithFloat:[value floatValue]];
+		}
+		
+		// Return as double
+		if([type isEqualToString:@"double"]) {
+			return [NSNumber numberWithDouble:[value doubleValue]];
+		}
+		
+		// Return as byte
+		if([type isEqualToString:@"byte"] || [type isEqualToString:@"unsignedbyte"]) {
+			return [NSNumber numberWithShort:(short)[value intValue]];
+		}
+
+		// Return as decimal
+		if([type isEqualToString:@"decimal"]) {
+			return [NSDecimalNumber numberWithFloat:[value floatValue]];
+		}
+		
+		// Return as boolean
+		if([type isEqualToString:@"boolean"]) {
+			return [NSNumber numberWithBool:[value boolValue]];
+		}
+		
+		// Return as a date
+		if([type isEqualToString:@"date"] || [type isEqualToString:@"time"] || [type isEqualToString:@"datetime"]) {
+			return [Soap dateFromString:value];
+		}
+		
+		// Return as data
+		if([type isEqualToString:@"base64binary"]) {
+			return [Soap dataFromString:value];
+		}
+		
+		// Return as string
+		return value;
+		
+	}
 }
 
 // Deserializes a node into an object.
-+ (NSObject*) deserialize: (CXMLNode*) element forObject: (NSObject*) object {
++ (id) deserialize: (CXMLNode*) element forObject: (NSObject*) object {
 	NSError* error;
 	NSObject* value;
 	NSArray* nodes = [element nodesForXPath:@"*" error: &error];

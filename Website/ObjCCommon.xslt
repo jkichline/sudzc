@@ -281,6 +281,7 @@
 			</xsl:call-template>
 		</xsl:variable>
 		<xsl:choose>
+			<xsl:when test="$element/s:complexType/s:sequence/s:element/descendant-or-self::s:any">id</xsl:when>
 			<xsl:when test="$type = ''">void</xsl:when>
 			<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
 		</xsl:choose>

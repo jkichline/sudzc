@@ -64,10 +64,10 @@
 + (CXMLNode*) findNode: (CXMLNode*) node xpath: (NSString*) xpath;
 
 // Deserializes an element to a string value.
-+ (NSObject*) deserialize: (CXMLNode*) element;
++ (id) deserialize: (CXMLNode*) element;
 
 // Deserializes a node into an object.
-+ (NSObject*) deserialize: (CXMLNode*) element forObject: (NSObject*) object;
++ (id) deserialize: (CXMLNode*) element forObject: (NSObject*) object;
 
 // Determines if an object is an array
 + (BOOL) isArray: (NSObject*) value;

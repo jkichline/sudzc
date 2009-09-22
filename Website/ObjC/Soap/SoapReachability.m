@@ -55,6 +55,7 @@
 }
 
 + (NSString*) getIPAddressForHost: (NSString*) theHost {
+	if(theHost == nil) { return nil; }
 	struct hostent *host = gethostbyname([theHost UTF8String]);
 	if (host == NULL) {
 		herror("resolv");

@@ -36,4 +36,11 @@
 	}
 }
 
+-(void)dealloc{
+	[name release];
+	[value release];
+	[xml release];
+	[super dealloc];
+}
+
 @end

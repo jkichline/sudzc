@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
+using System.Text;
 using System.Drawing;
 using System.Web;
 using System.Web.Services;
@@ -22,6 +23,7 @@ public class TestService : System.Web.Services.WebService {
 	[WebMethod(Description="Creates a test object.")]
 	public TestResult Create(int count, string name, string description) {
 		TestResult result = new TestResult();
+		result.Number = count;
 		result.Name = name;
 		result.Description = description;
 		if(count > 0) {
@@ -48,10 +50,34 @@ public class TestService : System.Web.Services.WebService {
 		return (result.Headers.Count == headerCount);
 	}
 
+	[WebMethod(Description="Produces a list of test results.")]
+	public List<TestResult> List(int numberOfItems) {
+		List<TestResult> list = new List<TestResult>();
+		for (int i = 1; i <= numberOfItems; i++) {
+			list.Add(new TestResult(i));
+		}
+		return list;
+	}
+
 	public class TestResult : TestResultBase {
 		private int _number = 0;
 		private string _name = null;
 		private string _description = "";
+
+		public TestResult() { }
+		public TestResult(int headers) {
+			this.Number = headers;
+			this.Name = "Item #" + headers.ToString();
+			if (headers > 0) {
+				this.Headers = new List<string>();
+				StringBuilder sb = new StringBuilder();
+				sb.Append("Test ");
+				for (int i = 1; i <= headers; i++) {
+					this.Headers.Add("This is header " + i.ToString());
+				}
+				this.Description = sb.ToString();
+			}
+		}
 
 		public int Number {
 			get { return _number; }

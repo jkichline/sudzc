@@ -247,15 +247,37 @@
 		<xsl:variable name="elementName">
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
-		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
+		<xsl:variable name="schemaType">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@type, ':')"/>
+		</xsl:variable>
 		<xsl:variable name="type">
-			<xsl:call-template name="getType">
-				<xsl:with-param name="value" select="$element/s:complexType/s:sequence/s:element/@type"/>
-			</xsl:call-template>
+			<xsl:choose>
+				<xsl:when test="$elementName != ''">
+					<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
+					<xsl:call-template name="getType">
+						<xsl:with-param name="value" select="$element/s:complexType/s:sequence/s:element/@type"/>
+					</xsl:call-template>
+				</xsl:when>
+				<xsl:when test="$schemaType != ''">
+					<xsl:call-template name="getType">
+						<xsl:with-param name="value" select="$schemaType"/>
+					</xsl:call-template>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="originalType">
+			<xsl:choose>
+				<xsl:when test="$elementName != ''">
+					<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element/@type, ':')"/>
+				</xsl:when>
+				<xsl:when test="$schemaType != ''">
+					<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $schemaType]/s:sequence/s:element/@type, ':')"/>
+				</xsl:when>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="deserializer">
 			<xsl:choose>
-				<xsl:when test="$type = 'NSMutableArray*'"><xsl:value-of select="$shortns"/><xsl:value-of select="substring-after($element/s:complexType/s:sequence/s:element/@type, ':')"/></xsl:when>
+				<xsl:when test="$type = 'NSMutableArray*'"><xsl:value-of select="$shortns"/><xsl:value-of select="$originalType"/></xsl:when>
 				<xsl:when test="contains($type, '*')"><xsl:value-of select="substring-before($type, '*')"/></xsl:when>
 				<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
 			</xsl:choose>
@@ -265,6 +287,7 @@
 			<xsl:when test="contains($type, '*') and starts-with($deserializer, 'NS') = false">[<xsl:value-of select="$deserializer"/> alloc]</xsl:when>
 			<xsl:otherwise>@"<xsl:value-of select="$deserializer"/>"</xsl:otherwise>
 		</xsl:choose>
+
 	</xsl:template>
 
 	<xsl:template match="wsdl:output" mode="object_type">
@@ -274,17 +297,37 @@
 		<xsl:variable name="elementName">
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
-		<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
-		<xsl:variable name="type">
-			<xsl:call-template name="getType">
-				<xsl:with-param name="value" select="$element/s:complexType/s:sequence/s:element/@type"/>
-			</xsl:call-template>
+		<xsl:variable name="schemaType">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@type, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$element/s:complexType/s:sequence/s:element/descendant-or-self::s:any">CXMLNode*</xsl:when>
-			<xsl:when test="$type = ''">void</xsl:when>
-			<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
+			<xsl:when test="$elementName != ''">
+				<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
+				<xsl:variable name="type">
+					<xsl:call-template name="getType">
+						<xsl:with-param name="value" select="$element/s:complexType/s:sequence/s:element/@type"/>
+					</xsl:call-template>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="$element/s:complexType/s:sequence/s:element/descendant-or-self::s:any">CXMLNode*</xsl:when>
+					<xsl:when test="$type = ''">void</xsl:when>
+					<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
+				</xsl:choose>
+			</xsl:when>
+			<xsl:when test="$schemaType != ''">
+				<xsl:variable name="type">
+					<xsl:call-template name="getType">
+						<xsl:with-param name="value" select="$schemaType"/>
+					</xsl:call-template>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="$type = ''">void</xsl:when>
+					<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
+				</xsl:choose>
+			</xsl:when>
 		</xsl:choose>
+
+
 	</xsl:template>
 
 
@@ -742,7 +785,12 @@
 		<xsl:choose>
 			<xsl:when test="$value = ''">id</xsl:when>
 			<xsl:otherwise>
-				<xsl:variable name="type" select="substring-after($value,':')"/>
+				<xsl:variable name="type">
+					<xsl:choose>
+						<xsl:when test="contains($value, ':')"><xsl:value-of select="substring-after($value,':')"/></xsl:when>
+						<xsl:otherwise><xsl:value-of select="$value"/></xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
 				<xsl:variable name="complexType" select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $type]"/>
 				<xsl:variable name="simpleType" select="/wsdl:definitions/wsdl:types/s:schema/s:simpleType[@name = $type]"/>
 				<xsl:variable name="isArray" select="$complexType/s:sequence/s:element[@maxOccurs = 'unbounded'] or $complexType/s:restriction/s:attribute[@wsdl:arrayType]"/>

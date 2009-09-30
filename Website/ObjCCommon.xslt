@@ -583,8 +583,30 @@
 
 	<xsl:template match="s:complexType" mode="implementation_array_internals">
 		<xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
-			<xsl:variable name="actualType"><xsl:value-of select="substring-after(descendant::s:element/@type, ':')"/></xsl:variable>
-			<xsl:variable name="declaredType"><xsl:call-template name="getType"><xsl:with-param name="value" select="descendant::s:element/@type"/></xsl:call-template></xsl:variable>
+			<xsl:variable name="actualType">
+				<xsl:choose>
+					<xsl:when test="descendant::s:element/@type != ''">
+						<xsl:value-of select="substring-after(descendant::s:element/@type, ':')"/>
+					</xsl:when>
+					<xsl:when test="descendant::*/@wsdl:arrayType != ''">
+						<xsl:value-of select="substring-after(descendant::*/@wsdl:arrayType, ':')"/>
+					</xsl:when>
+				</xsl:choose>
+			</xsl:variable>
+			<xsl:variable name="declaredType">
+				<xsl:choose>
+					<xsl:when test="descendant::s:element/@type != ''">
+						<xsl:call-template name="getType">
+							<xsl:with-param name="value" select="descendant::s:element/@type"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:when test="descendant::*/@wsdl:arrayType != ''">
+						<xsl:call-template name="getType">
+							<xsl:with-param name="value" select="descendant::*/@wsdl:arrayType"/>
+						</xsl:call-template>
+					</xsl:when>
+				</xsl:choose>
+			</xsl:variable>
 			<xsl:variable name="arrayType">
 				<xsl:choose>
 					<xsl:when test="$declaredType = 'BOOL'">NSNumber*;</xsl:when>

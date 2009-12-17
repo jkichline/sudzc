@@ -62,7 +62,7 @@
 				<div>
 					<label for="wsdl">Type the web address of the WSDL to convert</label>
 					<input type="text" id="wsdl" name="wsdl" value="http://" onblur="makeNs();" />
-					<img id="authIcon" src="assets/images/unlocked.png" width="26" height="26" border="0" onclick="doAuthentication();" />
+					<img id="authIcon" src="assets/images/unlocked.png" width="26" height="26" border="0" onclick="doAuthentication();" title="Click to provide authentication information" />
 				</div>
 				<div id="authentication">
 					<div>

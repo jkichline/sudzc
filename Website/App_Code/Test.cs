@@ -59,6 +59,11 @@ public class TestService : System.Web.Services.WebService {
 		return list;
 	}
 
+	[WebMethod(Description="Returns the list of strings back.")]
+	public List<String> OutputList(List<String> list) {
+		return list;
+	}
+
 	public class TestResult : TestResultBase {
 		private int _number = 0;
 		private string _name = null;

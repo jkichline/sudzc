@@ -49,6 +49,7 @@
 				<div>
 					<label for="wsdl">Type the web address of the WSDL to convert</label>
 					<input type="text" id="wsdl" name="wsdl" value="http://" onblur="makeNs();" />
+					<input type="checkbox" id="auth" value="1" /><label for="auth">Authenticate?</label>
 				</div>
 				<div>
 					<label for="ns">Pick a namespace for the generated code</label>

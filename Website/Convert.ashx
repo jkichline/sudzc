@@ -10,6 +10,9 @@ using ICSharpCode.SharpZipLib.Zip;
 public class Convert : IHttpHandler {
 	private string type = null;
 	private string mimeType = null;
+	private string username = null;
+	private string password = null;
+	private string domain = null;
 	private HttpContext context;
 	
 	public void ProcessRequest(HttpContext context) {
@@ -19,9 +22,14 @@ public class Convert : IHttpHandler {
 		string lastPackageName = null;
 		this.context = context;
 		
+		// Load authentication information
+		username = context.Request["username"];
+		password = context.Request["password"];
+		domain = context.Request["domain"];
+		
 		/// Get the type of of transformation to perform
 		this.type = context.Request["type"];
-		if (this.type == null) { this.type = "JavaScript"; }
+		if (this.type == null) { this.type = "ObjCFiles"; }
 		
 		// Get the mimetype
 		this.mimeType = System.Configuration.ConfigurationManager.AppSettings["OutputMimetype"];
@@ -34,6 +42,10 @@ public class Convert : IHttpHandler {
 		// If we only have one, let's see if it's a list
 		if (wsdlList.Length == 1) {
 			WebClient client = new WebClient();
+			if (String.IsNullOrEmpty(username) == false || String.IsNullOrEmpty(password) == false) {
+				NetworkCredential credential = new NetworkCredential(username, password, domain);
+				client.Credentials = credential;
+			}
 			string imports = null;
 			try {
 				imports = client.DownloadString(this.getAbsoluteUrl(context, wsdls));
@@ -200,8 +212,23 @@ public class Convert : IHttpHandler {
 	}
 
 	public string ConvertWsdlToXmlString(string wsdl) {
-		// Load up the WSDL from the URL
+		// Authentication parameters
+		string username = context.Request["username"];
+		string password = context.Request["password"];
+		string domain = context.Request["domain"];
+		
+		// Create the document
 		XmlDocument doc = new XmlDocument();
+		
+		// Set a resolver for authentication username and/or password
+		if (String.IsNullOrEmpty(username) == false || String.IsNullOrEmpty(password) == false) {
+			XmlUrlResolver resolver = new XmlUrlResolver();
+			NetworkCredential credential = new NetworkCredential(username, password, domain);
+			resolver.Credentials = credential;
+			doc.XmlResolver = resolver;
+		}
+		
+		// Load up the WSDL from the URL
 
 		try {
 			doc.Load(wsdl);

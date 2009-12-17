@@ -52,7 +52,7 @@ body { margin: 0 0; width: auto; position: relative; background: #FFF url(../ima
 label { font-size: 12pt; display: block; font-weight: bold; margin: 10px 0 3px 0; }
 #wsdl, #ns { width: 650px; font-size: 13.5pt; color: #779; }
 #shortns { width: 100px; font-size: 13.5pt; color: #779; margin-right: 6pt; }
-#type { width: 590px; font-size: 13.5pt; color: #779; float:left; }
+#type { width: 590px; font-size: 13.5pt; color: #779; float:left; height:30px; }
 #objcns { display: none; font-weight: normal; color: #5AC; font-size: 12pt; }
 #submit { float: left; display:block; }
 p, blockquote { font-weight: normal; color: #333; font-size: 12pt; }

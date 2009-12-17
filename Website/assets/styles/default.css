@@ -26,7 +26,6 @@ ins { text-decoration: none; }
 del { text-decoration: line-through; }
 table { border-collapse: collapse; border-spacing: 0; }
 
-
 /* CLEARFIX */
 .clearfix:after {
 	content: "."; 
@@ -43,14 +42,24 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 /* GENERAL SELECTORS */
 
-body { margin: 0 0; width: auto; position: relative; background: #6ccff6 url(../images/gradient.jpg) repeat-x; color: #398fc1; font-family: Helvetica, Arial, sans-serif; font-size: 62.5%; }
-#content { width: auto; height: 830px; background-image: url(../images/bkg.png); background-repeat: no-repeat; }
-#logo { margin: 15px 0 0 75px; }
-#form { margin: 170px 0 0 50px; padding-left: 140px; background: url(../images/icon.png) no-repeat 0 -10px; }
+body { margin: 0 0; width: auto; position: relative; background: #FFF url(../images/gradient-light.jpg) repeat-x; color: #398fc1; font-family: Helvetica, Arial, sans-serif; font-size: 62.5%; }
+#content {
+	width: auto; height: 830px;
+  /* background-image: url(../images/bkg.png); background-repeat: no-repeat; */
+}
+#logo { margin: 15px 0 0 25px; }
+#form { margin: 35px 0 0 70px; padding-left: 140px; background: url(../images/icon.png) no-repeat 0 -10px; }
 label { font-size: 12pt; display: block; font-weight: bold; margin: 10px 0 3px 0; }
 #wsdl, #ns { width: 650px; font-size: 13.5pt; color: #779; }
 #shortns { width: 100px; font-size: 13.5pt; color: #779; margin-right: 6pt; }
-#type { width: 590px; font-size: 13.5pt; color: #779; }
+#type { width: 590px; font-size: 13.5pt; color: #779; float:left; }
 #objcns { display: none; font-weight: normal; color: #5AC; font-size: 12pt; }
+#submit { float: left; display:block; }
 p, blockquote { font-weight: normal; color: #333; font-size: 12pt; }
 blockquote { margin: 15pt; font-weight: bold; color: #666; }
+
+/* AUTHENTICATION */
+form div { clear: both; }
+#authentication { display:none; padding-bottom:6pt; }
+#authentication div { width: 280px; padding-right:22px; float:left; clear:none; }
+#authentication input { width: 100%; font-size: 13.5pt; color: #779; margin-bottom:6pt; }

@@ -40,6 +40,19 @@
 				}
 				$("ns").value=ns;
 			}
+			function doAuthentication(){
+				var a=$("authentication");
+				if(a.style.display=="block") {
+					$("username").value="";
+					$("password").value="";
+					$("authIcon").src=$("authIcon").src.replace("locked","unlocked");
+					a.style.display="none";
+				} else {
+					$("authIcon").src=$("authIcon").src.replace("unlocked","locked");
+					a.style.display="block";
+					$("username").focus();
+				}
+			}
 		</script>
 	</head>
 	<body onload="init();">
@@ -49,7 +62,17 @@
 				<div>
 					<label for="wsdl">Type the web address of the WSDL to convert</label>
 					<input type="text" id="wsdl" name="wsdl" value="http://" onblur="makeNs();" />
-					<input type="checkbox" id="auth" value="1" /><label for="auth">Authenticate?</label>
+					<img id="authIcon" src="assets/images/unlocked.png" width="26" height="26" border="0" onclick="doAuthentication();" />
+				</div>
+				<div id="authentication">
+					<div>
+						<label for="username">Username</label>
+						<input type="text" id="username" name="username" />
+					</div>
+					<div>
+						<label for="password">Password</label>
+						<input type="password" id="password" name="password" />
+					</div>
 				</div>
 				<div>
 					<label for="ns">Pick a namespace for the generated code</label>
@@ -64,7 +87,7 @@
 						<option value="Javascript">Javascript for web development (alpha)</option>
 						<option value="ActionScript">ActionScript for Flash/Flex (alpha)</option>
 					</select>
-					<input type="submit" value="Build It" id="submit" />
+					<input type="image" src="assets/images/generate-button.png" value="Generate" id="submit" />
 				</div>
 			</form>
 		</div>

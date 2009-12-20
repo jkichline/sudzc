@@ -39,7 +39,7 @@
 		[s appendString: @"</soap:Header>"];
 	}
 	[s appendString: @"<soap:Body>"];
-	[s appendFormat: @"<%@>%@</%@>", method, params, method];
+	[s appendFormat: @"<%@>%@</%@>", method,[params stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"], method];
 	[s appendString: @"</soap:Body>"];
 	[s appendString: @"</soap:Envelope>"];
 	return s;

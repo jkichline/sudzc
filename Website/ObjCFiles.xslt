@@ -31,6 +31,7 @@
 			<xsl:attribute name="name"><xsl:value-of select="$serviceName"/>.iPhone</xsl:attribute>
 			<folder copy="ObjC/Soap"/>
 			<folder copy="ObjC/TouchXML"/>
+			<include copy="ObjC/HOWTO.rtf"/>
 			<include copy="ObjC/README.rtf"/>
 			<xsl:apply-templates/>
 		</package>

@@ -364,7 +364,7 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="$type = 'NSMutableArray*'">
-#import "<xsl:value-of select="substring-before(@type, '*')"/>.h";</xsl:when>
+#import "<xsl:call-template name="getArrayType"><xsl:with-param name="value" select="@type"/></xsl:call-template>.h";</xsl:when>
 			<xsl:otherwise>
 				<xsl:if test="contains($type, '*') and not(starts-with($type, 'NS'))">
 #import "<xsl:value-of select="substring-before($type, '*')"/>.h";</xsl:if>			
@@ -812,6 +812,18 @@
 	<xsl:template name="getName">
 		<xsl:param name="value"/>
 		<xsl:value-of select="$value"/>
+	</xsl:template>
+
+	<!-- TEMPLATE TO RETURN A TYPE -->
+	<xsl:template name="getArrayType">
+		<xsl:param name="value"/>
+		<xsl:variable name="type">
+			<xsl:choose>
+				<xsl:when test="contains($value, ':')"><xsl:value-of select="substring-after($value,':')"/></xsl:when>
+				<xsl:otherwise><xsl:value-of select="$value"/></xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:value-of select="$shortns"/><xsl:value-of select="$type"/>
 	</xsl:template>
 
 	<!-- TEMPLATE TO RETURN A TYPE -->

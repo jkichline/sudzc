@@ -30,6 +30,15 @@
 	return [request autorelease];
 }
 
++ (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action service: (SoapService*) service soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
+	SoapRequest* request = [SoapRequest create: handler action: action urlString: service.serviceUrl soapAction: soapAction postData:postData deserializeTo:deserializeTo];
+	request.defaultHandler = service.defaultHandler;
+	request.logging = service.logging;
+	request.username = service.username;
+	request.password = service.password;
+	return request;
+}
+
 // Sends the request via HTTP.
 - (void) send {
 	

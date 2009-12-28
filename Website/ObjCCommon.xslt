@@ -362,7 +362,7 @@
 				<xsl:with-param name="value" select="@type"/>
 			</xsl:call-template>
 		</xsl:variable>
-		<xsl:if test="$type = 'NSMutableArray*' or (contains($type, '*') and not(starts-with($type, 'NS')))">
+		<xsl:if test="(contains($type, '*') and not(starts-with($type, 'NS')))">
 #import "<xsl:value-of select="substring-before($type, '*')"/>.h";</xsl:if></xsl:template>
 	
 	<xsl:template match="s:attribute[@arrayType!='']" mode="import_reference">

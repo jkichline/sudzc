@@ -5,6 +5,7 @@
 */
 
 #import "SoapHandler.h"
+#import "SoapService.h"
 
 @interface SoapRequest : NSObject {
 	NSURL* url;
@@ -35,9 +36,10 @@
 
 + (SoapRequest*) create: (SoapHandler*) handler urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo;
 + (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo;
++ (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action service: (SoapService*) service soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo;
 
-- (BOOL) cancel;
-- (void) send;
+- (BOOL)cancel;
+- (void)send;
 - (void)handleError:(NSError*)error;
 - (void)handleFault:(SoapFault*)fault;
 

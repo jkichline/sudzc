@@ -110,9 +110,7 @@
 		NSMutableArray* _params = [NSMutableArray array];
 		<xsl:apply-templates select="wsdl:input" mode="param_array"/>
 		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace withParameters: _params withHeaders: headers];
-		SoapRequest* _request = [SoapRequest create: _target action: _action urlString: self.serviceUrl soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:value-of select="$deserializeTo"/>];
-		_request.defaultHandler = self.defaultHandler;
-		_request.logging = self.logging;
+		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:value-of select="$deserializeTo"/>];
 		[_request send];
 		return _request;
 	}
@@ -228,7 +226,7 @@
 			<xsl:when test="$type = 'int'">[NSString stringWithFormat: @"%i", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'short'">[NSString stringWithFormat: @"%i", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'long'">[NSString stringWithFormat: @"%ld", <xsl:value-of select="$name"/>]</xsl:when>
-			<xsl:when test="$type = 'double'">[NSString stringWithFormat: @"%d", <xsl:value-of select="$name"/>]</xsl:when>
+			<xsl:when test="$type = 'double'">[NSString stringWithFormat: @"%f", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'float'">[NSString stringWithFormat: @"%f", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSNumber*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSDecimalNumber*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>

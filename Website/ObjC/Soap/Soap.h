@@ -99,4 +99,7 @@
 // Creates a unique hash for the object's contents.
 +(NSUInteger)generateHash:(SoapObject*)value;
 
+// Creates and object of string values from the node.
++(id)objectFromNode:(CXMLNode*)node;
+
 @end

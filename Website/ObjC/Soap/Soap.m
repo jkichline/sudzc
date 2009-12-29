@@ -444,5 +444,29 @@
 	return [[md5 dataUsingEncoding:NSUTF8StringEncoding] hash];
 }
 
+// Creates dictionary of string values from the node.
++(id)objectFromNode:(CXMLNode*)node {
+	if([[node children] count] > 0) {
+		NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
+		for (CXMLNode* child in [node children]) {
+			id value = [dictionary objectForKey:[child name]];
+			if(value != nil) {
+				if([value isKindOfClass:[NSMutableArray class]] == NO) {
+					value = [NSMutableArray arrayWithObject:value];
+				}
+				[(NSMutableArray*)value addObject:[Soap objectFromNode:child]];
+			} else {
+				[dictionary setObject:[Soap objectFromNode:child] forKey:[child name]];
+			}
+		}
+		if ([[dictionary allKeys] count] == 1) {
+			return [dictionary objectForKey:[[dictionary allKeys] objectAtIndex:0]];
+		} else {
+			return dictionary;
+		}
+	} else {
+		return [node stringValue];
+	}
+}
 
 @end

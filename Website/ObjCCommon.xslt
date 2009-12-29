@@ -654,6 +654,7 @@
 				<xsl:when test="$declaredType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
+				<xsl:when test="$declaredType = 'byte' or $declaredType = 'unsignedByte'">[NSNumber numberWithInt: [[child stringValue] charValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>

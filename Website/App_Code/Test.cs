@@ -64,6 +64,11 @@ public class TestService : System.Web.Services.WebService {
 		return list;
 	}
 
+	[WebMethod(Description="Outputs a byte value.")]
+	public byte OutputByte() {
+		return Convert.ToByte(true);
+	}
+
 	public class TestResult : TestResultBase {
 		private int _number = 0;
 		private string _name = null;

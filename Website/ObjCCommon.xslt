@@ -863,8 +863,8 @@
 							<xsl:when test="$type = 'unsignedShort'">short</xsl:when>
 							<xsl:when test="$type = 'float'">float</xsl:when>
 							<xsl:when test="$type = 'double'">double</xsl:when>
-							<xsl:when test="$type = 'byte'">byte</xsl:when>
-							<xsl:when test="$type = 'unsignedByte'">byte</xsl:when>
+							<xsl:when test="$type = 'byte'">char</xsl:when>
+							<xsl:when test="$type = 'unsignedByte'">char</xsl:when>
 							<xsl:when test="$type = 'decimal'">NSDecimalNumber*</xsl:when>
 							<xsl:when test="$type = 'boolean'">BOOL</xsl:when>
 							<xsl:when test="$type = 'dateTime'">NSDate*</xsl:when>

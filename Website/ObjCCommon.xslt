@@ -624,6 +624,7 @@
 			</xsl:variable>
 			<xsl:variable name="arrayType">
 				<xsl:choose>
+					<xsl:when test="$declaredType = ''">NSMutableDictionary*;</xsl:when>
 					<xsl:when test="$declaredType = 'BOOL'">NSNumber*;</xsl:when>
 					<xsl:when test="$declaredType = 'int'">NSNumber*</xsl:when>
 					<xsl:when test="$declaredType = 'long'">NSNumber*</xsl:when>
@@ -663,6 +664,7 @@
 				<xsl:when test="$declaredType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
+				<xsl:when test="$declaredType = ''">[Soap createDictionaryFromNode: child];</xsl:when>
 				<xsl:otherwise>[<xsl:value-of select="substring-before($declaredType, '*')"/> newWithNode: child];</xsl:otherwise>
 			</xsl:choose>
 			<xsl:choose>

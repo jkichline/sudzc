@@ -225,6 +225,7 @@
 			<xsl:when test="$type = 'BOOL'">(<xsl:value-of select="$name"/>)?@"true":@"false"</xsl:when>
 			<xsl:when test="$type = 'int'">[NSString stringWithFormat: @"%i", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'short'">[NSString stringWithFormat: @"%i", <xsl:value-of select="$name"/>]</xsl:when>
+			<xsl:when test="$type = 'char'">[NSString stringWithFormat: @"%c", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'long'">[NSString stringWithFormat: @"%ld", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'double'">[NSString stringWithFormat: @"%f", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'float'">[NSString stringWithFormat: @"%f", <xsl:value-of select="$name"/>]</xsl:when>
@@ -629,6 +630,7 @@
 					<xsl:when test="$declaredType = 'double'">NSNumber*</xsl:when>
 					<xsl:when test="$declaredType = 'float'">NSNumber*</xsl:when>
 					<xsl:when test="$declaredType = 'short'">NSNumber*</xsl:when>
+					<xsl:when test="$declaredType = 'char'">NSNumber*</xsl:when>
 					<xsl:otherwise><xsl:value-of select="$declaredType"/></xsl:otherwise>
 				</xsl:choose>
 			</xsl:variable>
@@ -654,7 +656,7 @@
 				<xsl:when test="$declaredType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'byte' or $declaredType = 'unsignedByte'">[NSNumber numberWithInt: [[child stringValue] charValue]];</xsl:when>
+				<xsl:when test="$declaredType = 'char'">[NSNumber numberWithChar: [[child stringValue] charValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
@@ -798,7 +800,7 @@
 			<xsl:when test="$declaredType = 'BOOL'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] boolValue]</xsl:when>
 			<xsl:when test="$declaredType = 'int'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] intValue]</xsl:when>
 			<xsl:when test="$declaredType = 'short'">(short)[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] intValue]</xsl:when>
-			<xsl:when test="$declaredType = 'byte' or $declaredType = 'unsignedByte'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] charValue]</xsl:when>
+			<xsl:when test="$declaredType = 'char'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] charValue]</xsl:when>
 			<xsl:when test="$declaredType = 'long'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] longLongValue]</xsl:when>
 			<xsl:when test="$declaredType = 'double'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] doubleValue]</xsl:when>
 			<xsl:when test="$declaredType = 'float'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] floatValue]</xsl:when>

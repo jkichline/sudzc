@@ -656,7 +656,7 @@
 				<xsl:when test="$declaredType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'char'">[NSNumber numberWithChar: [[child stringValue] charValue]];</xsl:when>
+				<xsl:when test="$declaredType = 'char'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
@@ -800,7 +800,7 @@
 			<xsl:when test="$declaredType = 'BOOL'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] boolValue]</xsl:when>
 			<xsl:when test="$declaredType = 'int'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] intValue]</xsl:when>
 			<xsl:when test="$declaredType = 'short'">(short)[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] intValue]</xsl:when>
-			<xsl:when test="$declaredType = 'char'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] charValue]</xsl:when>
+			<xsl:when test="$declaredType = 'char'">[[NSNumber numberWithInt: [[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] intValue]] charValue]</xsl:when>
 			<xsl:when test="$declaredType = 'long'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] longLongValue]</xsl:when>
 			<xsl:when test="$declaredType = 'double'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] doubleValue]</xsl:when>
 			<xsl:when test="$declaredType = 'float'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] floatValue]</xsl:when>

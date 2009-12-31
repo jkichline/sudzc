@@ -156,7 +156,11 @@
 		if(self.action == nil) {
 			[self handleFault: fault];
 		} else {
-			output = fault;
+			if(self.handler != nil && [self.handler respondsToSelector: self.action]) {
+				[self.handler performSelector: self.action withObject: output];
+			} else {
+				NSLog(@"SOAP Fault: %@", fault);
+			}
 		}
 	} else {
 		CXMLNode* element = [[Soap getNode: [doc rootElement] withName: @"Body"] childAtIndex:0];

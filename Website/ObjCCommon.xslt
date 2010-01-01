@@ -126,7 +126,7 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element" mode="param_selectors"/></xsl:when>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_selectors"/></xsl:when>
 			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_selectors"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>

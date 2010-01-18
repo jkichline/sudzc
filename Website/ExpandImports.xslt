@@ -14,6 +14,10 @@
 		<xsl:apply-templates select="document(@schemaLocation)/s:schema/*"/>
 	</xsl:template>
 
+	<xsl:template match="wsdl:import">
+		<xsl:apply-templates select="document(@location)/wsdl:definitions/*"/>
+	</xsl:template>
+
 	<xsl:template match="@* | node()">
 		<xsl:copy>
 			<xsl:apply-templates select="@* | node()"/>

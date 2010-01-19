@@ -1,5 +1,6 @@
 ﻿<%@ WebHandler Language="C#" Class="Convert" %>
 using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Xml;
 using System.Xml.Xsl;
@@ -241,9 +242,9 @@ public class Convert : IHttpHandler {
 			}
 		}
 
-		MemoryStream ms;
-
-		// Expand the imports
+		this.expandImports(doc);
+		
+/*
 		ms = new MemoryStream();
 		XslTransform expander = new XslTransform();
 		expander.Load(context.Server.MapPath("ExpandImports.xslt"));
@@ -256,10 +257,11 @@ public class Convert : IHttpHandler {
 			context.Response.ContentType = "text/xml";
 			inputDoc.LoadXml(input);
 		} catch (Exception) { }
+*/
 
 		// If we only want to see the input then do only that
 		if (this.mimeType == "input") {
-			inputDoc.Save(context.Response.OutputStream);
+			doc.Save(context.Response.OutputStream);
 		}
 
 		// Transform it all to a nice memory stream
@@ -273,14 +275,71 @@ public class Convert : IHttpHandler {
 		}
 
 		// Output as a string
-		ms = new MemoryStream();
-		xfrm.Transform(inputDoc, args, ms);
+		MemoryStream ms = new MemoryStream();
+		xfrm.Transform(doc, args, ms);
 		return System.Text.Encoding.ASCII.GetString(ms.ToArray());
 	}
 
 	public bool IsReusable {
 		get {
 			return false;
+		}
+	}
+
+	private List<string> importedUris = null;
+
+	/// <summary>
+	/// Expand imports
+	/// </summary>
+	/// <param name="doc">The document to expand imports into</param>
+	private void expandImports(XmlDocument doc) {
+		importedUris = new List<string>();
+		this._expandImports(doc);
+	}
+
+	private void _expandImports(XmlDocument doc) {
+		bool continueExpanding = false;
+		XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
+		nsmgr.AddNamespace("xsd", "http://www.w3.org/2001/XMLSchema");
+		nsmgr.AddNamespace("wsdl", "http://schemas.xmlsoap.org/wsdl/");
+		XmlNodeList schemaImports = doc.SelectNodes("//*/xsd:import", nsmgr); 
+		XmlNodeList wsdlImports = doc.SelectNodes("//*/wsdl:import", nsmgr);
+		
+		// Expand the schema imports
+		foreach (XmlNode importNode in schemaImports) {
+			string location = importNode.Attributes["schemaLocation"].Value;
+			if (location != null && importedUris.Contains(location) == false) {
+				XmlDocument importedDoc = new XmlDocument();
+				importedDoc.Load(location);
+				foreach (XmlNode node in importedDoc.DocumentElement.ChildNodes) {
+					XmlNode clonedNode = doc.ImportNode(node, true);
+					importNode.ParentNode.InsertAfter(clonedNode, importNode);
+					continueExpanding = true;
+				}
+				importNode.ParentNode.RemoveChild(importNode);
+				importedUris.Add(location);
+			}
+		}
+
+		// Expand the WSDL imports
+		foreach (XmlNode importNode in wsdlImports) {
+			string location = importNode.Attributes["location"].Value;
+			if (location != null && importedUris.Contains(location) == false) {
+				XmlDocument importedDoc = new XmlDocument();
+				importedDoc.Load(location);
+				foreach (XmlNode node in importedDoc.DocumentElement.ChildNodes) {
+					XmlNode clonedNode = doc.ImportNode(node, true);
+					importNode.ParentNode.InsertAfter(clonedNode, importNode);
+					continueExpanding = true;
+				}
+				importNode.ParentNode.RemoveChild(importNode);
+				importedUris.Add(location);
+			}
+		}
+		
+		// Recursively add nodes
+		if (continueExpanding) {
+			this._expandImports(doc);
 		}
 	}
 

@@ -244,21 +244,6 @@ public class Convert : IHttpHandler {
 
 		this.expandImports(doc);
 		
-/*
-		ms = new MemoryStream();
-		XslTransform expander = new XslTransform();
-		expander.Load(context.Server.MapPath("ExpandImports.xslt"));
-		expander.Transform(doc, null, ms);
-		string input = System.Text.Encoding.ASCII.GetString(ms.ToArray());
-
-		// See if the input is an XML document
-		XmlDocument inputDoc = new XmlDocument();
-		try {
-			context.Response.ContentType = "text/xml";
-			inputDoc.LoadXml(input);
-		} catch (Exception) { }
-*/
-
 		// If we only want to see the input then do only that
 		if (this.mimeType == "input") {
 			doc.Save(context.Response.OutputStream);

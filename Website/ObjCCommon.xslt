@@ -283,7 +283,7 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="$type = 'nil'">nil</xsl:when>
-			<xsl:when test="contains($type, '*') and starts-with($deserializer, 'NS') = false">[<xsl:value-of select="$deserializer"/> alloc]</xsl:when>
+			<xsl:when test="$type != 'id' and contains($type, '*') and starts-with($deserializer, 'NS') = false">[<xsl:value-of select="$deserializer"/> alloc]</xsl:when>
 			<xsl:otherwise>@"<xsl:value-of select="$deserializer"/>"</xsl:otherwise>
 		</xsl:choose>
 
@@ -354,7 +354,7 @@
 				<xsl:with-param name="value" select="@type"/>
 			</xsl:call-template>
 		</xsl:variable>
-		<xsl:if test="$type = 'NSMutableArray*' or (contains($type, '*') and not(starts-with($type, 'NS')))">
+		<xsl:if test="$type = 'NSMutableArray*' or (contains($type, '*') and $type != 'id' and not(starts-with($type, 'NS')))">
 @class <xsl:value-of select="$shortns"/><xsl:value-of select="substring-after(@type, ':')"/>;</xsl:if></xsl:template>
 	
 	<xsl:template match="s:element" mode="import_reference">
@@ -367,7 +367,7 @@
 			<xsl:when test="$type = 'NSMutableArray*'">
 #import "<xsl:call-template name="getArrayType"><xsl:with-param name="value" select="@type"/></xsl:call-template>.h";</xsl:when>
 			<xsl:otherwise>
-				<xsl:if test="contains($type, '*') and not(starts-with($type, 'NS'))">
+				<xsl:if test="contains($type, '*') and $type != 'id' and not(starts-with($type, 'NS'))">
 #import "<xsl:value-of select="substring-before($type, '*')"/>.h";</xsl:if>			
 			</xsl:otherwise>
 		</xsl:choose>
@@ -379,7 +379,7 @@
 				<xsl:with-param name="value" select="@arrayType"/>
 			</xsl:call-template>
 		</xsl:variable>
-		<xsl:if test="$type = 'NSMutableArray*' or (contains($type, '*') and not(starts-with($type, 'NS')))">
+		<xsl:if test="$type = 'NSMutableArray*' or (contains($type, '*') and $type = 'id' and not(starts-with($type, 'NS')))">
 #import "<xsl:value-of select="substring-before($type, '*')"/>.h";</xsl:if></xsl:template>
 	
 	<xsl:template match="s:complexType" mode="import_reference">
@@ -664,11 +664,11 @@
 				<xsl:when test="$declaredType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
 				<xsl:when test="$declaredType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
-				<xsl:when test="$declaredType = ''">[Soap objectFromNode: child];</xsl:when>
+				<xsl:when test="$declaredType = '' or $declaredType = 'id'">[Soap objectFromNode: child];</xsl:when>
 				<xsl:otherwise>[<xsl:value-of select="substring-before($declaredType, '*')"/> newWithNode: child];</xsl:otherwise>
 			</xsl:choose>
 			<xsl:choose>
-				<xsl:when test="contains($declaredType, '*') and not(starts-with($declaredType, 'NS'))">
+				<xsl:when test="$declaredType != 'id' and contains($declaredType, '*') and not(starts-with($declaredType, 'NS'))">
 			if(value != nil) {
 				[items addObject: value];
 			}</xsl:when>
@@ -787,7 +787,7 @@
 		<xsl:if test="@name">
 			<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
 			<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
-			<xsl:if test="contains($type,'*')">
+			<xsl:if test="contains($type,'*') or $type = 'id'">
 		if(self.<xsl:value-of select="$name"/> != nil) { [self.<xsl:value-of select="$name"/> release]; }</xsl:if></xsl:if>
 	</xsl:template>
 
@@ -877,6 +877,8 @@
 							<xsl:when test="$type = 'date'">NSDate*</xsl:when>
 							<xsl:when test="$type = 'time'">NSDate*</xsl:when>
 							<xsl:when test="$type = 'base64Binary'">NSData*</xsl:when>
+							<xsl:when test="$type = 'anyType'">id</xsl:when>
+							<xsl:when test="$type = 'anyURI'">id</xsl:when>
 							<xsl:otherwise>
 								<xsl:choose>
 									<xsl:when test="$type = ''">

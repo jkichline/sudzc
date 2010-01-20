@@ -7,6 +7,7 @@
 
 #import "TouchXML.h"
 #import "SoapArray.h"
+#import "SoapDictionary.h"
 #import "SoapDelegate.h"
 #import "SoapFault.h"
 #import "SoapHandler.h"

@@ -65,7 +65,7 @@
 
 #import "<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.h"
 			<xsl:call-template name="imports"/>
-			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="import">
+			<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="import_reference">
 				<xsl:sort select="count(descendant::s:element[substring-before(@type, ':') != 's'])"/>
 			</xsl:apply-templates>
 

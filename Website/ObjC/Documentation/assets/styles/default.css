@@ -4,11 +4,11 @@
 }
 
 #content {
-	margin-left:30pt;
+	margin:30pt;
 }
 
 h1 {
-  margin-top: 30pt;
+  margin-top: 0;
   font-size: 24pt;
 }
 

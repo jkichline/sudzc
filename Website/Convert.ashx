@@ -86,13 +86,16 @@ public class Convert : IHttpHandler {
 			if(this.IsPackage(outputDoc)) {
 
 			// Create a temporary directory
-				string tempPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+				
 				string wsdlPath = null;
-				if(temp == null) {
+				if (temp == null) {
+					string tempPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
 					temp = new DirectoryInfo(tempPath);
 					temp.Create();
 					wsdlPath = Path.Combine(tempPath, "WSDL");
 					Directory.CreateDirectory(wsdlPath);
+				} else {
+					wsdlPath = Path.Combine(temp.FullName, "WSDL");
 				}
 
 				// Outputs the files into the temp directory

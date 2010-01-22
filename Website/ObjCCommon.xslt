@@ -1098,6 +1098,8 @@
 	<head>
 		<title><xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/></title>
 		<link rel="stylesheet" type="text/css" href="../assets/styles/default.css"/>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
 	</head>
 	<body id="content">
 		<h1><xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> Class Reference</h1>
@@ -1117,8 +1119,7 @@
 		<xsl:variable name="return"><xsl:apply-templates select="wsdl:output" mode="object_type"/></xsl:variable>
 		<xsl:variable name="link">
 			<xsl:choose>
-				<xsl:when test="starts-with($return, 'NS')"><a><xsl:attribute name="href">http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/<xsl:value-of select="substring-before($return, '*')"/>_Class/index.html</xsl:attribute><xsl:value-of select="$return"/></a></xsl:when>
-				<xsl:when test="contains($return, '*')"><a><xsl:attribute name="href"><xsl:value-of select="substring-before($return, '*')"/>.html</xsl:attribute><xsl:value-of select="$return"/></a></xsl:when>
+				<xsl:when test="starts-with($return, $shortns) and contains($return, '*')"><a><xsl:attribute name="href"><xsl:value-of select="substring-before($return, '*')"/>.html</xsl:attribute><xsl:value-of select="$return"/></a></xsl:when>
 				<xsl:otherwise><xsl:value-of select="$return"/></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -1155,6 +1156,8 @@
 					<head>
 						<title><xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> Class Reference</title>
 						<link rel="stylesheet" type="text/css" href="../assets/styles/default.css"/>
+						<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+						<script type="text/javascript" src="../assets/scripts/base.js"></script>
 					</head>
 					<body id="content">
 						<h1><xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> Class Reference</h1>
@@ -1185,8 +1188,7 @@
 			</xsl:variable>
 			<xsl:variable name="link">
 				<xsl:choose>
-					<xsl:when test="starts-with($type, 'NS')"><a><xsl:attribute name="href">http://developer.apple.com/iphone/library/documentation/Cocoa/Reference/Foundation/Classes/<xsl:value-of select="substring-before($type, '*')"/>_Class/index.html"></xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
-					<xsl:when test="contains($type, '*')"><a><xsl:attribute name="href"><xsl:value-of select="substring-before($type, '*')"/>.html</xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
+					<xsl:when test="starts-with($type, $shortns) and contains($type, '*')"><a><xsl:attribute name="href"><xsl:value-of select="substring-before($type, '*')"/>.html</xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
 					<xsl:otherwise><xsl:value-of select="concat($type, ' ')"/></xsl:otherwise>
 				</xsl:choose>
 			</xsl:variable>
@@ -1235,8 +1237,7 @@
 		<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
 		<xsl:variable name="link">
 			<xsl:choose>
-				<xsl:when test="starts-with($type, 'NS')"><a><xsl:attribute name="href">http://developer.apple.com/iphone/library/documentation/Cocoa/Reference/Foundation/Classes/<xsl:value-of select="substring-before($type, '*')"/>_Class/index.html"></xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
-				<xsl:when test="contains($type, '*')"><a><xsl:attribute name="href">classes/<xsl:value-of select="substring-before($type, '*')"/>.html</xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
+				<xsl:when test="starts-with($type, $shortns) and contains($type, '*')"><a><xsl:attribute name="href">classes/<xsl:value-of select="substring-before($type, '*')"/>.html</xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
 				<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -1251,7 +1252,7 @@
 				<head>
 					<title><xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> Documentation</title>
 				</head>
-				<frameset cols="30%,70%">
+				<frameset cols="25%,75%">
 					<frame name="toc"><xsl:attribute name="src">toc/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute></frame>
 					<frame name="content"><xsl:attribute name="src">classes/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute></frame>
 				</frameset>

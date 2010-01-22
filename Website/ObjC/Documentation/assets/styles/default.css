@@ -7,29 +7,29 @@ body #content {
 	margin-left:24pt;
 }
 
-#content h1 {
+h1 {
   margin-top: 30pt;
   font-size: 24pt;
 }
 
-#content h2 {
+h2 {
   margin-top: 30pt;
   font-size: 18pt;
   border: solid 1px #999;
   border-width: 0 0 1px 0;
 }
 
-#content h3 {
+h3 {
   margin-top: 14pt;
   margin-bottom: 6pt;
   font-size: 14pt;
 }
 
-#content h4 {
+h4 {
   margin-bottom: 0;
 }
 
-#content code {
+code {
   font-family: Monaco, monospace;
   font-size: 8pt;
 }

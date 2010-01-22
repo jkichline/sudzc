@@ -98,3 +98,9 @@ a:visited {
   list-style-image: url(../images/arrow.png);
   margin:0;
 }
+
+#footer {
+	margin-top:30pt;
+	border:solid 0px #999;
+	border-top: 1px;
+}

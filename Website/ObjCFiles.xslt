@@ -30,6 +30,7 @@
 		<package>
 			<xsl:attribute name="name"><xsl:value-of select="$serviceName"/>.iPhone</xsl:attribute>
 			<folder copy="ObjC/Soap"/>
+			<folder copy="ObjC/Documentation"/>
 			<folder copy="ObjC/TouchXML"/>
 			<include copy="ObjC/HOWTO.rtf"/>
 			<include copy="ObjC/README.rtf"/>
@@ -80,6 +81,12 @@
 
 		<!-- Implementation for complex objects -->
 		<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="implementation">
+			<xsl:sort select="position()" order="descending"/>
+		</xsl:apply-templates>
+
+		<!-- Create Documentation -->
+		<xsl:call-template name="createDocumentation"><xsl:with-param name="service" select="wsdl:service"/></xsl:call-template>
+		<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="documentation">
 			<xsl:sort select="position()" order="descending"/>
 		</xsl:apply-templates>
 		

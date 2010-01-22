@@ -100,8 +100,12 @@ public class Convert : IHttpHandler {
 				
 				// Output the WSDL to the temp directory
 				string wsdlFilename = wsdl.Substring(wsdl.LastIndexOf("/") + 1);
-				wsdlFilename = wsdlFilename.Substring(0, wsdlFilename.LastIndexOf("?"));
-				wsdlFilename = wsdlFilename.Substring(0, wsdlFilename.LastIndexOf("."));
+				if (wsdlFilename.Contains("?")) {
+					wsdlFilename = wsdlFilename.Substring(0, wsdlFilename.LastIndexOf("?"));
+				}
+				if (wsdlFilename.Contains(".")) {
+					wsdlFilename = wsdlFilename.Substring(0, wsdlFilename.LastIndexOf("."));
+				}
 				wsdlDocument.Save(Path.Combine(wsdlPath, wsdlFilename + ".wsdl"));
 
 			} else {
@@ -201,7 +205,7 @@ public class Convert : IHttpHandler {
 					file = new FileInfo(filePath);
 					if (file.Directory.Exists == false) { file.Directory.Create(); }
 					StreamWriter fs = file.CreateText();
-					fs.Write(child.InnerText);
+					fs.Write(child.InnerXml);
 					fs.Flush();
 					fs.Close();
 					break;

@@ -1089,5 +1089,156 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+	
+	<!-- CREATE DOCUMENTATION -->
+	<xsl:template name="createDocumentation">
+		<xsl:param name="service"/>
+		<file>
+			<xsl:attribute name="filename">Documentation/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute><html>
+	<head>
+		<title><xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/></title>
+		<link rel="stylesheet" type="text/css" href="assets/styles/default.css"/>
+	</head>
+	<body>
+		<h1><xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> Class Reference</h1>
+		<p>The implementation classes and methods for the <xsl:value-of select="$serviceName"/> web service.</p>
+		<p>Inherits from <a href="framework/SoapService.html">SoapService</a>.</p>
+		<h2>Properties</h2>
+		
+		<h2>Instance Methods</h2>
+		<xsl:apply-templates select="$portType/wsdl:operation" mode="documentation"/>
+	</body>
+</html></file>
+	</xsl:template>
+
+	<xsl:template match="wsdl:operation" mode="documentation">
+		<xsl:variable name="return"><xsl:apply-templates select="wsdl:output" mode="object_type"/></xsl:variable>
+		<xsl:variable name="link">
+			<xsl:choose>
+				<xsl:when test="starts-with($return, 'NS')"><a><xsl:attribute name="href">http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/<xsl:value-of select="substring-before($return, '*')"/>_Class/index.html</xsl:attribute><xsl:value-of select="$return"/></a></xsl:when>
+				<xsl:when test="contains($return, '*')"><a><xsl:attribute name="href">classes/<xsl:value-of select="substring-before($return, '*')"/>.html</xsl:attribute><xsl:value-of select="$return"/></a></xsl:when>
+				<xsl:otherwise><xsl:value-of select="$return"/></xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<h3><xsl:value-of select="@name"/>:<xsl:apply-templates select="wsdl:input" mode="param_signature"/></h3>
+		<p>
+			<xsl:value-of select="wsdl:documentation"/>
+			Returns <xsl:copy-of select="$link"/> to the designated <a href="framework/SoapDelegate.html">SoapDelegate</a>.
+		</p>
+		<code>- (<a href="framework/SoapRequest.html">SoapRequest*</a>) <xsl:value-of select="@name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="wsdl:input" mode="param_documentation"/></code>
+		
+		<h3><xsl:value-of select="@name"/>:action:<xsl:apply-templates select="wsdl:input" mode="param_signature"/></h3>
+		<p>
+			<xsl:value-of select="wsdl:documentation"/>
+			Returns <xsl:copy-of select="$link"/> to the specified target/action receiver.
+		</p>
+		<code>- (<a href="framework/SoapRequest.html">SoapRequest*</a>) <xsl:value-of select="@name"/>: (id) target action: (SEL) action<xsl:apply-templates select="wsdl:input" mode="param_documentation"/>;</code>
+		
+	</xsl:template>
+	
+	
+	<!-- DOCUMENT CLASSES -->
+	<xsl:template match="s:complexType" mode="documentation">
+		<xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
+			<xsl:variable name="baseClass">
+				<xsl:choose>
+					<xsl:when test="s:annotation/s:appinfo[mss:IsDictionary = 'true']">SoapDictionary</xsl:when>
+					<xsl:when test="(count(*)=1) and (s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType])">SoapArray</xsl:when>
+					<xsl:otherwise>SoapObject</xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
+			<file>
+				<xsl:attribute name="filename">Documentation/classes/<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>.html</xsl:attribute>
+				<html>
+					<head>
+						<title><xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> Class Reference</title>
+						<link rel="stylesheet" type="text/css" href="../assets/styles/default.css"/>
+					</head>
+					<body>
+						<h1><xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> Class Reference</h1>
+						<p>
+							The definition of properties and methods for the <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> object.
+							<xsl:value-of select="wsdl:documentation"/>
+						</p>
+						<p>
+							Inherits from the <a href="../framework/{$baseClass}.html"><xsl:value-of select="$baseClass"/></a> base class.
+						</p>
+
+						<h2>Properties</h2>
+						<p>For more about Objective-C properties, see <span class="content_text"><a href="http://developer.apple.com/iphone/library/documentation/Cocoa/Conceptual/ObjectiveC/Articles/ocProperties.html#//apple_ref/doc/uid/TP30001163-CH17" target="_top">&#8220;Properties&#8221;</a></span> in <em><a href="http://developer.apple.com/iphone/library/documentation/Cocoa/Conceptual/ObjectiveC/index.html#//apple_ref/doc/uid/TP30001163" target="_top">The Objective-C Programming Language</a></em>.</p>
+						<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="documentation_properties"/>
+					</body>
+				</html>
+			</file>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="s:element|s:attribute" mode="documentation_properties">
+		<xsl:if test="@name">
+			<xsl:variable name="type">
+				<xsl:call-template name="getType">
+					<xsl:with-param name="value" select="@type"/>
+					<xsl:with-param name="defaultType">id</xsl:with-param>
+				</xsl:call-template>
+			</xsl:variable>
+			<xsl:variable name="link">
+				<xsl:choose>
+					<xsl:when test="starts-with($type, 'NS')"><a><xsl:attribute name="href">http://developer.apple.com/iphone/library/documentation/Cocoa/Reference/Foundation/Classes/<xsl:value-of select="substring-before($type, '*')"/>_Class/index.html"></xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
+					<xsl:when test="contains($type, '*')"><a><xsl:attribute name="href"><xsl:value-of select="substring-before($type, '*')"/>.html</xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
+					<xsl:otherwise><xsl:value-of select="concat($type, ' ')"/></xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
+			<h3><xsl:value-of select="@name"/></h3>
+			<xsl:if test="wsdl:documentation">
+				<p><xsl:value-of select="wsdl:documentation"/></p>
+			</xsl:if>
+			<code>@property <xsl:if test="contains($type, '*') or $type = 'id'">(retain, nonatomic) </xsl:if><xsl:copy-of select="$link"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></code>
+		</xsl:if>
+	</xsl:template>
+	
+	
+	<!-- DOCUMENT SELECTORS -->
+	
+		<xsl:template match="wsdl:input|wsdl:output|wsdl:fault" mode="param_signature">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_signature"/></xsl:when>
+			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_signature"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="s:element|wsdl:part" mode="param_signature">
+		<xsl:value-of select="@name"/>:
+	</xsl:template>
+	
+	<xsl:template match="wsdl:input|wsdl:output|wsdl:fault" mode="param_documentation">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_documentation"/></xsl:when>
+			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_documentation"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="s:element|wsdl:part" mode="param_documentation">
+		<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
+		<xsl:variable name="link">
+			<xsl:choose>
+				<xsl:when test="starts-with($type, 'NS')"><a><xsl:attribute name="href">http://developer.apple.com/iphone/library/documentation/Cocoa/Reference/Foundation/Classes/<xsl:value-of select="substring-before($type, '*')"/>_Class/index.html"></xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
+				<xsl:when test="contains($type, '*')"><a><xsl:attribute name="href">classes/<xsl:value-of select="substring-before($type, '*')"/>.html</xsl:attribute><xsl:value-of select="$type"/></a><xsl:value-of select="concat('', ' ')"/></xsl:when>
+				<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:value-of select="concat(' ', @name)"/>: (<xsl:copy-of select="$link"/>) <em><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></em>
+	</xsl:template>
 
 </xsl:stylesheet>

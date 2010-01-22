@@ -89,6 +89,6 @@
 		<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="documentation">
 			<xsl:sort select="position()" order="descending"/>
 		</xsl:apply-templates>
-		
+		<xsl:call-template name="createIndex"/>
 	</xsl:template>
 </xsl:stylesheet>

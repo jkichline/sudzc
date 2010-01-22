@@ -3,43 +3,47 @@
   font-size: 80%;
 }
 
-h1 {
+body #content {
+	margin-left:24pt;
+}
+
+#content h1 {
   margin-top: 30pt;
   font-size: 24pt;
 }
 
-h2 {
+#content h2 {
   margin-top: 30pt;
   font-size: 18pt;
   border: solid 1px #999;
   border-width: 0 0 1px 0;
 }
 
-h3 {
+#content h3 {
   margin-top: 14pt;
   margin-bottom: 6pt;
   font-size: 14pt;
 }
 
-h4 {
+#content h4 {
   margin-bottom: 0;
 }
 
-code {
+#content code {
   font-family: Monaco, monospace;
   font-size: 8pt;
 }
 
-dt {
+#content dt {
   font-style: italic;
 }
 
-dd {
+#content dd {
   margin-left: 12pt;
   margin-bottom: 6pt;
 }
 
-ul li {
+#content ul li {
   font-family: Monaco, monospace;
   font-size: 9pt;
   list-style: none;  
@@ -56,4 +60,27 @@ a:hover {
 
 a:visited {
   color: #163474;
+}
+
+#toc {
+  background-color: #e6ebf6;
+  margin:0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+#toc dt {
+  background-color: #919cac;
+  font-style: normal;
+  font-weight: bold;
+  color: #FFF;
+  margin: 0;
+  padding: 4pt;
+}
+#toc dd {
+  margin:0;
+}
+#toc ul li {
+  font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+  list-style-image: url(../images/arrow.png);
+  margin:0;
 }

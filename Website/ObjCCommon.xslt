@@ -1094,15 +1094,15 @@
 	<xsl:template name="createDocumentation">
 		<xsl:param name="service"/>
 		<file>
-			<xsl:attribute name="filename">Documentation/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute><html>
+			<xsl:attribute name="filename">Documentation/classes/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute><html>
 	<head>
 		<title><xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/></title>
-		<link rel="stylesheet" type="text/css" href="assets/styles/default.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/styles/default.css"/>
 	</head>
-	<body>
+	<body id="content">
 		<h1><xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> Class Reference</h1>
 		<p>The implementation classes and methods for the <xsl:value-of select="$serviceName"/> web service.</p>
-		<p>Inherits from <a href="framework/SoapService.html">SoapService</a>.</p>
+		<p>Inherits from <a href="../framework/SoapService.html">SoapService</a>.</p>
 		<h2>Properties</h2>
 		
 		<h2>Instance Methods</h2>
@@ -1116,23 +1116,23 @@
 		<xsl:variable name="link">
 			<xsl:choose>
 				<xsl:when test="starts-with($return, 'NS')"><a><xsl:attribute name="href">http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/<xsl:value-of select="substring-before($return, '*')"/>_Class/index.html</xsl:attribute><xsl:value-of select="$return"/></a></xsl:when>
-				<xsl:when test="contains($return, '*')"><a><xsl:attribute name="href">classes/<xsl:value-of select="substring-before($return, '*')"/>.html</xsl:attribute><xsl:value-of select="$return"/></a></xsl:when>
+				<xsl:when test="contains($return, '*')"><a><xsl:attribute name="href"><xsl:value-of select="substring-before($return, '*')"/>.html</xsl:attribute><xsl:value-of select="$return"/></a></xsl:when>
 				<xsl:otherwise><xsl:value-of select="$return"/></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<h3><xsl:value-of select="@name"/>:<xsl:apply-templates select="wsdl:input" mode="param_signature"/></h3>
 		<p>
 			<xsl:value-of select="wsdl:documentation"/>
-			Returns <xsl:copy-of select="$link"/> to the designated <a href="framework/SoapDelegate.html">SoapDelegate</a>.
+			Returns <xsl:copy-of select="$link"/> to the designated <a href="../framework/SoapDelegate.html">SoapDelegate</a>.
 		</p>
-		<code>- (<a href="framework/SoapRequest.html">SoapRequest*</a>) <xsl:value-of select="@name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="wsdl:input" mode="param_documentation"/></code>
+		<code>- (<a href="../framework/SoapRequest.html">SoapRequest*</a>) <xsl:value-of select="@name"/>: (id &lt;SoapDelegate&gt;) handler<xsl:apply-templates select="wsdl:input" mode="param_documentation"/></code>
 		
 		<h3><xsl:value-of select="@name"/>:action:<xsl:apply-templates select="wsdl:input" mode="param_signature"/></h3>
 		<p>
 			<xsl:value-of select="wsdl:documentation"/>
 			Returns <xsl:copy-of select="$link"/> to the specified target/action receiver.
 		</p>
-		<code>- (<a href="framework/SoapRequest.html">SoapRequest*</a>) <xsl:value-of select="@name"/>: (id) target action: (SEL) action<xsl:apply-templates select="wsdl:input" mode="param_documentation"/>;</code>
+		<code>- (<a href="../framework/SoapRequest.html">SoapRequest*</a>) <xsl:value-of select="@name"/>: (id) target action: (SEL) action<xsl:apply-templates select="wsdl:input" mode="param_documentation"/>;</code>
 		
 	</xsl:template>
 	
@@ -1154,7 +1154,7 @@
 						<title><xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> Class Reference</title>
 						<link rel="stylesheet" type="text/css" href="../assets/styles/default.css"/>
 					</head>
-					<body>
+					<body id="content">
 						<h1><xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> Class Reference</h1>
 						<p>
 							The definition of properties and methods for the <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> object.
@@ -1239,6 +1239,76 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:value-of select="concat(' ', @name)"/>: (<xsl:copy-of select="$link"/>) <em><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></em>
+	</xsl:template>
+
+	<!-- CREATE DOCUMENTATION -->
+	<xsl:template name="createIndex">
+		<file>
+			<xsl:attribute name="filename">Documentation/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute>
+			<html>
+				<head>
+					<title><xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> Documentation</title>
+				</head>
+				<frameset cols="30%,70%">
+					<frame name="toc"><xsl:attribute name="src">toc/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute></frame>
+					<frame name="content"><xsl:attribute name="src">classes/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute></frame>
+				</frameset>
+			</html>
+		</file>
+		<file>
+			<xsl:attribute name="filename">Documentation/toc/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute>
+			<html>
+				<head>
+					<title>Table of Contents</title>
+					<link rel="stylesheet" type="text/css" href="../assets/styles/default.css"/>
+				</head>
+				<body id="toc">
+					<dl>
+						<dt>Services</dt>
+						<dd>
+							<ul>
+								<li><a target="content"><xsl:attribute name="href">../classes/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute><xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/></a></li>
+							</ul>
+						</dd>
+						<dt>Classes</dt>
+						<dd>
+							<ul>
+								<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="documentation_index">
+									<xsl:sort select="@name" order="ascending"/>
+								</xsl:apply-templates>
+							</ul>
+						</dd>
+						<dt>Framework</dt>
+						<dd>
+							<ul>
+								<li><a target="content" href="../framework/Soap.html">Soap</a></li>
+								<li><a target="content" href="../framework/SoapArray.html">SoapArray</a></li>
+								<li><a target="content" href="../framework/SoapDelegate.html">SoapDelegate</a></li>
+								<li><a target="content" href="../framework/SoapDictionary.html">SoapDictionary</a></li>
+								<li><a target="content" href="../framework/SoapFault.html">SoapFault</a></li>
+								<li><a target="content" href="../framework/SoapHandler.html">SoapHandler</a></li>
+								<li><a target="content" href="../framework/SoapNil.html">SoapNil</a></li>
+								<li><a target="content" href="../framework/SoapObject.html">SoapObject</a></li>
+								<li><a target="content" href="../framework/SoapParameter.html">SoapParameter</a></li>
+								<li><a target="content" href="../framework/SoapReachability.html">SoapReachability</a></li>
+								<li><a target="content" href="../framework/SoapRequest.html">SoapRequest</a></li>
+								<li><a target="content" href="../framework/SoapService.html">SoapService</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</body>
+			</html>
+		</file>
+	</xsl:template>
+
+	<xsl:template match="s:complexType" mode="documentation_index">
+		<li>
+			<a target="content">
+				<xsl:attribute name="href">../classes/<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>.html</xsl:attribute>
+				<xsl:attribute name="title"><xsl:value-of select="wsdl:documentation"/></xsl:attribute>
+				<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>
+			</a>
+		</li>
 	</xsl:template>
 
 </xsl:stylesheet>

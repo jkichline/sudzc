@@ -127,7 +127,7 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_selectors"/></xsl:when>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_selectors"/></xsl:when>
 			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_selectors"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -146,7 +146,7 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_names"/></xsl:when>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_names"/></xsl:when>
 			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_names"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -165,7 +165,7 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_array"/></xsl:when>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_array"/></xsl:when>
 			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_array"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -234,7 +234,7 @@
 			<xsl:when test="$type = 'NSDecimalNumber*'">[NSString stringWithFormat: @"%@", <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSDate*'">[Soap getDateString: <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'NSData*'">[Soap getBase64String: <xsl:value-of select="$name"/>]</xsl:when>
-			<xsl:when test="$type = 'NSMutableArray*'">[<xsl:value-of select="$shortns"/><xsl:value-of select="$xsdType"/> serialize: <xsl:value-of select="$name"/>]</xsl:when>
+			<xsl:when test="$type = 'NSMutableArray*' or $type = 'NSMutableDictionary*'">[<xsl:value-of select="$shortns"/><xsl:value-of select="$xsdType"/> serialize: <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:when test="$type = 'id' or $type = 'nil'">[Soap serialize: <xsl:value-of select="$name"/>]</xsl:when>
 			<xsl:otherwise>[<xsl:value-of select="$name"/> serialize: @"<xsl:value-of select="$serializeName"/>"]</xsl:otherwise>
 		</xsl:choose>
@@ -277,7 +277,7 @@
 		</xsl:variable>
 		<xsl:variable name="deserializer">
 			<xsl:choose>
-				<xsl:when test="$type = 'NSMutableArray*'"><xsl:value-of select="$shortns"/><xsl:value-of select="$originalType"/></xsl:when>
+				<xsl:when test="$type = 'NSMutableArray*' or $type = 'NSMutableDictionary*'"><xsl:value-of select="$shortns"/><xsl:value-of select="$originalType"/></xsl:when>
 				<xsl:when test="contains($type, '*')"><xsl:value-of select="substring-before($type, '*')"/></xsl:when>
 				<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
 			</xsl:choose>
@@ -358,7 +358,7 @@
 				<xsl:with-param name="value" select="@type"/>
 			</xsl:call-template>
 		</xsl:variable>
-		<xsl:if test="$type = 'NSMutableArray*' or (contains($type, '*') and $type != 'id' and not(starts-with($type, 'NS')))">
+		<xsl:if test="$type = 'NSMutableArray*' or $type = 'NSMutableDictionary*' or (contains($type, '*') and $type != 'id' and not(starts-with($type, 'NS')))">
 @class <xsl:value-of select="$shortns"/><xsl:value-of select="substring-after(@type, ':')"/>;</xsl:if></xsl:template>
 	
 	<xsl:template match="s:element" mode="import_reference">
@@ -368,7 +368,7 @@
 			</xsl:call-template>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$type = 'NSMutableArray*'">
+			<xsl:when test="$type = 'NSMutableArray*' or $type = 'NSMutableDictionary*'">
 #import "<xsl:call-template name="getArrayType"><xsl:with-param name="value" select="@type"/></xsl:call-template>.h";</xsl:when>
 			<xsl:otherwise>
 				<xsl:if test="contains($type, '*') and $type != 'id' and not(starts-with($type, 'NS'))">
@@ -383,7 +383,7 @@
 				<xsl:with-param name="value" select="@arrayType"/>
 			</xsl:call-template>
 		</xsl:variable>
-		<xsl:if test="$type = 'NSMutableArray*' or (contains($type, '*') and $type = 'id' and not(starts-with($type, 'NS')))">
+		<xsl:if test="$type = 'NSMutableArray*' or $type = 'NSMutableDictionary*' or (contains($type, '*') and $type = 'id' and not(starts-with($type, 'NS')))">
 #import "<xsl:value-of select="substring-before($type, '*')"/>.h";</xsl:if></xsl:template>
 	
 	<xsl:template match="s:complexType" mode="import_reference">
@@ -694,44 +694,45 @@
 
 	- (NSMutableDictionary*) initWithNode: (CXMLNode*) node
 	{
-		[super initWithNode: node];
-		self.items = [[NSMutableDictionary alloc] init];
-		if(node == nil) { return self.items; }
-		for(CXMLElement* child in [node children])
-		{
-			<xsl:value-of select="$keyObjectType"/> key = <xsl:choose>
-				<xsl:when test="$keyType = 'NSString*'">[child stringValue];</xsl:when>
-				<xsl:when test="$keyType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
-				<xsl:when test="$keyType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
-				<xsl:when test="$keyType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
-				<xsl:when test="$keyType = 'char'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
-				<xsl:when test="$keyType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
-				<xsl:when test="$keyType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
-				<xsl:when test="$keyType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
-				<xsl:when test="$keyType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
-				<xsl:when test="$keyType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
-				<xsl:when test="$keyType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
-				<xsl:when test="$keyType = '' or $keyType = 'id'">[Soap objectFromNode: child];</xsl:when>
-				<xsl:otherwise>[<xsl:value-of select="substring-before($keyObjectType, '*')"/> newWithNode: child];</xsl:otherwise>
-			</xsl:choose>
-			
-			<xsl:value-of select="$valueObjectType"/> value = <xsl:choose>
-				<xsl:when test="$valueType = 'NSString*'">[child stringValue];</xsl:when>
-				<xsl:when test="$valueType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
-				<xsl:when test="$valueType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
-				<xsl:when test="$valueType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
-				<xsl:when test="$valueType = 'char'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
-				<xsl:when test="$valueType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
-				<xsl:when test="$valueType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
-				<xsl:when test="$valueType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
-				<xsl:when test="$valueType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
-				<xsl:when test="$valueType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
-				<xsl:when test="$valueType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
-				<xsl:when test="$valueType = '' or $valueType = 'id'">[Soap objectFromNode: child];</xsl:when>
-				<xsl:otherwise>[<xsl:value-of select="substring-before($valueObjectType, '*')"/> newWithNode: child];</xsl:otherwise>
-			</xsl:choose>
-			if(value != nil) {
-				[self.items setObject: value forKey: key];
+		if(self = [super init]) {
+			self.items = [[NSMutableDictionary alloc] init];
+			if(node == nil) { return self.items; }
+			for(CXMLElement* child in [node children])
+			{
+				<xsl:value-of select="$keyObjectType"/> key = <xsl:choose>
+					<xsl:when test="$keyType = 'NSString*'">[child stringValue];</xsl:when>
+					<xsl:when test="$keyType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
+					<xsl:when test="$keyType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
+					<xsl:when test="$keyType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
+					<xsl:when test="$keyType = 'char'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
+					<xsl:when test="$keyType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
+					<xsl:when test="$keyType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
+					<xsl:when test="$keyType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
+					<xsl:when test="$keyType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
+					<xsl:when test="$keyType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
+					<xsl:when test="$keyType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
+					<xsl:when test="$keyType = '' or $keyType = 'id'">[Soap objectFromNode: child];</xsl:when>
+					<xsl:otherwise>[<xsl:value-of select="substring-before($keyObjectType, '*')"/> newWithNode: child];</xsl:otherwise>
+				</xsl:choose>
+				
+				<xsl:value-of select="$valueObjectType"/> value = <xsl:choose>
+					<xsl:when test="$valueType = 'NSString*'">[child stringValue];</xsl:when>
+					<xsl:when test="$valueType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
+					<xsl:when test="$valueType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
+					<xsl:when test="$valueType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
+					<xsl:when test="$valueType = 'char'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
+					<xsl:when test="$valueType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
+					<xsl:when test="$valueType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
+					<xsl:when test="$valueType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
+					<xsl:when test="$valueType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
+					<xsl:when test="$valueType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
+					<xsl:when test="$valueType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
+					<xsl:when test="$valueType = '' or $valueType = 'id'">[Soap objectFromNode: child];</xsl:when>
+					<xsl:otherwise>[<xsl:value-of select="substring-before($valueObjectType, '*')"/> newWithNode: child];</xsl:otherwise>
+				</xsl:choose>
+				if(value != nil) {
+					[self.items setObject: value forKey: key];
+				}
 			}
 		}
 		return self.items;

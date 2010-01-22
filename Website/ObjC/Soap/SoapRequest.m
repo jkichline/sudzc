@@ -130,6 +130,7 @@
 // Called when the HTTP request fails.
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[conn release];
+	conn = nil;
 	[self.receivedData release];
 	[self handleError:error];
 }
@@ -187,6 +188,7 @@
 	[self.handler release];
 	[doc release];
 	[conn release];
+	conn = nil;
 	[self.receivedData release];
 }
 
@@ -208,6 +210,7 @@
 	if(conn == nil) { return NO; }
 	[conn cancel];
 	[conn release];
+	conn = nil;
 	return YES;
 }
 

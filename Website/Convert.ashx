@@ -65,7 +65,8 @@ public class Convert : IHttpHandler {
 			string wsdl = this.getAbsoluteUrl(context, item);
 
 			// Converts the WSDL to output
-			string output = this.ConvertWsdlToXmlString(wsdl);
+			XmlDocument wsdlDocument;
+			string output = this.ConvertWsdlToXmlString(wsdl, out wsdlDocument);
 		
 			// See if the output is an XML document
 			XmlDocument outputDoc = new XmlDocument();
@@ -85,13 +86,23 @@ public class Convert : IHttpHandler {
 			if(this.IsPackage(outputDoc)) {
 
 			// Create a temporary directory
+				string tempPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+				string wsdlPath = null;
 				if(temp == null) {
-					temp = new DirectoryInfo(Path.Combine(Path.GetTempPath(), Path.GetRandomFileName()));
+					temp = new DirectoryInfo(tempPath);
 					temp.Create();
+					wsdlPath = Path.Combine(tempPath, "WSDL");
+					Directory.CreateDirectory(wsdlPath);
 				}
 
 				// Outputs the files into the temp directory
 				lastPackageName = this.OutputFilesToDirectory(outputDoc, temp);
+				
+				// Output the WSDL to the temp directory
+				string wsdlFilename = wsdl.Substring(wsdl.LastIndexOf("/") + 1);
+				wsdlFilename = wsdlFilename.Substring(0, wsdlFilename.LastIndexOf("?"));
+				wsdlFilename = wsdlFilename.Substring(0, wsdlFilename.LastIndexOf("."));
+				wsdlDocument.Save(Path.Combine(wsdlPath, wsdlFilename + ".wsdl"));
 
 			} else {
 				// Get a string version of the output
@@ -213,13 +224,18 @@ public class Convert : IHttpHandler {
 	}
 
 	public string ConvertWsdlToXmlString(string wsdl) {
+		XmlDocument wsdlDocument;
+		return this.ConvertWsdlToXmlString(wsdl, out wsdlDocument);
+	}
+
+	public string ConvertWsdlToXmlString(string wsdl, out XmlDocument doc) {
 		// Authentication parameters
 		string username = context.Request["username"];
 		string password = context.Request["password"];
 		string domain = context.Request["domain"];
 		
 		// Create the document
-		XmlDocument doc = new XmlDocument();
+		doc = new XmlDocument();
 		
 		// Set a resolver for authentication username and/or password
 		if (String.IsNullOrEmpty(username) == false || String.IsNullOrEmpty(password) == false) {

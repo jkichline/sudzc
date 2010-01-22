@@ -1106,7 +1106,9 @@
 		<h2>Properties</h2>
 		
 		<h2>Instance Methods</h2>
-		<xsl:apply-templates select="$portType/wsdl:operation" mode="documentation"/>
+		<xsl:apply-templates select="$portType/wsdl:operation" mode="documentation">
+			<xsl:sort select="@name" order="ascending"/>
+		</xsl:apply-templates>
 	</body>
 </html></file>
 	</xsl:template>

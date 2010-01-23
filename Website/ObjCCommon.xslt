@@ -53,6 +53,9 @@
 		<xsl:param name="service"/>
 @interface <xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> : SoapService
 		<xsl:apply-templates select="$portType/wsdl:operation" mode="interface"/>
+		
+	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>*) service;
+	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>*) serviceWithUsername: (NSString*) username andPassword: (NSString*) password;
 @end
 	</xsl:template>
 	
@@ -72,6 +75,20 @@
 			self.logging = NO;
 		}
 		return self;
+	}
+	
+	- (id) initWithUsername: (NSString*) username andPassword: (NSString*) password {
+		if(self = [super initWithUsername:username andPassword:password]) {
+		}
+		return self;
+	}
+	
+	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>*) service {
+		return [<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> serviceWithUsername:nil andPassword:nil];
+	}
+	
+	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>*) serviceWithUsername: (NSString*) username andPassword: (NSString*) password {
+		return [[[<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> alloc] initWithUsername:username andPassword:password] autorelease];
 	}
 
 		<xsl:apply-templates select="$portType/wsdl:operation" mode="implementation"/>
@@ -110,7 +127,7 @@
 		{
 		NSMutableArray* _params = [NSMutableArray array];
 		<xsl:apply-templates select="wsdl:input" mode="param_array"/>
-		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace withParameters: _params withHeaders: headers];
+		NSString* _envelope = [Soap createEnvelope: @"<xsl:value-of select="@name"/>" forNamespace: self.namespace withParameters: _params withHeaders: self.headers];
 		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"<xsl:value-of select="$action"/>" postData: _envelope deserializeTo: <xsl:value-of select="$deserializeTo"/>];
 		[_request send];
 		return _request;
@@ -127,7 +144,7 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_selectors"/></xsl:when>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_selectors"/></xsl:when>
 			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_selectors"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -146,7 +163,7 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_names"/></xsl:when>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_names"/></xsl:when>
 			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_names"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -165,7 +182,7 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_array"/></xsl:when>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_array"/></xsl:when>
 			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_array"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -571,12 +588,7 @@
 	<xsl:template match="s:complexType" mode="interface_dictionary_internals"><xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
 @interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapDictionary
 {
-	NSMutableDictionary *items;
 }
-	@property (retain, nonatomic) NSMutableDictionary *items;
-	+ (NSMutableDictionary*) newWithNode: (CXMLNode*) node;
-	- (NSMutableDictionary*) initWithNode: (CXMLNode*) node;
-	+ (NSMutableString*) serialize: (NSDictionary*) array;
 
 @end
 </xsl:if></xsl:template>
@@ -604,12 +616,7 @@
 	<xsl:template match="s:complexType" mode="interface_array_internals"><xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
 @interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapArray
 {
-	NSMutableArray *items;
 }
-	@property (retain, nonatomic) NSMutableArray *items;
-	+ (NSMutableArray*) newWithNode: (CXMLNode*) node;
-	- (NSMutableArray*) initWithNode: (CXMLNode*) node;
-	+ (NSMutableString*) serialize: (NSArray*) array;
 
 @end
 </xsl:if></xsl:template>
@@ -684,19 +691,14 @@
 			
 @implementation <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>
 
-	@synthesize items;
-
-	+ (NSMutableDictionary*) newWithNode: (CXMLNode*) node
+	+ (id) newWithNode: (CXMLNode*) node
 	{
-		if(node == nil) { return nil; }
-		return (NSMutableDictionary*)[[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
+		return [[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
 	}
 
-	- (NSMutableDictionary*) initWithNode: (CXMLNode*) node
+	- (id) initWithNode: (CXMLNode*) node
 	{
-		if(self = [super init]) {
-			self.items = [[NSMutableDictionary alloc] init];
-			if(node == nil) { return self.items; }
+		if(self = [self init]) {
 			for(CXMLElement* child in [node children])
 			{
 				<xsl:value-of select="$keyObjectType"/> key = <xsl:choose>
@@ -731,11 +733,11 @@
 					<xsl:otherwise>[<xsl:value-of select="substring-before($valueObjectType, '*')"/> newWithNode: child];</xsl:otherwise>
 				</xsl:choose>
 				if(value != nil) {
-					[self.items setObject: value forKey: key];
+					[self setObject: value forKey: key];
 				}
 			}
 		}
-		return self.items;
+		return self;
 	}
 	
 	+ (NSMutableString*) serialize: (NSDictionary*) dictionary
@@ -754,12 +756,6 @@
 			</xsl:call-template>];
 		}
 		return s;
-	}
-
-	- (void) dealloc
-	{
-		[items release];
-		[super dealloc];
 	}
 @end
 </xsl:if></xsl:template>
@@ -828,45 +824,41 @@
 			</xsl:variable>
 @implementation <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>
 
-	@synthesize items;
-
-	+ (NSMutableArray*) newWithNode: (CXMLNode*) node
+	+ (id) newWithNode: (CXMLNode*) node
 	{
-		if(node == nil) { return nil; }
-		return (NSMutableArray*)[[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] autorelease] initWithNode: node];
+		return [[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
 	}
 
-	- (NSMutableArray*) initWithNode: (CXMLNode*) node
+	- (id) initWithNode: (CXMLNode*) node
 	{
-		[super initWithNode: node];
-		items = [[NSMutableArray alloc] init];
-		if(node == nil) { return items; }
-		for(CXMLElement* child in [node children])
-		{
-			<xsl:value-of select="$arrayType"/> value = <xsl:choose>
-				<xsl:when test="$declaredType = 'NSString*'">[child stringValue];</xsl:when>
-				<xsl:when test="$declaredType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'char'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
-				<xsl:when test="$declaredType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
-				<xsl:when test="$declaredType = '' or $declaredType = 'id'">[Soap objectFromNode: child];</xsl:when>
-				<xsl:otherwise>[<xsl:value-of select="substring-before($declaredType, '*')"/> newWithNode: child];</xsl:otherwise>
-			</xsl:choose>
-			<xsl:choose>
-				<xsl:when test="$declaredType != 'id' and contains($declaredType, '*') and not(starts-with($declaredType, 'NS'))">
-			if(value != nil) {
-				[items addObject: value];
-			}</xsl:when>
-				<xsl:otherwise>
-			[items addObject: value];</xsl:otherwise></xsl:choose>		
+		if(self = [self init]) {
+			for(CXMLElement* child in [node children])
+			{
+				<xsl:value-of select="$arrayType"/> value = <xsl:choose>
+					<xsl:when test="$declaredType = 'NSString*'">[child stringValue];</xsl:when>
+					<xsl:when test="$declaredType = 'BOOL'">[NSNumber numberWithBool: [[child stringValue] boolValue]];</xsl:when>
+					<xsl:when test="$declaredType = 'int'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
+					<xsl:when test="$declaredType = 'short'">[NSNumber numberWithInt: [[child stringValue] shortValue]];</xsl:when>
+					<xsl:when test="$declaredType = 'char'">[NSNumber numberWithInt: [[child stringValue] intValue]];</xsl:when>
+					<xsl:when test="$declaredType = 'long'">[NSNumber numberWithLong: [[child stringValue] longLongValue]];</xsl:when>
+					<xsl:when test="$declaredType = 'double'">[NSNumber numberWithDouble: [[child stringValue] doubleValue]];</xsl:when>
+					<xsl:when test="$declaredType = 'float'">[NSNumber numberWithFloat: [[child stringValue] floatValue]];</xsl:when>
+					<xsl:when test="$declaredType = 'NSDecimalNumber*'">[NSDecimalNumber decimalNumberWithString: [child stringValue]];</xsl:when>
+					<xsl:when test="$declaredType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
+					<xsl:when test="$declaredType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
+					<xsl:when test="$declaredType = '' or $declaredType = 'id'">[Soap objectFromNode: child];</xsl:when>
+					<xsl:otherwise>[<xsl:value-of select="substring-before($declaredType, '*')"/> newWithNode: child];</xsl:otherwise>
+				</xsl:choose>
+				<xsl:choose>
+					<xsl:when test="$declaredType != 'id' and contains($declaredType, '*') and not(starts-with($declaredType, 'NS'))">
+				if(value != nil) {
+					[self addObject: value];
+				}</xsl:when>
+					<xsl:otherwise>
+				[self addObject: value];</xsl:otherwise></xsl:choose>
+			}
 		}
-		return items;
+		return self;
 	}
 	
 	+ (NSMutableString*) serialize: (NSArray*) array
@@ -880,12 +872,6 @@
 			</xsl:call-template>];
 		}
 		return s;
-	}
-
-	- (void) dealloc
-	{
-		[items release];
-		[super dealloc];
 	}
 @end
 </xsl:if></xsl:template>
@@ -1124,14 +1110,16 @@
 				<xsl:otherwise><xsl:value-of select="$return"/></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<h3><xsl:value-of select="@name"/>:<xsl:apply-templates select="wsdl:input" mode="param_signature"/></h3>
+		<xsl:variable name="signature"><xsl:value-of select="@name"/>:<xsl:apply-templates select="wsdl:input" mode="param_signature"/></xsl:variable>
+		<h3 id="{$signature}"><xsl:value-of select="$signature"/></h3>
 		<p>
 			<xsl:value-of select="wsdl:documentation"/>
 			Returns <xsl:copy-of select="$link"/> to the designated <a href="../framework/SoapDelegate.html">SoapDelegate</a>.
 		</p>
 		<code>- (<a href="../framework/SoapRequest.html">SoapRequest*</a>) <xsl:value-of select="@name"/>: (id &lt;<a href="../framework/SoapDelegate.html">SoapDelegate</a>&gt;) handler<xsl:apply-templates select="wsdl:input" mode="param_documentation"/></code>
 		
-		<h3><xsl:value-of select="@name"/>:action:<xsl:apply-templates select="wsdl:input" mode="param_signature"/></h3>
+		<xsl:variable name="signature2"><xsl:value-of select="@name"/>:action:<xsl:apply-templates select="wsdl:input" mode="param_signature"/></xsl:variable>
+		<h3 id="{$signature2}"><xsl:value-of select="$signature2"/></h3>
 		<p>
 			<xsl:value-of select="wsdl:documentation"/>
 			Returns <xsl:copy-of select="$link"/> to the specified target/action receiver.
@@ -1194,7 +1182,7 @@
 					<xsl:otherwise><xsl:value-of select="concat($type, ' ')"/></xsl:otherwise>
 				</xsl:choose>
 			</xsl:variable>
-			<h3><xsl:value-of select="@name"/></h3>
+			<h3 id="{@name}"><xsl:value-of select="@name"/></h3>
 			<xsl:if test="wsdl:documentation">
 				<p><xsl:value-of select="wsdl:documentation"/></p>
 			</xsl:if>
@@ -1213,7 +1201,7 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_signature"/></xsl:when>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_signature"/></xsl:when>
 			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_signature"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -1230,7 +1218,7 @@
 			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$elementName != ''"><xsl:apply-templates select="(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element)[1]" mode="param_documentation"/></xsl:when>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_documentation"/></xsl:when>
 			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_documentation"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -1246,7 +1234,7 @@
 		<xsl:value-of select="concat(' ', @name)"/>: (<xsl:copy-of select="$link"/>) <em><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></em>
 	</xsl:template>
 
-	<!-- CREATE DOCUMENTATION -->
+	<!-- CREATE TABLE OF CONTENTS -->
 	<xsl:template name="createIndex">
 		<file>
 			<xsl:attribute name="filename">Documentation/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.html</xsl:attribute>

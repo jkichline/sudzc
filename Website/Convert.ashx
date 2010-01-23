@@ -208,7 +208,11 @@ public class Convert : IHttpHandler {
 					file = new FileInfo(filePath);
 					if (file.Directory.Exists == false) { file.Directory.Create(); }
 					StreamWriter fs = file.CreateText();
-					fs.Write(child.InnerXml);
+					if (file.Extension.StartsWith(".htm")) {
+						fs.Write(child.InnerXml);
+					} else {
+						fs.Write(child.InnerText);
+					}
 					fs.Flush();
 					fs.Close();
 					break;

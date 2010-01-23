@@ -1134,9 +1134,17 @@
 		<xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
 			<xsl:variable name="baseClass">
 				<xsl:choose>
-					<xsl:when test="s:annotation/s:appinfo[mss:IsDictionary = 'true']">SoapDictionary</xsl:when>
-					<xsl:when test="(count(*)=1) and (s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType])">SoapArray</xsl:when>
-					<xsl:otherwise>SoapObject</xsl:otherwise>
+					<xsl:when test="descendant::s:extension[@base]">
+						<xsl:value-of select="$shortns"/>
+						<xsl:value-of select="substring-after(descendant::s:extension/@base, ':')"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when test="s:annotation/s:appinfo[mss:IsDictionary = 'true']">SoapDictionary</xsl:when>
+							<xsl:when test="(count(*)=1) and (s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType])">SoapArray</xsl:when>
+							<xsl:otherwise>SoapObject</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:variable>
 			<file>
@@ -1155,7 +1163,12 @@
 							<xsl:value-of select="wsdl:documentation"/>
 						</p>
 						<p>
-							Inherits from the <a href="../framework/{$baseClass}.html"><xsl:value-of select="$baseClass"/></a> base class.
+							Inherits from the 
+							<xsl:choose>
+								<xsl:when test="starts-with($baseClass, $shortns)"><a href="{$baseClass}.html"><xsl:value-of select="$baseClass"/>*</a> </xsl:when>
+								<xsl:otherwise><a href="../framework/{$baseClass}.html"><xsl:value-of select="$baseClass"/>*</a> </xsl:otherwise>
+							</xsl:choose>
+							base class.
 						</p>
 
 						<xsl:if test="$baseClass = 'SoapObject'">

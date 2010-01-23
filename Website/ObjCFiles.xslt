@@ -31,6 +31,7 @@
 			<xsl:attribute name="name"><xsl:value-of select="$serviceName"/>.iPhone</xsl:attribute>
 			<folder copy="ObjC/Soap"/>
 			<folder copy="ObjC/Documentation"/>
+			<folder copy="ObjC/Examples"/>
 			<folder copy="ObjC/TouchXML"/>
 			<include copy="ObjC/HOWTO.rtf"/>
 			<include copy="ObjC/README.rtf"/>
@@ -90,5 +91,9 @@
 			<xsl:sort select="position()" order="descending"/>
 		</xsl:apply-templates>
 		<xsl:call-template name="createIndex"/>
+		
+		<!-- Create Example Project -->
+		<xsl:call-template name="createExample"/>
+
 	</xsl:template>
 </xsl:stylesheet>

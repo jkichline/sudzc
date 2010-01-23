@@ -1336,6 +1336,9 @@
 						<dt>Framework</dt>
 						<dd>
 							<ul>
+								<li><a target="content" href="../framework/CXMLDocument.html">CXMLDocument</a></li>
+								<li><a target="content" href="../framework/CXMLElement.html">CXMLElement</a></li>
+								<li><a target="content" href="../framework/CXMLNode.html">CXMLNode</a></li>
 								<li><a target="content" href="../framework/Soap.html">Soap</a></li>
 								<li><a target="content" href="../framework/SoapArray.html">SoapArray</a></li>
 								<li><a target="content" href="../framework/SoapDelegate.html">SoapDelegate</a></li>

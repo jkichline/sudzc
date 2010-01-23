@@ -1171,7 +1171,7 @@
 							base class.
 						</p>
 
-						<xsl:if test="$baseClass = 'SoapObject'">
+						<xsl:if test="$baseClass != 'SoapArray' and $baseClass != 'SoapDictionary'">
 							<h2>Properties</h2>
 							<p>For more about Objective-C properties, see <span class="content_text"><a href="http://developer.apple.com/iphone/library/documentation/Cocoa/Conceptual/ObjectiveC/Articles/ocProperties.html#//apple_ref/doc/uid/TP30001163-CH17" target="_top">&#8220;Properties&#8221;</a></span> in <em><a href="http://developer.apple.com/iphone/library/documentation/Cocoa/Conceptual/ObjectiveC/index.html#//apple_ref/doc/uid/TP30001163" target="_top">The Objective-C Programming Language</a></em>.</p>
 							<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="documentation_properties"/>

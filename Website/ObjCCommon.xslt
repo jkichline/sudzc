@@ -19,7 +19,6 @@
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:mss="http://schemas.microsoft.com/2003/10/Serialization/"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
 	
 	<!-- PULL IN PARAMETERS AND DEFAULTS -->
 	<xsl:param name="shortns"/>
@@ -1368,5 +1367,110 @@
 			</a>
 		</li>
 	</xsl:template>
+	
+	
+	<!-- CREATE EXAMPLE -->
+	<xsl:template name="createExample">
+		<xsl:param name="service"/>
+		<file>
+			<xsl:attribute name="filename">Examples/SudzCExamplesAppDelegate.m</xsl:attribute>#import "SudzCExamplesAppDelegate.h"
+#import "<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>.h"
 
+@implementation SudzCExamplesAppDelegate
+
+@synthesize window;
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+
+	// Create the service
+	<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>* service = [<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/> service];
+	
+	<xsl:apply-templates select="$portType/wsdl:operation" mode="example">
+		<xsl:sort select="@name" order="ascending"/>
+	</xsl:apply-templates>
+
+	// Override point for customization after application launch
+	[window makeKeyAndVisible];
+}
+
+	<xsl:apply-templates select="$portType/wsdl:operation" mode="example_handler">
+		<xsl:sort select="@name" order="ascending"/>
+	</xsl:apply-templates>
+
+- (void)dealloc {
+	[window release];
+	[super dealloc];
+}
+
+@end
+		</file>
+	</xsl:template>
+
+	<xsl:template match="wsdl:operation" mode="example">
+		<xsl:variable name="type"><xsl:apply-templates select="wsdl:output" mode="object_type"/></xsl:variable>
+
+	// Returns <xsl:copy-of select="$type"/>. <xsl:value-of select="wsdl:documentation"/>
+	[service <xsl:value-of select="@name"/>:self action:@selector(<xsl:value-of select="@name"/>Handler)<xsl:apply-templates select="wsdl:input" mode="param_example"/>];</xsl:template>
+
+	<xsl:template match="wsdl:operation" mode="example_handler">
+		<xsl:variable name="type"><xsl:apply-templates select="wsdl:output" mode="object_type"/></xsl:variable>
+
+// Handle the response from <xsl:value-of select="@name"/>.
+- (void) <xsl:value-of select="@name"/>Handler: (id) value {
+	if([value isKindOfClass:[NSError class]]) {
+		// Handle errors
+		NSLog(@"%@", value);
+		return;
+	}
+	if([value isKindOfClass:[SoapFault class]]) {
+		// Handle faults
+		NSLog(@"%@", value);
+		return;
+	}
+	// Do something with the <xsl:value-of select="$type"/> object
+	<xsl:value-of select="$type"/> result = (<xsl:value-of select="$type"/>)value;
+	NSLog(@"%@", result);
+}
+	</xsl:template>	
+
+	<!-- EXAMPLE SELECTORS -->
+	<xsl:template match="wsdl:input|wsdl:output|wsdl:fault" mode="param_example">
+		<xsl:variable name="messageName">
+			<xsl:value-of select="substring-after(@message, ':')"/>
+		</xsl:variable>
+		<xsl:variable name="elementName">
+			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_example"/></xsl:when>
+			<xsl:otherwise><xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part" mode="param_example"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="s:element|wsdl:part" mode="param_example">
+		<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
+		<xsl:value-of select="concat(' ', @name)"/>: <xsl:call-template name="getDefaultValue"><xsl:with-param name="type" select="$type"/></xsl:call-template>
+	</xsl:template>
+
+	<xsl:template name="getDefaultValue">
+		<xsl:param name="type"/>
+		<xsl:choose>
+			<xsl:when test="$type = 'NSMutableDictionary*'">[NSMutableDictionary dictionary]</xsl:when>
+			<xsl:when test="$type = 'NSMutableArray*'">[NSMutableArray array]</xsl:when>
+			<xsl:when test="$type = 'NSString*'">@""</xsl:when>
+			<xsl:when test="$type = 'int'">0</xsl:when>
+			<xsl:when test="$type = 'long'">0</xsl:when>
+			<xsl:when test="$type = 'short'">0</xsl:when>
+			<xsl:when test="$type = 'float'">0</xsl:when>
+			<xsl:when test="$type = 'double'">0</xsl:when>
+			<xsl:when test="$type = 'char'">0</xsl:when>
+			<xsl:when test="$type = 'NSDecimalNumber*'">[NSDecimalNumber numberWithInt:0]</xsl:when>
+			<xsl:when test="$type = 'BOOL'">NO</xsl:when>
+			<xsl:when test="$type = 'NSDate*'">[NSDate date]</xsl:when>
+			<xsl:when test="$type = 'NSData*'">[NSData data]</xsl:when>
+			<xsl:when test="$type = 'id'">@""</xsl:when>
+			<xsl:otherwise>[[<xsl:value-of select="substring-before($type, '*')"/> alloc] init]</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
 </xsl:stylesheet>

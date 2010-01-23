@@ -1,0 +1,544 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10C71DCE110B5D9F008E8718 /* SudzCExamplesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DCC110B5D9F008E8718 /* SudzCExamplesAppDelegate.m */; };
+		10C71E3A110B5E44008E8718 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DE1110B5E44008E8718 /* CXMLDocument.m */; };
+		10C71E3B110B5E44008E8718 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DE3110B5E44008E8718 /* CXMLDocument_PrivateExtensions.m */; };
+		10C71E3C110B5E44008E8718 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DE5110B5E44008E8718 /* CXMLElement.m */; };
+		10C71E3D110B5E44008E8718 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DE7110B5E44008E8718 /* CXMLNode.m */; };
+		10C71E3E110B5E44008E8718 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DE9110B5E44008E8718 /* CXMLNode_PrivateExtensions.m */; };
+		10C71E3F110B5E44008E8718 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DEB110B5E44008E8718 /* CXMLNode_XPathExtensions.m */; };
+		10C71E40110B5E44008E8718 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DEF110B5E44008E8718 /* NSData+Base64.m */; };
+		10C71E41110B5E44008E8718 /* Soap.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DF1110B5E44008E8718 /* Soap.m */; };
+		10C71E42110B5E44008E8718 /* SoapArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DF3110B5E44008E8718 /* SoapArray.m */; };
+		10C71E43110B5E44008E8718 /* SoapDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DF6110B5E44008E8718 /* SoapDictionary.m */; };
+		10C71E44110B5E44008E8718 /* SoapFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DF8110B5E44008E8718 /* SoapFault.m */; };
+		10C71E45110B5E44008E8718 /* SoapHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DFA110B5E44008E8718 /* SoapHandler.m */; };
+		10C71E46110B5E44008E8718 /* SoapNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DFC110B5E44008E8718 /* SoapNil.m */; };
+		10C71E47110B5E44008E8718 /* SoapObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DFE110B5E44008E8718 /* SoapObject.m */; };
+		10C71E48110B5E44008E8718 /* SoapParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E00110B5E44008E8718 /* SoapParameter.m */; };
+		10C71E49110B5E44008E8718 /* SoapReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E02110B5E44008E8718 /* SoapReachability.m */; };
+		10C71E4A110B5E44008E8718 /* SoapRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E04110B5E44008E8718 /* SoapRequest.m */; };
+		10C71E4B110B5E44008E8718 /* SoapService.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E06110B5E44008E8718 /* SoapService.m */; };
+		10C71E4C110B5E44008E8718 /* SDZAddressDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E09110B5E44008E8718 /* SDZAddressDescriptor.m */; };
+		10C71E4D110B5E44008E8718 /* SDZArrayOfAddressDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E0B110B5E44008E8718 /* SDZArrayOfAddressDescriptor.m */; };
+		10C71E4E110B5E44008E8718 /* SDZArrayOfCategoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E0D110B5E44008E8718 /* SDZArrayOfCategoryInfo.m */; };
+		10C71E4F110B5E44008E8718 /* SDZArrayOfEntertainment.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E0F110B5E44008E8718 /* SDZArrayOfEntertainment.m */; };
+		10C71E50110B5E44008E8718 /* SDZArrayOfEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E11110B5E44008E8718 /* SDZArrayOfEvent.m */; };
+		10C71E51110B5E44008E8718 /* SDZArrayOfEventDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E13110B5E44008E8718 /* SDZArrayOfEventDescriptor.m */; };
+		10C71E52110B5E44008E8718 /* SDZArrayOfImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E15110B5E44008E8718 /* SDZArrayOfImage.m */; };
+		10C71E53110B5E44008E8718 /* SDZArrayOfLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E17110B5E44008E8718 /* SDZArrayOfLocation.m */; };
+		10C71E54110B5E44008E8718 /* SDZArrayOfLocationAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E19110B5E44008E8718 /* SDZArrayOfLocationAddress.m */; };
+		10C71E55110B5E44008E8718 /* SDZArrayOfLocationDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E1B110B5E44008E8718 /* SDZArrayOfLocationDescriptor.m */; };
+		10C71E56110B5E44008E8718 /* SDZArrayOfPartnerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E1D110B5E44008E8718 /* SDZArrayOfPartnerCategory.m */; };
+		10C71E57110B5E44008E8718 /* SDZBaseEventDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E1F110B5E44008E8718 /* SDZBaseEventDescriptor.m */; };
+		10C71E58110B5E44008E8718 /* SDZCategoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E21110B5E44008E8718 /* SDZCategoryInfo.m */; };
+		10C71E59110B5E44008E8718 /* SDZEntertainment.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E23110B5E44008E8718 /* SDZEntertainment.m */; };
+		10C71E5A110B5E44008E8718 /* SDZEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E25110B5E44008E8718 /* SDZEvent.m */; };
+		10C71E5B110B5E44008E8718 /* SDZEventDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E27110B5E44008E8718 /* SDZEventDescriptor.m */; };
+		10C71E5C110B5E44008E8718 /* SDZImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E29110B5E44008E8718 /* SDZImage.m */; };
+		10C71E5D110B5E44008E8718 /* SDZLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E2B110B5E44008E8718 /* SDZLocation.m */; };
+		10C71E5E110B5E44008E8718 /* SDZLocationAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E2D110B5E44008E8718 /* SDZLocationAddress.m */; };
+		10C71E5F110B5E44008E8718 /* SDZLocationDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E2F110B5E44008E8718 /* SDZLocationDescriptor.m */; };
+		10C71E60110B5E44008E8718 /* SDZPartnerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E31110B5E44008E8718 /* SDZPartnerCategory.m */; };
+		10C71E61110B5E44008E8718 /* SDZSearchResultsDescriptorOfEventDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E33110B5E44008E8718 /* SDZSearchResultsDescriptorOfEventDescriptor.m */; };
+		10C71E62110B5E44008E8718 /* SDZSearchResultsDescriptorOfLocationDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E35110B5E44008E8718 /* SDZSearchResultsDescriptorOfLocationDescriptor.m */; };
+		10C71E63110B5E44008E8718 /* SDZSpotobeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E37110B5E44008E8718 /* SDZSpotobeService.m */; };
+		10C71E64110B5E44008E8718 /* SDZUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71E39110B5E44008E8718 /* SDZUser.m */; };
+		10C71E6E110B5EC0008E8718 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		10C71DCC110B5D9F008E8718 /* SudzCExamplesAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudzCExamplesAppDelegate.m; sourceTree = "<group>"; };
+		10C71DCD110B5D9F008E8718 /* SudzCExamplesAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudzCExamplesAppDelegate.h; sourceTree = "<group>"; };
+		10C71DE0110B5E44008E8718 /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument.h; sourceTree = "<group>"; };
+		10C71DE1110B5E44008E8718 /* CXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument.m; sourceTree = "<group>"; };
+		10C71DE2110B5E44008E8718 /* CXMLDocument_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_PrivateExtensions.h; sourceTree = "<group>"; };
+		10C71DE3110B5E44008E8718 /* CXMLDocument_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_PrivateExtensions.m; sourceTree = "<group>"; };
+		10C71DE4110B5E44008E8718 /* CXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLElement.h; sourceTree = "<group>"; };
+		10C71DE5110B5E44008E8718 /* CXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLElement.m; sourceTree = "<group>"; };
+		10C71DE6110B5E44008E8718 /* CXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode.h; sourceTree = "<group>"; };
+		10C71DE7110B5E44008E8718 /* CXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode.m; sourceTree = "<group>"; };
+		10C71DE8110B5E44008E8718 /* CXMLNode_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_PrivateExtensions.h; sourceTree = "<group>"; };
+		10C71DE9110B5E44008E8718 /* CXMLNode_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_PrivateExtensions.m; sourceTree = "<group>"; };
+		10C71DEA110B5E44008E8718 /* CXMLNode_XPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_XPathExtensions.h; sourceTree = "<group>"; };
+		10C71DEB110B5E44008E8718 /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };
+		10C71DEC110B5E44008E8718 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
+		10C71DEE110B5E44008E8718 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		10C71DEF110B5E44008E8718 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		10C71DF0110B5E44008E8718 /* Soap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soap.h; sourceTree = "<group>"; };
+		10C71DF1110B5E44008E8718 /* Soap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Soap.m; sourceTree = "<group>"; };
+		10C71DF2110B5E44008E8718 /* SoapArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapArray.h; sourceTree = "<group>"; };
+		10C71DF3110B5E44008E8718 /* SoapArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapArray.m; sourceTree = "<group>"; };
+		10C71DF4110B5E44008E8718 /* SoapDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapDelegate.h; sourceTree = "<group>"; };
+		10C71DF5110B5E44008E8718 /* SoapDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapDictionary.h; sourceTree = "<group>"; };
+		10C71DF6110B5E44008E8718 /* SoapDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapDictionary.m; sourceTree = "<group>"; };
+		10C71DF7110B5E44008E8718 /* SoapFault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapFault.h; sourceTree = "<group>"; };
+		10C71DF8110B5E44008E8718 /* SoapFault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapFault.m; sourceTree = "<group>"; };
+		10C71DF9110B5E44008E8718 /* SoapHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapHandler.h; sourceTree = "<group>"; };
+		10C71DFA110B5E44008E8718 /* SoapHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapHandler.m; sourceTree = "<group>"; };
+		10C71DFB110B5E44008E8718 /* SoapNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapNil.h; sourceTree = "<group>"; };
+		10C71DFC110B5E44008E8718 /* SoapNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapNil.m; sourceTree = "<group>"; };
+		10C71DFD110B5E44008E8718 /* SoapObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapObject.h; sourceTree = "<group>"; };
+		10C71DFE110B5E44008E8718 /* SoapObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapObject.m; sourceTree = "<group>"; };
+		10C71DFF110B5E44008E8718 /* SoapParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapParameter.h; sourceTree = "<group>"; };
+		10C71E00110B5E44008E8718 /* SoapParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapParameter.m; sourceTree = "<group>"; };
+		10C71E01110B5E44008E8718 /* SoapReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapReachability.h; sourceTree = "<group>"; };
+		10C71E02110B5E44008E8718 /* SoapReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapReachability.m; sourceTree = "<group>"; };
+		10C71E03110B5E44008E8718 /* SoapRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapRequest.h; sourceTree = "<group>"; };
+		10C71E04110B5E44008E8718 /* SoapRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapRequest.m; sourceTree = "<group>"; };
+		10C71E05110B5E44008E8718 /* SoapService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapService.h; sourceTree = "<group>"; };
+		10C71E06110B5E44008E8718 /* SoapService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapService.m; sourceTree = "<group>"; };
+		10C71E08110B5E44008E8718 /* SDZAddressDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZAddressDescriptor.h; sourceTree = "<group>"; };
+		10C71E09110B5E44008E8718 /* SDZAddressDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZAddressDescriptor.m; sourceTree = "<group>"; };
+		10C71E0A110B5E44008E8718 /* SDZArrayOfAddressDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfAddressDescriptor.h; sourceTree = "<group>"; };
+		10C71E0B110B5E44008E8718 /* SDZArrayOfAddressDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfAddressDescriptor.m; sourceTree = "<group>"; };
+		10C71E0C110B5E44008E8718 /* SDZArrayOfCategoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfCategoryInfo.h; sourceTree = "<group>"; };
+		10C71E0D110B5E44008E8718 /* SDZArrayOfCategoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfCategoryInfo.m; sourceTree = "<group>"; };
+		10C71E0E110B5E44008E8718 /* SDZArrayOfEntertainment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfEntertainment.h; sourceTree = "<group>"; };
+		10C71E0F110B5E44008E8718 /* SDZArrayOfEntertainment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfEntertainment.m; sourceTree = "<group>"; };
+		10C71E10110B5E44008E8718 /* SDZArrayOfEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfEvent.h; sourceTree = "<group>"; };
+		10C71E11110B5E44008E8718 /* SDZArrayOfEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfEvent.m; sourceTree = "<group>"; };
+		10C71E12110B5E44008E8718 /* SDZArrayOfEventDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfEventDescriptor.h; sourceTree = "<group>"; };
+		10C71E13110B5E44008E8718 /* SDZArrayOfEventDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfEventDescriptor.m; sourceTree = "<group>"; };
+		10C71E14110B5E44008E8718 /* SDZArrayOfImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfImage.h; sourceTree = "<group>"; };
+		10C71E15110B5E44008E8718 /* SDZArrayOfImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfImage.m; sourceTree = "<group>"; };
+		10C71E16110B5E44008E8718 /* SDZArrayOfLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfLocation.h; sourceTree = "<group>"; };
+		10C71E17110B5E44008E8718 /* SDZArrayOfLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfLocation.m; sourceTree = "<group>"; };
+		10C71E18110B5E44008E8718 /* SDZArrayOfLocationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfLocationAddress.h; sourceTree = "<group>"; };
+		10C71E19110B5E44008E8718 /* SDZArrayOfLocationAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfLocationAddress.m; sourceTree = "<group>"; };
+		10C71E1A110B5E44008E8718 /* SDZArrayOfLocationDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfLocationDescriptor.h; sourceTree = "<group>"; };
+		10C71E1B110B5E44008E8718 /* SDZArrayOfLocationDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfLocationDescriptor.m; sourceTree = "<group>"; };
+		10C71E1C110B5E44008E8718 /* SDZArrayOfPartnerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfPartnerCategory.h; sourceTree = "<group>"; };
+		10C71E1D110B5E44008E8718 /* SDZArrayOfPartnerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfPartnerCategory.m; sourceTree = "<group>"; };
+		10C71E1E110B5E44008E8718 /* SDZBaseEventDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZBaseEventDescriptor.h; sourceTree = "<group>"; };
+		10C71E1F110B5E44008E8718 /* SDZBaseEventDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZBaseEventDescriptor.m; sourceTree = "<group>"; };
+		10C71E20110B5E44008E8718 /* SDZCategoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZCategoryInfo.h; sourceTree = "<group>"; };
+		10C71E21110B5E44008E8718 /* SDZCategoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZCategoryInfo.m; sourceTree = "<group>"; };
+		10C71E22110B5E44008E8718 /* SDZEntertainment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZEntertainment.h; sourceTree = "<group>"; };
+		10C71E23110B5E44008E8718 /* SDZEntertainment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZEntertainment.m; sourceTree = "<group>"; };
+		10C71E24110B5E44008E8718 /* SDZEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZEvent.h; sourceTree = "<group>"; };
+		10C71E25110B5E44008E8718 /* SDZEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZEvent.m; sourceTree = "<group>"; };
+		10C71E26110B5E44008E8718 /* SDZEventDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZEventDescriptor.h; sourceTree = "<group>"; };
+		10C71E27110B5E44008E8718 /* SDZEventDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZEventDescriptor.m; sourceTree = "<group>"; };
+		10C71E28110B5E44008E8718 /* SDZImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZImage.h; sourceTree = "<group>"; };
+		10C71E29110B5E44008E8718 /* SDZImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZImage.m; sourceTree = "<group>"; };
+		10C71E2A110B5E44008E8718 /* SDZLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZLocation.h; sourceTree = "<group>"; };
+		10C71E2B110B5E44008E8718 /* SDZLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZLocation.m; sourceTree = "<group>"; };
+		10C71E2C110B5E44008E8718 /* SDZLocationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZLocationAddress.h; sourceTree = "<group>"; };
+		10C71E2D110B5E44008E8718 /* SDZLocationAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZLocationAddress.m; sourceTree = "<group>"; };
+		10C71E2E110B5E44008E8718 /* SDZLocationDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZLocationDescriptor.h; sourceTree = "<group>"; };
+		10C71E2F110B5E44008E8718 /* SDZLocationDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZLocationDescriptor.m; sourceTree = "<group>"; };
+		10C71E30110B5E44008E8718 /* SDZPartnerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZPartnerCategory.h; sourceTree = "<group>"; };
+		10C71E31110B5E44008E8718 /* SDZPartnerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZPartnerCategory.m; sourceTree = "<group>"; };
+		10C71E32110B5E44008E8718 /* SDZSearchResultsDescriptorOfEventDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZSearchResultsDescriptorOfEventDescriptor.h; sourceTree = "<group>"; };
+		10C71E33110B5E44008E8718 /* SDZSearchResultsDescriptorOfEventDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZSearchResultsDescriptorOfEventDescriptor.m; sourceTree = "<group>"; };
+		10C71E34110B5E44008E8718 /* SDZSearchResultsDescriptorOfLocationDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZSearchResultsDescriptorOfLocationDescriptor.h; sourceTree = "<group>"; };
+		10C71E35110B5E44008E8718 /* SDZSearchResultsDescriptorOfLocationDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZSearchResultsDescriptorOfLocationDescriptor.m; sourceTree = "<group>"; };
+		10C71E36110B5E44008E8718 /* SDZSpotobeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZSpotobeService.h; sourceTree = "<group>"; };
+		10C71E37110B5E44008E8718 /* SDZSpotobeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZSpotobeService.m; sourceTree = "<group>"; };
+		10C71E38110B5E44008E8718 /* SDZUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZUser.h; sourceTree = "<group>"; };
+		10C71E39110B5E44008E8718 /* SDZUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZUser.m; sourceTree = "<group>"; };
+		10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* SudzCExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudzCExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* SudzCExamples_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudzCExamples_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* SudzCExamples-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SudzCExamples-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				10C71E6E110B5EC0008E8718 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10C71DC8110B5D8E008E8718 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				10C71DCC110B5D9F008E8718 /* SudzCExamplesAppDelegate.m */,
+				10C71DCD110B5D9F008E8718 /* SudzCExamplesAppDelegate.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		10C71DDE110B5E24008E8718 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				10C71DDF110B5E44008E8718 /* TouchXML */,
+				10C71DED110B5E44008E8718 /* Soap */,
+				10C71E07110B5E44008E8718 /* Proxy Classes */,
+			);
+			name = Generated;
+			sourceTree = "<group>";
+		};
+		10C71DDF110B5E44008E8718 /* TouchXML */ = {
+			isa = PBXGroup;
+			children = (
+				10C71DE0110B5E44008E8718 /* CXMLDocument.h */,
+				10C71DE1110B5E44008E8718 /* CXMLDocument.m */,
+				10C71DE2110B5E44008E8718 /* CXMLDocument_PrivateExtensions.h */,
+				10C71DE3110B5E44008E8718 /* CXMLDocument_PrivateExtensions.m */,
+				10C71DE4110B5E44008E8718 /* CXMLElement.h */,
+				10C71DE5110B5E44008E8718 /* CXMLElement.m */,
+				10C71DE6110B5E44008E8718 /* CXMLNode.h */,
+				10C71DE7110B5E44008E8718 /* CXMLNode.m */,
+				10C71DE8110B5E44008E8718 /* CXMLNode_PrivateExtensions.h */,
+				10C71DE9110B5E44008E8718 /* CXMLNode_PrivateExtensions.m */,
+				10C71DEA110B5E44008E8718 /* CXMLNode_XPathExtensions.h */,
+				10C71DEB110B5E44008E8718 /* CXMLNode_XPathExtensions.m */,
+				10C71DEC110B5E44008E8718 /* TouchXML.h */,
+			);
+			name = TouchXML;
+			path = ../TouchXML;
+			sourceTree = SOURCE_ROOT;
+		};
+		10C71DED110B5E44008E8718 /* Soap */ = {
+			isa = PBXGroup;
+			children = (
+				10C71DEE110B5E44008E8718 /* NSData+Base64.h */,
+				10C71DEF110B5E44008E8718 /* NSData+Base64.m */,
+				10C71DF0110B5E44008E8718 /* Soap.h */,
+				10C71DF1110B5E44008E8718 /* Soap.m */,
+				10C71DF2110B5E44008E8718 /* SoapArray.h */,
+				10C71DF3110B5E44008E8718 /* SoapArray.m */,
+				10C71DF4110B5E44008E8718 /* SoapDelegate.h */,
+				10C71DF5110B5E44008E8718 /* SoapDictionary.h */,
+				10C71DF6110B5E44008E8718 /* SoapDictionary.m */,
+				10C71DF7110B5E44008E8718 /* SoapFault.h */,
+				10C71DF8110B5E44008E8718 /* SoapFault.m */,
+				10C71DF9110B5E44008E8718 /* SoapHandler.h */,
+				10C71DFA110B5E44008E8718 /* SoapHandler.m */,
+				10C71DFB110B5E44008E8718 /* SoapNil.h */,
+				10C71DFC110B5E44008E8718 /* SoapNil.m */,
+				10C71DFD110B5E44008E8718 /* SoapObject.h */,
+				10C71DFE110B5E44008E8718 /* SoapObject.m */,
+				10C71DFF110B5E44008E8718 /* SoapParameter.h */,
+				10C71E00110B5E44008E8718 /* SoapParameter.m */,
+				10C71E01110B5E44008E8718 /* SoapReachability.h */,
+				10C71E02110B5E44008E8718 /* SoapReachability.m */,
+				10C71E03110B5E44008E8718 /* SoapRequest.h */,
+				10C71E04110B5E44008E8718 /* SoapRequest.m */,
+				10C71E05110B5E44008E8718 /* SoapService.h */,
+				10C71E06110B5E44008E8718 /* SoapService.m */,
+			);
+			name = Soap;
+			path = ../Soap;
+			sourceTree = SOURCE_ROOT;
+		};
+		10C71E07110B5E44008E8718 /* Proxy Classes */ = {
+			isa = PBXGroup;
+			children = (
+				10C71E08110B5E44008E8718 /* SDZAddressDescriptor.h */,
+				10C71E09110B5E44008E8718 /* SDZAddressDescriptor.m */,
+				10C71E0A110B5E44008E8718 /* SDZArrayOfAddressDescriptor.h */,
+				10C71E0B110B5E44008E8718 /* SDZArrayOfAddressDescriptor.m */,
+				10C71E0C110B5E44008E8718 /* SDZArrayOfCategoryInfo.h */,
+				10C71E0D110B5E44008E8718 /* SDZArrayOfCategoryInfo.m */,
+				10C71E0E110B5E44008E8718 /* SDZArrayOfEntertainment.h */,
+				10C71E0F110B5E44008E8718 /* SDZArrayOfEntertainment.m */,
+				10C71E10110B5E44008E8718 /* SDZArrayOfEvent.h */,
+				10C71E11110B5E44008E8718 /* SDZArrayOfEvent.m */,
+				10C71E12110B5E44008E8718 /* SDZArrayOfEventDescriptor.h */,
+				10C71E13110B5E44008E8718 /* SDZArrayOfEventDescriptor.m */,
+				10C71E14110B5E44008E8718 /* SDZArrayOfImage.h */,
+				10C71E15110B5E44008E8718 /* SDZArrayOfImage.m */,
+				10C71E16110B5E44008E8718 /* SDZArrayOfLocation.h */,
+				10C71E17110B5E44008E8718 /* SDZArrayOfLocation.m */,
+				10C71E18110B5E44008E8718 /* SDZArrayOfLocationAddress.h */,
+				10C71E19110B5E44008E8718 /* SDZArrayOfLocationAddress.m */,
+				10C71E1A110B5E44008E8718 /* SDZArrayOfLocationDescriptor.h */,
+				10C71E1B110B5E44008E8718 /* SDZArrayOfLocationDescriptor.m */,
+				10C71E1C110B5E44008E8718 /* SDZArrayOfPartnerCategory.h */,
+				10C71E1D110B5E44008E8718 /* SDZArrayOfPartnerCategory.m */,
+				10C71E1E110B5E44008E8718 /* SDZBaseEventDescriptor.h */,
+				10C71E1F110B5E44008E8718 /* SDZBaseEventDescriptor.m */,
+				10C71E20110B5E44008E8718 /* SDZCategoryInfo.h */,
+				10C71E21110B5E44008E8718 /* SDZCategoryInfo.m */,
+				10C71E22110B5E44008E8718 /* SDZEntertainment.h */,
+				10C71E23110B5E44008E8718 /* SDZEntertainment.m */,
+				10C71E24110B5E44008E8718 /* SDZEvent.h */,
+				10C71E25110B5E44008E8718 /* SDZEvent.m */,
+				10C71E26110B5E44008E8718 /* SDZEventDescriptor.h */,
+				10C71E27110B5E44008E8718 /* SDZEventDescriptor.m */,
+				10C71E28110B5E44008E8718 /* SDZImage.h */,
+				10C71E29110B5E44008E8718 /* SDZImage.m */,
+				10C71E2A110B5E44008E8718 /* SDZLocation.h */,
+				10C71E2B110B5E44008E8718 /* SDZLocation.m */,
+				10C71E2C110B5E44008E8718 /* SDZLocationAddress.h */,
+				10C71E2D110B5E44008E8718 /* SDZLocationAddress.m */,
+				10C71E2E110B5E44008E8718 /* SDZLocationDescriptor.h */,
+				10C71E2F110B5E44008E8718 /* SDZLocationDescriptor.m */,
+				10C71E30110B5E44008E8718 /* SDZPartnerCategory.h */,
+				10C71E31110B5E44008E8718 /* SDZPartnerCategory.m */,
+				10C71E32110B5E44008E8718 /* SDZSearchResultsDescriptorOfEventDescriptor.h */,
+				10C71E33110B5E44008E8718 /* SDZSearchResultsDescriptorOfEventDescriptor.m */,
+				10C71E34110B5E44008E8718 /* SDZSearchResultsDescriptorOfLocationDescriptor.h */,
+				10C71E35110B5E44008E8718 /* SDZSearchResultsDescriptorOfLocationDescriptor.m */,
+				10C71E36110B5E44008E8718 /* SDZSpotobeService.h */,
+				10C71E37110B5E44008E8718 /* SDZSpotobeService.m */,
+				10C71E38110B5E44008E8718 /* SDZUser.h */,
+				10C71E39110B5E44008E8718 /* SDZUser.m */,
+			);
+			name = "Proxy Classes";
+			path = "../Proxy Classes";
+			sourceTree = SOURCE_ROOT;
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* SudzCExamples.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				10C71DDE110B5E24008E8718 /* Generated */,
+				10C71DC8110B5D8E008E8718 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* SudzCExamples_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* SudzCExamples-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* SudzCExamples */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SudzCExamples" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SudzCExamples;
+			productName = SudzCExamples;
+			productReference = 1D6058910D05DD3D006BFB54 /* SudzCExamples.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SudzCExamples" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* SudzCExamples */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				10C71DCE110B5D9F008E8718 /* SudzCExamplesAppDelegate.m in Sources */,
+				10C71E3A110B5E44008E8718 /* CXMLDocument.m in Sources */,
+				10C71E3B110B5E44008E8718 /* CXMLDocument_PrivateExtensions.m in Sources */,
+				10C71E3C110B5E44008E8718 /* CXMLElement.m in Sources */,
+				10C71E3D110B5E44008E8718 /* CXMLNode.m in Sources */,
+				10C71E3E110B5E44008E8718 /* CXMLNode_PrivateExtensions.m in Sources */,
+				10C71E3F110B5E44008E8718 /* CXMLNode_XPathExtensions.m in Sources */,
+				10C71E40110B5E44008E8718 /* NSData+Base64.m in Sources */,
+				10C71E41110B5E44008E8718 /* Soap.m in Sources */,
+				10C71E42110B5E44008E8718 /* SoapArray.m in Sources */,
+				10C71E43110B5E44008E8718 /* SoapDictionary.m in Sources */,
+				10C71E44110B5E44008E8718 /* SoapFault.m in Sources */,
+				10C71E45110B5E44008E8718 /* SoapHandler.m in Sources */,
+				10C71E46110B5E44008E8718 /* SoapNil.m in Sources */,
+				10C71E47110B5E44008E8718 /* SoapObject.m in Sources */,
+				10C71E48110B5E44008E8718 /* SoapParameter.m in Sources */,
+				10C71E49110B5E44008E8718 /* SoapReachability.m in Sources */,
+				10C71E4A110B5E44008E8718 /* SoapRequest.m in Sources */,
+				10C71E4B110B5E44008E8718 /* SoapService.m in Sources */,
+				10C71E4C110B5E44008E8718 /* SDZAddressDescriptor.m in Sources */,
+				10C71E4D110B5E44008E8718 /* SDZArrayOfAddressDescriptor.m in Sources */,
+				10C71E4E110B5E44008E8718 /* SDZArrayOfCategoryInfo.m in Sources */,
+				10C71E4F110B5E44008E8718 /* SDZArrayOfEntertainment.m in Sources */,
+				10C71E50110B5E44008E8718 /* SDZArrayOfEvent.m in Sources */,
+				10C71E51110B5E44008E8718 /* SDZArrayOfEventDescriptor.m in Sources */,
+				10C71E52110B5E44008E8718 /* SDZArrayOfImage.m in Sources */,
+				10C71E53110B5E44008E8718 /* SDZArrayOfLocation.m in Sources */,
+				10C71E54110B5E44008E8718 /* SDZArrayOfLocationAddress.m in Sources */,
+				10C71E55110B5E44008E8718 /* SDZArrayOfLocationDescriptor.m in Sources */,
+				10C71E56110B5E44008E8718 /* SDZArrayOfPartnerCategory.m in Sources */,
+				10C71E57110B5E44008E8718 /* SDZBaseEventDescriptor.m in Sources */,
+				10C71E58110B5E44008E8718 /* SDZCategoryInfo.m in Sources */,
+				10C71E59110B5E44008E8718 /* SDZEntertainment.m in Sources */,
+				10C71E5A110B5E44008E8718 /* SDZEvent.m in Sources */,
+				10C71E5B110B5E44008E8718 /* SDZEventDescriptor.m in Sources */,
+				10C71E5C110B5E44008E8718 /* SDZImage.m in Sources */,
+				10C71E5D110B5E44008E8718 /* SDZLocation.m in Sources */,
+				10C71E5E110B5E44008E8718 /* SDZLocationAddress.m in Sources */,
+				10C71E5F110B5E44008E8718 /* SDZLocationDescriptor.m in Sources */,
+				10C71E60110B5E44008E8718 /* SDZPartnerCategory.m in Sources */,
+				10C71E61110B5E44008E8718 /* SDZSearchResultsDescriptorOfEventDescriptor.m in Sources */,
+				10C71E62110B5E44008E8718 /* SDZSearchResultsDescriptorOfLocationDescriptor.m in Sources */,
+				10C71E63110B5E44008E8718 /* SDZSpotobeService.m in Sources */,
+				10C71E64110B5E44008E8718 /* SDZUser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SudzCExamples_Prefix.pch;
+				INFOPLIST_FILE = "SudzCExamples-Info.plist";
+				PRODUCT_NAME = SudzCExamples;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SudzCExamples_Prefix.pch;
+				INFOPLIST_FILE = "SudzCExamples-Info.plist";
+				PRODUCT_NAME = SudzCExamples;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				OTHER_LDFLAGS = "-lxml2";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				OTHER_LDFLAGS = "-lxml2";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SudzCExamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SudzCExamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

@@ -2,7 +2,13 @@
 
 @implementation SoapService
 
-@synthesize serviceUrl, namespace, logging, headers, defaultHandler, username, password;
+@synthesize serviceUrl = _serviceUrl;
+@synthesize namespace = _namespace;
+@synthesize logging = _logging;
+@synthesize headers = _headers;
+@synthesize defaultHandler = _defaultHandler;
+@synthesize username = _username;
+@synthesize password = _password;
 
 - (id) init {
 	if(self = [super init]) {
@@ -23,5 +29,13 @@
 	}
 	return self;
 }
-	
+
+- (id) initWithUsername: (NSString*) username andPassword: (NSString*) password {
+	if(self = [self init]) {
+		self.username = username;
+		self.password = password;
+	}
+	return self;
+}
+
 @end

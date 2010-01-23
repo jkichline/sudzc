@@ -47,11 +47,36 @@
     
     <h3>initWithUrl:</h3>
     <p>Initializes the service with a URL.</p>
-    <code>-(id) initWithUrl: (NSString*) url</code>
+    <code>- (id) initWithUrl: (NSString*) url</code>
     <h4>Parameters</h4>
     <dl>
       <dt>url</dt>
       <dd>The URL of the web service.</dd>
+    </dl>
+    
+    <h3>initWithUsername:andPassword:</h3>
+    <p>Initializes the service with a username and password.</p>
+    <code>- (id) initWithUsername: (NSString*) username andPassword: (NSString*) password</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>username</dt>
+      <dd>The username used to autheticate against the service.</dd>
+      <dt>password</dt>
+      <dd>The password used to autheticate against the service.</dd>
+    </dl>
+
+		<h3>service</h3>
+		<p>Returns an instance of the service.</p>
+		<code>+ (SoapService*) service</code>
+
+		<h3>serviceWithUsername:andPassword:</h3>
+		<p>Creates an instance of the service with a username and password.</p>
+		<code>+ (SoapService*) serviceWithUsername: (NSString*) username andPassword: (NSString*) password</code>
+    <dl>
+      <dt>username</dt>
+      <dd>The username used to autheticate against the service.</dd>
+      <dt>password</dt>
+      <dd>The password used to autheticate against the service.</dd>
     </dl>
 		
   </body>

@@ -2,13 +2,13 @@
 
 @interface SoapService : NSObject
 {
-	NSString* serviceUrl;
-	NSString* namespace;
-	NSString* username;
-	NSString* password;
-	NSDictionary* headers;
-	BOOL logging;
-	id<SoapDelegate> defaultHandler;
+	NSString* _serviceUrl;
+	NSString* _namespace;
+	NSString* _username;
+	NSString* _password;
+	NSDictionary* _headers;
+	BOOL _logging;
+	id<SoapDelegate> _defaultHandler;
 }
 
 @property (retain) NSString* serviceUrl;
@@ -19,6 +19,7 @@
 @property BOOL logging;
 @property (nonatomic, retain) id<SoapDelegate> defaultHandler;
 
--(id) initWithUrl: (NSString*) url;
+- (id) initWithUrl: (NSString*) url;
+- (id) initWithUsername: (NSString*) username andPassword: (NSString*) password;
 
 @end

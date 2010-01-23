@@ -35,7 +35,7 @@ h4 {
   margin-bottom: 0;
 }
 
-code {
+code, pre {
   font-family: Monaco, monospace;
   font-size: 8pt;
 }
@@ -53,6 +53,11 @@ code {
   font-family: Monaco, monospace;
   font-size: 9pt;
   list-style: none;  
+}
+
+#content #code dt {
+  font-style: normal;
+  font-family: Monaco, monospace;
 }
 
 a {

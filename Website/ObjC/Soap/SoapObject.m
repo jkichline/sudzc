@@ -50,6 +50,10 @@
 	return [[[NSMutableString alloc] initWithString: @""] autorelease];
 }
 
+- (id) object {
+	return self;
+}
+
 - (void) dealloc
 {
 	[super dealloc];

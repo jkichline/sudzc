@@ -10,6 +10,8 @@
 @interface SoapObject : NSObject {
 }
 
+@property (readonly) id object;
+
 + (id) newWithNode: (CXMLNode*) node;
 - (id) initWithNode: (CXMLNode*) node;
 - (NSMutableString*) serialize;

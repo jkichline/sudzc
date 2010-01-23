@@ -7,7 +7,7 @@
 #import "SoapObject.h"
 #import "Soap.h"
 
-@interface SoapArray : NSObject <NSCopying, NSMutableCopying, NSCoding, NSFastEnumeration> {
+@interface SoapArray : SoapObject <NSCopying, NSMutableCopying, NSCoding, NSFastEnumeration> {
 	NSMutableArray* items;
 }
 

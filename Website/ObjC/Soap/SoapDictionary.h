@@ -7,7 +7,7 @@
 #import <Foundation/Foundation.h>
 #import "Soap.h"
 
-@interface SoapDictionary : NSObject <NSCopying, NSMutableCopying, NSCoding, NSFastEnumeration> {
+@interface SoapDictionary : SoapObject <NSCopying, NSMutableCopying, NSCoding, NSFastEnumeration> {
 	NSMutableDictionary* items;
 }
 

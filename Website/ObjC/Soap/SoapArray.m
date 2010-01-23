@@ -31,6 +31,10 @@
 	return s;
 }
 
+- (id) object {
+	return self.items;
+}
+
 - (NSUInteger)count {
 	return [self.items count];
 }

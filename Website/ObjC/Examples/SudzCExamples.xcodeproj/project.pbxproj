@@ -133,6 +133,7 @@
 		10C72032110C0A71008E8718 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB3110C0A71008E8718 /* CXMLNode.m */; };
 		10C72033110C0A71008E8718 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB5110C0A71008E8718 /* CXMLNode_PrivateExtensions.m */; };
 		10C72034110C0A71008E8718 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB7110C0A71008E8718 /* CXMLNode_XPathExtensions.m */; };
+		10D798FD110C11AB00C755E2 /* Examples.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D798FC110C11AB00C755E2 /* Examples.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -394,6 +395,8 @@
 		10C71FB6110C0A71008E8718 /* CXMLNode_XPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_XPathExtensions.h; sourceTree = "<group>"; };
 		10C71FB7110C0A71008E8718 /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };
 		10C71FB8110C0A71008E8718 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
+		10D798FB110C11AB00C755E2 /* Examples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Examples.h; sourceTree = "<group>"; };
+		10D798FC110C11AB00C755E2 /* Examples.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Examples.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* SudzCExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudzCExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -727,7 +730,8 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */,
+				10D798FB110C11AB00C755E2 /* Examples.h */,
+				10D798FC110C11AB00C755E2 /* Examples.m */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -753,6 +757,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -939,6 +944,7 @@
 				10C72032110C0A71008E8718 /* CXMLNode.m in Sources */,
 				10C72033110C0A71008E8718 /* CXMLNode_PrivateExtensions.m in Sources */,
 				10C72034110C0A71008E8718 /* CXMLNode_XPathExtensions.m in Sources */,
+				10D798FD110C11AB00C755E2 /* Examples.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

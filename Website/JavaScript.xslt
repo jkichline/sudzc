@@ -18,6 +18,7 @@
 
   <xsl:template match="/">
 		<package>
+			<xsl:attribute name="class"><xsl:value-of select="/wsdl:definitions/wsdl:service/@name"/></xsl:attribute>
 			<xsl:attribute name="name"><xsl:value-of select="/wsdl:definitions/wsdl:service/@name"/>.Javascript</xsl:attribute>
 			<include copy="Javascript/Soap.js"/>
 			<xsl:apply-templates select="/wsdl:definitions"/>

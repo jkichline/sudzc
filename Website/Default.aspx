@@ -38,6 +38,7 @@
 				for(var i=1;i<a.length-1;i++){
 					ns+="."+a[i];
 				}
+				ns=ns.substring(0,ns.indexOf("?"));
 				$("ns").value=ns;
 			}
 			function doAuthentication(){
@@ -53,16 +54,31 @@
 					$("username").focus();
 				}
 			}
+			function doFileMode(mode) {
+				if(mode=="local") {
+					$("local").style.display="block";
+					$("remote").style.display="none";
+					$("remote").value="";
+				} else {
+					$("local").style.display="none";
+					$("remote").style.display="block";
+					$("local").value="";
+				}
+			}
 		</script>
 	</head>
 	<body onload="init();">
 		<div id="content">
 			<a href="~/" runat="server"><img src="assets/images/logo.png" alt="Sudzc" id="logo" /></a>
-			<form action="Convert.ashx" method="post" id="form">
-				<div>
-					<label for="wsdl">Type the web address of the WSDL to convert</label>
+			<form action="Convert.ashx" method="post" id="form" enctype="multipart/form-data">
+				<div id="remote">
+					<label for="wsdl">Type the web address of the WSDL to convert<a onclick="doFileMode('local');">upload a WSDL</a></label>
 					<input type="text" id="wsdl" name="wsdl" value="http://" onblur="makeNs();" />
-					<img id="authIcon" src="assets/images/unlocked.png" width="26" height="26" border="0" onclick="doAuthentication();" title="Click to provide authentication information" />
+					<img id="authIcon" src="assets/images/unlocked.png" width="26" height="26" onclick="doAuthentication();" title="Click to provide authentication information" />
+				</div>
+				<div id="local">
+					<label for="file">Upload a WSDL from your computer to convert<a onclick="doFileMode('remote');">use a remote WSDL</a></label>
+					<input type="file" id="file" name="file" />
 				</div>
 				<div id="authentication">
 					<div>
@@ -74,6 +90,12 @@
 						<input type="password" id="password" name="password" />
 					</div>
 				</div>
+<!--
+				<div id="filemode">
+					<input type="radio" id="filemode_remote" name="filemode" value="remote" /><label for="filemode_remote">WSDL of a remote server</label>
+					<input type="radio" id="filemode_upload" name="filemode" value="upload" /><label for="filemode_upload">Upload a WSDL file</label>
+				</div>
+-->
 				<div>
 					<label for="ns">Pick a namespace for the generated code</label>
 					<div id="objcns"><input type="text" id="shortns" name="shortns" value="SDZ"/>ensures unique class definitions (recommended)</div>

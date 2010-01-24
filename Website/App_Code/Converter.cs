@@ -89,7 +89,9 @@ public class Converter {
 	public List<WsdlFile> WsdlFiles {
 		get {
 			if (wsdlFiles == null && String.IsNullOrEmpty(wsdlPaths) == false) {
-				wsdlFiles = WsdlFile.FromString(this.wsdlPaths, this.username, this.password, this.domain);
+				try {
+					wsdlFiles = WsdlFile.FromString(this.wsdlPaths, this.username, this.password, this.domain);
+				} catch (Exception ex) { }
 			}
 			return wsdlFiles;
 		}
@@ -482,25 +484,28 @@ public class WsdlFile {
 		List<WsdlFile> list = new List<WsdlFile>();
 		foreach (string item in value.Split((";\n\t,|").ToCharArray())) {
 			string path = item;
-			string data = GetStringFromUrl(path, username, password, domain);
-			if (data == null) {
+			XmlDocument wsdlDocument = GetXmlDocumentFromUrl(path, username, password, domain);
+			if (wsdlDocument == null || wsdlDocument.DocumentElement.Name.Contains("definitions") == false) {
 				path = path + "?WSDL";
-				data = GetStringFromUrl(path, username, password, domain);
+				wsdlDocument = GetXmlDocumentFromUrl(path, username, password, domain);
 			}
-			if (data == null) { continue; }
-			if (data.Contains("<") == false) {
-				foreach (WsdlFile file in FromString(data, username, password, domain)) {
+			string imports = null;
+			if (wsdlDocument == null || wsdlDocument.DocumentElement.Name.Contains("definitions") == false) {
+				wsdlDocument = null;
+				imports = GetStringFromUrl(item, username, password, domain);
+			}
+			if (String.IsNullOrEmpty(imports) == false) {
+				foreach (WsdlFile file in FromString(imports, username, password, domain)) {
 					list.Add(file);
 				}
 			} else {
-				WsdlFile file = new WsdlFile();
-				file.Path = path;
-				file.Document = new XmlDocument();
-				try {
-					file.Document.LoadXml(data);
+				if(wsdlDocument != null) {
+					WsdlFile file = new WsdlFile();
+					file.Path = path;
+					file.Document = wsdlDocument;
 					ExpandImports(file.Document);
 					list.Add(file);
-				} catch (Exception ex) { }
+				}
 			}
 		}
 		return list;
@@ -512,13 +517,26 @@ public class WsdlFile {
 			NetworkCredential credential = new NetworkCredential(username, password, domain);
 			client.Credentials = credential;
 		}
+		path = GetAbsoluteUrl(path);
 		string data = null;
 		try {
-			data = client.DownloadString(GetAbsoluteUrl(path));
+			data = client.DownloadString(path);
 		} catch (WebException ex) {
+			throw ex;
 		}
 		return data;
+	}
 
+	public static XmlDocument GetXmlDocumentFromUrl(string path, string username, string password, string domain) {
+		XmlDocument doc = new XmlDocument();
+		string data = GetStringFromUrl(path, username, password, domain);
+		if (String.IsNullOrEmpty(data)) { return null; }
+		try {
+			doc.LoadXml(data);
+		} catch (Exception ex) {
+			return null;
+		}
+		return doc;
 	}
 
 	/// <summary>

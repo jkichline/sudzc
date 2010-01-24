@@ -496,9 +496,11 @@ public class WsdlFile {
 				WsdlFile file = new WsdlFile();
 				file.Path = path;
 				file.Document = new XmlDocument();
-				file.Document.LoadXml(data);
-				ExpandImports(file.Document);
-				list.Add(file);
+				try {
+					file.Document.LoadXml(data);
+					ExpandImports(file.Document);
+					list.Add(file);
+				} catch (Exception ex) { }
 			}
 		}
 		return list;

@@ -44,6 +44,11 @@ public class Convert : IHttpHandler {
 		} else {
 			converter.WsdlPaths = context.Request["wsdl"];
 		}
+		
+		// If we have no WSDL, just stop now
+		if (converter.WsdlFiles == null || converter.WsdlFiles.Count == 0) {
+			this.displayError(context, "No WSDL files have been specified");
+		}
 
 		// Just output the WSDL if that is what is requested
 		if (mimeType == "input" && converter.WsdlFiles.Count > 0) {
@@ -64,7 +69,11 @@ public class Convert : IHttpHandler {
 		}
 
 		// Otherwise, save it as an archive
-		converter.CreateArchive(context, Converter.GetPackageName(packageName));
+		try {
+			converter.CreateArchive(context, Converter.GetPackageName(packageName));
+		} catch (Exception ex) {
+			this.displayError(context, ex.Message);
+		}
 	}
 
 	private void displayError(HttpContext context, string message) {

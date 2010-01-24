@@ -1375,7 +1375,7 @@
 		<xsl:param name="service"/>
 		<file>
 			<xsl:attribute name="filename">Examples/<xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>Example.h</xsl:attribute>
-@interface <xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>Example : NSObject* {
+@interface <xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>Example : NSObject {
 }
 		</file>
 		<file>
@@ -1514,7 +1514,7 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 
 <xsl:for-each select="class">
-	<xsl:value-of select="."/>* service<xsl:value-of select="position()"/> = [[<xsl:value-of select="."/> alloc] init];
+		<xsl:value-of select="."/>* example<xsl:value-of select="position()"/> = [[[<xsl:value-of select="."/>Example alloc] init] autorelease];
 </xsl:for-each>
 
 	[window makeKeyAndVisible];

@@ -42,7 +42,12 @@ public class Convert : IHttpHandler {
 				}
 			}
 		} else {
-			converter.WsdlPaths = context.Request["wsdl"];
+			try {
+				converter.WsdlPaths = context.Request["wsdl"];
+			} catch (Exception ex) {
+				this.displayError(context, ex.Message);
+				return;
+			}
 		}
 		
 		// If we have no WSDL, just stop now

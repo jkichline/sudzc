@@ -18,6 +18,7 @@
 	
   <xsl:template match="/">
 		<package>
+			<xsl:attribute name="class"><xsl:value-of select="/wsdl:definitions/wsdl:service/@name"/></xsl:attribute>
 			<xsl:attribute name="name"><xsl:value-of select="/wsdl:definitions/wsdl:service/@name"/>.ActionScript</xsl:attribute>
 			<folder copy="ActionScript/src" as="src"/>
 			<xsl:apply-templates select="/wsdl:definitions"/>

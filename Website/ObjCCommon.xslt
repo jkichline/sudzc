@@ -1619,6 +1619,41 @@
 	<!-- PROCESS THE INDEX -->
 	<xsl:template match="index">
 		<package name="index">
+			<file filename="Documentation/toc/index.plist">
+				<plist>
+					<array>
+						<dict>
+							<key>section</key>
+							<string>Tutorial</string>
+							<key>items</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>Tutorial</string>
+									<key>file</key>
+									<string>Documentation/tutorial/index.html</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>section</key>
+							<string>Packages</string>
+							<key>items</key>
+							<array>
+								<xsl:for-each select="class">
+									<xsl:sort select="." order="ascending"/>
+									<dict>
+										<key>title</key>
+										<string><xsl:value-of select="."/></string>
+										<key>index</key>
+										<string>Documentation/toc/<xsl:value-of select="."/>.plist</string>
+									</dict>
+								</xsl:for-each>
+							</array>
+						</dict>
+					</array>
+				</plist>
+			</file>
 			<file filename="Documentation/toc/index.html">
 <html>
 	<head>

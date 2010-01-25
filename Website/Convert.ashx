@@ -75,7 +75,7 @@ public class Convert : IHttpHandler {
 
 		// Otherwise, save it as an archive
 		try {
-			converter.CreateArchive(context, Converter.GetPackageName(packageName));
+			converter.CreateArchive(context);
 		} catch (Exception ex) {
 			this.displayError(context, ex.Message);
 		}

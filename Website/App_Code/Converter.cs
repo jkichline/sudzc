@@ -8,6 +8,7 @@ using System.Xml;
 using System.Xml.Xsl;
 using System.IO;
 using System.Net;
+using System.Text;
 using ICSharpCode.SharpZipLib.Zip;
 
 /// <summary>
@@ -129,8 +130,8 @@ public class Converter {
 
 		// Convert the WSDLs
 		List<string> packages = this.Convert();
-		if (String.IsNullOrEmpty(packageName)) {
-			packageName = GetPackageName(packages);
+		if (String.IsNullOrEmpty(packageName) && packages != null && packages.Count > 0) {
+			packageName = packages[0];
 		}
 
 		// Zip everything up
@@ -217,6 +218,9 @@ public class Converter {
 		// Process the index to the output directory.
 		this.SaveIndexToDirectory(indexDocument, this.OutputDirectory);
 
+		// Update the Xcode project file
+		this.UpdateProjectFile(this.OutputDirectory);
+
 		// Return the output directory
 		return this.OutputDirectory;
 	}
@@ -271,6 +275,91 @@ public class Converter {
 		XmlDocument output = new XmlDocument();
 		output.LoadXml(System.Text.Encoding.ASCII.GetString(ms.ToArray()));
 		return output;
+	}
+
+	public static string MakeUUID(long id) {
+		long code = DateTime.Now.Ticks;
+		string uuid = id.ToString("X") + code.ToString("X");
+		uuid = uuid.PadRight(24, '0');
+		return uuid.Substring(0, 24);
+	}
+
+	public void UpdateProjectFile(DirectoryInfo directory) {
+
+		// Setup the string builders
+		StringBuilder pbxBuildFile = new StringBuilder();
+		StringBuilder pbxFileReference = new StringBuilder();
+		StringBuilder pbxGroupExamples = new StringBuilder();
+		StringBuilder pbxGroupGenerated = new StringBuilder();
+		StringBuilder pbxSourcesBuildPhase = new StringBuilder();
+		Dictionary<string, string> lookup = new Dictionary<string, string>();
+
+		// Set up the ID
+		DateTime date1970 = new DateTime(1970, 1, 1);
+		TimeSpan timeSpan = DateTime.Now.Subtract(date1970);
+		long id = (long)timeSpan.TotalMilliseconds;
+
+		// Create pointers to the directory
+		DirectoryInfo sourceDirectory = new DirectoryInfo(Path.Combine(directory.FullName, "Source"));
+		DirectoryInfo examplesDirectory = new DirectoryInfo(Path.Combine(sourceDirectory.FullName, "Examples"));
+		DirectoryInfo generatedDirectory = new DirectoryInfo(Path.Combine(sourceDirectory.FullName, "Generated"));
+		
+		// Add examples files
+		foreach (FileInfo file in examplesDirectory.GetFiles()) {
+			string uuid = MakeUUID(id);
+			string type = "objc";
+			if (file.Name.EndsWith(".h")) { type = "h"; }
+			pbxFileReference.AppendFormat("		{0} /* {1} */ = {{isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.{2}; path = \"{1}\"; sourceTree = \"<group>\"; }};", uuid, file.Name, type);
+			pbxFileReference.AppendLine();
+			pbxGroupExamples.AppendFormat("				{0} /* {1} */,", uuid, file.Name);
+			pbxGroupExamples.AppendLine();
+			lookup.Add(file.Name, uuid);
+			id++;
+		}
+
+		// Add generated files
+		foreach (FileInfo file in generatedDirectory.GetFiles()) {
+			string uuid = MakeUUID(id);
+			string type = "objc";
+			if (file.Name.EndsWith(".h")) { type = "h"; }
+			pbxFileReference.AppendFormat("		{0} /* {1} */ = {{isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.{2}; path = \"{1}\"; sourceTree = \"<group>\"; }};", uuid, file.Name, type);
+			pbxFileReference.AppendLine();
+			pbxGroupGenerated.AppendFormat("				{0} /* {1} */,", uuid, file.Name);
+			pbxGroupGenerated.AppendLine();
+			lookup.Add(file.Name, uuid);
+			id++;
+		}
+
+		// Add the build files
+		foreach (string filename in lookup.Keys) {
+			string uuid = MakeUUID(id);
+			pbxBuildFile.AppendFormat("		{0} /* {1} in Sources */ = {{isa = PBXBuildFile; fileRef = {2} /* {1} */; }};", uuid, filename, lookup[filename]);
+			pbxBuildFile.AppendLine();
+			if (filename.EndsWith(".m")) {
+				pbxSourcesBuildPhase.AppendFormat("				{0} /* {1} in Sources */,", uuid, filename);
+				pbxSourcesBuildPhase.AppendLine();
+			}
+			id++;
+		}
+
+		// Update the variables in the file.
+		FileInfo projectFile = new FileInfo(Path.Combine(directory.FullName, "Examples/SudzCExamples.xcodeproj/project.pbxproj"));
+		StreamReader reader = projectFile.OpenText();
+		string contents = reader.ReadToEnd();
+		reader.Close();
+
+		// Do the replacing
+		contents = contents.Replace("/***PBXBuildFile***/", pbxBuildFile.ToString());
+		contents = contents.Replace("/***PBXFileReference***/", pbxFileReference.ToString());
+		contents = contents.Replace("/***PBXGroupExamples***/", pbxGroupExamples.ToString());
+		contents = contents.Replace("/***PBXGroupGenerated***/", pbxGroupGenerated.ToString());
+		contents = contents.Replace("/***PBXSourcesBuildPhase***/", pbxSourcesBuildPhase.ToString());
+		
+		// Save the file
+		StreamWriter writer = new StreamWriter(projectFile.FullName, false);
+		writer.Write(contents);
+		writer.Flush();
+		writer.Close();
 	}
 
 	/// <summary>
@@ -340,11 +429,13 @@ public class Converter {
 					} catch (Exception ex) {
 						throw new Exception("Required attribute 'filename' not encountered in the 'file' element", ex);
 					}
+
 					string filePath = Path.Combine(directory.FullName, filename);
 					file = new FileInfo(filePath);
 					if (file.Directory.Exists == false) { file.Directory.Create(); }
 					StreamWriter fs = file.CreateText();
-					if (file.Extension.StartsWith(".htm")) {
+
+					if (child.FirstChild != null && child.FirstChild.NodeType == XmlNodeType.Element) {
 						fs.Write(child.InnerXml);
 					} else {
 						fs.Write(child.InnerText);

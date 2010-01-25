@@ -27,7 +27,7 @@ public class Convert : IHttpHandler {
 
 
 		// Add the WSDLs to the converter
-		if (context.Request.Files[0] != null && context.Request.Files[0].ContentLength > 0) {
+		if (context.Request.Files != null && context.Request.Files.Count > 0 && context.Request.Files[0] != null && context.Request.Files[0].ContentLength > 0) {
 			converter.WsdlFiles = new List<WsdlFile>();
 
 			foreach (object item in context.Request.Files) {

@@ -319,9 +319,19 @@
 		<xsl:choose>
 			<xsl:when test="$elementName != ''">
 				<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
+				<xsl:variable name="rawType">
+					<xsl:choose>
+						<xsl:when test="$element/wsdl:complexType">
+							<xsl:value-of select="$element/wsdl:complexType/s:sequence/s:element/@type"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = substring-after($element/@type, ':')]/s:sequence/s:element/@type"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
 				<xsl:variable name="type">
 					<xsl:call-template name="getType">
-						<xsl:with-param name="value" select="$element/s:complexType/s:sequence/s:element/@type"/>
+						<xsl:with-param name="value" select="$rawType"/>
 					</xsl:call-template>
 				</xsl:variable>
 				<xsl:choose>
@@ -1550,13 +1560,16 @@
 	<xsl:template match="wsdl:operation" mode="example">
 		<xsl:variable name="type"><xsl:apply-templates select="wsdl:output" mode="object_type"/></xsl:variable>
 
-		// Returns <xsl:copy-of select="$type"/>. <xsl:value-of select="wsdl:documentation"/>
-		[service <xsl:value-of select="@name"/>:self action:@selector(<xsl:value-of select="@name"/>Handler)<xsl:apply-templates select="wsdl:input" mode="param_example"/>];</xsl:template>
+	// Returns <xsl:copy-of select="$type"/>. <xsl:value-of select="wsdl:documentation"/>
+	[service <xsl:value-of select="@name"/>:self action:@selector(<xsl:value-of select="@name"/>Handler:)<xsl:apply-templates select="wsdl:input" mode="param_example"/>];</xsl:template>
 	<xsl:template match="wsdl:operation" mode="example_handler">
-		<xsl:variable name="type"><xsl:apply-templates select="wsdl:output" mode="object_type"/></xsl:variable>
+		<xsl:variable name="type">
+			<xsl:apply-templates select="wsdl:output" mode="object_type"/>
+		</xsl:variable>
 
 // Handle the response from <xsl:value-of select="@name"/>.
-- (void) <xsl:value-of select="@name"/>Handler: (id) value {
+		<xsl:choose>
+			<xsl:when test="contains($type, '*') or $type = 'id'">- (void) <xsl:value-of select="@name"/>Handler: (id) value {
 
 	// Handle errors
 	if([value isKindOfClass:[NSError class]]) {
@@ -1568,11 +1581,38 @@
 	if([value isKindOfClass:[SoapFault class]]) {
 		NSLog(@"%@", value);
 		return;
-	}
+	}				
+			</xsl:when>
+			<xsl:otherwise>
+- (void) <xsl:value-of select="@name"/>Handler: (<xsl:value-of select="$type"/>) value {
+			</xsl:otherwise>
+		</xsl:choose>
 
-	// Do something with the <xsl:value-of select="$type"/> object
+	// Do something with the <xsl:value-of select="$type"/> result
+		<xsl:choose>
+			<xsl:when test="contains($type, '*') or $type = 'id'">
 	<xsl:value-of select="$type"/> result = (<xsl:value-of select="$type"/>)value;
-	NSLog(@"%@", result);
+	NSLog(@"<xsl:value-of select="@name"/> returned the value: %@", result);
+			</xsl:when>
+			<xsl:when test="$type = 'int'">
+	NSLog(@"<xsl:value-of select="@name"/> returned the value: %@", [NSNumber numberWithInt:value]);
+			</xsl:when>
+			<xsl:when test="$type = 'long'">
+	NSLog(@"<xsl:value-of select="@name"/> returned the value: %@", [NSNumber numberWithLong:value]);
+			</xsl:when>
+			<xsl:when test="$type = 'short'">
+	NSLog(@"<xsl:value-of select="@name"/> returned the value: %@", [NSNumber numberWithShort:value]);
+			</xsl:when>
+			<xsl:when test="$type = 'char'">
+	NSLog(@"<xsl:value-of select="@name"/> returned the value: %@", [NSNumber numberWithChar:value]);
+			</xsl:when>
+			<xsl:when test="$type = 'BOOL'">
+	NSLog(@"<xsl:value-of select="@name"/> returned the value: %@", [NSNumber numberWithBool:value]);
+			</xsl:when>
+			<xsl:otherwise>
+	NSLog(@"<xsl:value-of select="@name"/> has been run", nil);
+			</xsl:otherwise>
+		</xsl:choose>
 }
 	</xsl:template>	
 

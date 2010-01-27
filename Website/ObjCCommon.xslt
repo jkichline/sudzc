@@ -1569,7 +1569,8 @@
 
 // Handle the response from <xsl:value-of select="@name"/>.
 		<xsl:choose>
-			<xsl:when test="contains($type, '*') or $type = 'id'">- (void) <xsl:value-of select="@name"/>Handler: (id) value {
+			<xsl:when test="contains($type, '*') or $type = 'id'">
+- (void) <xsl:value-of select="@name"/>Handler: (id) value {
 
 	// Handle errors
 	if([value isKindOfClass:[NSError class]]) {
@@ -1591,7 +1592,7 @@
 	// Do something with the <xsl:value-of select="$type"/> result
 		<xsl:choose>
 			<xsl:when test="contains($type, '*') or $type = 'id'">
-	<xsl:value-of select="$type"/> result = (<xsl:value-of select="$type"/>)value;
+<xsl:value-of select="$type"/> result = (<xsl:value-of select="$type"/>)value;
 	NSLog(@"<xsl:value-of select="@name"/> returned the value: %@", result);
 			</xsl:when>
 			<xsl:when test="$type = 'int'">

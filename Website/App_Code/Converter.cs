@@ -620,10 +620,14 @@ public class WsdlFile {
 
 	public static XmlDocument GetXmlDocumentFromUrl(string path, string username, string password, string domain) {
 		XmlDocument doc = new XmlDocument();
-		string data = GetStringFromUrl(path, username, password, domain);
-		if (String.IsNullOrEmpty(data)) { return null; }
+		XmlUrlResolver resolver = new XmlUrlResolver();
+		if (String.IsNullOrEmpty(username) == false || String.IsNullOrEmpty(password) == false) {
+			NetworkCredential credential = new NetworkCredential(username, password, domain);
+			resolver.Credentials = credential;
+		}
+		doc.XmlResolver = resolver;
 		try {
-			doc.LoadXml(data);
+			doc.Load(GetAbsoluteUrl(path));
 		} catch (Exception ex) {
 			return null;
 		}

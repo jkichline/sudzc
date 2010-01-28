@@ -34,8 +34,7 @@
 	<xsl:template match="wsdl:definitions">
 		<package class="{$shortns}{$serviceName}">
 			<xsl:attribute name="name"><xsl:value-of select="$serviceName"/>.iPhone</xsl:attribute>
-			<folder copy="ObjC/Soap"/>
-			<folder copy="ObjC/TouchXML"/>
+			<folder copy="ObjC/Source"/>
 			<include copy="ObjC/HOWTO.rtf"/>
 			<include copy="ObjC/README.rtf"/>
 			<file>

@@ -654,7 +654,9 @@ public class WsdlFile {
 
 		// Expand the schema imports
 		foreach (XmlNode importNode in schemaImports) {
-			string location = importNode.Attributes["schemaLocation"].Value;
+			XmlAttribute a = importNode.Attributes["schemaLocation"];
+			if (a == null) { continue; }
+			string location = a.Value;
 			if (location != null && importedUris.Contains(location) == false) {
 				XmlDocument importedDoc = new XmlDocument();
 				importedDoc.Load(location);
@@ -670,7 +672,9 @@ public class WsdlFile {
 
 		// Expand the WSDL imports
 		foreach (XmlNode importNode in wsdlImports) {
-			string location = importNode.Attributes["location"].Value;
+			XmlAttribute a = importNode.Attributes["location"];
+			if (a == null) { continue; }
+			string location = a.Value;
 			if (location != null && importedUris.Contains(location) == false) {
 				XmlDocument importedDoc = new XmlDocument();
 				importedDoc.Load(location);

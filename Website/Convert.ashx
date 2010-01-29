@@ -27,22 +27,7 @@ public class Convert : IHttpHandler {
 
 
 		// Add the WSDLs to the converter
-		if (context.Request.Files != null && context.Request.Files.Count > 0 && context.Request.Files[0] != null && context.Request.Files[0].ContentLength > 0) {
-			converter.WsdlFiles = new List<WsdlFile>();
-
-			foreach (object item in context.Request.Files) {
-				HttpPostedFile postedFile = item as HttpPostedFile;
-				if (postedFile == null) { postedFile = context.Request.Files[item as string]; }
-				if (postedFile != null && postedFile.ContentLength > 0) {
-					WsdlFile wsdlFile = new WsdlFile();
-					wsdlFile.Document = new XmlDocument();
-					wsdlFile.Document.Load(postedFile.InputStream);
-					wsdlFile.Path = postedFile.FileName;
-					XmlDocument wsdlDocument = new XmlDocument();
-					converter.WsdlFiles.Add(wsdlFile);
-				}
-			}
-		} else {
+		if (String.IsNullOrEmpty(context.Request["wsdl"]) == false) {
 			try {
 				converter.WsdlPaths = context.Request["wsdl"];
 			} catch (Exception ex) {
@@ -51,11 +36,30 @@ public class Convert : IHttpHandler {
 				this.displayError(context, error);
 				return;
 			}
+		} else {
+			if (context.Request.Files != null && context.Request.Files.Count > 0 && context.Request.Files[0] != null && context.Request.Files[0].ContentLength > 0) {
+				converter.WsdlFiles = new List<WsdlFile>();
+
+				foreach (object item in context.Request.Files) {
+					HttpPostedFile postedFile = item as HttpPostedFile;
+					if (postedFile == null) { postedFile = context.Request.Files[item as string]; }
+					if (postedFile != null && postedFile.ContentLength > 0) {
+						WsdlFile wsdlFile = new WsdlFile();
+						wsdlFile.Document = new XmlDocument();
+						wsdlFile.Document.Load(postedFile.InputStream);
+						wsdlFile.Path = postedFile.FileName;
+						XmlDocument wsdlDocument = new XmlDocument();
+						converter.WsdlFiles.Add(wsdlFile);
+					}
+				}
+			}
 		}
 		
 		// If we have no WSDL, just stop now
 		if (converter.WsdlFiles == null || converter.WsdlFiles.Count == 0) {
-			this.displayError(context, "No WSDL files have been specified");
+			string error = "No WSDL files have been specified";
+			if (converter.Errors != null && converter.Errors.Count > 0) { error += ": " + String.Join(", ", converter.Errors.ToArray()); }
+			this.displayError(context, error);
 		}
 
 		// Just output the WSDL if that is what is requested

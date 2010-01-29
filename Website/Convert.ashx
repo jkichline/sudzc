@@ -32,6 +32,7 @@ public class Convert : IHttpHandler {
 
 			foreach (object item in context.Request.Files) {
 				HttpPostedFile postedFile = item as HttpPostedFile;
+				if (postedFile == null) { postedFile = context.Request.Files[item as string]; }
 				if (postedFile != null && postedFile.ContentLength > 0) {
 					WsdlFile wsdlFile = new WsdlFile();
 					wsdlFile.Document = new XmlDocument();
@@ -45,7 +46,9 @@ public class Convert : IHttpHandler {
 			try {
 				converter.WsdlPaths = context.Request["wsdl"];
 			} catch (Exception ex) {
-				this.displayError(context, ex.Message);
+				string error = ex.Message;
+				if (converter.Errors != null) { error += ": " + String.Join(", ", converter.Errors.ToArray()); }
+				this.displayError(context, error);
 				return;
 			}
 		}

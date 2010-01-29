@@ -20,6 +20,7 @@ public class Converter {
 	private string username;
 	private string password;
 	private string domain;
+	private List<String> errors;
 	private DirectoryInfo outputDirectory;
 	private List<WsdlFile> wsdlFiles;
 
@@ -69,6 +70,13 @@ public class Converter {
 	}
 
 	/// <summary>
+	/// Returns a collection of errors encountered;
+	/// </summary>
+	public List<String> Errors {
+		get { return errors; }
+	}
+
+	/// <summary>
 	/// The output directory of the conversion process.
 	/// </summary>
 	public DirectoryInfo OutputDirectory {
@@ -92,7 +100,9 @@ public class Converter {
 			if (wsdlFiles == null && String.IsNullOrEmpty(wsdlPaths) == false) {
 				try {
 					wsdlFiles = WsdlFile.FromString(this.wsdlPaths, this.username, this.password, this.domain);
-				} catch (Exception ex) { }
+				} catch (Exception ex) {
+					errors.Add(ex.Message);
+				}
 			}
 			return wsdlFiles;
 		}
@@ -243,6 +253,7 @@ public class Converter {
 	/// <param name="file">The <see cref="WsdlFile"/> to be converted.</param>
 	/// <returns>Returns the package XML file.</returns>
 	public XmlDocument ConvertToPackage(WsdlFile file) {
+		errors = new List<string>();
 		return this.Transform(file.Document);
 	}
 
@@ -267,7 +278,7 @@ public class Converter {
 		foreach (string key in HttpContext.Current.Request.Params.AllKeys) {
 			try {
 				args.AddParam(key, String.Empty, HttpContext.Current.Request.Params[key]);
-			} catch (Exception) { }
+			} catch (Exception ex) { }
 		}
 
 		MemoryStream ms = new MemoryStream();

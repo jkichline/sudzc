@@ -98,12 +98,12 @@ public class Converter {
 	public List<WsdlFile> WsdlFiles {
 		get {
 			if (wsdlFiles == null && String.IsNullOrEmpty(wsdlPaths) == false) {
-//				try {
+				try {
 					wsdlFiles = WsdlFile.FromString(this.wsdlPaths, this.username, this.password, this.domain);
-//				} catch (Exception ex) {
-//					if (errors == null) { errors = new List<string>(); }
-//					errors.Add(ex.Message);
-//				}
+				} catch (Exception ex) {
+					if (errors == null) { errors = new List<string>(); }
+					errors.Add(ex.Message);
+				}
 			}
 			return wsdlFiles;
 		}

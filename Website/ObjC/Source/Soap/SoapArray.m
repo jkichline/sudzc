@@ -347,4 +347,9 @@
 	return [self.items mutableCopyWithZone:zone];
 }
 
+-(void)dealloc{
+	[items release];
+	[super dealloc];
+}
+
 @end

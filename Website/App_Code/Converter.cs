@@ -101,7 +101,6 @@ public class Converter {
 				try {
 					wsdlFiles = WsdlFile.FromString(this.wsdlPaths, this.username, this.password, this.domain);
 				} catch (Exception ex) {
-					errors.Add(ex.Message);
 				}
 			}
 			return wsdlFiles;

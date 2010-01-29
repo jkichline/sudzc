@@ -230,7 +230,9 @@ public class Converter {
 		this.SaveIndexToDirectory(indexDocument, this.OutputDirectory);
 
 		// Update the Xcode project file
-		this.UpdateProjectFile(this.OutputDirectory);
+		if (this.Type.StartsWith("ObjC")) {
+			this.UpdateProjectFile(this.OutputDirectory);
+		}
 
 		// Return the output directory
 		return this.OutputDirectory;

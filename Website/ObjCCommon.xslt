@@ -1819,7 +1819,7 @@
 			<dt>Tutorial</dt>
 			<dd>
 				<ul>
-					<li><a target="content" href="tutorial/index.html">Getting Started</a></li>
+					<li><a target="content" href="../tutorial/index.html">Getting Started</a></li>
 				</ul>
 			</dd>
 			<dt>Packages</dt>

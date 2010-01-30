@@ -61,7 +61,7 @@
 	<!-- SERVICE IMPLEMENTATION -->
 	<xsl:template name="createImplementation">
 		<xsl:param name="service"/>
-		<xsl:variable name="url" select="$service/wsdl:port/soap:address/@location"/>
+		<xsl:variable name="url" select="$service/wsdl:port[1]/soap:address/@location"/>
 @implementation <xsl:value-of select="$shortns"/><xsl:value-of select="$serviceName"/>
 
 	- (id) init

@@ -1,5 +1,3 @@
-/* Copyright (c) 2007, andCulture Inc. All rights reserved. Code licensed under the BSD License: http://labs.andculture.net/blaze/license.txt */
-
 String.prototype.trim=function(){
   var x=this;
   x=x.replace(/^\s*(.*)/,"$1");
@@ -40,7 +38,13 @@ String.prototype.equals=function(val,ignoreCase){
 }
 
 SoapProxy=function(){
-	this.isIE=false;this.isNS=true;
+	this.__class="SoapProxy";
+	this.isIE=false;
+	this.isNS=true;
+	this.services={};
+	this.services.onfault=null;
+	this.services.onerror=null;
+	this.services.onload=null;
 }
 
 SoapProxy.prototype.ns=function(ns){
@@ -71,6 +75,7 @@ SoapProxy.prototype.createEnvelope=function(namespace,method,names,values){
 SoapProxy.prototype.secure=function(){return false;}
 
 SoapProxy.prototype.getXml=function(url,post,action,callback,caller){
+	if(url==null||url==""){url=action;}
 	var method="GET";
 	var async=(callback!=null);
 	if(post!=null){method="POST";}
@@ -83,7 +88,7 @@ SoapProxy.prototype.getXml=function(url,post,action,callback,caller){
 	}
 	if(async){
 		if(!caller){caller=this;}
-		var handler=new SOAPHandler(req);
+		var handler=new SoapHandler(req);
 		this.addHandler(handler,"onload");
 		this.addHandler(handler,"onfault");
 		this.addHandler(handler,"onerror");
@@ -108,10 +113,29 @@ SoapProxy.prototype.getXml=function(url,post,action,callback,caller){
 }
 
 SoapProxy.prototype.addHandler=function(h,fn){
-	if(typeof(blaze.services[fn])=="function"){h[fn]=blaze.services[fn];}
+	if(typeof(this.services[fn])=="function"){h[fn]=this.services[fn];}
 }
 
-SoapProxy.prototype.createHttp=blaze.createHttp;
+SoapProxy.prototype.createHttp=function(){
+	try {
+		if(window.XMLHttpRequest){
+			var req=new XMLHttpRequest();
+			if(req.readyState==null){
+				req.readyState=1;
+				req.addEventListener("load",function(){
+					req.readyState=4;
+					if(typeof(req.onreadystatechange)=="function"){req.onreadystatechange();}
+				},false);
+			}
+			return req;
+		}
+		if(window.ActiveXObject){
+			return new ActiveXObject("Microsoft.XMLHTTP");
+		}
+	} catch (ex) {
+  	throw new Error("Your browser does not support XmlHttp objects");
+	}
+}
 
 SoapProxy.prototype.loadXml=function(xmlString){
 	var doc=null;
@@ -321,7 +345,7 @@ SoapProxy.prototype.extend=function(tgt,src){
 }
 
 SoapProxy.prototype.createCallback=function(response,handler){
-	var fault=new SOAPFault(response);
+	var fault=new SoapFault(response);
 	if(fault.hasFault){
 		handler.onfault(fault);return null;
 	}else{
@@ -336,7 +360,10 @@ SoapProxy.prototype.createCallback=function(response,handler){
 	}
 }
 
-function SOAPHandler(object){
+var soap=new SoapProxy();
+
+function SoapHandler(object){
+	this.__class="SoapHandler";
 	this.object=object;
 	this.onload=function(object){}
 	this.onfault=function(fault){}
@@ -345,7 +372,8 @@ function SOAPHandler(object){
 	}
 }
 
-function SOAPFault(response){
+function SoapFault(response){
+	this.__class="SoapFault";
 	this.faultCode=null;
 	this.faultString=null;
 	this.faultActor=null;
@@ -371,4 +399,4 @@ function SOAPFault(response){
 	}
 }
 
-SOAPFault.prototype.toString=function(){return this.xml;}
+SoapFault.prototype.toString=function(){return this.xml;}

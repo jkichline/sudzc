@@ -14,52 +14,63 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output version="1.0" encoding="iso-8859-1" method="xml" omit-xml-declaration="no" indent="yes"/>
 
+	<!--  SET UP PARAMETERS AND DEFAULTS -->
 	<xsl:param name="ns"/>
+	<xsl:variable name="defaultServiceName">Service</xsl:variable>
+	<xsl:variable name="serviceName">
+		<xsl:choose>
+			<xsl:when test="/wsdl:definitions/wsdl:service/@name"><xsl:value-of select="/wsdl:definitions/wsdl:service/@name"/></xsl:when>
+			<xsl:otherwise><xsl:value-of select="$defaultServiceName"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:variable name="soapPortType" select="/wsdl:definitions/wsdl:binding[soap:binding][1]/@type"/>
+	<xsl:variable name="soapPortName" select="substring-after($soapPortType, ':')"/>
+	<xsl:variable name="portType" select="(/wsdl:definitions/wsdl:portType[@name = $soapPortName]|/wsdl:definitions/wsdl:portType[1])[1]"/>
 
+	<!-- CREATE THE PACKAGE -->
   <xsl:template match="/">
 		<package>
-			<xsl:attribute name="class"><xsl:value-of select="/wsdl:definitions/wsdl:service/@name"/></xsl:attribute>
-			<xsl:attribute name="name"><xsl:value-of select="/wsdl:definitions/wsdl:service/@name"/>.Javascript</xsl:attribute>
-			<include copy="Javascript/Soap.js"/>
+			<xsl:attribute name="class"><xsl:value-of select="$serviceName"/></xsl:attribute>
+			<xsl:attribute name="name"><xsl:value-of select="$serviceName"/>.Javascript</xsl:attribute>
+			<folder copy="JavaScript/Source"/>
+			<!-- <folder copy="JavaScript/Documentation"/> -->
+			<folder copy="JavaScript/Examples"/>
 			<xsl:apply-templates select="/wsdl:definitions"/>
 		</package>
 	</xsl:template>
 
   <xsl:template match="wsdl:definitions">
 		<file>
-			<xsl:attribute name="filename"><xsl:value-of select="wsdl:service/@name"/>Example.html</xsl:attribute>&lt;html&gt;
+			<xsl:attribute name="filename">Examples/<xsl:value-of select="$serviceName"/>.html</xsl:attribute>&lt;html&gt;
 	&lt;head&gt;
-		&lt;script src="Soap.js" language="Javascript" type="text/javascript">&lt;/script&gt;
-		&lt;script src="<xsl:value-of select="wsdl:service/@name"/>.js" language="Javascript" type="text/javascript">&lt;/script&gt;
+		&lt;script src="../Source/Soap.js" language="Javascript" type="text/javascript">&lt;/script&gt;
+		&lt;script src="../Source/<xsl:value-of select="$serviceName"/>.js" language="Javascript" type="text/javascript">&lt;/script&gt;
 		&lt;script language="Javascript"&gt;
-			var service=new <xsl:value-of select="wsdl:service/@name"/>();
+			var service=new <xsl:value-of select="$ns"/>.<xsl:value-of select="$serviceName"/>();
 		&lt;/script&gt;
 	&lt;/head&gt;
 &lt;/html&gt;
 		</file>
 		<file>
-			<xsl:attribute name="filename"><xsl:value-of select="wsdl:service/@name"/>.js</xsl:attribute>
+			<xsl:attribute name="filename">Source/<xsl:value-of select="$serviceName"/>.js</xsl:attribute>
 			<xsl:if test="wsdl:documentation">
 /* <xsl:value-of select="wsdl:documentation"/> */
 			</xsl:if>
 /* Define web service proxy methods and callbacks */
-	<xsl:apply-templates select="wsdl:service"/>
-	<xsl:apply-templates select="/wsdl:definitions/wsdl:portType[1]/wsdl:operation" mode="def"/>
-/* Define methods for returning response objects */
-	<xsl:apply-templates select="/wsdl:definitions/wsdl:portType[1]/wsdl:operation/wsdl:output" mode="results"/>
-/* Define complex return objects */
-		<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="obj"/>
-    "<xsl:value-of select="/wsdl:definitions/wsdl:service/@name"/>";
-		</file>
-  </xsl:template>
-
-	<xsl:template match="wsdl:service">
-	var $ns=SoapProxy.ns("<xsl:value-of select="$ns"/>");
-  $ns.<xsl:value-of select="@name"/>=function(service,namespace){
+	var $ns=soap.ns("<xsl:value-of select="$ns"/>");
+  $ns.<xsl:value-of select="$serviceName"/>=function(service,namespace){
     this.service=service;this.namespace=namespace;
     if(!this.service){this.service="<xsl:value-of select="/wsdl:definitions/wsdl:service/wsdl:port[1]/soap:address/@location"/>";}
     if(!this.namespace){this.namespace="<xsl:value-of select="/wsdl:definitions/@targetNamespace"/>";}
   }
+
+	<xsl:apply-templates select="$portType/wsdl:operation" mode="def"/>
+/* Define methods for returning response objects */
+	<xsl:apply-templates select="$portType/wsdl:operation/wsdl:output" mode="results"/>
+/* Define complex return objects */
+		<xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name]" mode="obj"/>
+    "<xsl:value-of select="$serviceName"/>";
+		</file>
   </xsl:template>
 	
 	<xsl:template match="wsdl:operation" mode="def">
@@ -71,11 +82,11 @@
 	<xsl:if test="wsdl:documentation">
 /* <xsl:value-of select="wsdl:documentation"/> */
 </xsl:if>
-	$ns.<xsl:value-of select="$service"/>.prototype.<xsl:value-of select="@name"/>=function(<xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $msg]" mode="params"/>){
+	$ns.<xsl:value-of select="$serviceName"/>.prototype.<xsl:value-of select="@name"/>=function(<xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $msg]" mode="params"/>){
 		var env=soap.createEnvelope(this.namespace,"<xsl:value-of select="@name"/>",[<xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $msg]" mode="q_params"/>],[<xsl:apply-templates select="/wsdl:definitions/wsdl:message[@name = $msg]" mode="params"/>]);
 		return soap.getXml(this.service,env,"<xsl:value-of select="$action"/>", this.<xsl:value-of select="@name"/>_,this);
 	}
-	$ns.<xsl:value-of select="$service"/>.prototype.<xsl:value-of select="@name"/>_=function(response,handler,caller){
+	$ns.<xsl:value-of select="$serviceName"/>.prototype.<xsl:value-of select="@name"/>_=function(response,handler,caller){
     var doc=soap.createCallback(response,handler);
     if(doc){
     	var object=null;
@@ -179,7 +190,7 @@
 				<xsl:variable name="objType"><xsl:value-of select="substring-after(//*/s:complexType[@name = $type]/*/s:element/@type, ':')"/></xsl:variable>
 				<xsl:variable name="service"><xsl:value-of select="//*/wsdl:service/@name"/></xsl:variable>
 
-				$ns.<xsl:value-of select="$service"/>.prototype.<xsl:value-of select="$name"/>=function(response){
+				$ns.<xsl:value-of select="$serviceName"/>.prototype.<xsl:value-of select="$name"/>=function(response){
 				var node=soap.getNode(response,"<xsl:value-of select="$name"/>");
 				if(node){
 					<xsl:choose>
@@ -219,7 +230,7 @@
 		<xsl:variable name="objType"><xsl:value-of select="substring-after(//*/s:complexType[@name = $type]/*/s:element/@type, ':')"/></xsl:variable>
 		<xsl:variable name="service"><xsl:value-of select="//*/wsdl:service/@name"/></xsl:variable>
 
-		$ns.<xsl:value-of select="$service"/>.prototype.<xsl:value-of select="$name"/>=function(response){
+		$ns.<xsl:value-of select="$serviceName"/>.prototype.<xsl:value-of select="$name"/>=function(response){
 		var node=soap.getNode(response,"<xsl:value-of select="$name"/>");
 		if(node){
 			<xsl:choose>
@@ -251,9 +262,10 @@
 		<xsl:value-of select="@name"/> = function(node) {
       soap.init(this,node,[<xsl:apply-templates select="descendant::s:element" mode="obj"/>],[<xsl:apply-templates select="descendant::s:element" mode="types"/>]);
 		}
-		$ns.<xsl:value-of select="@name"/>.prototype.toString=function(){return soap.serialize(this);}
+		$ns.<xsl:value-of select="$serviceName"/>.prototype.toString=function(){return soap.serialize(this);}
 		</xsl:if>
 	</xsl:template>
 	<xsl:template match="s:element" mode="obj">'<xsl:value-of select="@name"/>'<xsl:if test="position() != last()">,</xsl:if></xsl:template>
-	<xsl:template match="s:element" mode="types">'<xsl:value-of select="@type"/>'<xsl:if test="position() != last()">,</xsl:if></xsl:template>
+	<xsl:template match="s:element" mode="types">'<xsl:value-of select="@type"/>'<xsl:if test="position() != last()">,</xsl:if></xsl:template>	
+	
 </xsl:stylesheet>

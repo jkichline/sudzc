@@ -73,7 +73,7 @@ public class Convert : IHttpHandler {
 
 		// If we want to see text then return that
 		if (String.IsNullOrEmpty(mimeType) == false) {
-			context.Response.ContentType = "text/plain";
+			context.Response.ContentType = mimeType;
 			context.Response.AddHeader("content-disposition", "attachment;filename=\"" + converter.WsdlFiles[0].Name + ".sudzc\"");
 			converter.ConvertToPackage(converter.WsdlFiles[0]).Save(context.Response.OutputStream);
 			context.Response.End();

@@ -260,6 +260,7 @@
 		<xsl:variable name="service"><xsl:value-of select="//*/wsdl:service/@name"/></xsl:variable>
 		<xsl:if test="not(descendant::s:element[@maxOccurs = 'unbounded'] and count(descendant::s:element) = 1)">
 		<xsl:value-of select="@name"/> = function(node) {
+			this.__class="<xsl:value-of select="@name"/>";
       soap.init(this,node,[<xsl:apply-templates select="descendant::s:element" mode="obj"/>],[<xsl:apply-templates select="descendant::s:element" mode="types"/>]);
 		}
 		$ns.<xsl:value-of select="$serviceName"/>.prototype.toString=function(){return soap.serialize(this);}

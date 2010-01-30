@@ -321,8 +321,8 @@
 				<xsl:variable name="element" select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]"/>
 				<xsl:variable name="rawType">
 					<xsl:choose>
-						<xsl:when test="$element/wsdl:complexType">
-							<xsl:value-of select="$element/wsdl:complexType/s:sequence/s:element/@type"/>
+						<xsl:when test="$element/s:complexType">
+							<xsl:value-of select="$element/s:complexType/s:sequence/s:element/@type"/>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = substring-after($element/@type, ':')]/s:sequence/s:element/@type"/>

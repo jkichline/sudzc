@@ -37,7 +37,7 @@ String.prototype.equals=function(val,ignoreCase){
 	return (src==val);
 }
 
-SoapProxy=function(){
+Soap=function(){
 	this.isIE=false;this.isNS=true;
 	this.services={};
 	this.services.onfault=null;
@@ -45,7 +45,7 @@ SoapProxy=function(){
 	this.services.onload=null;
 }
 
-SoapProxy.prototype.ns=function(ns){
+Soap.prototype.ns=function(ns){
 	var p=ns.split(".");
 	var r=window;
 	for(var i=0;i<p.length;i++){
@@ -55,7 +55,7 @@ SoapProxy.prototype.ns=function(ns){
 	return r;
 }
 
-SoapProxy.prototype.createEnvelope=function(namespace,method,names,values){
+Soap.prototype.createEnvelope=function(namespace,method,names,values){
 	var s='',val=null;
 	s+='<?xml version="1.0" encoding="utf-8"?>';
 	s+='<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="'+ namespace +'">';
@@ -70,9 +70,9 @@ SoapProxy.prototype.createEnvelope=function(namespace,method,names,values){
 	return s;
 }
 
-SoapProxy.prototype.secure=function(){return false;}
+Soap.prototype.secure=function(){return false;}
 
-SoapProxy.prototype.getXml=function(url,post,action,callback,caller){
+Soap.prototype.getXml=function(url,post,action,callback,caller){
 	if(url==null||url==""){url=action;}
 	var method="GET";
 	var async=(callback!=null);
@@ -110,11 +110,11 @@ SoapProxy.prototype.getXml=function(url,post,action,callback,caller){
 	}
 }
 
-SoapProxy.prototype.addHandler=function(h,fn){
+Soap.prototype.addHandler=function(h,fn){
 	if(typeof(this.services[fn])=="function"){h[fn]=this.services[fn];}
 }
 
-SoapProxy.prototype.createHttp=function(){
+Soap.prototype.createHttp=function(){
 	try {
 		if(window.XMLHttpRequest){
 			var req=new XMLHttpRequest();
@@ -135,7 +135,7 @@ SoapProxy.prototype.createHttp=function(){
 	}
 }
 
-SoapProxy.prototype.loadXml=function(xmlString){
+Soap.prototype.loadXml=function(xmlString){
 	var doc=null;
 	try{
 		if(document.ActiveXObject){
@@ -151,7 +151,7 @@ SoapProxy.prototype.loadXml=function(xmlString){
 		throw new Error("Cannot parse the web service feed");
 	}
 }
-SoapProxy.prototype.selectSingleNode=function(parent,local,prefix){
+Soap.prototype.selectSingleNode=function(parent,local,prefix){
 	var a=this.selectNodes(parent,local,prefix);
 	for(var i=0;i<a.length;i++){
 		if(a[i].parentNode==parent){return a[i];}
@@ -159,7 +159,7 @@ SoapProxy.prototype.selectSingleNode=function(parent,local,prefix){
 	return this.selectNode(parent,local,prefix,0);
 }
 
-SoapProxy.prototype.selectNode=function(parent,local,prefix,index){
+Soap.prototype.selectNode=function(parent,local,prefix,index){
 	if(!parent){return null;}
 	var a=this.selectNodes(parent,local,prefix);
 	if(!index){index=0;}
@@ -167,7 +167,7 @@ SoapProxy.prototype.selectNode=function(parent,local,prefix,index){
 	return null;
 }
 
-SoapProxy.prototype.selectNodes=function(parent,local,prefix){
+Soap.prototype.selectNodes=function(parent,local,prefix){
 	if(!parent){return null;}
 	var tn=local;if(prefix){tn=prefix+":"+local;}
 	var t=parent.getElementsByTagName(tn);
@@ -175,7 +175,7 @@ SoapProxy.prototype.selectNodes=function(parent,local,prefix){
 	return t;
 }
 
-SoapProxy.prototype.isAncestorOf=function(parent,child){
+Soap.prototype.isAncestorOf=function(parent,child){
 	var p=child;
 	while(p=p.parentNode){
 		if(p==parent){return true;}
@@ -183,7 +183,7 @@ SoapProxy.prototype.isAncestorOf=function(parent,child){
 	return false;
 }
 
-SoapProxy.prototype.getValue=function(node){
+Soap.prototype.getValue=function(node){
 	if(node){
 		if(node.firstChild){node=node.firstChild;}
 		return node.nodeValue;
@@ -191,32 +191,32 @@ SoapProxy.prototype.getValue=function(node){
 	return null;
 }
 
-SoapProxy.prototype.getBody=function(doc,tag){
+Soap.prototype.getBody=function(doc,tag){
 	if(!tag){tag="Body";}
 	var node=this.selectSingleNode(doc,"Envelope","soap");
 	if(node!=null){node=this.selectSingleNode(node,tag,"soap");}
 	return node;
 }
 
-SoapProxy.prototype.getFault=function(doc){
+Soap.prototype.getFault=function(doc){
 	var node=this.getBody(doc);
 	if(node!=null){return this.selectSingleNode(node,"Fault","soap");}
 	return null;
 }
 
-SoapProxy.prototype.getNode=function(node,name,local){
+Soap.prototype.getNode=function(node,name,local){
 	var parent=node;
 	if(typeof(local)!="undefined"&&!local){parent=this.getBody(node);}
 	if(!parent){parent=node;}
 	return this.selectSingleNode(parent,name);
 }
 
-SoapProxy.prototype.prepare=function(response){
+Soap.prototype.prepare=function(response){
 	var doc=response.responseXML;
 	return doc;
 }
 
-SoapProxy.prototype.getArray=function(node,objType){
+Soap.prototype.getArray=function(node,objType){
 	var a=[];
 	if(node!=null){
 		for(var i=0;i<node.childNodes.length;i++){
@@ -227,12 +227,12 @@ SoapProxy.prototype.getArray=function(node,objType){
 	return a;
 }
 
-SoapProxy.prototype.isArray=function(objType){
+Soap.prototype.isArray=function(objType){
 	if(objType&&objType.toLowerCase&&objType.toLowerCase().indexOf("array")>-1){return true;}
 	return false;
 }
 
-SoapProxy.prototype.hasChildElements=function(node){
+Soap.prototype.hasChildElements=function(node){
 	if(node==null){return false;}
 	for(var i=0;i<node.childNodes.length;i++){
 		if(node.childNodes[i].nodeType==1){return true;}
@@ -243,7 +243,7 @@ SoapProxy.prototype.hasChildElements=function(node){
 var __tempObject=null;
 var __tempChildNode=null;
 
-SoapProxy.prototype.convertType=function(node,objType){
+Soap.prototype.convertType=function(node,objType){
 	var val=null;
 	if(this.hasChildElements(node)){
 		if(this.isArray(objType)){
@@ -283,7 +283,7 @@ SoapProxy.prototype.convertType=function(node,objType){
 	return val;
 }
 	
-SoapProxy.prototype.serialize=function(obj){
+Soap.prototype.serialize=function(obj){
 	var o='';var isObj=false;
 	try{if(obj.__keys.length>0){isObj=true;}}catch(ex){}
 	if(isObj){
@@ -312,11 +312,11 @@ SoapProxy.prototype.serialize=function(obj){
 	}else{return"";}
 }
 
-SoapProxy.prototype.isDate=function(dt){
+Soap.prototype.isDate=function(dt){
 	return (typeof(dt.getTime)=="function");
 }
 
-SoapProxy.prototype.createDate=function(str){
+Soap.prototype.createDate=function(str){
 	if(!str){return null;}
 	if(str.length<10){return null;}
 	var dt=str.substring(5,7)+"/"+str.substring(8,10)+"/"+str.substring(0,4);
@@ -327,7 +327,7 @@ SoapProxy.prototype.createDate=function(str){
 	return dt;
 }
 
-SoapProxy.prototype.formatDate=function(dt){
+Soap.prototype.formatDate=function(dt){
 	var o="";
 	var y=dt.getFullYear();
 	var m=dt.getMonth()+1;if(m<10){m="0"+m;}
@@ -338,7 +338,7 @@ SoapProxy.prototype.formatDate=function(dt){
 	return y+"-"+m+"-"+d+"T"+h+":"+n+":"+s;
 }
 
-SoapProxy.prototype.init=function(obj,node,keys,types){
+Soap.prototype.init=function(obj,node,keys,types){
 	obj.__keys=keys;
 	for(var i=0;i<keys.length;i++){
 		obj[keys[i]]=null;
@@ -351,11 +351,11 @@ SoapProxy.prototype.init=function(obj,node,keys,types){
 	}
 }
 
-SoapProxy.prototype.extend=function(tgt,src){
+Soap.prototype.extend=function(tgt,src){
 	for(var a in src){tgt[a]=src[a];}
 }
 
-SoapProxy.prototype.createCallback=function(response,handler){
+Soap.prototype.createCallback=function(response,handler){
 	var fault=new SOAPFault(response);
 	if(fault.hasFault){
 		handler.onfault(fault);return null;
@@ -371,7 +371,7 @@ SoapProxy.prototype.createCallback=function(response,handler){
 	}
 }
 
-var soap=new SoapProxy();
+var soap=new Soap();
 
 function SOAPHandler(object){
 	this.object=object;

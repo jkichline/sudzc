@@ -33,13 +33,11 @@
 		For instance, if you are dealing with Widgets, you may have WidgetService.  
 		This will translate into an Objective-C class.
 		To use it, you must first include it by adding script includes to the head of an HTML page:</p>
-		<pre>
-			&lt;script src="Soap.js" language="Javascript" type="text/javascript">&lt;/script&gt;
-			&lt;script src="<xsl:value-of select="$serviceName"/>.js" language="Javascript" type="text/javascript">&lt;/script&gt;
-		</pre>
+		<pre>&lt;script src="Soap.js" language="Javascript" type="text/javascript">&lt;/script&gt;
+&lt;script src="<xsl:value-of select="$serviceName"/>.js" language="Javascript" type="text/javascript">&lt;/script&gt;</pre>
 		
 		<p>Then in your code, instantiate the class:</p>
-		<code>var service=new <xsl:value-of select="$ns"/>.<xsl:value-of select="$serviceName"/>();</code>
+		<code>var service=new Namespace.Service();</code>
 
 		<p>
 			Now the instantiated class has a whole bunch of methods associated with it.

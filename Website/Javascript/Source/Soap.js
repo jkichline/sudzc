@@ -38,9 +38,7 @@ String.prototype.equals=function(val,ignoreCase){
 }
 
 SoapProxy=function(){
-	this.__class="SoapProxy";
-	this.isIE=false;
-	this.isNS=true;
+	this.isIE=false;this.isNS=true;
 	this.services={};
 	this.services.onfault=null;
 	this.services.onerror=null;
@@ -88,7 +86,7 @@ SoapProxy.prototype.getXml=function(url,post,action,callback,caller){
 	}
 	if(async){
 		if(!caller){caller=this;}
-		var handler=new SoapHandler(req);
+		var handler=new SOAPHandler(req);
 		this.addHandler(handler,"onload");
 		this.addHandler(handler,"onfault");
 		this.addHandler(handler,"onerror");
@@ -289,14 +287,27 @@ SoapProxy.prototype.serialize=function(obj){
 	var o='';var isObj=false;
 	try{if(obj.__keys.length>0){isObj=true;}}catch(ex){}
 	if(isObj){
-		for(var i=0;i<obj.__keys.length;i++){
-			var key=obj.__keys[i];
-			o+='<'+key+'>'+this.serialize(obj[key])+'</'+key+'>';
-		}
+    for(var i=0;i<obj.__keys.length;i++){
+      var key=obj.__keys[i];
+      o+='<'+key+'>'+this.serialize(obj[key])+'</'+key+'>';
+    }
 		return o;
 	}
 	if(obj!=null){
 		if(this.isDate(obj)){return this.formatDate(obj);}
+		if(typeof(obj)=="object") {
+		  for(var a in obj) {
+		    var i=new Number(a);
+		    if((i+"")!="NaN"){
+		      var n="item";
+		      if(obj[a]["__class"]!=null){n=obj[a]["__class"];}
+  		    o += "<"+ n +">" + this.serialize(obj[a]) + "</"+ n +">";
+		    } else {
+  		    o += "<"+ a + ">" + this.serialize(obj[a]) + "</" + a + ">";
+  		  }
+		  }
+		  return o;
+		}
 		return obj+"";
 	}else{return"";}
 }
@@ -345,7 +356,7 @@ SoapProxy.prototype.extend=function(tgt,src){
 }
 
 SoapProxy.prototype.createCallback=function(response,handler){
-	var fault=new SoapFault(response);
+	var fault=new SOAPFault(response);
 	if(fault.hasFault){
 		handler.onfault(fault);return null;
 	}else{
@@ -362,8 +373,7 @@ SoapProxy.prototype.createCallback=function(response,handler){
 
 var soap=new SoapProxy();
 
-function SoapHandler(object){
-	this.__class="SoapHandler";
+function SOAPHandler(object){
 	this.object=object;
 	this.onload=function(object){}
 	this.onfault=function(fault){}
@@ -372,8 +382,7 @@ function SoapHandler(object){
 	}
 }
 
-function SoapFault(response){
-	this.__class="SoapFault";
+function SOAPFault(response){
 	this.faultCode=null;
 	this.faultString=null;
 	this.faultActor=null;
@@ -399,4 +408,4 @@ function SoapFault(response){
 	}
 }
 
-SoapFault.prototype.toString=function(){return this.xml;}
+SOAPFault.prototype.toString=function(){return this.xml;}

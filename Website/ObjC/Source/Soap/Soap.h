@@ -103,4 +103,7 @@
 // Creates and object of string values from the node.
 +(id)objectFromNode:(CXMLNode*)node;
 
+// Creates dictionary of string values from the XML document.
++(id)objectFromXMLString:(NSString*)xmlString;
+
 @end

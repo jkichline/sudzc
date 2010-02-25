@@ -27,7 +27,7 @@ public class Convert : IHttpHandler {
 
 
 		// Add the WSDLs to the converter
-		if (String.IsNullOrEmpty(context.Request["wsdl"]) == false) {
+		if (String.IsNullOrEmpty(context.Request["wsdl"]) == false && context.Request["wsdl"] != "http://") {
 			try {
 				converter.WsdlPaths = context.Request["wsdl"];
 			} catch (Exception ex) {

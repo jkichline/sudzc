@@ -12,7 +12,7 @@ using System.Text;
 using ICSharpCode.SharpZipLib.Zip;
 
 /// <summary>
-/// Summary description for Converter
+/// Class used to convert WSDL files into generated Objective-C code.
 /// </summary>
 public class Converter {
 	private string type;
@@ -291,6 +291,11 @@ public class Converter {
 		return output;
 	}
 
+	/// <summary>
+	/// Creates a UUID for generating PBX files.
+	/// </summary>
+	/// <param name="id">The ID to convert.</param>
+	/// <returns>Returns the 24 character UUID.</returns>
 	public static string MakeUUID(long id) {
 		long code = DateTime.Now.Ticks;
 		string uuid = id.ToString("X") + code.ToString("X");
@@ -298,6 +303,10 @@ public class Converter {
 		return uuid.Substring(0, 24);
 	}
 
+	/// <summary>
+	/// Updates the project file with the new code files.
+	/// </summary>
+	/// <param name="directory">The directory containing the project files to update.</param>
 	public void UpdateProjectFile(DirectoryInfo directory) {
 
 		// Setup the string builders
@@ -542,16 +551,37 @@ public class Converter {
 
 }
 
+/// <summary>
+/// Defines a WSDL file to be processed.
+/// </summary>
 public class WsdlFile {
+
+	/// <summary>
+	/// The path to the file.
+	/// </summary>
 	internal string path;
+
+	/// <summary>
+	/// The name of the file.
+	/// </summary>
 	internal string name;
+
+	/// <summary>
+	/// The XML representation of the file.
+	/// </summary>
 	internal XmlDocument document;
 
+	/// <summary>
+	/// The path to the file.
+	/// </summary>
 	public string Path {
 		get { return path; }
 		set { path = value; }
 	}
 
+	/// <summary>
+	/// The name of the file.
+	/// </summary>
 	public string Name {
 		get {
 			if (String.IsNullOrEmpty(name) && String.IsNullOrEmpty(path) == false) {
@@ -572,19 +602,42 @@ public class WsdlFile {
 		set { name = value; }
 	}
 
+	/// <summary>
+	/// The XML representation of the file.
+	/// </summary>
 	public XmlDocument Document {
 		get { return document; }
 		set { document = value; }
 	}
 
+	/// <summary>
+	/// Gets a list of WSDL files from a delimited string.
+	/// </summary>
+	/// <param name="value">The files to load.</param>
+	/// <returns>Returns a list of WSDL files from a delimited string.</returns>
 	public static List<WsdlFile> FromString(string value) {
 		return FromString(value, null, null);
 	}
 
+	/// <summary>
+	/// Gets a list of WSDL files from a delimited string.
+	/// </summary>
+	/// <param name="value">The files to load.</param>
+	/// <param name="username">The username to use for authentication.</param>
+	/// <param name="password">The password to use for authentication.</param>
+	/// <returns>Returns a list of WSDL files from a delimited string.</returns>
 	public static List<WsdlFile> FromString(string value, string username, string password) {
 		return FromString(value, username, password, null);
 	}
 
+	/// <summary>
+	/// Gets a list of WSDL files from a delimited string.
+	/// </summary>
+	/// <param name="value">The files to load.</param>
+	/// <param name="username">The username to use for authentication.</param>
+	/// <param name="password">The password to use for authentication.</param>
+	/// <param name="domain">The domain to use for authentication.</param>
+	/// <returns>Returns a list of WSDL files from a delimited string.</returns>
 	public static List<WsdlFile> FromString(string value, string username, string password, string domain) {
 		List<WsdlFile> list = new List<WsdlFile>();
 		foreach (string item in value.Split((";\n\t,|").ToCharArray())) {
@@ -618,6 +671,14 @@ public class WsdlFile {
 		return list;
 	}
 
+	/// <summary>
+	/// Loads a URL string from a path.
+	/// </summary>
+	/// <param name="path">The path from which to load URLs.</param>
+	/// <param name="username">The username to use for authentication.</param>
+	/// <param name="password">The password to use for authentication.</param>
+	/// <param name="domain">The domain to use for authentication.</param>
+	/// <returns>Returns a URL string from the path or NULL if not found.</returns>
 	public static string GetStringFromUrl(string path, string username, string password, string domain) {
 		WebClient client = new WebClient();
 		if (String.IsNullOrEmpty(username) == false || String.IsNullOrEmpty(password) == false) {
@@ -634,6 +695,14 @@ public class WsdlFile {
 		return data;
 	}
 
+	/// <summary>
+	/// Gets the XML document from the specified URL path.
+	/// </summary>
+	/// <param name="path">The path where the XML document can be found.</param>
+	/// <param name="username">The username to use for authentication.</param>
+	/// <param name="password">The password to use for authentication.</param>
+	/// <param name="domain">The domain to use for authentication.</param>
+	/// <returns>Returns the XML document from the specified URL path.</returns>
 	public static XmlDocument GetXmlDocumentFromUrl(string path, string username, string password, string domain) {
 		XmlDocument doc = new XmlDocument();
 		XmlUrlResolver resolver = new XmlUrlResolver();
@@ -660,6 +729,10 @@ public class WsdlFile {
 		expandImports(doc);
 	}
 
+	/// <summary>
+	/// Expands the imports contained in the XML document.
+	/// </summary>
+	/// <param name="doc">The document in which imports are to be expanded.</param>
 	private static void expandImports(XmlDocument doc) {
 		bool continueExpanding = false;
 		XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
@@ -710,6 +783,11 @@ public class WsdlFile {
 		}
 	}
 
+	/// <summary>
+	/// Returns an absolute URL from a partial one.
+	/// </summary>
+	/// <param name="url">The URL to resolve to an absolute URL.</param>
+	/// <returns>Returns an absolute URL from a partial one.</returns>
 	public static string GetAbsoluteUrl(string url) {
 		HttpContext context = HttpContext.Current;
 		if (url.Contains("://")) { return url; }

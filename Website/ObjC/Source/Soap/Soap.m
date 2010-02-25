@@ -444,19 +444,34 @@
 	return [[md5 dataUsingEncoding:NSUTF8StringEncoding] hash];
 }
 
+// Creates dictionary of string values from the XML document.
++(id)objectFromXMLString:(NSString*)xmlString {
+	CXMLDocument* doc = [[CXMLDocument alloc] initWithXMLString:xmlString options:0 error:nil];
+	return [Soap objectFromNode:doc];
+}
+
 // Creates dictionary of string values from the node.
 +(id)objectFromNode:(CXMLNode*)node {
-	if([[node children] count] > 0) {
+	NSMutableArray* children = [NSMutableArray arrayWithArray:[node children]];
+	if([node isKindOfClass:[CXMLElement class]]) {
+		[children addObjectsFromArray:[(CXMLElement*)node attributes]];
+	}
+	if([children count] > 0) {
 		NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
-		for (CXMLNode* child in [node children]) {
+		for (CXMLNode* child in children) {
+			id childValue = [Soap objectFromNode:child];
 			id value = [dictionary objectForKey:[child name]];
 			if(value != nil) {
 				if([value isKindOfClass:[NSMutableArray class]] == NO) {
 					value = [NSMutableArray arrayWithObject:value];
 				}
-				[(NSMutableArray*)value addObject:[Soap objectFromNode:child]];
+				if(childValue != nil) {
+					[(NSMutableArray*)value addObject:childValue];
+				}
 			} else {
-				[dictionary setObject:[Soap objectFromNode:child] forKey:[child name]];
+				if(childValue != nil) {
+					[dictionary setObject:childValue forKey:[child name]];
+				}
 			}
 		}
 		if ([[dictionary allKeys] count] == 1) {

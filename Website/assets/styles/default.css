@@ -69,3 +69,4 @@ form div { clear: both; }
 #local { display: none; }
 #filemode input { display: inline; }
 #filemode label { display: inline; font-weight:normal; font-size:10pt;color:#667; }
+#donate { display: block; margin: 50px 0 0 200px; clear:both; }

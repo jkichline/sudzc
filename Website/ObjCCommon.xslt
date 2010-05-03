@@ -221,7 +221,12 @@
 		<xsl:call-template name="serialize">
 			<xsl:with-param name="name"><xsl:value-of select="$prefix"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:with-param>
 			<xsl:with-param name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:with-param>
-			<xsl:with-param name="xsdType"><xsl:value-of select="substring-after(@type, ':')"/></xsl:with-param>
+			<xsl:with-param name="xsdType">
+				<xsl:choose>
+					<xsl:when test="contains(@type, ':')"><xsl:value-of select="substring-after(@type, ':')"/></xsl:when>
+					<xsl:otherwise><xsl:value-of select="@type"/></xsl:otherwise>
+				</xsl:choose>
+			</xsl:with-param>
 			<xsl:with-param name="actualName"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:with-param>
 		</xsl:call-template>
 	</xsl:template>
@@ -284,16 +289,26 @@
 		<xsl:variable name="originalType">
 			<xsl:choose>
 				<xsl:when test="$elementName != ''">
-					<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element/@type, ':')"/>
+					<xsl:value-of select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element/@type"/>
 				</xsl:when>
 				<xsl:when test="$schemaType != ''">
-					<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $schemaType]/s:sequence/s:element/@type, ':')"/>
+					<xsl:value-of select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $schemaType]/s:sequence/s:element/@type"/>
 				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="modifiedType">
+			<xsl:choose>
+				<xsl:when test="contains($originalType, ':')">
+					<xsl:value-of select="substring-after($originalType, ':')"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$originalType"/>
+				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="deserializer">
 			<xsl:choose>
-				<xsl:when test="$type = 'NSMutableArray*' or $type = 'NSMutableDictionary*'"><xsl:value-of select="$shortns"/><xsl:value-of select="$originalType"/></xsl:when>
+				<xsl:when test="$type = 'NSMutableArray*' or $type = 'NSMutableDictionary*'"><xsl:value-of select="$shortns"/><xsl:value-of select="$modifiedType"/></xsl:when>
 				<xsl:when test="contains($type, '*')"><xsl:value-of select="substring-before($type, '*')"/></xsl:when>
 				<xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
 			</xsl:choose>
@@ -983,6 +998,16 @@
 		<xsl:param name="name"/>
 		<xsl:param name="declaredType"/>
 		<xsl:param name="actualType"/>
+		<xsl:variable name="modifiedType">
+			<xsl:choose>
+				<xsl:when test="contains($actualType, ':')">
+					<xsl:value-of select="substring-after($actualType, ':')"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$actualType"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="$declaredType = 'NSString*'">[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"]</xsl:when>
 			<xsl:when test="$declaredType = 'BOOL'">[[Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"] boolValue]</xsl:when>
@@ -996,7 +1021,7 @@
 			<xsl:when test="$declaredType = 'NSDate*'">[Soap dateFromString: [Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
 			<xsl:when test="$declaredType = 'NSData*'">[Soap dataFromString: [Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
 			<xsl:when test="$declaredType = 'nil' or $declaredType = 'id'">[Soap deserialize: [Soap getNode: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
-			<xsl:otherwise>[[<xsl:value-of select="$shortns"/><xsl:value-of select="substring-after($actualType, ':')"/> newWithNode: [Soap getNode: node withName: @"<xsl:value-of select="$name"/>"]] object]</xsl:otherwise>
+			<xsl:otherwise>[[<xsl:value-of select="$shortns"/><xsl:value-of select="$modifiedType"/> newWithNode: [Soap getNode: node withName: @"<xsl:value-of select="$name"/>"]] object]</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 

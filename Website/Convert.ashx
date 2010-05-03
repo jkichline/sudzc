@@ -89,7 +89,7 @@ public class Convert : IHttpHandler {
 	}
 
 	private void displayError(HttpContext context, string message) {
-		context.Response.Redirect("Errors.aspx?message=" + message, true);
+		context.Response.Redirect("Errors.aspx?message=" + message.Replace("\n", " "), true);
 		return;
 	}
 

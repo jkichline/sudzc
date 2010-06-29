@@ -746,6 +746,9 @@ public class WsdlFile {
 			XmlAttribute a = importNode.Attributes["schemaLocation"];
 			if (a == null) { continue; }
 			string location = a.Value;
+			if (location.StartsWith("http://schemas.xmlsoap.org/")) {
+				continue;
+			}
 			if (location != null && importedUris.Contains(location) == false) {
 				XmlDocument importedDoc = new XmlDocument();
 				importedDoc.Load(location);

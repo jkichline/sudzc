@@ -33,7 +33,7 @@
 			if([[headers objectForKey: key] isMemberOfClass: [SoapNil class]]) {
 				[s appendFormat: @"<%@ xsi:nil=\"true\"/>", key];
 			} else {
-				[s appendFormat: @"<%@>%@</%@>", key, [Soap	serialize: [headers objectForKey: key]], key];
+				[s appendFormat:[Soap serializeHeader:headers forKey:key]];
 			}
 		}
 		[s appendString: @"</soap:Header>"];
@@ -43,6 +43,32 @@
 	[s appendString: @"</soap:Body>"];
 	[s appendString: @"</soap:Envelope>"];
 	return s;
+}
+
++(NSString*)serializeHeader:(NSDictionary*)headers forKey:(NSString*)key {
+	id value = [headers objectForKey:key];
+	
+	// If its a literal, just output it
+	if([value isKindOfClass:[SoapLiteral class]]) {
+		return [value value];
+	}
+	
+	// If it's a dictionary, then serialize and look for attributes
+	if([value isKindOfClass:[NSDictionary class]]) {
+		NSMutableString* attributes = [NSMutableString string];
+		NSMutableString* elements = [NSMutableString string];
+		for (id subkey in [value allKeys]) {
+			if([subkey hasPrefix:@"@"]) {
+				[attributes appendFormat:@" %@=\"%@\"", [subkey substringFromIndex:1], [value objectForKey:subkey]];
+			} else {
+				[elements appendFormat:@"<%@>%@</%@>", subkey, [Soap serialize: [value objectForKey:subkey]], subkey];
+			}
+		}
+		return [NSString stringWithFormat:@"<%@%@>%@</%@>", key, attributes, elements, key];
+	}
+	
+	// Otherwise, just use regular serialization
+	return [NSString stringWithFormat:@"<%@>%@</%@>", key, [Soap serialize: [value objectForKey: key]], key];
 }
 
 // Creates the XML request for the SOAP envelope.

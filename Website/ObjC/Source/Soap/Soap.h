@@ -11,6 +11,7 @@
 #import "SoapDelegate.h"
 #import "SoapFault.h"
 #import "SoapHandler.h"
+#import "SoapLiteral.h"
 #import "SoapNil.h"
 #import "SoapObject.h"
 #import "SoapParameter.h"
@@ -51,6 +52,9 @@
 
 // Serializes an object to a string, XML representation with a specific node name.
 + (NSString*) serialize: (id) object withName: (NSString*) nodeName;
+
+// Serializes a header in the dictionary
++(NSString*)serializeHeader:(NSDictionary*)headers forKey:(NSString*)key;
 
 // Calls an HTTP service
 + (NSMutableData*) callService: (NSString*) service data: (NSString*) data action: (NSString*) action delegate: (SEL) delegate;

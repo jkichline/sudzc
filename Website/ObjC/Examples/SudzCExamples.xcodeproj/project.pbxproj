@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		107DACA91217305B00F18A8A /* SoapLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 107DACA71217305B00F18A8A /* SoapLiteral.m */; };
 		10C71DCE110B5D9F008E8718 /* SudzCExamplesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DCC110B5D9F008E8718 /* SudzCExamplesAppDelegate.m */; };
 		10C71E6E110B5EC0008E8718 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */; };
+/***PBXBuildFile***/
 		10C72023110C0A71008E8718 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F93110C0A71008E8718 /* NSData+Base64.m */; };
 		10C72024110C0A71008E8718 /* Soap.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F95110C0A71008E8718 /* Soap.m */; };
 		10C72025110C0A71008E8718 /* SoapArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F97110C0A71008E8718 /* SoapArray.m */; };
@@ -17,6 +17,7 @@
 		10C72027110C0A71008E8718 /* SoapFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9C110C0A71008E8718 /* SoapFault.m */; };
 		10C72028110C0A71008E8718 /* SoapHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9E110C0A71008E8718 /* SoapHandler.m */; };
 		10C72029110C0A71008E8718 /* SoapNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA0110C0A71008E8718 /* SoapNil.m */; };
+		107DACA91217305B00F18A8A /* SoapLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 107DACA71217305B00F18A8A /* SoapLiteral.m */; };
 		10C7202A110C0A71008E8718 /* SoapObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA2110C0A71008E8718 /* SoapObject.m */; };
 		10C7202B110C0A71008E8718 /* SoapParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA4110C0A71008E8718 /* SoapParameter.m */; };
 		10C7202C110C0A71008E8718 /* SoapReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA6110C0A71008E8718 /* SoapReachability.m */; };
@@ -28,14 +29,6 @@
 		10C72032110C0A71008E8718 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB3110C0A71008E8718 /* CXMLNode.m */; };
 		10C72033110C0A71008E8718 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB5110C0A71008E8718 /* CXMLNode_PrivateExtensions.m */; };
 		10C72034110C0A71008E8718 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB7110C0A71008E8718 /* CXMLNode_XPathExtensions.m */; };
-		12A7159C50B8CD09E1BA53F3 /* SDZWeaponExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7159C4FB8CD09E1BA53F3 /* SDZWeaponExample.m */; };
-		12A7159C50D8CD09E1BA53F3 /* SDZArrayOfWeapon.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7159C4FD8CD09E1BA53F3 /* SDZArrayOfWeapon.m */; };
-		12A7159C50F8CD09E1BA53F3 /* SDZErrorWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7159C4FF8CD09E1BA53F3 /* SDZErrorWebService.m */; };
-		12A7159C5118CD09E1BA53F3 /* SDZPersist.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7159C5018CD09E1BA53F3 /* SDZPersist.m */; };
-		12A7159C5138CD09E1BA53F3 /* SDZPersistLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7159C5038CD09E1BA53F3 /* SDZPersistLoad.m */; };
-		12A7159C5158CD09E1BA53F3 /* SDZServiceCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7159C5058CD09E1BA53F3 /* SDZServiceCredentials.m */; };
-		12A7159C5178CD09E1BA53F3 /* SDZServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7159C5078CD09E1BA53F3 /* SDZServices.m */; };
-		12A7159C5198CD09E1BA53F3 /* SDZWeapon.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7159C5098CD09E1BA53F3 /* SDZWeapon.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -44,11 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		107DACA71217305B00F18A8A /* SoapLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapLiteral.m; sourceTree = "<group>"; };
-		107DACA81217305B00F18A8A /* SoapLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapLiteral.h; sourceTree = "<group>"; };
 		10C71DCC110B5D9F008E8718 /* SudzCExamplesAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudzCExamplesAppDelegate.m; sourceTree = "<group>"; };
 		10C71DCD110B5D9F008E8718 /* SudzCExamplesAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudzCExamplesAppDelegate.h; sourceTree = "<group>"; };
 		10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/***PBXFileReference***/
 		10C71F92110C0A71008E8718 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		10C71F93110C0A71008E8718 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		10C71F94110C0A71008E8718 /* Soap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soap.h; sourceTree = "<group>"; };
@@ -62,6 +54,8 @@
 		10C71F9C110C0A71008E8718 /* SoapFault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapFault.m; sourceTree = "<group>"; };
 		10C71F9D110C0A71008E8718 /* SoapHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapHandler.h; sourceTree = "<group>"; };
 		10C71F9E110C0A71008E8718 /* SoapHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapHandler.m; sourceTree = "<group>"; };
+		107DACA71217305B00F18A8A /* SoapLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapLiteral.m; sourceTree = "<group>"; };
+		107DACA81217305B00F18A8A /* SoapLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapLiteral.h; sourceTree = "<group>"; };
 		10C71F9F110C0A71008E8718 /* SoapNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapNil.h; sourceTree = "<group>"; };
 		10C71FA0110C0A71008E8718 /* SoapNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapNil.m; sourceTree = "<group>"; };
 		10C71FA1110C0A71008E8718 /* SoapObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapObject.h; sourceTree = "<group>"; };
@@ -85,24 +79,8 @@
 		10C71FB4110C0A71008E8718 /* CXMLNode_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_PrivateExtensions.h; sourceTree = "<group>"; };
 		10C71FB5110C0A71008E8718 /* CXMLNode_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_PrivateExtensions.m; sourceTree = "<group>"; };
 		10C71FB6110C0A71008E8718 /* CXMLNode_XPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_XPathExtensions.h; sourceTree = "<group>"; };
-		10C71FB7110C0A71008E8718 /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };
+		10C71FB7110C0A71008E8718 /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };		
 		10C71FB8110C0A71008E8718 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
-		12A7159C4FA8CD09E1BA53F3 /* SDZWeaponExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZWeaponExample.h; sourceTree = "<group>"; };
-		12A7159C4FB8CD09E1BA53F3 /* SDZWeaponExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZWeaponExample.m; sourceTree = "<group>"; };
-		12A7159C4FC8CD09E1BA53F3 /* SDZArrayOfWeapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZArrayOfWeapon.h; sourceTree = "<group>"; };
-		12A7159C4FD8CD09E1BA53F3 /* SDZArrayOfWeapon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZArrayOfWeapon.m; sourceTree = "<group>"; };
-		12A7159C4FE8CD09E1BA53F3 /* SDZErrorWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZErrorWebService.h; sourceTree = "<group>"; };
-		12A7159C4FF8CD09E1BA53F3 /* SDZErrorWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZErrorWebService.m; sourceTree = "<group>"; };
-		12A7159C5008CD09E1BA53F3 /* SDZPersist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZPersist.h; sourceTree = "<group>"; };
-		12A7159C5018CD09E1BA53F3 /* SDZPersist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZPersist.m; sourceTree = "<group>"; };
-		12A7159C5028CD09E1BA53F3 /* SDZPersistLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZPersistLoad.h; sourceTree = "<group>"; };
-		12A7159C5038CD09E1BA53F3 /* SDZPersistLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZPersistLoad.m; sourceTree = "<group>"; };
-		12A7159C5048CD09E1BA53F3 /* SDZServiceCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZServiceCredentials.h; sourceTree = "<group>"; };
-		12A7159C5058CD09E1BA53F3 /* SDZServiceCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZServiceCredentials.m; sourceTree = "<group>"; };
-		12A7159C5068CD09E1BA53F3 /* SDZServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZServices.h; sourceTree = "<group>"; };
-		12A7159C5078CD09E1BA53F3 /* SDZServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZServices.m; sourceTree = "<group>"; };
-		12A7159C5088CD09E1BA53F3 /* SDZWeapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDZWeapon.h; sourceTree = "<group>"; };
-		12A7159C5098CD09E1BA53F3 /* SDZWeapon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDZWeapon.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* SudzCExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudzCExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -128,15 +106,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1027CDDE110CDB4A00147F52 /* Examples */ = {
-			isa = PBXGroup;
-			children = (
-				12A7159C4FA8CD09E1BA53F3 /* SDZWeaponExample.h */,
-				12A7159C4FB8CD09E1BA53F3 /* SDZWeaponExample.m */,
-			);
-			path = Examples;
-			sourceTree = "<group>";
-		};
 		10C71DC8110B5D8E008E8718 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,23 +127,25 @@
 			path = ../Source;
 			sourceTree = SOURCE_ROOT;
 		};
+		1027CDDE110CDB4A00147F52 /* Examples */ = {
+
+			isa = PBXGroup;
+
+			children = (
+
+/***PBXGroupExamples***/
+
+			);
+
+			path = Examples;
+
+			sourceTree = "<group>";
+
+		};
 		10C71EBC110C0A71008E8718 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				12A7159C4FC8CD09E1BA53F3 /* SDZArrayOfWeapon.h */,
-				12A7159C4FD8CD09E1BA53F3 /* SDZArrayOfWeapon.m */,
-				12A7159C4FE8CD09E1BA53F3 /* SDZErrorWebService.h */,
-				12A7159C4FF8CD09E1BA53F3 /* SDZErrorWebService.m */,
-				12A7159C5008CD09E1BA53F3 /* SDZPersist.h */,
-				12A7159C5018CD09E1BA53F3 /* SDZPersist.m */,
-				12A7159C5028CD09E1BA53F3 /* SDZPersistLoad.h */,
-				12A7159C5038CD09E1BA53F3 /* SDZPersistLoad.m */,
-				12A7159C5048CD09E1BA53F3 /* SDZServiceCredentials.h */,
-				12A7159C5058CD09E1BA53F3 /* SDZServiceCredentials.m */,
-				12A7159C5068CD09E1BA53F3 /* SDZServices.h */,
-				12A7159C5078CD09E1BA53F3 /* SDZServices.m */,
-				12A7159C5088CD09E1BA53F3 /* SDZWeapon.h */,
-				12A7159C5098CD09E1BA53F3 /* SDZWeapon.m */,
+/***PBXGroupGenerated***/
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -338,14 +309,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				10C71DCE110B5D9F008E8718 /* SudzCExamplesAppDelegate.m in Sources */,
-				12A7159C50B8CD09E1BA53F3 /* SDZWeaponExample.m in Sources */,
-				12A7159C50D8CD09E1BA53F3 /* SDZArrayOfWeapon.m in Sources */,
-				12A7159C50F8CD09E1BA53F3 /* SDZErrorWebService.m in Sources */,
-				12A7159C5118CD09E1BA53F3 /* SDZPersist.m in Sources */,
-				12A7159C5138CD09E1BA53F3 /* SDZPersistLoad.m in Sources */,
-				12A7159C5158CD09E1BA53F3 /* SDZServiceCredentials.m in Sources */,
-				12A7159C5178CD09E1BA53F3 /* SDZServices.m in Sources */,
-				12A7159C5198CD09E1BA53F3 /* SDZWeapon.m in Sources */,
+/***PBXSourcesBuildPhase***/
 				10C72023110C0A71008E8718 /* NSData+Base64.m in Sources */,
 				10C72024110C0A71008E8718 /* Soap.m in Sources */,
 				10C72025110C0A71008E8718 /* SoapArray.m in Sources */,
@@ -353,6 +317,7 @@
 				10C72027110C0A71008E8718 /* SoapFault.m in Sources */,
 				10C72028110C0A71008E8718 /* SoapHandler.m in Sources */,
 				10C72029110C0A71008E8718 /* SoapNil.m in Sources */,
+				107DACA91217305B00F18A8A /* SoapLiteral.m in Sources */,
 				10C7202A110C0A71008E8718 /* SoapObject.m in Sources */,
 				10C7202B110C0A71008E8718 /* SoapParameter.m in Sources */,
 				10C7202C110C0A71008E8718 /* SoapReachability.m in Sources */,
@@ -364,7 +329,6 @@
 				10C72032110C0A71008E8718 /* CXMLNode.m in Sources */,
 				10C72033110C0A71008E8718 /* CXMLNode_PrivateExtensions.m in Sources */,
 				10C72034110C0A71008E8718 /* CXMLNode_XPathExtensions.m in Sources */,
-				107DACA91217305B00F18A8A /* SoapLiteral.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

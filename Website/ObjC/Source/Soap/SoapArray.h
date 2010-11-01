@@ -80,7 +80,6 @@
 - (void)removeObject:(id)anObject;
 - (void)removeObjectIdenticalTo:(id)anObject inRange:(NSRange)range;
 - (void)removeObjectIdenticalTo:(id)anObject;
-- (void)removeObjectsFromIndices:(NSUInteger *)indices numIndices:(NSUInteger)cnt;
 - (void)removeObjectsInArray:(NSArray *)otherArray;
 - (void)removeObjectsInRange:(NSRange)range;
 - (void)replaceObjectsInRange:(NSRange)range withObjectsFromArray:(NSArray *)otherArray range:(NSRange)otherRange;

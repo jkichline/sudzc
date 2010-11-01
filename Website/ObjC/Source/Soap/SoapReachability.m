@@ -13,6 +13,7 @@
 #import <sys/types.h>
 #import <arpa/inet.h>
 #import <netinet/in.h>
+#import <unistd.h>
 
 @implementation SoapReachability
 

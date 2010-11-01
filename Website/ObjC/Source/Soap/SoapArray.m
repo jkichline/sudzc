@@ -192,10 +192,6 @@
 	return [self.items removeObjectIdenticalTo:anObject];
 }
 
-- (void)removeObjectsFromIndices:(NSUInteger *)indices numIndices:(NSUInteger)cnt {
-	return [self.items removeObjectsFromIndices:indices numIndices:cnt];
-}
-
 - (void)removeObjectsInArray:(NSArray *)otherArray {
 	return [self.items removeObjectsInArray:otherArray];
 }

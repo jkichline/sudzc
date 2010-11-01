@@ -33,7 +33,7 @@
 			if([[headers objectForKey: key] isMemberOfClass: [SoapNil class]]) {
 				[s appendFormat: @"<%@ xsi:nil=\"true\"/>", key];
 			} else {
-				[s appendFormat:[Soap serializeHeader:headers forKey:key]];
+				[s appendString:[Soap serializeHeader:headers forKey:key]];
 			}
 		}
 		[s appendString: @"</soap:Header>"];

@@ -39,7 +39,7 @@
 	
 	<!-- TEMPLATE TO INCLUDE FOR IMPORTS -->
 	<xsl:template name="imports">
-#import "Soap.h";
+#import "Soap.h"
 	</xsl:template>
 
 	<!-- DOCUMENTATION TEMPLATE -->
@@ -410,10 +410,10 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="$type = 'NSMutableArray*' or $type = 'NSMutableDictionary*'">
-#import "<xsl:call-template name="getArrayType"><xsl:with-param name="value" select="@type"/></xsl:call-template>.h";</xsl:when>
+#import "<xsl:call-template name="getArrayType"><xsl:with-param name="value" select="@type"/></xsl:call-template>.h"</xsl:when>
 			<xsl:otherwise>
 				<xsl:if test="contains($type, '*') and $type != 'id' and not(starts-with($type, 'NS'))">
-#import "<xsl:value-of select="substring-before($type, '*')"/>.h";</xsl:if>			
+#import "<xsl:value-of select="substring-before($type, '*')"/>.h"</xsl:if>			
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -425,10 +425,10 @@
 			</xsl:call-template>
 		</xsl:variable>
 		<xsl:if test="$type = 'NSMutableArray*' or $type = 'NSMutableDictionary*' or (contains($type, '*') and $type = 'id' and not(starts-with($type, 'NS')))">
-#import "<xsl:value-of select="substring-before($type, '*')"/>.h";</xsl:if></xsl:template>
+#import "<xsl:value-of select="substring-before($type, '*')"/>.h"</xsl:if></xsl:template>
 	
 	<xsl:template match="s:complexType" mode="import_reference">
-#import "<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>.h";</xsl:template>
+#import "<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>.h"</xsl:template>
 	
 	<xsl:template match="s:element" mode="class_reference">
 		<xsl:variable name="type">

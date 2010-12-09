@@ -1345,7 +1345,10 @@
 			<xsl:value-of select="substring-after(@message, ':')"/>
 		</xsl:variable>
 		<xsl:variable name="elementName">
-			<xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/>
+			<xsl:choose>
+				<xsl:when test="$messageName = ''"><xsl:value-of select="ancestor::wsdl:operation/@name"/>Type</xsl:when>
+				<xsl:otherwise><xsl:value-of select="substring-after(/wsdl:definitions/wsdl:message[@name = $messageName]/wsdl:part/@element, ':')"/></xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="$elementName != ''"><xsl:apply-templates select="/wsdl:definitions/wsdl:types/s:schema/s:element[@name = $elementName]/s:complexType/s:sequence/s:element|/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $elementName]/s:sequence/s:element" mode="param_signature"/></xsl:when>

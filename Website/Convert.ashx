@@ -86,6 +86,9 @@ public class Convert : IHttpHandler {
 		} catch (Exception ex) {
 			this.displayError(context, ex.Message);
 		}
+		
+		// Remove old ZIP files
+		converter.RemoveArchives(new TimeSpan(1, 0, 0));
 	}
 
 	private void displayError(HttpContext context, string message) {

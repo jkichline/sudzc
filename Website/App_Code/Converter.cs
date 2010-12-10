@@ -83,7 +83,7 @@ public class Converter {
 		get {
 			// Create the output directory if needed.
 			if (outputDirectory == null) {
-				string path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+				string path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + ".sudzd");
 				outputDirectory = new DirectoryInfo(path);
 				outputDirectory.Create();
 			}
@@ -146,7 +146,7 @@ public class Converter {
 		}
 
 		// Zip everything up
-		string path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		string path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + ".sudzc");
 		FastZip zipper = new FastZip();
 		zipper.CreateZip(path, this.OutputDirectory.FullName, true, null);
 
@@ -162,6 +162,25 @@ public class Converter {
 
 		// Return the ZIP file
 		return new FileInfo(path);
+	}
+
+	/// <summary>
+	/// Removes old archives.
+	/// </summary>
+	/// <param name="olderThan">The time span used to determine which archives to be removed.</param>
+	/// <returns>Returns the number of archives removed.</returns>
+	public int RemoveArchives(TimeSpan olderThan) {
+		int removed = 0;
+		foreach (FileInfo file in this.OutputDirectory.Parent.GetFiles("*.sudzc")) {
+			if (DateTime.Now.Subtract(file.LastWriteTime).TotalMilliseconds > olderThan.TotalMilliseconds) {
+				file.Delete();
+				removed++;
+			}
+		}
+		foreach (DirectoryInfo dir in this.OutputDirectory.Parent.GetDirectories("*.sudzd")) {
+			dir.Delete(true);
+		}
+		return removed;
 	}
 
 	/// <summary>

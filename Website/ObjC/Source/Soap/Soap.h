@@ -74,6 +74,9 @@
 // Deserializes a node into an object.
 + (id) deserialize: (CXMLNode*) element forObject: (NSObject*) object;
 
+// Deserializes the element in a dictionary.
++ (id) deserializeAsDictionary:(CXMLNode*)element ;
+
 // Determines if an object is an array
 + (BOOL) isArray: (NSObject*) value;
 

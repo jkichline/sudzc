@@ -9,10 +9,6 @@
 
 @synthesize items;
 
-+ (id) newWithNode: (CXMLNode*) node {
-	return [[[NSMutableArray alloc] initWithNode:node] autorelease];
-}
-
 - (id) init {
 	if(self = [super init]) {
 		self.items = [NSMutableArray array];
@@ -20,15 +16,21 @@
 	return self;
 }
 
-- (id) initWithNode: (CXMLNode*) node {
++(NSMutableArray*)newWithNode: (CXMLNode*) node {
+	return [[[self alloc] initWithNode:node] autorelease];
+}
+
+-(id)initWithNode:(CXMLNode*)node {
 	if(self = [self init]) {
+		for(CXMLNode* child in [node children]) {
+			[self addObject:[Soap deserialize:child]];
+		}
 	}
 	return self;
 }
 
 + (NSMutableString*) serialize: (NSArray*) array {
-	NSMutableString* s = [NSMutableString string];
-	return s;
+	return [Soap serialize:array];
 }
 
 - (id) object {

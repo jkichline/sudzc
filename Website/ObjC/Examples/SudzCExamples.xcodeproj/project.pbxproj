@@ -10,6 +10,7 @@
 		10C71DCE110B5D9F008E8718 /* SudzCExamplesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DCC110B5D9F008E8718 /* SudzCExamplesAppDelegate.m */; };
 		10C71E6E110B5EC0008E8718 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */; };
 /***PBXBuildFile***/
+		1067D05812B7BA3D005BBFFD /* NSMutableArray+Soap.m in Sources */ = {isa = PBXBuildFile; fileRef = 1067D05712B7BA3D005BBFFD /* NSMutableArray+Soap.m */; };
 		10C72023110C0A71008E8718 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F93110C0A71008E8718 /* NSData+Base64.m */; };
 		10C72024110C0A71008E8718 /* Soap.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F95110C0A71008E8718 /* Soap.m */; };
 		10C72025110C0A71008E8718 /* SoapArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F97110C0A71008E8718 /* SoapArray.m */; };
@@ -41,6 +42,8 @@
 		10C71DCD110B5D9F008E8718 /* SudzCExamplesAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudzCExamplesAppDelegate.h; sourceTree = "<group>"; };
 		10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /***PBXFileReference***/
+		1067D05612B7BA3D005BBFFD /* NSMutableArray+Soap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Soap.h"; sourceTree = "<group>"; };
+		1067D05712B7BA3D005BBFFD /* NSMutableArray+Soap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Soap.m"; sourceTree = "<group>"; };
 		10C71F92110C0A71008E8718 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		10C71F93110C0A71008E8718 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		10C71F94110C0A71008E8718 /* Soap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soap.h; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 		10C71F91110C0A71008E8718 /* Soap */ = {
 			isa = PBXGroup;
 			children = (
+				1067D05612B7BA3D005BBFFD /* NSMutableArray+Soap.h */,
+				1067D05712B7BA3D005BBFFD /* NSMutableArray+Soap.m */,
 				10C71F92110C0A71008E8718 /* NSData+Base64.h */,
 				10C71F93110C0A71008E8718 /* NSData+Base64.m */,
 				10C71F94110C0A71008E8718 /* Soap.h */,
@@ -310,6 +315,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				10C71DCE110B5D9F008E8718 /* SudzCExamplesAppDelegate.m in Sources */,
 /***PBXSourcesBuildPhase***/
+				1067D05812B7BA3D005BBFFD /* NSMutableArray+Soap.m in Sources */,
 				10C72023110C0A71008E8718 /* NSData+Base64.m in Sources */,
 				10C72024110C0A71008E8718 /* Soap.m in Sources */,
 				10C72025110C0A71008E8718 /* SoapArray.m in Sources */,
@@ -372,7 +378,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_LDFLAGS = "-lxml2";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
 		};
@@ -387,7 +393,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_LDFLAGS = "-lxml2";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
 		};

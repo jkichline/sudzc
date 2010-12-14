@@ -247,12 +247,14 @@
 			
 		// Render as a complex object
 		} else {
-			return [[element children] objectAtIndex:0];
+			return [Soap deserializeAsDictionary:element];
 		}
 
 	} else {
 		NSString* value = [element stringValue];
-		type = [[type substringFromIndex:[type rangeOfString:@":"].location+1] lowercaseString];
+		if([type rangeOfString:@":"].length > 0) {
+			type = [[type substringFromIndex:[type rangeOfString:@":"].location+1] lowercaseString];
+		}
 		
 		// Return as string
 		if([type isEqualToString:@"string"] || [type isEqualToString:@"token"] || [type isEqualToString:@"normalizedstring"]) {
@@ -315,10 +317,40 @@
 			return [Soap dataFromString:value];
 		}
 		
+		// Return as a dictionary
+		if(value == nil) {
+			Class cls = NSClassFromString([NSString stringWithFormat:@"%@%@", [Soap prefix], type]);
+			if(cls != nil ) {
+				return [cls newWithNode:element];
+			} else {
+				return [Soap deserializeAsDictionary:element];
+
+			}
+		}
+
 		// Return as string
-		return value;
-		
+		else {
+			return value;
+		}
 	}
+}
+
+// Deserializes the element in a dictionary.
++(id)deserializeAsDictionary:(CXMLNode*)element {
+	if([element childCount] == 1) {
+		CXMLNode* child = [[element children] objectAtIndex:0];
+		if([child kind] == CXMLTextKind) {
+			return [[[element children] objectAtIndex:0] stringValue];
+		}
+	}
+	
+	NSMutableDictionary* d = [NSMutableDictionary dictionary];
+	for(CXMLNode* child in [element children]) {
+		id v = [Soap deserialize:child];
+		if(v == nil) { v = [NSNull null]; }
+		[d setObject:v forKey:[child name]];
+	}
+	return d;
 }
 
 // Deserializes a node into an object.

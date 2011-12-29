@@ -27,7 +27,7 @@
 -(id)object { return self; }
 
 + (NSMutableString*) serialize: (NSArray*) array {
-	return [Soap serialize:array];
+	return [NSMutableString stringWithString:[Soap serialize:array]];
 }
 
 @end

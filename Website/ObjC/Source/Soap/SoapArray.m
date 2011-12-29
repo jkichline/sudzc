@@ -16,7 +16,7 @@
 	return self;
 }
 
-+(NSMutableArray*)newWithNode: (CXMLNode*) node {
++(SoapArray*)newWithNode: (CXMLNode*) node {
 	return [[[self alloc] initWithNode:node] autorelease];
 }
 
@@ -30,7 +30,7 @@
 }
 
 + (NSMutableString*) serialize: (NSArray*) array {
-	return [Soap serialize:array];
+	return [NSMutableString stringWithString:[Soap serialize:array]];
 }
 
 - (id) object {
@@ -231,7 +231,11 @@
 }
 
 - (id)initWithCapacity:(NSUInteger)numItems {
-	return [self.items initWithCapacity:numItems];
+	self = [self init];
+	if(self) {
+		self.items = [[[NSMutableArray alloc] initWithCapacity:numItems] autorelease];
+	}
+	return self;
 }
 
 + (id)array {
@@ -246,14 +250,14 @@
 	return [[[SoapArray alloc] initWithObjects:objects count:cnt] autorelease];
 }
 
-+ (id)arrayWithObjects:(id)firstObj, ...{
++ (id)arrayWithObjects:(id)firstObj, ... {
 	SoapArray* a = [SoapArray array];
 	id eachObject;
 	va_list argumentList;
 	if (firstObj) {
 		[a.items addObject: firstObj];
 		va_start(argumentList, firstObj);
-		while (eachObject = va_arg(argumentList, id)) {
+		while ((eachObject = va_arg(argumentList, id))) {
 			[a.items addObject: eachObject];
 		}
 		va_end(argumentList);
@@ -261,14 +265,14 @@
 	return a;
 }
 
-- (id)initWithObjects:(id)firstObj, ...{
+- (id)initWithObjects:(id)firstObj, ... {
 	if(self = [self init]) {
 		id eachObject;
 		va_list argumentList;
 		if (firstObj) {
 			[self.items addObject: firstObj];
 			va_start(argumentList, firstObj);
-			while (eachObject = va_arg(argumentList, id)) {
+			while ((eachObject = va_arg(argumentList, id))) {
 				[self.items addObject: eachObject];
 			}
 			va_end(argumentList);
@@ -294,23 +298,43 @@
 }
 
 - (id)initWithObjects:(const id *)objects count:(NSUInteger)cnt {
-	return [self.items initWithObjects:objects count:cnt];
+	self = [self init];
+	if(self) {
+		self.items = [[[NSMutableArray alloc] initWithObjects:objects count:cnt] autorelease];
+	}
+	return self;
 }
 
 - (id)initWithArray:(NSArray *)array {
-	return [self.items initWithArray:array];
+	self = [self init];
+	if(self) {
+		self.items = [[[NSMutableArray alloc] initWithArray:array] autorelease];
+	}
+	return self;
 }
 
 - (id)initWithArray:(NSArray *)array copyItems:(BOOL)flag {
-	return [self.items initWithArray:array copyItems:flag];
+	self = [self init];
+	if(self) {
+		self.items = [[[NSMutableArray alloc] initWithArray:array copyItems:flag] autorelease];
+	}
+	return self;
 }
 
 - (id)initWithContentsOfFile:(NSString *)path {
-	return [self.items initWithContentsOfFile:path];
+	self = [self init];
+	if(self) {
+		self.items = [[[NSMutableArray alloc] initWithContentsOfFile:path] autorelease];
+	}
+	return self;
 }
 
 - (id)initWithContentsOfURL:(NSURL *)url {
-	return [self.items initWithContentsOfURL:url];
+	self = [self init];
+	if(self) {
+		self.items = [[[NSMutableArray alloc] initWithContentsOfURL:url] autorelease];
+	}
+	return self;
 }
 
 - (NSArray *)sortedArrayUsingFunction:(NSInteger (*)(id, id, void *))comparator context:(void *)context {
@@ -334,7 +358,11 @@
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-	return [self.items initWithCoder:aDecoder];
+	self = [self init];
+	if(self) {
+		self.items = [[[NSMutableArray alloc] initWithCoder:aDecoder] autorelease];
+	}
+	return self;
 }
 
 - (id)copyWithZone:(NSZone *)zone {

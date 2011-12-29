@@ -32,7 +32,7 @@ if (_node)
 - (CXMLNodeKind)kind
 {
 NSAssert(_node != NULL, @"TODO");
-return(_node->type); // TODO this isn't 100% accurate!
+return((CXMLNodeKind)_node->type); // TODO this isn't 100% accurate!
 }
 
 - (NSString *)name

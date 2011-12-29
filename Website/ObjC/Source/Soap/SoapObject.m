@@ -30,19 +30,19 @@
 
 // This will get called when traversing objects, returning nothing is ok - Karl
 - (NSMutableString*) serialize {
-	return [[[NSMutableString alloc] initWithString: @""] autorelease];
+	return [NSMutableString string];
 }
 
 - (NSMutableString*) serialize: (NSString*) nodeName {
-	return [[[NSMutableString alloc] initWithString: @""] autorelease];
+	return [NSMutableString string];
 }
 
 - (NSMutableString*) serializeElements {
-	return [[[NSMutableString alloc] initWithString: @""] autorelease];
+	return [NSMutableString string];
 }
 
 - (NSMutableString*) serializeAttributes {
-	return [[[NSMutableString alloc] initWithString: @""] autorelease];
+	return [NSMutableString string];
 }
 
 - (id) object {

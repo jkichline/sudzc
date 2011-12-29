@@ -49,4 +49,12 @@
 	}
 }
 
+- (void) dealloc {
+	self.faultCode = nil;
+	self.faultString = nil;
+	self.faultActor = nil;
+	self.detail = nil;
+	[super dealloc];
+}
+
 @end

@@ -383,7 +383,7 @@
 				<xsl:when test="s:annotation/s:appinfo[mss:IsDictionary = 'true']">
 					<xsl:apply-templates select="." mode="interface_dictionary"/>
 				</xsl:when>
-				<xsl:when test="(count(*)=1) and (s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType])">
+				<xsl:when test="(count(s:sequence/s:element)=1) and (s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType])">
 					<xsl:apply-templates select="." mode="interface_array"/>
 				</xsl:when>
 				<xsl:otherwise>
@@ -464,7 +464,7 @@
 				<xsl:when test="s:annotation/s:appinfo[mss:IsDictionary = 'true']">
 					<xsl:apply-templates select="." mode="implementation_dictionary"/>
 				</xsl:when>
-				<xsl:when test="s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType]">
+				<xsl:when test="(count(s:sequence/s:element)=1) and (s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType])">
 					<xsl:apply-templates select="." mode="implementation_array"/>
 				</xsl:when>
 				<xsl:otherwise>
@@ -574,13 +574,13 @@
   
 	- (NSMutableString*) serialize: (NSString*) nodeName
 	{
-		NSMutableString* s = [[NSMutableString alloc] init];
+		NSMutableString* s = [NSMutableString string];
 		[s appendFormat: @"&lt;%@", nodeName];
 		[s appendString: [self serializeAttributes]];
 		[s appendString: @"&gt;"];
 		[s appendString: [self serializeElements]];
 		[s appendFormat: @"&lt;/%@&gt;", nodeName];
-		return [s autorelease];
+		return s;
 	}
 	
 	- (NSMutableString*) serializeElements
@@ -970,7 +970,11 @@
 			<xsl:variable name="serialized"><xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates></xsl:variable>
 
 			<xsl:choose>
-				<xsl:when test="$type = 'NSMutableArray*'">		if (self.<xsl:value-of select="$name"/> != nil &amp;&amp; self.<xsl:value-of select="$name"/>.count &gt; 0) [s appendFormat: @"&lt;<xsl:value-of select="@name"/>&gt;%@&lt;/<xsl:value-of select="@name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
+				<xsl:when test="$type = 'NSMutableArray*'">		if (self.<xsl:value-of select="$name"/> != nil &amp;&amp; self.<xsl:value-of select="$name"/>.count &gt; 0) {
+			[s appendFormat: @"&lt;<xsl:value-of select="@name"/>&gt;%@&lt;/<xsl:value-of select="@name"/>&gt;", <xsl:apply-templates select="." mode="serialize"><xsl:with-param name="prefix">self.</xsl:with-param></xsl:apply-templates>];
+		} else {
+			[s appendString: @"&lt;<xsl:value-of select="@name"/>/&gt;"];
+		}
 </xsl:when>
 				<xsl:when test="contains($type, '*') or $type = 'id'">
 					<xsl:choose>
@@ -1110,7 +1114,7 @@
 				<xsl:variable name="complexType" select="/wsdl:definitions/wsdl:types/s:schema/s:complexType[@name = $type]"/>
 				<xsl:variable name="simpleType" select="/wsdl:definitions/wsdl:types/s:schema/s:simpleType[@name = $type]"/>
 				<xsl:variable name="isDictionary" select="$complexType/s:annotation/s:appinfo[mss:IsDictionary = 'true']"/>
-				<xsl:variable name="isArray" select="$complexType/s:sequence/s:element[@maxOccurs = 'unbounded'] or $complexType/s:restriction/s:attribute[@wsdl:arrayType]"/>
+				<xsl:variable name="isArray" select="(count($complexType/s:sequence/s:element)=1) and ($complexType/s:sequence/s:element[@maxOccurs = 'unbounded'] or $complexType/s:restriction/s:attribute[@wsdl:arrayType])"/>
 				<xsl:choose>
 					<xsl:when test="$isDictionary">NSMutableDictionary*</xsl:when>
 					<xsl:when test="$isArray">NSMutableArray*</xsl:when>
@@ -1226,7 +1230,7 @@
 					<xsl:otherwise>
 						<xsl:choose>
 							<xsl:when test="s:annotation/s:appinfo[mss:IsDictionary = 'true']">SoapDictionary</xsl:when>
-							<xsl:when test="(count(*)=1) and (s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType])">SoapArray</xsl:when>
+							<xsl:when test="(count(s:sequence/s:element)=1) and (s:sequence/s:element[@maxOccurs = 'unbounded'] or s:complexContent/s:restriction/s:attribute[@wsdl:arrayType])">SoapArray</xsl:when>
 							<xsl:otherwise>SoapObject</xsl:otherwise>
 						</xsl:choose>
 					</xsl:otherwise>
@@ -1770,7 +1774,7 @@
 +(<xsl:value-of select="$shortns"/>Services*)service;
 +(<xsl:value-of select="$shortns"/>Services*)serviceWithServer:(NSString*)serverName;
 
-@property BOOL logging;
+@property (nonatomic) BOOL logging;
 @property (nonatomic, retain) NSString* server;
 @property (nonatomic, retain) NSString* defaultServer;
 <xsl:for-each select="class">

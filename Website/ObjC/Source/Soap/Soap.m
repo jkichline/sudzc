@@ -24,7 +24,7 @@
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params withHeaders: (NSDictionary*) headers
 {
-	NSMutableString* s = [[NSMutableString string] autorelease];
+	NSMutableString* s = [NSMutableString string];
 	[s appendString: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"];
 	[s appendFormat: @"<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns=\"%@\">", ns];
 	if(headers != nil && headers.count > 0) {
@@ -50,7 +50,7 @@
 	
 	// If its a literal, just output it
 	if([value isKindOfClass:[SoapLiteral class]]) {
-		return [value value];
+		return [(SoapLiteral*)value value];
 	}
 	
 	// If it's a dictionary, then serialize and look for attributes
@@ -80,7 +80,7 @@
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing withHeaders: (NSDictionary*) headers
 {
-	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
+	NSMutableString* s = [NSMutableString string];
 	for(id key in containing) {
 		if([[containing objectForKey: key] isMemberOfClass: [SoapNil class]]) {
 			[s appendFormat: @"<%@ xsi:nil=\"true\"/>", key];
@@ -101,7 +101,7 @@
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
 + (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns withParameters: (NSArray*) params withHeaders: (NSDictionary*) headers
 {
-	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
+	NSMutableString* s = [NSMutableString string];
 	for(SoapParameter* p in params) {
 		[s appendString: p.xml];
 	}
@@ -118,7 +118,7 @@
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
 + (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing withHeaders: (NSDictionary*) headers
 {
-	NSMutableString* s = [[[NSMutableString alloc] initWithString: @""] autorelease];
+	NSMutableString* s = [NSMutableString string];
 	[s appendFormat: @"<%@>%@</%@>", method, [containing serialize], method];
 	NSString* envelope = [Soap createEnvelope: action forNamespace: ns forParameters: s withHeaders: headers];
 	return envelope;
@@ -161,7 +161,7 @@
 	// Otherwise we need to serialize the object as XML.
 	unsigned int outCount, i;
 	NSMutableString* s = [NSMutableString string];
-	NSMutableDictionary* keys = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary* keys = [NSMutableDictionary dictionary];
 
 	Class currentClass = [object class];
 	while(currentClass != nil) {
@@ -175,7 +175,6 @@
 		}
 		free(properties);
 	}
-	[keys release];
 	return (NSString*)s;
 }
 
@@ -319,7 +318,11 @@
 		
 		// Return as a dictionary
 		if(value == nil) {
-			Class cls = NSClassFromString([NSString stringWithFormat:@"%@%@", [Soap prefix], type]);
+			NSString* prefix = @"";
+			if([Soap respondsToSelector:@selector(prefix)]) {
+				prefix = [Soap performSelector:@selector(prefix)];
+			}
+			Class cls = NSClassFromString([NSString stringWithFormat:@"%@%@", prefix, type]);
 			if(cls != nil ) {
 				return [cls newWithNode:element];
 			} else {

@@ -1,1593 +1,0 @@
-TSudzC
-v7
-r0
-t334023768.873635
-cCheck dependencies
-cCpResource build/Debug-iphoneos/SudzC.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
-cProcessInfoPlistFile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/Info.plist SudzC-Info.plist
-cCompileXIB /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/MainWindow_iPhone.xib
-cCompileXIB /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/MainWindow_iPad.xib
-cProcessPCH /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch.gch SudzC_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
-cProcessPCH /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch.gch SudzC_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/main.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPhone.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPad.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSData+Base64.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSMutableArray+Soap.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/Soap.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapArray.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapDictionary.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapFault.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapHandler.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapLiteral.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapNil.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapObject.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapParameter.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapReachability.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapRequest.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapService.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument_PrivateExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLElement.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_PrivateExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_XPathExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-cLd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SudzC normal armv6
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/main.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPhone.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPad.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSData+Base64.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSMutableArray+Soap.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/Soap.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapArray.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapDictionary.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapFault.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapHandler.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapLiteral.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapNil.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapObject.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapParameter.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapReachability.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapRequest.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapService.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument_PrivateExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLElement.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_PrivateExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_XPathExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cLd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SudzC normal armv7
-cCreateUniversalBinary /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC normal "armv6 armv7"
-cGenerateDSYMFile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app.dSYM /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC
-cProcessProductPackaging "/Users/jasonkichline/Library/MobileDevice/Provisioning Profiles/B395FD88-2724-4B3E-8C5E-A0A2F8D17F14.mobileprovision" /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/embedded.mobileprovision
-cTouch /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app
-cProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC.xcent
-cCodeSign /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk
-c000000004D5F25270000000000000110
-t1298081063
-s272
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist
-c000000004D4F6A4700000000000001A7
-t1297050183
-s423
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
-c000000004D4F6A4700000000000001E5
-t1297050183
-s485
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004D54D18C00000000003532A0
-t1297404300
-s3486368
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004D54D1F500000000003E22F0
-t1297404405
-s4072176
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004D54D1DD0000000000001466
-t1297404381
-s5222
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/SystemConfiguration.framework/Headers/SystemConfiguration.h
-c000000004D54D0D40000000000001A58
-t1297404116
-s6744
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
-c000000004D54D0E700000000000B0CA0
-t1297404135
-s724128
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004D5A28AB0000000000000AA1
-t1297754283
-s2721
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004D5A292A0000000000CA2AE0
-t1297754410
-s13249248
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/CommonCrypto/CommonDigest.h
-c000000004D4F6E4A0000000000002407
-t1297051210
-s9223
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/arpa/inet.h
-c000000004D54C5330000000000001533
-t1297401139
-s5427
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2/libxml/HTMLparser.h
-c000000004D54D0BA0000000000002401
-t1297404090
-s9217
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2/libxml/HTMLtree.h
-c000000004D54D0BA0000000000000E65
-t1297404090
-s3685
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2/libxml/parser.h
-c000000004D54D0BA00000000000098A9
-t1297404090
-s39081
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2/libxml/tree.h
-c000000004D54D0BA0000000000008F14
-t1297404090
-s36628
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2/libxml/xpath.h
-c000000004D54D0BA0000000000003F47
-t1297404090
-s16199
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2/libxml/xpathInternals.h
-c000000004D54D0BA0000000000004BF8
-t1297404090
-s19448
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/netdb.h
-c000000004D54C533000000000000307F
-t1297401139
-s12415
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/netinet/in.h
-c000000004D54CB250000000000006BAC
-t1297402661
-s27564
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/objc/runtime.h
-c000000004D54CADF00000000000063AF
-t1297402591
-s25519
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/sys/socket.h
-c000000004D54CB290000000000005ACF
-t1297402665
-s23247
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/sys/types.h
-c000000004D54CB2A0000000000002905
-t1297402666
-s10501
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/unistd.h
-c000000004D4F6E910000000000006662
-t1297051281
-s26210
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/lib/libxml2.2.dylib
-c000000004D54D0BC00000000001E1450
-t1297404092
-s1971280
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m
-c000000004E17119C0000000000000F46
-t1310134684
-s3910
-i"NSData+Base64.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m
-c000000004E17119C00000000000002A5
-t1310134684
-s677
-i"NSMutableArray+Soap.h"
-i"Soap.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m
-c000000004E17119C0000000000004968
-t1310134684
-s18792
-i<Foundation/Foundation.h>
-i<objc/runtime.h>
-i"Soap.h"
-i"SoapNil.h"
-i"NSData+Base64.h"
-i<CommonCrypto/CommonDigest.h>
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m
-c000000004E17119C000000000000261A
-t1310134684
-s9754
-i"SoapArray.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m
-c000000004E17119C0000000000001BDB
-t1310134684
-s7131
-i"SoapDictionary.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m
-c000000004E17119C00000000000005BD
-t1310134684
-s1469
-i"SoapFault.h"
-i"Soap.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m
-c000000004E17119C0000000000000130
-t1310134684
-s304
-i"SoapHandler.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m
-c000000004E17119C00000000000001C5
-t1310134684
-s453
-i"SoapLiteral.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m
-c000000004E17119C00000000000000B3
-t1310134684
-s179
-i"SoapNil.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m
-c000000004E17119C00000000000005E9
-t1310134684
-s1513
-i"Soap.h"
-i"SoapObject.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m
-c000000004E17119C000000000000032C
-t1310134684
-s812
-i"SoapParameter.h"
-i"Soap.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m
-c000000004E17119C0000000000000E63
-t1310134684
-s3683
-i"SoapReachability.h"
-i<netinet/in.h>
-i<netdb.h>
-i<sys/socket.h>
-i<sys/types.h>
-i<arpa/inet.h>
-i<netinet/in.h>
-i<unistd.h>
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m
-c000000004E3895180000000000001FBA
-t1312331032
-s8122
-i"SoapRequest.h"
-i"SoapArray.h"
-i"SoapFault.h"
-i"Soap.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m
-c000000004E17119C0000000000000427
-t1310134684
-s1063
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m
-c000000004E17119C00000000000010B9
-t1310134684
-s4281
-i"CXMLDocument.h"
-i<libxml/parser.h>
-i<libxml/HTMLparser.h>
-i<libxml/HTMLtree.h>
-i"CXMLNode_PrivateExtensions.h"
-i"CXMLElement.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m
-c000000004E17119C000000000000022B
-t1310134684
-s555
-i"CXMLDocument_PrivateExtensions.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m
-c000000004E17119C0000000000000C7E
-t1310134684
-s3198
-i"CXMLElement.h"
-i"CXMLNode_PrivateExtensions.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m
-c000000004E17119C00000000000016E9
-t1310134684
-s5865
-i"CXMLNode.h"
-i"CXMLNode_PrivateExtensions.h"
-i"CXMLDocument.h"
-i"CXMLElement.h"
-i<libxml/xpath.h>
-i<libxml/xpathInternals.h>
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m
-c000000004E17119C000000000000051D
-t1310134684
-s1309
-i"CXMLNode_PrivateExtensions.h"
-i"CXMLElement.h"
-i"CXMLDocument_PrivateExtensions.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m
-c000000004E17119C000000000000065F
-t1310134684
-s1631
-i"CXMLNode_XPathExtensions.h"
-i"CXMLDocument.h"
-i"CXMLNode_PrivateExtensions.h"
-i<libxml/xpath.h>
-i<libxml/xpathInternals.h>
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/TouchXML.h
-c000000004E17119C00000000000000F3
-t1310134684
-s243
-i"CXMLDocument.h"
-i"CXMLElement.h"
-i"CXMLNode.h"
-i"CXMLNode_XPathExtensions.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m
-c000000004E38941D0000000000000161
-t1312330781
-s353
-i<UIKit/UIKit.h>
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC_Prefix.pch
-c000000004E38941D00000000000000B3
-t1312330781
-s179
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app
-t1312330968
-s340
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app.dSYM
-t1312330966
-s102
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/Info.plist
-t1312330823
-s1144
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/MainWindow_iPad.nib
-t1312330824
-s1530
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/MainWindow_iPhone.nib
-t1312330824
-s1531
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/PkgInfo
-t1312330823
-s8
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/ResourceRules.plist
-t1312330823
-s485
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC
-t1312330968
-s308800
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/embedded.mobileprovision
-t1312330827
-s9873
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPad.o
-t1312330947
-s48560
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPhone.o
-t1312330947
-s49332
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument.o
-t1312330948
-s31848
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument_PrivateExtensions.o
-t1312330948
-s9816
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLElement.o
-t1312330948
-s18392
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode.o
-t1312330948
-s32460
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_PrivateExtensions.o
-t1312330948
-s13532
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_XPathExtensions.o
-t1312330948
-s16664
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSData+Base64.o
-t1312330947
-s13312
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSMutableArray+Soap.o
-t1312330947
-s11712
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/Soap.o
-t1312330948
-s60008
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapArray.o
-t1312330947
-s52948
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapDictionary.o
-t1312330947
-s39152
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapFault.o
-t1312330947
-s19112
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapHandler.o
-t1312330947
-s8968
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapLiteral.o
-t1312330947
-s8384
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapNil.o
-t1312330948
-s5268
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapObject.o
-t1312330948
-s14604
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapParameter.o
-t1312330948
-s12168
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapReachability.o
-t1312330948
-s15852
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapRequest.o
-t1312330948
-s43464
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapService.o
-t1312330948
-s16252
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SudzC
-t1312330966
-s146064
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SudzC.LinkFileList
-c000000004E3894470000000000000BCD
-t1312330823
-s3021
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/main.o
-t1312330947
-s6480
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPad.o
-t1312330948
-s48508
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPhone.o
-t1312330948
-s49276
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument.o
-t1312330949
-s31520
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument_PrivateExtensions.o
-t1312330949
-s9808
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLElement.o
-t1312330949
-s18080
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode.o
-t1312330949
-s31172
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_PrivateExtensions.o
-t1312330949
-s13144
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_XPathExtensions.o
-t1312330949
-s16568
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSData+Base64.o
-t1312330948
-s13100
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSMutableArray+Soap.o
-t1312330948
-s11692
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/Soap.o
-t1312330948
-s58656
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapArray.o
-t1312330948
-s51948
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapDictionary.o
-t1312330948
-s38440
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapFault.o
-t1312330948
-s18856
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapHandler.o
-t1312330948
-s8956
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapLiteral.o
-t1312330948
-s8332
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapNil.o
-t1312330948
-s5268
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapObject.o
-t1312330948
-s14504
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapParameter.o
-t1312330948
-s12048
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapReachability.o
-t1312330948
-s15600
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapRequest.o
-t1312330949
-s42624
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapService.o
-t1312330949
-s15996
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SudzC
-t1312330966
-s142404
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SudzC.LinkFileList
-c000000004E3894470000000000000BCD
-t1312330823
-s3021
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/main.o
-t1312330948
-s6464
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC.xcent
-t1312330827
-s416
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.h
-c000000004E38941D000000000000013B
-t1312330781
-s315
-i<UIKit/UIKit.h>
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m
-c000000004E38941D00000000000006A1
-t1312330781
-s1697
-i"AppDelegate_iPad.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/MainWindow_iPad.xib
-c000000004E38941D00000000000036D9
-t1312330781
-s14041
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.h
-c000000004E38941D000000000000013F
-t1312330781
-s319
-i<UIKit/UIKit.h>
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m
-c000000004E38941D00000000000009C6
-t1312330781
-s2502
-i"AppDelegate_iPhone.h"
-
-N/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/MainWindow_iPhone.xib
-c000000004E38941D0000000000003908
-t1312330781
-s14600
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/NSData+Base64.h
-c000000004E17119C00000000000000F9
-t1310134684
-s249
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/NSMutableArray+Soap.h
-c000000004E17119C000000000000019A
-t1310134684
-s410
-i<Foundation/Foundation.h>
-i"TouchXML.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/Soap.h
-c000000004E17119C0000000000001209
-t1310134684
-s4617
-i"TouchXML.h"
-i"SoapArray.h"
-i"SoapDictionary.h"
-i"SoapDelegate.h"
-i"SoapFault.h"
-i"SoapHandler.h"
-i"SoapLiteral.h"
-i"SoapNil.h"
-i"SoapObject.h"
-i"SoapParameter.h"
-i"SoapRequest.h"
-i"SoapService.h"
-i"SoapReachability.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapArray.h
-c000000004E17119C0000000000001166
-t1310134684
-s4454
-i"SoapObject.h"
-i"Soap.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapDelegate.h
-c000000004E17119C0000000000000137
-t1310134684
-s311
-i"SoapFault.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapDictionary.h
-c000000004E17119C0000000000000BD7
-t1310134684
-s3031
-i<Foundation/Foundation.h>
-i"Soap.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapFault.h
-c000000004E17119C00000000000002FE
-t1310134684
-s766
-i"TouchXML.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapHandler.h
-c000000004E17119C000000000000015C
-t1310134684
-s348
-i"SoapFault.h"
-i"SoapDelegate.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapLiteral.h
-c000000004E17119C0000000000000179
-t1310134684
-s377
-i<Foundation/Foundation.h>
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapNil.h
-c000000004E17119C00000000000000CC
-t1310134684
-s204
-i<Foundation/Foundation.h>
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapObject.h
-c000000004E17119C000000000000026B
-t1310134684
-s619
-i"TouchXML.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapParameter.h
-c000000004E17119C00000000000001F7
-t1310134684
-s503
-i<Foundation/Foundation.h>
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapReachability.h
-c000000004E17119C00000000000002C8
-t1310134684
-s712
-i<Foundation/Foundation.h>
-i<SystemConfiguration/SystemConfiguration.h>
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapRequest.h
-c000000004E17119C00000000000006B2
-t1310134684
-s1714
-i"SoapHandler.h"
-i"SoapService.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/Soap/SoapService.h
-c000000004E17119C000000000000029F
-t1310134684
-s671
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/TouchXML/CXMLDocument.h
-c000000004E17119C00000000000004F2
-t1310134684
-s1266
-i"CXMLNode.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.h
-c000000004E17119C00000000000001AF
-t1310134684
-s431
-i"CXMLDocument.h"
-i<libxml/parser.h>
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/TouchXML/CXMLElement.h
-c000000004E17119C0000000000000338
-t1310134684
-s824
-i"CXMLNode.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/TouchXML/CXMLNode.h
-c000000004E17119C00000000000006F6
-t1310134684
-s1782
-i<Foundation/Foundation.h>
-i<libxml/tree.h>
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.h
-c000000004E17119C0000000000000150
-t1310134684
-s336
-i"CXMLNode.h"
-
-N/Users/jasonkichline/Documents/sudzc/Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.h
-c000000004E17119C0000000000000164
-t1310134684
-s356
-i"CXMLNode.h"
-
-N/Users/jasonkichline/Library/MobileDevice/Provisioning Profiles/B395FD88-2724-4B3E-8C5E-A0A2F8D17F14.mobileprovision
-c000000004E1B40550000000000002691
-t1310408789
-s9873
-
-N/var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch.gch
-t1312330947
-s10184604
-
-N/var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-cbymmyjsxiciecfpkkwvfmathzlf/SudzC_Prefix.pch.gch
-t1312330825
-s10184604
-
-N/var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch.gch
-t1312330947
-s10647452
-
-N/var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-evsxcffqxrqkjkhafrvxatsvahzp/SudzC_Prefix.pch.gch
-t1312330825
-s10647452
-
-NSudzC-Info.plist
-c000000004E38941D0000000000000569
-t1312330781
-s1385
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies334023766#334023766#0(0"0(0#1#0"4521002304#0"0#
-
-CCodeSign /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app
-s334023766.942643
-e334023768.873542
-r1
-xCodeSign
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app
-lSLF07#2@39"CodeSign build/Debug-iphoneos/SudzC.app334023766#334023768#0(0"0(0#0#79"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app4521000592#680"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv _CODESIGN_ALLOCATE_ /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate    /usr/bin/codesign -f -s "iPhone Developer: Jason Kichline (2FN2G544SL)" --resource-rules=/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/ResourceRules.plist --entitlements /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC.xcent /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPad.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.419079
-e334023747.511374
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPad.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@80"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m334023747#334023747#0(0"0(0#0#72"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m4454043280#1911"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPad.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPhone.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.418275
-e334023747.573141
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPhone.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@84"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m334023747#334023747#0(0"0(0#0#76"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m4454043280#1917"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/AppDelegate_iPhone.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023748.156891
-e334023748.323725
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@106"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m334023748#334023748#0(0"0(0#0#98"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m4454043280#1933"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument_PrivateExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023748.171072
-e334023748.252238
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument_PrivateExtensions.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@124"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m334023748#334023748#0(0"0(0#0#116"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m4454043280#1969"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLDocument_PrivateExtensions.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLElement.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023748.252415
-e334023748.362657
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLElement.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@105"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m334023748#334023748#0(0"0(0#0#97"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m4454043280#1931"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLElement.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023748.254121
-e334023748.469275
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@102"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m334023748#334023748#0(0"0(0#0#94"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m4454043280#1925"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_PrivateExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023748.279510
-e334023748.429565
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_PrivateExtensions.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@120"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m334023748#334023748#0(0"0(0#0#112"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m4454043280#1961"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_PrivateExtensions.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_XPathExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023748.324128
-e334023748.436199
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_XPathExtensions.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@118"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m334023748#334023748#0(0"0(0#0#110"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m4454043280#1957"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/CXMLNode_XPathExtensions.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSData+Base64.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.420313
-e334023747.573516
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSData+Base64.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@103"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m334023747#334023747#0(0"0(0#0#95"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m4454043280#1931"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSData+Base64.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSMutableArray+Soap.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.479977
-e334023747.674276
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSMutableArray+Soap.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m: In function '+[NSMutableArray(Soap) serialize:]':
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m:30: warning: incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'
-lSLF07#2@109"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m334023747#334023747#0(366"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m: In function '+[NSMutableArray(Soap) serialize:]':/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m:30: warning: incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'1(22@97"Incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'334023747#153#213#0(6@101"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m331827484#30#0#30#0#0"0(0#0#101"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m4454043280#1943"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/NSMutableArray+Soap.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/Soap.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.515158
-e334023748.021122
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/Soap.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m: In function '+[Soap deserialize:]':
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: 'Soap' may not respond to '+prefix'
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: (Messages without a matching method signature
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: will be assumed to return 'id' and accept
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: '...' as arguments.)
-lSLF07#2@94"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m334023747#334023748#0(673"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m: In function '+[Soap deserialize:]':/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: 'Soap' may not respond to '+prefix'/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: (Messages without a matching method signature/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: will be assumed to return 'id' and accept/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: '...' as arguments.)2(22@35"'Soap' may not respond to '+prefix'334023747#124#137#0(6@86"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m331827484#322#0#322#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)334023747#261#147#0(6@86"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m331827484#322#0#322#0#0"0(0#0#86"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m4454043280#1913"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/Soap.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapArray.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.573703
-e334023747.987264
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapArray.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m: In function '+[SoapArray serialize:]':
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m:33: warning: incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'
-lSLF07#2@99"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m334023747#334023747#0(335"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m: In function '+[SoapArray serialize:]':/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m:33: warning: incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'1(22@97"Incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'334023747#132#203#0(6@91"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m331827484#33#0#33#0#0"0(0#0#91"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m4454043280#1923"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapArray.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapDictionary.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.597226
-e334023747.912549
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapDictionary.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@104"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m334023747#334023747#0(0"0(0#0#96"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m4454043280#1933"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapDictionary.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapFault.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.684611
-e334023747.861956
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapFault.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@99"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m334023747#334023747#0(0"0(0#0#91"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m4454043280#1923"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapFault.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapHandler.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.862561
-e334023747.988880
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapHandler.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@101"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m334023747#334023747#0(0"0(0#0#93"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m4454043280#1927"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapHandler.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapLiteral.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.912736
-e334023747.989104
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapLiteral.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@101"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m334023747#334023747#0(0"0(0#0#93"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m4454043280#1927"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapLiteral.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapNil.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.987392
-e334023748.054535
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapNil.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@97"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m334023747#334023748#0(0"0(0#0#89"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m4454043280#1919"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapNil.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapObject.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.989206
-e334023748.170942
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapObject.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@100"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m334023747#334023748#0(0"0(0#0#92"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m4454043280#1925"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapObject.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapParameter.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.990503
-e334023748.156734
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapParameter.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@103"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m334023747#334023748#0(0"0(0#0#95"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m4454043280#1931"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapParameter.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapReachability.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023748.021263
-e334023748.140549
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapReachability.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@106"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m334023748#334023748#0(0"0(0#0#98"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m4454043280#1937"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapReachability.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapRequest.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023748.055335
-e334023748.279376
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapRequest.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@101"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m334023748#334023748#0(0"0(0#0#93"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m4454043280#1927"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapRequest.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapService.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023748.140697
-e334023748.254001
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapService.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@101"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m334023748#334023748#0(0"0(0#0#93"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m4454043280#1927"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SoapService.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/main.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023747.417315
-e334023747.479842
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/main.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@70"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m334023747#334023747#0(0"0(0#0#62"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m4454043280#1889"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/main.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPad.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.436326
-e334023748.514604
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPad.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@80"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m334023748#334023748#0(0"0(0#0#72"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m4454043280#1911"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/AppDelegate_iPad.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPad.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPhone.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.429706
-e334023748.503229
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPhone.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@84"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m334023748#334023748#0(0"0(0#0#76"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m4454043280#1917"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/AppDelegate_iPhone.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/AppDelegate_iPhone.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.983176
-e334023749.091529
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@106"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m334023748#334023749#0(0"0(0#0#98"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m4454043280#1933"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument_PrivateExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023749.058795
-e334023749.143684
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument_PrivateExtensions.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@124"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m334023749#334023749#0(0"0(0#0#116"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m4454043280#1969"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLDocument_PrivateExtensions.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLDocument_PrivateExtensions.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLElement.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023749.098308
-e334023749.202858
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLElement.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@105"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m334023749#334023749#0(0"0(0#0#97"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m4454043280#1931"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLElement.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLElement.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023749.143816
-e334023749.270281
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@102"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m334023749#334023749#0(0"0(0#0#94"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m4454043280#1925"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_PrivateExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023749.160782
-e334023749.241508
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_PrivateExtensions.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@120"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m334023749#334023749#0(0"0(0#0#112"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m4454043280#1961"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_PrivateExtensions.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_PrivateExtensions.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_XPathExtensions.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023749.202991
-e334023749.283608
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_XPathExtensions.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@118"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m334023749#334023749#0(0"0(0#0#110"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m4454043280#1957"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/TouchXML/CXMLNode_XPathExtensions.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/CXMLNode_XPathExtensions.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSData+Base64.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.437583
-e334023748.520358
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSData+Base64.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@103"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m334023748#334023748#0(0"0(0#0#95"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m4454043280#1931"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSData+Base64.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSData+Base64.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSMutableArray+Soap.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.503376
-e334023748.608194
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSMutableArray+Soap.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m: In function '+[NSMutableArray(Soap) serialize:]':
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m:30: warning: incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'
-lSLF07#2@109"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m334023748#334023748#0(366"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m: In function '+[NSMutableArray(Soap) serialize:]':/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m:30: warning: incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'1(22@97"Incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'334023748#153#213#0(6@101"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m331827484#30#0#30#0#0"0(0#0#101"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m4454043280#1943"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/NSMutableArray+Soap.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/NSMutableArray+Soap.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/Soap.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.514880
-e334023748.758610
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/Soap.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m: In function '+[Soap deserialize:]':
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: 'Soap' may not respond to '+prefix'
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: (Messages without a matching method signature
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: will be assumed to return 'id' and accept
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: '...' as arguments.)
-lSLF07#2@94"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m334023748#334023748#0(673"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m: In function '+[Soap deserialize:]':/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: 'Soap' may not respond to '+prefix'/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: (Messages without a matching method signature/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: will be assumed to return 'id' and accept/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m:322: warning: '...' as arguments.)2(22@35"'Soap' may not respond to '+prefix'334023748#124#137#0(6@86"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m331827484#322#0#322#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)334023748#261#147#0(6@86"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m331827484#322#0#322#0#0"0(0#0#86"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m4454043280#1913"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/Soap.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/Soap.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapArray.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.520616
-e334023748.704946
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapArray.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m: In function '+[SoapArray serialize:]':
-o/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m:33: warning: incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'
-lSLF07#2@99"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m334023748#334023748#0(335"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m: In function '+[SoapArray serialize:]':/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m:33: warning: incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'1(22@97"Incompatible Objective-C types returning 'struct NSString *', expected 'struct NSMutableString *'334023748#132#203#0(6@91"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m331827484#33#0#33#0#0"0(0#0#91"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m4454043280#1923"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapArray.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapArray.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapDictionary.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.608355
-e334023748.788415
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapDictionary.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@104"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m334023748#334023748#0(0"0(0#0#96"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m4454043280#1933"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapDictionary.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapDictionary.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapFault.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.705088
-e334023748.836590
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapFault.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@99"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m334023748#334023748#0(0"0(0#0#91"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m4454043280#1923"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapFault.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapFault.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapHandler.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.764478
-e334023748.866034
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapHandler.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@101"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m334023748#334023748#0(0"0(0#0#93"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m4454043280#1927"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapHandler.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapHandler.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapLiteral.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.788542
-e334023748.847791
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapLiteral.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@101"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m334023748#334023748#0(0"0(0#0#93"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m4454043280#1927"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapLiteral.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapLiteral.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapNil.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.836733
-e334023748.885638
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapNil.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@97"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m334023748#334023748#0(0"0(0#0#89"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m4454043280#1919"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapNil.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapNil.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapObject.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.847942
-e334023748.966464
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapObject.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@100"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m334023748#334023748#0(0"0(0#0#92"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m4454043280#1925"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapObject.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapObject.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapParameter.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.866169
-e334023748.983020
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapParameter.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@103"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m334023748#334023748#0(0"0(0#0#95"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m4454043280#1931"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapParameter.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapParameter.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapReachability.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.885771
-e334023748.971497
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapReachability.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@106"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m334023748#334023748#0(0"0(0#0#98"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m4454043280#1937"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapReachability.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapReachability.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapRequest.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.966606
-e334023749.160631
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapRequest.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@101"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m334023748#334023749#0(0"0(0#0#93"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m4454043280#1927"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapRequest.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapRequest.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapService.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.971640
-e334023749.058654
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapService.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@101"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m334023748#334023749#0(0"0(0#0#93"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m4454043280#1927"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/../../Website/ObjC/Source/Soap/SoapService.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SoapService.o0#
-
-CCompileC build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/main.o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023748.362795
-e334023748.435911
-r1
-xCompileC
-xbuild/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/main.o
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@70"Compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m334023748#334023748#0(0"0(0#0#62"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m4454043280#1889"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -include /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/Shared/main.m -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/main.o0#
-
-CCompileXIB /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/MainWindow_iPad.xib
-s334023623.741448
-e334023624.241596
-r1
-xCompileXIB
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/MainWindow_iPad.xib
-lSLF07#2@35"CompileXIB iPad/MainWindow_iPad.xib334023623#334023624#0(0"0(0#0#73"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/MainWindow_iPad.xib4479889040#585"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/MainWindow_iPad.nib /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPad/MainWindow_iPad.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
-
-CCompileXIB /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/MainWindow_iPhone.xib
-s334023623.740662
-e334023624.242740
-r1
-xCompileXIB
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/MainWindow_iPhone.xib
-lSLF07#2@39"CompileXIB iPhone/MainWindow_iPhone.xib334023623#334023624#0(0"0(0#0#77"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/MainWindow_iPhone.xib4479889040#591"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/MainWindow_iPhone.nib /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/iPhone/MainWindow_iPhone.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
-
-CCpResource build/Debug-iphoneos/SudzC.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
-s334023623.669057
-e334023623.740576
-r1
-xCpResource
-xbuild/Debug-iphoneos/SudzC.app/ResourceRules.plist
-x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
-lSLF07#2@94"Copy /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist334023623#334023623#0(0"0(0#0#89"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist17378578176#512"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app0#
-
-CCreateUniversalBinary /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC normal "armv6 armv7"
-s334023766.723935
-e334023766.778231
-r1
-xCreateUniversalBinary
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC
-xnormal
-xarmv6 armv7
-lSLF07#2@79"CreateUniversalBinary build/Debug-iphoneos/SudzC.app/SudzC normal "armv6 armv7"334023766#334023766#0(0"0(0#0#60"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/armv6 armv74521000592#542"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/lipo -create /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SudzC /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SudzC -output /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC0#
-
-CGenerateDSYMFile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app.dSYM /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC
-s334023766.778319
-e334023766.911580
-r1
-xGenerateDSYMFile
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app.dSYM
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC
-lSLF07#2@89"GenerateDSYMFile build/Debug-iphoneos/SudzC.app.dSYM build/Debug-iphoneos/SudzC.app/SudzC334023766#334023766#0(0"0(0#0#85"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC4521000592#386"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/SudzC -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app.dSYM0#
-
-CLd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SudzC normal armv6
-s334023766.561337
-e334023766.723850
-r1
-xLd
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SudzC
-xnormal
-xarmv6
-lSLF07#2@125"Link /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SudzC334023766#334023766#0(0"0(0#0#0"4521000592#935"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv IPHONEOS_DEPLOYMENT_TARGET 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -arch armv6 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -L/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -filelist /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SudzC.LinkFileList -dead_strip -lxml2 -miphoneos-version-min=4.3 -framework Foundation -framework UIKit -framework CoreGraphics -framework SystemConfiguration -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv6/SudzC0#
-
-CLd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SudzC normal armv7
-s334023766.564056
-e334023766.723527
-r1
-xLd
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SudzC
-xnormal
-xarmv7
-lSLF07#2@125"Link /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SudzC334023766#334023766#0(0"0(0#0#0"4521000592#935"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv IPHONEOS_DEPLOYMENT_TARGET 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -arch armv7 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -L/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -filelist /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SudzC.LinkFileList -dead_strip -lxml2 -miphoneos-version-min=4.3 -framework Foundation -framework UIKit -framework CoreGraphics -framework SystemConfiguration -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/Objects-normal/armv7/SudzC0#
-
-CProcessInfoPlistFile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/Info.plist SudzC-Info.plist
-s334023623.698507
-e334023623.709851
-r1
-xProcessInfoPlistFile
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/Info.plist
-xSudzC-Info.plist
-lSLF07#2@24"Process SudzC-Info.plist334023623#334023623#0(0"0(0#0#65"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC-Info.plist4479889152#594"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility SudzC-Info.plist -genpkginfo /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -resourcerulesfile /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/ResourceRules.plist -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/Info.plist0#
-
-CProcessPCH /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch.gch SudzC_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023746.716675
-e334023747.223330
-r1
-xProcessPCH
-x/var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch.gch
-xSudzC_Prefix.pch
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@27"Precompile SudzC_Prefix.pch334023746#334023747#0(0"0(0#0#65"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC_Prefix.pch4454043280#1772"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC_Prefix.pch -o /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-aqfnmfhxlkngmveokdonvlxwfnqj/SudzC_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-cbymmyjsxiciecfpkkwvfmathzlf/SudzC_Prefix.pch.gch SudzC_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
-s334023624.242873
-e334023625.384291
-r1
-xProcessPCH
-x/var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-cbymmyjsxiciecfpkkwvfmathzlf/SudzC_Prefix.pch.gch
-xSudzC_Prefix.pch
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@27"Precompile SudzC_Prefix.pch334023624#334023625#0(0"0(0#0#65"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC_Prefix.pch4479889040#1680"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv6 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC_Prefix.pch -o /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-cbymmyjsxiciecfpkkwvfmathzlf/SudzC_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch.gch SudzC_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023746.717466
-e334023747.417087
-r1
-xProcessPCH
-x/var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch.gch
-xSudzC_Prefix.pch
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@27"Precompile SudzC_Prefix.pch334023746#334023747#0(0"0(0#0#65"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC_Prefix.pch4454043280#1772"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC_Prefix.pch -o /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-dgrzuycjavpjecbotmjrkniwyoxc/SudzC_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-evsxcffqxrqkjkhafrvxatsvahzp/SudzC_Prefix.pch.gch SudzC_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
-s334023624.243757
-e334023625.494901
-r1
-xProcessPCH
-x/var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-evsxcffqxrqkjkhafrvxatsvahzp/SudzC_Prefix.pch.gch
-xSudzC_Prefix.pch
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@27"Precompile SudzC_Prefix.pch334023624#334023625#0(0"0(0#0#65"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC_Prefix.pch4479889040#1680"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-generated-files.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-own-target-headers.hmap -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-all-target-headers.hmap -iquote /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC-project-headers.hmap -F/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/include -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources/armv7 -I/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/DerivedSources -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/SudzC_Prefix.pch -o /var/folders/y1/mrd45btj0rdc3h4gsl_b8yg40000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SudzC_Prefix-evsxcffqxrqkjkhafrvxatsvahzp/SudzC_Prefix.pch.gch0#
-
-CProcessProductPackaging "/Users/jasonkichline/Library/MobileDevice/Provisioning Profiles/B395FD88-2724-4B3E-8C5E-A0A2F8D17F14.mobileprovision" /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/embedded.mobileprovision
-s334023627.733603
-e334023627.927459
-r1
-xProcessProductPackaging
-x/Users/jasonkichline/Library/MobileDevice/Provisioning Profiles/B395FD88-2724-4B3E-8C5E-A0A2F8D17F14.mobileprovision
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/embedded.mobileprovision
-lSLF07#2@198"ProcessProductPackaging "/Users/jasonkichline/Library/MobileDevice/Provisioning Profiles/B395FD88-2724-4B3E-8C5E-A0A2F8D17F14.mobileprovision" build/Debug-iphoneos/SudzC.app/embedded.mobileprovision334023627#334023627#0(0"0(0#0#104"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/embedded.mobileprovision4479889040#449"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> "/Users/jasonkichline/Library/MobileDevice/Provisioning Profiles/B395FD88-2724-4B3E-8C5E-A0A2F8D17F14.mobileprovision" -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app/embedded.mobileprovision0#
-
-CProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC.xcent
-s334023627.927526
-e334023627.949197
-r1
-xProcessProductPackaging
-x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC.xcent
-lSLF07#2@169"ProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC.xcent334023627#334023627#0(0"0(0#0#105"/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC.xcent4479889040#446"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist -entitlements -format xml -o /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/SudzC.build/Debug-iphoneos/SudzC.build/SudzC.xcent0#
-
-CTouch /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app
-s334023766.911807
-e334023766.942485
-r1
-xTouch
-x/Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app
-lSLF07#2@85"Touch /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app334023766#334023766#0(0"0(0#0#0"4521000592#282"    cd /Users/jasonkichline/Documents/sudzc/SudzC/SudzC    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/jasonkichline/Documents/sudzc/SudzC/SudzC/build/Debug-iphoneos/SudzC.app0#
-

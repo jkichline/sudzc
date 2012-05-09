@@ -209,7 +209,7 @@
 // Gets the node from another node by name.
 + (CXMLNode*) getNode: (CXMLNode*) element withName: (NSString*) name {
 	for(CXMLNode* child in [element children]) {
-		if([child respondsToSelector:@selector(name)] && [[child name] isEqual: name]) {
+		if([child respondsToSelector:@selector(name)] && [[child localName] isEqualToString: name]) {
 			return (CXMLNode*)child;
 		}
 	}

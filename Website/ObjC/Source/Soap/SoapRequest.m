@@ -168,13 +168,17 @@
 		if(deserializeTo == nil) {
 			output = [Soap deserialize:element];
 		} else {
-			if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
-				element = [element childAtIndex:0];
-				output = [deserializeTo initWithNode: element];
-			} else {
-				NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
-				output = [Soap convert: value toType: deserializeTo];
-			}
+            NSMutableArray* outputs = [[[NSMutableArray alloc] init] autorelease];
+            for (CXMLNode* child in element.children) {
+                id item = nil;
+                if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
+                    item = [[[[deserializeTo class] alloc] initWithNode: child] autorelease];
+                } else {
+                    item = [Soap convert: [[child childAtIndex:0] stringValue] toType: [[deserializeTo class] alloc]];
+                }
+                [outputs addObject:item];
+            }
+            output = outputs.count > 1 ? outputs : outputs.count > 0 ? [outputs objectAtIndex:0] : nil;
 		}
 		
 		if(self.action == nil) { self.action = @selector(onload:); }

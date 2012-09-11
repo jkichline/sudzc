@@ -1,0 +1,201 @@
+<html>
+	<head>
+    <title>CXMLNode Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>CXMLNode Class Reference</h1>
+		<p>The CXMLNode class defines an XML node in the TouchXML library.</p>
+		<p>Inherits from NSObject*</p>
+		
+		<h2>Tasks</h2>
+		
+		<h3>Node attributes</h3>
+		<ul>
+      <li><a href="#kind">- kind</a></li>
+      <li><a href="#name">- name</a></li>
+      <li><a href="#stringValue">- stringValue</a></li>
+      <li><a href="#index">- index</a></li>
+      <li><a href="#level">- level</a></li>
+		</ul>
+		
+		<h3>Traversing the hiearchy</h3>
+		<ul>
+      <li><a href="#rootDocument">- rootDocument</a></li>
+      <li><a href="#parent">- parent</a></li>
+      <li><a href="#childCount">- childCount</a></li>
+      <li><a href="#children">- children</a></li>
+      <li><a href="#childAtIndex">- childAtIndex:</a></li>
+      <li><a href="#previousSibling">- previousSibling</a></li>
+      <li><a href="#nextSibling">- nextSibling</a></li>
+		</ul>
+		
+		<h3>Getting contents</h3>
+		<ul>
+      <li><a href="#description">- description</a></li>
+      <li><a href="#XMLString">- XMLString</a></li>
+      <li><a href="#XMLStringWithOptions:">- XMLStringWithOptions:</a></li>
+      <li><a href="#nodesForXPath:error:">- nodesForXPath:error:</a></li>
+      <li><a href="#nodesForXPath:namespaceMappings:error:">- nodesForXPath:namespaceMappings:error:</a></li>
+      <li><a href="#_XMLStringWithOptions:appendingToString:">- _XMLStringWithOptions:appendingToString:</a></li>
+		</ul>
+		
+		<h2>Instance Methods</h2>
+
+    <h3 id="kind">kind</h3>
+    <p>Defines the type of the XML node.</p>
+    <code>- (<a href="#CXMLNodeKind">CXMLNodeKind</a>)kind</code>
+
+    <h3 id="name">name</h3>
+    <p>The name of the node.</p>
+    <code>- (NSString *)name</code>
+    
+    <h3 id="stringValue">stringValue</h3>
+    <p>The string value of the node's contents.</p>
+    <code>- (NSString *)stringValue</code>
+    
+    <h3 id="index">index</h3>
+    <p>The index or position of the node in relationship to it's siblings.</p>
+    <code>- (NSUInteger)index;</code>
+
+    <h3 id="level">level</h3>
+    <p>The level of the node within the XML document.</p>
+    <code>- (NSUInteger)level</code>
+    
+    <h3 id="rootDocument">rootDocument</h3>
+    <p>References the root document of the node.</p>
+    <code>- (CXMLDocument *)rootDocument</code>
+
+    <h3 id="parent">parent</h3>
+    <p>The parent of the node.</p>
+    <code>- (CXMLNode *)parent</code>
+
+    <h3 id="childCount">childCount</h3>
+    <p>The number of children that the node contains.</p>
+    <code>- (NSUInteger)childCount</code>
+
+    <h3 id="children">children</h3>
+    <p>AN array of the node's children.</p>
+    <code>- (NSArray *)children</code>
+
+    <h3 id="childAtIndex">childAtIndex:</h3>
+    <p>Retrieves a child node at the given index.</p>
+    <code>- (CXMLNode *)childAtIndex:(NSUInteger)index</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>index</dt>
+      <dd>The index of the child node to return.</dd>
+    </dl>
+
+    <h3 id="previousSibling">previousSibling</h3>
+    <p>The node's previous sibling.</p>
+    <code>- (CXMLNode *)previousSibling</code>
+
+    <h3 id="nextSibling">nextSibling</h3>
+    <p>The node's next sibling.</p>
+    <code>- (CXMLNode *)nextSibling</code>
+
+    <h3 id="description">description</h3>
+    <p>The textual description of the node.</p>
+    <code>- (NSString *)description</code>
+
+    <h3 id="XMLString">XMLString</h3>
+    <p>The contents of the node as XML.</p>
+    <code>- (NSString *)XMLString</code>
+
+    <h3 id="XMLStringWithOptions:">XMLStringWithOptions:</h3>
+    <p>The contents of the node as XML with options.</p>
+    <code>- (NSString *)XMLStringWithOptions:(NSUInteger)options</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>options</dt>
+      <dd>The options to pass for generating the XML content.</dd>
+    </dl>
+
+    <h3 id="nodesForXPath:error:">nodesForXPath:error:</h3>
+    <p>Retrieves an array of nodes based on an XPath query.</p>
+    <code>- (NSArray *)nodesForXPath:(NSString *)xpath error:(NSError **)error</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>xpath</dt>
+      <dd>The XPath value used to query the node for result.</dd>
+      <dt>error</dt>
+      <dd>Outputs any errors incurred while querying.</dd>
+    </dl>
+    
+    <h3 id="nodesForXPath:namespaceMappings:error:">nodesForXPath:namespaceMappings:error:</h3>
+    <p>Retrieves an array of nodes based on an XPath query.</p>
+    <code>- (NSArray *)nodesForXPath:(NSString *)xpath namespaceMappings:(NSDictionary *)inNamespaceMappings error:(NSError **)error</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>xpath</dt>
+      <dd>The XPath value used to query the node for result.</dd>
+      <dt>inNamespaceMappings</dt>
+      <dd>A dictionary of namespace mappings.</dd>
+      <dt>error</dt>
+      <dd>Outputs any errors incurred while querying.</dd>
+    </dl>
+    
+    <h3 id="_XMLStringWithOptions:appendingToString:">_XMLStringWithOptions:appendingToString:</h3>
+    <p>The contents of the node as XML with options.</p>
+    <code>- (NSString*)_XMLStringWithOptions:(NSUInteger)options appendingToString:(NSMutableString*)str</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>options</dt>
+      <dd>The options to pass for generating the XML content.</dd>
+      <dt>str</dt>
+      <dd>The string onto which the resulting XML is appended.</dd>
+    </dl>
+    
+    <h2>Enumerations</h2>
+    
+    <h3>CXMLNodeKind</h3>
+    <p>Defines an enumeration of the types of nodes.</p>
+    <pre>
+typedef enum {
+	CXMLInvalidKind,
+	CXMLElementKind,
+	CXMLAttributeKind,
+	CXMLTextKind,
+	CXMLProcessingInstructionKind,
+	CXMLCommentKind,
+	CXMLNotationDeclarationKind,
+	CXMLDTDKind,
+	CXMLElementDeclarationKind,
+	CXMLAttributeDeclarationKind,
+	CXMLEntityDeclarationKind,
+	CXMLNamespaceKind,
+} CXMLNodeKind;
+    </pre>
+    <h4>Constants</h4>
+    <dl id="code">
+      <dt>CXMLInvalidKind</dt>
+      <dd>The node is not valid.</dd>
+      <dt>CXMLElementKind</dt>
+      <dd>The node is an element.</dd>
+      <dt>CXMLAttributeKind</dt>
+      <dd>The node is an attribute of an element.</dd>
+      <dt>CXMLTextKind</dt>
+      <dd>The node it text</dd>
+      <dt>CXMLProcessingInstructionKind</dt>
+      <dd>The node is a processing instruction</dd>
+      <dt>CXMLCommentKind</dt>
+      <dd>The node is a comment.</dd>
+      <dt>CXMLNotationDeclarationKind</dt>
+      <dd>The node is a notation declaration.</dd>
+      <dt>CXMLDTDKind</dt>
+      <dd>The node is a DTD.</dd>
+      <dt>CXMLElementDeclarationKind</dt>
+      <dd>The node is an element declaration.</dd>
+      <dt>CXMLAttributeDeclarationKind</dt>
+      <dd>The node is an attribute declaration.</dd>
+      <dt>CXMLEntityDeclarationKind</dt>
+      <dd>The node is an entity declaration.</dd>
+      <dt>CXMLNamespaceKind</dt>
+      <dd>The node is a namespace.</dd>
+    </dl>
+    
+  </body>
+</html>

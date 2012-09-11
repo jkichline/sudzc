@@ -1,0 +1,52 @@
+<html>
+	<head>
+    <title>SoapArray Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>SoapArray Class Reference</h1>
+		<p>The SoapArray class is a base class of array objects. It is not in itself an array, but proxies to the <em>items</em> property.</p>
+		<p>Inherits from NSMutableArray*.</p>
+		
+		<h2>Properties</h2>
+		<p>For more about Objective-C properties, see <span class="content_text"><a href="http://developer.apple.com/iphone/library/documentation/Cocoa/Conceptual/ObjectiveC/Articles/ocProperties.html#//apple_ref/doc/uid/TP30001163-CH17" target="_top">&#8220;Properties&#8221;</a></span> in <em><a href="http://developer.apple.com/iphone/library/documentation/Cocoa/Conceptual/ObjectiveC/index.html#//apple_ref/doc/uid/TP30001163" target="_top">The Objective-C Programming Language</a></em>.</p>
+		
+		<h3>items</h3>
+		<p>Provides access to the array of deserialized objects.</p>
+		<code>@property (retain, nonatomic) NSMutableArray* items</code>
+			
+		<h2>Instance Methods</h2>
+
+    <h3>initWithNode:</h3>
+    <p>Initializes the array and returns it.</p>
+    <code>- (id) initWithNode: (CXMLNode*) node</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>node</dt>
+      <dd>The XML node from which the arrive is derived.</dd>
+    </dl>
+
+		<h2>Class Methods</h2>
+		
+		<h3>newWithNode:</h3>
+		<p>Creates a new array from the node.</p>
+    <code>+ (id) newWithNode: (CXMLNode*) node</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>node</dt>
+      <dd>The XML node from which the arrive is derived.</dd>
+    </dl>
+
+    <h3>serialize:</h3>
+    <p>Serializes a string to an array.</p>
+    <code>+ (NSMutableString*) serialize: (NSArray*) array</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>array</dt>
+      <dd>The array to serialize into XML.</dd>
+    </dl>
+		
+  </body>
+</html>

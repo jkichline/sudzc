@@ -1,0 +1,55 @@
+<html>
+	<head>
+    <title>CXMLDocument Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>CXMLDocument Class Reference</h1>
+		<p>The CXMLDocument class defines an XML document in the TouchXML library.</p>
+		<p>Inherits from CXMLNode*</p>
+
+    <h2>Instance Methods</h2>
+    
+    <h3 id="initWithXMLString:options:error:">initWithXMLString:options:error:</h3>
+    <p>Initializes an XML document with the contents of a string.</p>
+    <code>- (id)initWithXMLString:(NSString *)inString options:(NSUInteger)inOptions error:(NSError **)outError</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>inString</dt>
+      <dd>The string parsed to create the document.</dd>
+      <dt>inOptions</dt>
+      <dd>The options used for parsing the document.</dd>
+      <dt>error</dt>
+      <dd>Outputs any errors incurred during parsing.</dd>
+    </dl>
+    
+    <h3 id="initWithContentsOfURL:options:error:">initWithContentsOfURL:options:error:</h3>
+    <code>- (id)initWithContentsOfURL:(NSURL *)inURL options:(NSUInteger)inOptions error:(NSError **)outError</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>inURL</dt>
+      <dd>The NSURL* from which the XML document is loaded.</dd>
+      <dt>inOptions</dt>
+      <dd>The options used for parsing the document.</dd>
+      <dt>error</dt>
+      <dd>Outputs any errors incurred during parsing.</dd>
+    </dl>
+    
+    <h3 id="initWithData:options:error:">initWithData:options:error:</h3>
+    <code>- (id)initWithData:(NSData *)inData options:(NSUInteger)inOptions error:(NSError **)outError</code>
+    <dl>
+      <dt>inData</dt>
+      <dd>The NSData* from which the XML document is loaded.</dd>
+      <dt>inOptions</dt>
+      <dd>The options used for parsing the document.</dd>
+      <dt>error</dt>
+      <dd>Outputs any errors incurred during parsing.</dd>
+    </dl>
+    
+    <h3 id="rootElement">rootElement</h3>
+    <p>The root element of the document.</p>
+    <code>- (CXMLElement *)rootElement</code>
+  </body>
+</html>

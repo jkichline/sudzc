@@ -1,0 +1,139 @@
+﻿<html>
+	<head>
+    <title>SoapRequest Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>SoapRequest Class Reference</h1>
+		<p>
+		  The SoapRequest class is responsible for creating, managing and processing requests made to web services.
+		  It creates the connection, and once results are retrieved, deserializes the results into objects.
+		  In the event that an error occurs, it will send an NSError* object to the handler's onerror method.
+		  In the event of a SOAP fault, it will send a <a href="SoapFault.html">SoapFault</a> object to the handler's onfault method.
+		  Otherwise, the request is successful and the resulting object is sent to the handler's onsuccess method.
+		</p>
+		
+		<h2>Properties</h2>
+		
+		<h3>url</h3>
+		<p>The URL of the current SOAP request.</p>
+		<code>@property (retain, nonatomic) <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSURL_Class/index.html">NSURL*</a> url</code>
+
+		<h3>soapAction</h3>
+		<p>The name of the SOAP action to be performed</p>
+		<code>@property (retain, nonatomic) <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString*</a> soapAction;</code>
+		
+		<h3>username</h3>
+		<p>Sets or gets the username used to authenticate the request.</p>
+		<code>@property (retain, nonatomic) <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString*</a> username</code>
+		
+		<h3>password</h3>
+		<p>Sets or gets the password used to authenticate the request.</p>
+		<code>@property (retain, nonatomic) <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString*</a> password</code>
+
+		<h3>postData</h3>
+		<p>The XML data posted to the request.</p>
+		<code>@property (retain, nonatomic) id postData</code>
+		
+		<h3>receivedData</h3>
+		<p>The stored data as it is received by the request.</p>
+		<code>@property (retain, nonatomic) <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSMutableData_Class/index.html">NSMutableData*</a> receivedData</code>
+		
+		<h3>handler</h3>
+		<p>The object that will handle the request.</p>
+		<code>@property (retain, nonatomic) <a href="SoapHandler.html">SoapHandler*</a> handler</code>
+
+		<h3>deserializeTo</h3>
+		<p>The name of or the allocation instance of the object into which the results are deserialized.</p>
+		<code>@property (retain, nonatomic) id deserializeTo</code>
+
+		<h3>action</h3>
+		<p>The selector to be performed once results are received.</p>
+		<code>@property SEL action</code>
+		
+		<h3>logging</h3>
+		<p>Turns logging of the request on or off.</p>
+		<code>@property BOOL logging</code>
+		
+		<h3>defaultHandler</h3>
+		<p>The default handler to use if another is not specified or if that handler's methods are not implemented.</p>
+		<code>@property (retain, nonatomic) id&lt;<a href="SoapDelegate.html">SoapDelegate</a>&gt; defaultHandler</code>
+		
+		<h2>Instance Methods</h2>
+		
+		<h3>cancel</h3>
+		<p>Cancels the current request.</p>
+		<code>- (BOOL)cancel</code>
+		
+		<h3>send</h3>
+		<p>Sends the request.</p>
+		<code>- (void)send</code>
+		
+		<h3>handleError:</h3>
+		<p>Handles the error if encountered once the response is received.</p>
+		<code>- (void)handleError:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError*</a>)<em>error</em></code>
+
+		<h3>handleFault:</h3>
+		<p>Handles a SOAP fault if one is received from the response.</p>
+		<code>- (void)handleFault:(<a href="SoapFault.html">SoapFault*</a>)<em>fault</em></code>
+		
+		<h2>Class Methods</h2>
+
+		<h3>create:urlString:soapAction:postData:deserializeTo</h3>		
+		<p>Creates a new SoapRequest and returns it.</p>
+		<code>+ (<a href="SoapRequest.html">SoapRequest*</a>) create: (<a href="SoapHandler.html">SoapHandler*</a>) <em>handler</em> urlString: (NSString*) <em>urlString</em> soapAction: (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString*</a>) soapAction postData: (NSString*) <em>postData</em> deserializeTo: (id) <em>deserializeTo</em></code>
+		
+		<dl>
+			<dt>handler</dt>
+			<dd>The object that will handle the response of the request once processed.</dd>
+			<dt>urlString</dt>
+			<dd>The URL of the request.</dd>
+			<dt>soapAction</dt>
+			<dd>The name of the SOAP action to run.</dd>
+			<dt>postData</dt>
+			<dd>The SOAP data to post to the web service.</dd>
+			<dt>deserializeTo</dt>
+			<dd>The name of or instantiation of the object into which the response is deserialized.</dd>
+		</dl>
+		
+		<h3>create:sction:urlString:soapAction:postData:deserializeTo:</h3>
+		<p>Creates a new SoapRequest and returns it.</p>
+		<code>+ (<a href="SoapRequest.html">SoapRequest*</a>) create: (<a href="SoapHandler.html">SoapHandler*</a>) handler action: (SEL) action urlString: (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString*</a>) urlString soapAction: (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString*</a>) soapAction postData: (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString*</a>) postData deserializeTo: (id) deserializeTo;</code>
+		<dl>
+			<dt>handler</dt>
+			<dd>The object that will handle the response of the request once processed.</dd>
+			<dt>action</dt>
+			<dd>The selector of a method into which the result is returned.</dd>
+			<dt>urlString</dt>
+			<dd>The URL of the request.</dd>
+			<dt>soapAction</dt>
+			<dd>The name of the SOAP action to run.</dd>
+			<dt>postData</dt>
+			<dd>The SOAP data to post to the web service.</dd>
+			<dt>deserializeTo</dt>
+			<dd>The name of or instantiation of the object into which the response is deserialized.</dd>
+		</dl>
+		
+		<h3>create:action:service:soapAction:postData:deserializeTo:</h3>
+		<p>Creates a new SoapRequest and returns it.</p>
+		<code>+ (<a href="SoapRequest.html">SoapRequest*</a>) create: (<a href="SoapHandler.html">SoapHandler*</a>) handler action: (SEL) action service: (<a href="SoapService.html">SoapService*</a>) service soapAction: (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString*</a>) soapAction postData: (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString*</a>) postData deserializeTo: (id) deserializeTo;</code>
+		<h4>Parameters</h4>
+		<dl>
+			<dt>handler</dt>
+			<dd>The object that will handle the response of the request once processed.</dd>
+			<dt>action</dt>
+			<dd>The selector of a method into which the result is returned.</dd>
+			<dt>service</dt>
+			<dd>The SoapService that contains connection information for the request.</dd>
+			<dt>soapAction</dt>
+			<dd>The name of the SOAP action to run.</dd>
+			<dt>postData</dt>
+			<dd>The SOAP data to post to the web service.</dd>
+			<dt>deserializeTo</dt>
+			<dd>The name of or instantiation of the object into which the response is deserialized.</dd>
+		</dl>
+		
+	</body>
+</html>

@@ -1,0 +1,256 @@
+<html>
+	<head>
+    <title>Soap Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>Soap Class Reference</h1>
+		<p>The Soap class contains static methods used internally to convert Objective-C objects to and from XML formats suitable for SOAP compliance.</p>
+		<p>Inherits from NSObject*</p>
+		
+		<h2>Tasks</h2>
+
+		<h3>Creating an envelope</h3>
+		<ul>
+		  <li><a href="#createEnvelope:forNamespace:forParameters:">+ createEnvelope:forNamespace:forParameters:</a></li>
+		  <li><a href="#createEnvelope:forNamespace:forParameters:withHeaders:">+ createEnvelope:forNamespace:forParameters:withHeaders:</a></li>
+		  <li><a href="#createEnvelope:forNamespace:containing:">+ createEnvelope:forNamespace:containing:</a></li>
+		  <li><a href="#createEnvelope:forNamespace:containing:withHeaders:">+ createEnvelope:forNamespace:containing:withHeaders:</a></li>
+		  <li><a href="#createEnvelope:forNamespace:withParameters:">+ createEnvelope:forNamespace:withParameters:</a></li>
+		  <li><a href="#createEnvelope:forNamespace:withParameters:withHeaders:">+ createEnvelope:forNamespace:withParameters:withHeaders:</a></li>
+		  <li><a href="#createEnvelope:ofAction:forNamespace:containing:">+ createEnvelope:ofAction:forNamespace:containing:</a></li>
+		  <li><a href="#createEnvelope:ofAction:forNamespace:containing:withHeaders:">+ createEnvelope:ofAction:forNamespace:containing:withHeaders:</a></li>
+		</ul>
+		
+		<h3>Serialization</h3>
+		<ul>
+		  <li><a href="#serialize:">+ serialize:</a></li>
+		  <li><a href="#serialize:withName:">+ serialize:withName:</a></li>
+		</ul>
+		
+    <h3>Deserialization</h3>
+		<ul>
+		  <li><a href="#deserialize:">+ deserialize:</a></li>
+		  <li><a href="#deserialize:forObject:">+ deserialize:forObject:</a></li>
+		  <li><a href="#objectFromNode:">+ objectFromNode:</a></li>
+		</ul>
+		
+		<h3>Calling web services</h3>
+		<ul>
+		  <li><a href="#callService:data:action:delegate:">+ callService:data:action:delegate:</a></li>
+		</ul>
+		
+		<h3>XML handling</h3>
+		<ul>
+		  <li><a href="#getNode:withName:">+ getNode:withName:</a></li>
+		  <li><a href="#findNodes:xpath:">+ findNodes:xpath:</a></li>
+		  <li><a href="#findNode:xpath:">+ findNode:xpath:</a></li>
+		  <li><a href="#getNodeValue:withName:">+ getNodeValue:withName:</a></li>
+		</ul>
+		
+		<h3>Conversion methods</h3>
+		<ul>
+		  <li><a href="#convert:toType:">+ convert:toType:</a></li>
+		  <li><a href="#dateFromString:">+ dateFromString:</a></li>
+		  <li><a href="#getDateString:">+ getDateString:</a></li>
+		  <li><a href="#dataFromString:">+ dataFromString:</a></li>
+		  <li><a href="#getBase64String:">+ getBase64String:</a></li>
+		</ul>
+		
+		<h3>Utility methods</h3>
+		<ul>
+		  <li><a href="isArray:">+ isArray:</a></li>
+		  <li><a href="isObject:">+ isObject:</a></li>
+		  <li><a href="md5:">+ md5:</a></li>
+ 		  <li><a href="generateHash:">+ generateHash:</a></li>
+		</ul>
+		
+		<h2>Class Methods</h2>
+		
+		<h3 id="createEnvelope:forNamespace:forParameters:">createEnvelope:forNamespace:forParameters:</h3>
+		<p>Creates the XML request for the SOAP envelope.</p>
+		<code>+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>method</dt>
+      <dd>The name of the SOAP method.</dd>
+      <dt>ns</dt>
+      <dd>The namespace of the called web service.</dd>
+      <dt>params</dt>
+      <dd>The XML string of parameters to append to the envelope.</dd>
+    </dl>
+		
+    <h3 id="createEnvelope:forNamespace:forParameters:withHeaders:">createEnvelope:forNamespace:forParameters:withHeaders:</h3>
+    <p>Creates the XML request for the SOAP envelope with optional SOAP headers.</p>
+    <code>+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params withHeaders: (NSDictionary*) headers</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>method</dt>
+      <dd>The name of the SOAP method.</dd>
+      <dt>ns</dt>
+      <dd>The namespace of the called web service.</dd>
+      <dt>params</dt>
+      <dd>The XML string of parameters to append to the envelope.</dd>
+      <dt>headers</dt>
+      <dd>The SOAP headers to send with the envelope.</dd>
+    </dl>
+    
+    <h3 id="createEnvelope:forNamespace:containing:">createEnvelope:forNamespace:containing:</h3>
+    <p>Creates the XML request for the SOAP envelope.</p>
+    <code>+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing</code>
+
+    <h3 id="createEnvelope:forNamespace:containing:withHeaders:">createEnvelope:forNamespace:containing:withHeaders:</h3>
+    <p>Creates the XML request for the SOAP envelope with optional SOAP headers.</p>
+    <code>+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing withHeaders: (NSDictionary*) headers</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>method</dt>
+      <dd>The name of the SOAP method.</dd>
+      <dt>ns</dt>
+      <dd>The namespace of the called web service.</dd>
+      <dt>containing</dt>
+      <dd>The NSDictionary* containing name/value pairs to send parameters to the request.</dd>
+      <dt>headers</dt>
+      <dd>The SOAP headers to send with the envelope.</dd>
+    </dl>
+
+    <h3 id="createEnvelope:forNamespace:withParameters:">createEnvelope:forNamespace:withParameters:</h3>
+    <p>Creates the XML request for the SOAP envelope.</p>
+    <code>+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns withParameters: (NSArray*) params</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>method</dt>
+      <dd>The name of the SOAP method.</dd>
+      <dt>ns</dt>
+      <dd>The namespace of the called web service.</dd>
+      <dt>params</dt>
+      <dd>The array of <a href="SoapParameter.html">SoapParameter</a> objects used to send parameters to the request.</dd>
+    </dl>
+
+    <h3 id="createEnvelope:forNamespace:withParameters:withHeaders:">createEnvelope:forNamespace:withParameters:withHeaders:</h3>
+    <p>Creates the XML request for the SOAP envelope with optional SOAP headers.</p>
+    <code>+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns withParameters: (NSArray*) params withHeaders: (NSDictionary*) headers</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>method</dt>
+      <dd>The name of the SOAP method.</dd>
+      <dt>ns</dt>
+      <dd>The namespace of the called web service.</dd>
+      <dt>params</dt>
+      <dd>The array of <a href="SoapParameter.html">SoapParameter</a> objects used to send parameters to the request.</dd>
+      <dt>headers</dt>
+      <dd>The SOAP headers to send with the envelope.</dd>
+    </dl>
+
+    <h3 id="createEnvelope:ofAction:forNamespace:containing:">createEnvelope:ofAction:forNamespace:containing:</h3>
+    <p>Creates the XML request for the SOAP envelope.</p>
+    <code>+ (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>method</dt>
+      <dd>The name of the SOAP method.</dd>
+      <dt>action</dt>
+      <dd>The name of the action to perform.</dd>
+      <dt>ns</dt>
+      <dd>The namespace of the called web service.</dd>
+      <dt>containing</dt>
+      <dd>The object used to send parameters to the request.</dd>
+    </dl>
+
+    <h3 id="createEnvelope:ofAction:forNamespace:containing:withHeaders:">createEnvelope:ofAction:forNamespace:containing:withHeaders:</h3>
+    <p>Creates the XML request for the SOAP envelope with optional SOAP headers.</p>
+    <code>+ (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing withHeaders: (NSDictionary*) headers</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>method</dt>
+      <dd>The name of the SOAP method.</dd>
+      <dt>action</dt>
+      <dd>The name of the action to perform.</dd>
+      <dt>ns</dt>
+      <dd>The namespace of the called web service.</dd>
+      <dt>containing</dt>
+      <dd>The object used to send parameters to the request.</dd>
+      <dt>headers</dt>
+      <dd>The SOAP headers to send with the envelope.</dd>
+    </dl>
+
+    <h3 id="serialize:">serialize:</h3>
+    <p>Serializes an object to a string, XML representation.</p>
+    <code>+ (NSString*) serialize: (id) object</code>
+
+    <h3 id="serialize:withName:">serialize:withName:</h3>
+    <p>Serializes an object to a string, XML representation with a specific node name.</p>
+    <code>+ (NSString*) serialize: (id) object withName: (NSString*) nodeName</code>
+    
+    <h3 id="deserialize:">deserialize:</h3>
+    <p>Deserializes an element to a string value.</p>
+    <code>+ (id) deserialize: (CXMLNode*) element</code>
+
+    <h3 id="deserialize:forObject:">deserialize:forObject:</h3>
+    <p>Deserializes a node into an object.</p>
+    <code>+ (id) deserialize: (CXMLNode*) element forObject: (NSObject*) object</code>
+
+    <h3 id="objectFromNode:">objectFromNode:</h3>
+    <p>Creates and object of string values from the node.</p>
+    <code>+(id)objectFromNode:(CXMLNode*)node</code>
+    
+    <h3 id="callService:data:action:delegate:">callService:data:action:delegate:</h3>
+    <p>Calls an HTTP service.</p>
+    <code>+ (NSMutableData*) callService: (NSString*) service data: (NSString*) data action: (NSString*) action delegate: (SEL) delegate</code>
+    
+    <h3 id="getNode:withName:">getNode:withName:</h3>
+    <p>Gets the node from another node by name.</p>
+    <code>+ (CXMLNode*) getNode: (CXMLNode*) element withName: (NSString*) name</code>
+
+    <h3 id="findNodes:xpath:">findNodes:xpath:</h3>
+    <p>Finds nodes in a parent with a given XPath query.</p>
+    <code>+ (NSArray*) findNodes: (CXMLNode*) node xpath: (NSString*) xpath</code>
+
+    <h3 id="findNode:xpath:">findNode:xpath:</h3>
+    <p>Finds a single node with the given XPath query.</p>
+    <code>+ (CXMLNode*) findNode: (CXMLNode*) node xpath: (NSString*) xpath</code>
+
+    <h3 id="getNodeValue:withName:">getNodeValue:withName:</h3>
+    <p>Gets the value of a named node from a parent node.</p>
+    <code>+ (NSString*) getNodeValue: (CXMLNode*) node withName: (NSString*) name</code>
+
+    <h3 id="convert:toType:">convert:toType:</h3>
+    <p>Converts a string to a specific type.</p>
+    <code>+ (id) convert: (NSString*) value toType: (NSString*) toType</code>
+
+    <h3 id="dateFromString:">dateFromString:</h3>
+    <p>Converts a string to a date.</p>
+    <code>+ (NSDate*) dateFromString: (NSString*) value</code>
+
+    <h3>getDateString:</h3>
+    <p>Converts a date to a string.</p>
+    <code>+ (NSString*) getDateString: (NSDate*) value</code>
+
+    <h3 id="dataFromString:">dataFromString:</h3>
+    <p>Return NSData from a string.</p>
+    <code>+(NSData*) dataFromString:(NSString*) value</code>
+
+    <h3 id="getBase64String:">getBase64String:</h3>
+    <p>Returns a string version of binary data.</p>
+    <code>+(NSString*)getBase64String:(NSData*) value</code>
+    
+    <h3 id="isArray:">isArray:</h3>
+    <p>Determines if an object is an array.</p>
+    <code>+ (BOOL) isArray: (NSObject*) value</code>
+
+    <h3 id="isObject:">isObject:</h3>
+    <p>Determines if an object is an object with properties.</p>
+    <code>+ (BOOL) isObject: (NSObject*) value</code>
+
+    <h3 id="md5:">md5:</h3>
+    <p>Generates an MD5 hash.</p>
+    <code>+(NSString*)md5:(NSString*)value</code>
+
+    <h3 id="generateHash:">generateHash:</h3>
+    <p>Creates a unique hash for the object's contents.</p>
+    <code>+(NSUInteger)generateHash:(SoapObject*)value</code>
+
+  </body>
+</html>

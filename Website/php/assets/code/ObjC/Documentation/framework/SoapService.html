@@ -1,0 +1,83 @@
+<html>
+	<head>
+    <title>SoapService Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>SoapService Class Reference</h1>
+		<p>Provides a base class for all services.</p>
+		<p>Inherits from <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSObject_Class/index.html">NSObject*</a></p>
+		
+		<h2>Properties</h2>
+		<p>For more about Objective-C properties, see <span class="content_text"><a href="http://developer.apple.com/iphone/library/documentation/Cocoa/Conceptual/ObjectiveC/Articles/ocProperties.html#//apple_ref/doc/uid/TP30001163-CH17" target="_top">&#8220;Properties&#8221;</a></span> in <em><a href="http://developer.apple.com/iphone/library/documentation/Cocoa/Conceptual/ObjectiveC/index.html#//apple_ref/doc/uid/TP30001163" target="_top">The Objective-C Programming Language</a></em>.</p>
+		
+		<h3>serviceUrl</h3>		
+		<p>The URL of the service binding.</p>
+		<code>@property (retain) NSString* serviceUrl</code>
+		
+		<h3>namespace</h3>
+		<p>The namespace of the web service.</p>
+		<code>@property (retain) NSString* namespace</code>
+
+    <h3>username</h3>
+    <p>The username used to authenticate each web service request.</p>
+    <code>@property (retain) NSString* username</code>
+
+    <h3>password</h3>
+    <p>The password used to authenticate each web service request.</p>
+    <code>@property (retain) NSString* password</code>
+    
+    <h3>headers</h3>
+    <p>The SOAP headers passed with each request.</p>
+    <code>@property (retain) NSDictionary* headers</code>
+    
+    <h3>logging</h3>
+    <p>Determines if console logging is turned on or off.</p>
+    <code>@property BOOL logging</code>
+    
+    <h3>defaultHandler</h3>
+    <p>The default handler of the request.</p>
+    <code>@property (nonatomic, retain) id<SoapDelegate> defaultHandler</code>
+    <h4>Discussion</h4>
+    <p>This handler is used when the one specified does not handle methods.</p>
+
+    <h2>Instance methods</h2>
+    
+    <h3>initWithUrl:</h3>
+    <p>Initializes the service with a URL.</p>
+    <code>- (id) initWithUrl: (NSString*) url</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>url</dt>
+      <dd>The URL of the web service.</dd>
+    </dl>
+    
+    <h3>initWithUsername:andPassword:</h3>
+    <p>Initializes the service with a username and password.</p>
+    <code>- (id) initWithUsername: (NSString*) username andPassword: (NSString*) password</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>username</dt>
+      <dd>The username used to autheticate against the service.</dd>
+      <dt>password</dt>
+      <dd>The password used to autheticate against the service.</dd>
+    </dl>
+
+		<h3>service</h3>
+		<p>Returns an instance of the service.</p>
+		<code>+ (SoapService*) service</code>
+
+		<h3>serviceWithUsername:andPassword:</h3>
+		<p>Creates an instance of the service with a username and password.</p>
+		<code>+ (SoapService*) serviceWithUsername: (NSString*) username andPassword: (NSString*) password</code>
+    <dl>
+      <dt>username</dt>
+      <dd>The username used to autheticate against the service.</dd>
+      <dt>password</dt>
+      <dd>The password used to autheticate against the service.</dd>
+    </dl>
+		
+  </body>
+</html>

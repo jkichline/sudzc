@@ -1,0 +1,45 @@
+<html>
+	<head>
+    <title>SoapParameter Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>SoapParameter Class Reference</h1>
+		<p>Defines a class used to pass parameter information to create a SOAP envelope.</p>
+		<p>Inherits from <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSObject_Class/index.html">NSObject*</a></p>
+		
+		<h2>Properties</h2>
+		
+		<h3>name</h3>
+		<p>The name of the parameter,</p>
+    <code>@property (nonatomic, retain) NSString* name</code>
+    
+    <h3>value</h3>
+    <p>The value of the parameter.</p>
+    <code>@property (nonatomic, retain) id value</code>
+    
+    <h3>null</h3>
+    <p>Determines if the parameter value is null. (Read Only)</p>
+    <code>@property (readonly) BOOL null</code>
+    
+    <h3>xml</h3>
+    <p>The serialized XML of the parameter.</p>
+    <code>@property (nonatomic, retain, readonly) NSString* xml</code>
+
+    <h2>Instance methods</h2>
+    
+    <h3>initWithValue:forName:</h3>
+    <p>Initializes the parameter with the specified name and value.</p>
+    <code>-(id)initWithValue:(id)value forName: (NSString*) name</code>
+		<h4>Parameters</h4>
+		<dl>
+		  <dt>value</dt>
+		  <dd>The value of the parameter.</dd>
+		  <dt>name</dt>
+		  <dd>The name of the parameter.</dd>
+		</dl>
+		
+  </body>
+</html>

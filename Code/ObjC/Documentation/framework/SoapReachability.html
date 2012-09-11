@@ -1,0 +1,53 @@
+<html>
+	<head>
+    <title>SoapReachability Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>SoapReachability Class Reference</h1>
+		<p>This class contains methods used to determine if the web services are available. They provide a wrapper for Apple example code used to ensure the device has access to the internet.</p>
+		<p>Inherits from <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSObject_Class/index.html">NSObject*</a></p>
+		
+		<h2>Class Methods</h3>
+		
+		<h3>connectedToNetwork</h3>
+		<p>Determines if the device is connected to the network.</p>
+    <code>+ (BOOL) connectedToNetwork</code>
+
+    <h3>localIPAddress</h3>
+    <p>Gets the local IP address.</p>
+    <code>+ (NSString*) localIPAddress</code>
+
+    <h3>getIPAddressForHost:</h3>
+    <p>Gets an IP address for a host.</p>
+    <code>+ (NSString*) getIPAddressForHost: (NSString*) theHost</code>
+		<h4>Parameters</h4>
+		<dl>
+		  <dt>theHost</dt>
+		  <dd>The host for whom an IP address is to be resolved.</dd>
+		</dl>
+
+    <h3>hostAvailable:</h3>
+    <p>Determines if a host is available.</p>
+    <code>+ (BOOL) hostAvailable: (NSString*) theHost</code>
+		<h4>Parameters</h4>
+		<dl>
+		  <dt>theHost</dt>
+		  <dd>The host used to determine availability.</dd>
+		</dl>
+
+    <h3>addressFromString:address:</h3>
+    <p>Gets an address from the string.</p>
+    <code>+ (BOOL)addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *) address</code>
+		<h4>Parameters</h4>
+		<dl>
+		  <dt>IPAddress</dt>
+		  <dd>The IP address used resolve to a host.</dd>
+		  <dt>address</dt>
+		  <dd></dd>
+		</dl>
+		
+  </body>
+</html>

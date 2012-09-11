@@ -1,0 +1,284 @@
+<html>
+	<head>
+    <title>Soap Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>Soap Class Reference</h1>
+		<p>The Soap class contains methods for sending and handling SOAP requests.</p>
+		
+    <h2>Tasks</h2>
+
+		<h3>SOAP Request Preparation</h3>
+		<ul>
+      <li><a href="#createEnvelope">createEnvelope(namespace,method,names,values)</a></li>
+      <li><a href="#createCallback">createCallback(response,handler)</a></li>
+      <li><a href="#createHttp">createHttp()</a></li>
+      <li><a href="#getXml">getXml(url,post,action,callback,caller)</a></li>
+      <li><a href="#loadXml">loadXml(xmlString)</a></li>
+		</ul>
+		
+		<h3>XML DOM Navigation</h3>
+		<ul>
+      <li><a href="#getNode">getNode(parentNode,nodeName,local)</a></li>
+      <li><a href="#getValue">getValue(node)</a></li>
+      <li><a href="#hasChildElements">hasChildElements(node)</a></li>
+      <li><a href="#isAncestorOf">isAncestorOf(parent,child)</a></li>
+      <li><a href="#selectSingleNode">selectSingleNode(parent,local,prefix)</a></li>
+      <li><a href="#selectNode">selectNode(parent,local,prefix,index)</a></li>
+      <li><a href="#selectNodes">selectNodes(parent,local,prefix)</a></li>
+		</ul>
+		
+		<h3>Conversion and Serialization</h3>
+		<ul>
+      <li><a href="#convertType">convertType(node,objType)</a></li>
+      <li><a href="#createDate">createDate(str)</a></li>
+      <li><a href="#formatDate">formatDate(date)</a></li>
+      <li><a href="#isDate">isDate(dt)</a></li>
+      <li><a href="#isArray">isArray(objType)</a></li>
+      <li><a href="#serialize">serialize(obj)</a></li>
+		</ul>
+		
+		<h3>Object Formation</h3>
+		<ul>
+      <li><a href="#addHandler">addHandler(h,fn)</a></li>
+      <li><a href="#extend">extend(tgt,src)</a></li>
+      <li><a href="#getArray">getArray(node,objType)</a></li>
+      <li><a href="#getBody">getBody(doc,tag)</a></li>
+      <li><a href="#getFault">getFault(doc)</a></li>
+      <li><a href="#init">init(obj,node,keys,types)</a></li>
+      <li><a href="#ns">ns(namespace)</a></li>
+      <li><a href="#prepare">prepare(response)</a></li>
+		</ul>
+
+    <h2>Methods</h2>
+    
+    <h3 id="createEnvelope">createEnvelope(namespace,method,names,values)</h3>
+    <p>Creates an XML SOAP envelope for making web service calls.</p>
+    <code>var envelope = soapFault.createEnvelope("http://www.namespace.com/services/1.0", "Find", ["search"], ["query"]);</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>namespace</dt>
+      <dd>The namespace of the web service call.</dd>
+      <dt>method</dt>
+      <dd>The SOAP method to execute</dd>
+      <dt>names</dt>
+      <dd>An array of names of the parameters.</dd>
+      <dt>values</dt>
+      <dd>An array of values of the parameters.</dd>
+    </dl>
+    
+    <h3 id="createCallback">createCallback(response,handler)</h3>
+    <p>Creates a call back to handle the response. Used internally.</p>
+    <code>var handler = soapFault.createCallback(response, handler);</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>response</dt>
+      <dd>The HTTP response to be handled.</dd>
+      <dt>handler</dt>
+      <dd>The <a href="SoapHandler.html">SoapHandler</a> that should handle the response.</dd>
+    </dl>
+    
+    <h3 id="createHttp">createHttp()</h3>
+    <p>Creates an HTTP object for the specific browser.</p>
+    <code>var http = soapFault.createHttp();</code>
+    
+    <h3 id="getXml">getXml(url,post,action,callback,caller)</h3>
+    <p>Returns the XML document for the specific HTTP request.</p>
+    <code>var xml = soapFault.getXml(url, post, action, callback, caller);</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>url</dt>
+      <dd>The web address of the XML document to load.</dd>
+      <dt>post</dt>
+      <dd>The post data to send the server.</dd>
+      <dt>action</dt>
+      <dd>The SOAP action to be sent.</dd>
+      <dt>callback</dt>
+      <dd>The method to call when finished.</dd>
+      <dt>caller</dt>
+      <dd>The object that calls the method.</dd>
+    </dl>
+    
+    <h3 id="loadXml">loadXml(xmlString)</h3>
+    <p>Loads an XML string into an XML document.</p>
+    <code>var doc = soap.loadXml(xmlString);</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>xmlString</dt>
+      <dd>The content of the XML document to be parsed.</dd>
+    </dl>
+
+    <h3 id="getNode">getNode(parentNode,nodeName,local)</h3>
+    <p>Gets an XML node by name.</p>
+    <code>var node = soapFault.getNode(parent, "NodeName", true);</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>parentNode</dt>
+      <dd>The parent node from which the node is retrieved.</dd>
+      <dt>nodeName</dt>
+      <dd>The name of the node to be retrieved.</dd>
+      <dt>isLocal</dt>
+      <dd>If set to false, looks inside the SOAP body if a parentNode is not available.</dd>
+    </dl>
+    
+    <h3 id="getValue">getValue(node)</h3>
+    <p>Gets the value of the node.</p>
+    <code>var value = soapFault.getValue(node);</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>node</dt>
+      <dd>The node for which a value is returned.</dd>
+    </dl>
+    
+    <h3 id="hasChildElements">hasChildElements(node)</h3>
+    <p>Determines if the node has child elements.</p>
+    <code>if(soapFault.hasChildElements(node)) {  }</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>node</dt>
+      <dd>The node for which child nodes are checked.</dd>
+    </dl>
+    
+    <h3 id="isAncestorOf">isAncestorOf(parent,child)</h3>
+    <p>Determines if the parent is an ancestor of the child.</p>
+    <code>if(soapFault.isAncestorOf(parent, child)) { }</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>parent</dt>
+      <dd>The ancestor to check.</dd>
+      <dt>child</dt>
+      <dd>The child for which ancestors are checked.</dd>
+    </dl>
+    
+    <h3 id="selectSingleNode">selectSingleNode(parent,local,prefix)</h3>
+    <p>Selects a single named node from the parent node.</p>
+    <code>var node = soapFault.selectSingleNode(parentNode, "nodeName", "ns");</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>parentNode</dt>
+      <dd>The parent node in which the node is returned.</dd>
+      <dt>nodeName</dt>
+      <dd>The name of the node to return.</dd>
+      <dt>prefix</dt>
+      <dd>The prefix of the node. Optional.</dd>
+    </dl>
+    
+    <h3 id="selectNode">selectNode(parent,local,prefix,index)</h3>
+    <p>Selects a node from the parent node.</p>
+    <code>var node = soapFault.selectNode(parentNode, "nodeName", "ns", 0);</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>parentNode</dt>
+      <dd>The parent node from which nodes are returned.</dd>
+      <dt>nodeName</dt>
+      <dd>The name of the node to return.</dd>
+      <dt>prefix</dt>
+      <dd>The prefix of the node. Optional.</dd>
+      <dt>index</dt>
+      <dd>The index of the node to return.</dd>
+    </dl>
+
+    <h3 id="selectNodes">selectNodes(parent,local,prefix)</h3>
+    <p>Selects nodes from the parent node.</p>
+    <code>var nodes = soapFault.selectNodes(parentNode, "nodeName", "ns");</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>parentNode</dt>
+      <dd>The parent node from which nodes are returned.</dd>
+      <dt>nodeName</dt>
+      <dd>The name of the node to return.</dd>
+      <dt>prefix</dt>
+      <dd>The prefix of the node. Optional.</dd>
+    </dl>
+
+    <h3 id="convertType">convertType(node,objType)</h3>
+    <p>Converts the contents of the node to the type specified.</p>
+    <code>var value = soap.convertType(node, objType);</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>node</dt>
+      <dd>The node to be converted.</dd>
+      <dt>objType</dt>
+      <dd>The SOAP type of the object.</dd>
+    </dl>
+    
+    <h3 id="createDate">createDate(str)</h3>
+    <p>Creates a date from an XML-formatted date string.</p>
+    <code>var date = soap.createDate("2002-05-30T09:00:00");</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>str</dt>
+      <dd>The XML-formatted date string to convert to a JavaScript date object.</dd>
+    </dl>
+    
+    <h3 id="formatDate">formatDate(date)</h3>
+    <p>Formats a date object to an XML-formatted string.</p>
+    <code>var dateString = soap.formatDate(new Date());</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>date</dt>
+      <dd>The JavaScript date object to convert to an XML-formatted date string.</dd>
+    </dl>
+    
+    <h3 id="isDate">isDate(dt)</h3>
+    <p>Determines if the object is a JavaScript date object.</p>
+    <code>if(soap.isDate(value) { }</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>date</dt>
+      <dd>The object to check whether it is a date.</dd>
+    </dl>    
+    
+    <h3 id="isArray">isArray(objType)</h3>
+    <p>Determines if the object type is an array</p>
+    <code>if(soap.isArray(value) { }</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>objType</dt>
+      <dd>The object type to check whether it is an array.</dd>
+    </dl>
+    
+    <h3 id="serialize">serialize(obj)</h3>
+    <p>Serializes the object as an XML string.</p>
+    <code>var xmlString = soap.serialize(obj);</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>obj</dt>
+      <dd>The object to serialize.</dd>
+    </dl>
+
+    <h3 id="addHandler">addHandler(h,fn)</h3>
+    <p>Adds handlers to the existing handler, applying default handlers if available.</p>
+    
+    <h3 id="extend">extend(tgt,src)</h3>
+    <p>Extends properties of the source object to the target object.</p>
+    
+    <h3 id="getArray">getArray(node,objType)</h3>
+    <p>Gets an array from the node.</p>
+    
+    <h3 id="getBody">getBody(doc,tag)</h3>
+    <p>Retrieves the SOAP body node.</p>
+    
+    <h3 id="getFault">getFault(doc)</h3>
+    <p>Retrieves the SOAP fault node.</p>
+    
+    <h3 id="init">init(obj,node,keys,types)</h3>
+    <p>Dynamically initializes an object by it's components.</p>
+    
+    <h3 id="ns">ns(namespace)</h3>
+    <p>Creates namespace objects.</p>
+    <code>var ns = soapFault.ns("My.Namespace.Here");</code>
+    <h4>Parameters</h4>
+    <dl>
+      <dt>namespace</dt>
+      <dd>The period delimited namespace to convert to a JavaScript representation.</dd>
+    </dl>
+    
+    <h3 id="prepare">prepare(response)</h3>
+    <p>Prepares the response.</p>
+
+  </body>
+</html>

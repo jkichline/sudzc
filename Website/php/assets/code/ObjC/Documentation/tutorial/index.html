@@ -1,0 +1,161 @@
+﻿<html>
+	<head>
+    <title>Getting Started</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/scripts/base.js"></script>
+	</head>
+	<body id="content">
+		<h1>Getting Started With SudzC</h1>
+		<p>
+			SudzC is a tool for generating proxy code from web service definition files (WSDL).  
+			While it supports generating code in multiple languages, it's focus it Objective-C. 
+			This documentation was generated to help you get started with SudzC immediately.
+		</p>
+		
+		<h2>Using this documentation</h2>
+		<p>
+			This documentation is design to allow you to reference your newly generated code base.
+			To get started, click on a package on the left.  This will reveal the service methods that are available.
+			You can then go directly into a class reference by clicking a link on the left-side navigation, 
+			or by clicking on inline links on the right.  This lets you traverse the code hierarchy.
+		</p>
+		<p>To get back to this screen, simply click the "All Packages" link at the top of the navigation, followed by the "Getting Started" link to return here.</p>
+		
+		<h2>The example project</h2>
+		<p>
+			In addition to this documentation and the generated code files, a sample project has been created.
+			You can open this project and get started right now.  This includes real code samples and fragments to jump in quickly.
+			However, you will probably want to add SudzC to your own project.  To do that, follow the directions below.
+		</p>
+		
+		<h2>Adding the source files to your project</h2>
+		<p>
+			Copy the "Source" folder contained in the archive into your Xcode project tree by dragging it from your Finder, into the tree.
+			You may want to add them in their own folder group, or rename it to make managing your project a little easier in the future.
+		</p>
+
+		<p>
+			Be sure to add the SystemConfiguration framework to your project.
+			This enables the web service calls to check network availability on 
+			each request in order to abide by the Apple User Interface guidelines.
+		</p>
+
+		<p>
+			In order to compile the project, you must add a header to the project settings so that TouchXML works correctly.
+			To do this, choose "Edit Project Settings" from the "Project" menu in the menubar.  
+			Navigate to the "Build" tab and make the following changes, without quotes.
+		</p>
+		
+		<ul>
+			<li>In the "Linking" section, go to the "Other Linker Flags" section and add the value "-lxml2".</li>
+			<li>In the "Search Paths" section add a new search path to the "Header Search Paths" for "/usr/include/libxml2". This will include the proper C libraries for compiling TouchXML.</li>
+		</ul>
+
+		<p>That's it!  You are now ready to compile your project.</p>
+
+
+		<h2>How to use generated code</h2>
+		<p>To make a web service call, you first create an instance of your service class.
+		This should be the one named after the class you used to make your web services.  
+		For instance, if you are dealing with Widgets, you may have WidgetService.  
+		This will translate into an Objective-C class.
+		To use it, you must first include it by importing the header file:</p>
+		<code>#import "WidgetService.h"</code>
+		
+		<p>Then in your code, instantiate the class with an alloc/init:</p>
+		<code>WidgetService* service = [[WidgetService alloc] init];</code>
+		
+		<p>You could also use the class method to make this even easier:</p>
+		<code>WidgetService* service = [WidgetService service];</code>
+
+		<p>
+			Now that class has a whole bunch of methods associated with it.
+			Service classes can also be set to use custom URLs, send SOAP headers, etc... but for now, we will keep it simple.
+			Let's say you have a method to find widgets called "Find".
+			You would call that method like this:
+		</p>
+		<code>[service Find: self action: @selector(handleFind:) criteria: @"test" maxRecords: 5];</code>
+
+		<p>
+			In this case, we call the method with two parameters: criteria and maxRecords.  
+			The first parameter right after Find: references the "delegate", 
+			or the object that is going to handle the request.  
+			The second parameter "action" specifies a method that is going to handle the result.  
+			This is the easiest way to implement a call, although there is a way to do it without the "action" method, 
+			but I'm not going to confuse you.</p>
+
+		<p>
+			To handle the results from the web service, you write a method called "handleFind:"
+			This is a method written in the delegate object you specified in the first parameter.  
+			So in this case, make the method in the same object making the call, or "self".</p>
+		<pre>-(void)handleFind: (id) result {
+	if([result isKindOfClass: [NSError class]]) {
+		// If an error has occurred, handle it
+		return;
+	}
+
+	if([result isKindOfClass: [SoapFault class]]) { 
+		// If a server error has occurred, handle it
+		return;
+	}
+
+	// Actually do something with the result...
+	self.myDataArray = (NSMutableArray*)result;
+}
+</pre>
+
+		<p>So in this example, the "handleFind" method handles any response that calling the Find method creates.  
+		Each request can return either an error (like could not resolve the domain name for instance), 
+		a SoapFault (an error occurred in your code on the server), or the actual result.  
+		The results come back as a "typed" class, but are sent using the Objective-C "id" type, 
+		which you can kind of think of as a "var" in Javascript.</p>
+
+		<p>
+			Another way to handle the response, is to have the class from which you are calling the 
+			method implement the SoapDelegate protocol.  You do this in your implementation file.  
+			So if you are writing a UITableViewController you would use it like this:</p>
+
+<pre>
+@interface MyTableViewController : UITableViewController <SoapDelegate> {
+	// Your interface here...
+}
+</pre>
+
+		<p>
+			The SoapDelegate class requires an onload: method, but optionally takes an onerror: and onfault: method.  
+			This is similar to the other method, except your request does not include an "action" parameter:</p>
+		<code>[service Find: self criteria: @"test" maxRecords: 5];</code>
+
+		<p>
+			When the method returns results, it calls "onload:".  
+			If it returns an error, it calls "onerror:", and when a SoapFault, "onfault:".  
+			You write your method slightly different without all the class type testing because 
+			you know you are only going to get an actual result in onload:</p>
+<pre>
+-(void)onload:(id)result {
+	self.myDataArray = result;
+}
+</pre>
+
+		<p>Another common technique used is to implement the "onload:" method for every call made to the object.  
+		Then determine what the result is to determine what to do.  For instance, we might call "Find", 
+		which returns an array, and also "Create" which returns a Widget.  So we can do this:</p>
+<pre>
+-(void)onload:(id)result {
+	if([result isKindOfClass: [NSArray class]]) {
+		self.myDataArray = result;
+	}
+	if([result isKindOfClass:[Widget class]]) {
+		[self.myDataArray addObject: result];
+	}
+}
+</pre>
+
+		<p>
+			Hopefully this gets you started in your development.  
+			Please do not forget to right-click on your service class to see the code.  
+			SudzC uses the WSDL comments and such to document each method and what it returns.
+		</p>
+	</body>
+</html>

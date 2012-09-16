@@ -97,7 +97,7 @@
 				</div>
 				<div>
 					<label for="ns">Pick a namespace for the generated code</label>
-					<div id="objcns"><input type="text" id="shortens" name="shortens" value="SDZ"/>ensures unique class definitions (recommended)</div>
+					<div id="objcns"><input type="text" id="shortns" name="shortns" value="SDZ"/>ensures unique class definitions (recommended)</div>
 					<input type="text" id="ns" name="ns" value="" onfocus="customNamespace=true;" />
 				</div>
 				<div>

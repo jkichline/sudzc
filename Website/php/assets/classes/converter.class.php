@@ -249,6 +249,7 @@
 		* @return DOMDocument Returns the resulting XmlDocument
 		*/
 		public function Transform($document) {
+			global $_REQUEST;
 
 			// Create the XSLT
 			$xsl = $_SERVER['DOCUMENT_ROOT'] . '/assets/code/' . $this->Type() . '.xslt';
@@ -696,7 +697,11 @@
          */
         public static function GetXmlDocumentFromUrl($path, $username = null, $password = null, $domain = null) {
             $doc = new DOMDocument();
-            $doc->loadXML(WsdlFile::GetStringFromUrl($path, $username, $password, $domain));
+            try {
+	            $doc->loadXML(WsdlFile::GetStringFromUrl($path, $username, $password, $domain));
+	        } catch(Exception $ex) {
+		        $doc = null;
+	        }
             return $doc;
         }
 
@@ -730,6 +735,9 @@
 
             $schemaImports = $xpath->query("//*/xsd:import");
             $wsdlImports = $xpath->query("//*/wsdl:import");
+            if($importedUris == null) {
+	            $importedUris = array();
+            }
 
             // Expand the schema imports
             foreach ($schemaImports as $importNode) {
@@ -772,7 +780,7 @@
 
             // Recursively add nodes
             if ($continueExpanding) {
-                WsdlFile::_expandImports(doc);
+                WsdlFile::_expandImports($doc);
             }
         }
     }

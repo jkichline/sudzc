@@ -1,8 +1,11 @@
 <?php
 
 	// Show all errors
-	error_reporting(E_ALL); 
-	ini_set( 'display_errors','1');
+//	error_reporting(E_ALL); 
+//	ini_set( 'display_errors','1');
+
+	// Set the time limit to two minutes
+	set_time_limit(360);
 
 	// Include files
 	include($_SERVER['DOCUMENT_ROOT'] . '/assets/includes/settings.php');

@@ -300,19 +300,21 @@
 			$generatedDirectory = $directory . '/Source/Generated/';
 			
 			$handle = opendir($examplesDirectory); 
-			while (false !== ($file = readdir($handle))){ 
-				if(substr($file, 0, 1) != "." && $file != "SudzCExamples.xcodeproj") {
-					$uuid = $this->MakeUUID($id);
-					$type = "objc";
-					if(substr($file, -2) === ".h") {
-						$type = "h";
+			if($handle) {
+				while (false !== ($file = readdir($handle))){ 
+					if(substr($file, 0, 1) != "." && $file != "SudzCExamples.xcodeproj") {
+						$uuid = $this->MakeUUID($id);
+						$type = "objc";
+						if(substr($file, -2) === ".h") {
+							$type = "h";
+						}
+						$pbxFileReference .= sprintf("		%s /* %s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.%s; path = \"%s\"; sourceTree = \"<group>\"; };", $uuid, $file, $type, $file);
+						$pbxFileReference .= "\n";
+						$pbxGroupExamples .= sprintf("				%s /* %s */,", $uuid, $file);
+						$pbxGroupExamples .= "\n";
+						$lookup[$file] = $uuid;
+						$id++;
 					}
-					$pbxFileReference .= sprintf("		%s /* %s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.%s; path = \"%s\"; sourceTree = \"<group>\"; };", $uuid, $file, $type, $file);
-					$pbxFileReference .= "\n";
-					$pbxGroupExamples .= sprintf("				%s /* %s */,", $uuid, $file);
-					$pbxFileReference .= "\n";
-					$lookup[$file] = $uuid;
-					$id++;
 				}
 			}
 			closedir($handle);

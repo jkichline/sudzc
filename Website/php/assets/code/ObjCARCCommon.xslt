@@ -507,7 +507,7 @@
 @class <xsl:value-of select="$baseType"/>;
 </xsl:if>
 
-@interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : <xsl:value-of select="$baseType"/>
+@interface <xsl:value-of select="$shortns"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template> : <xsl:value-of select="$baseType"/>
 {
 	<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="interface_variables"/>
 }
@@ -633,7 +633,7 @@
 	</xsl:template>
 	
 	<xsl:template match="s:complexType" mode="interface_dictionary_internals"><xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
-@interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapDictionary
+@interface <xsl:value-of select="$shortns"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template> : SoapDictionary
 {
 }
 
@@ -661,7 +661,7 @@
 	</xsl:template>
 	
 	<xsl:template match="s:complexType" mode="interface_array_internals"><xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
-@interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapArray
+@interface <xsl:value-of select="$shortns"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template> : SoapArray
 {
 }
 
@@ -1077,7 +1077,7 @@
 			<xsl:when test="$value = 'oneway'">_<xsl:value-of select="$value"/></xsl:when>
 			<xsl:when test="$value = 'self'">_<xsl:value-of select="$value"/></xsl:when>
 			<xsl:when test="$value = 'super'">_<xsl:value-of select="$value"/></xsl:when>
-			<xsl:otherwise><xsl:value-of select="$value"/></xsl:otherwise>
+			<xsl:otherwise><xsl:value-of select="translate($value, '-', '_')"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 

@@ -22,16 +22,16 @@
 	if(self = [super init]) {
 		self.name = nameValue;
 		self.value = valueParam;
-	}
-	return self;
+    }
+    return self;
 }
 
 -(NSString*)xml{
-	if(self.value == nil) {
+    if (self.value == nil) {
 		return [NSString stringWithFormat:@"<%@ xsi:nil=\"true\"/>", name];
 	} else {
 		return [Soap serialize: self.value withName: name];
-	}
+    }
 }
 
 @end

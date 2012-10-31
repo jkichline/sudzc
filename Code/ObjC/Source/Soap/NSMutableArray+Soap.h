@@ -12,8 +12,8 @@
 @interface NSMutableArray (Soap)
 
 +(NSMutableArray*)newWithNode: (CXMLNode*) node;
--(id)initWithNode:(CXMLNode*)node;
-+(NSMutableString*) serialize: (NSArray*) array;
--(id)object;
+- (id)initWithNode:(CXMLNode*)node;
++ (NSMutableString*) serialize: (NSArray*) array;
+- (id)object;
 
 @end

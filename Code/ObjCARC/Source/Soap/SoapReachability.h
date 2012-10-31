@@ -15,18 +15,18 @@
 }
 
 // Determines if we are connected to the network
-+ (BOOL) connectedToNetwork;
++ (BOOL)connectedToNetwork;
 
 // Gets the local IP address
-+ (NSString*) localIPAddress;
++ (NSString *)localIPAddress;
 
 // Gets an IP address for a host
-+ (NSString*) getIPAddressForHost: (NSString*) theHost;
++ (NSString *)getIPAddressForHost:(NSString *)theHost;
 
 // Determines if a host is available
-+ (BOOL) hostAvailable: (NSString*) theHost;
++ (BOOL)hostAvailable:(NSString *)theHost;
 
 // Gets an address from the string
-+ (BOOL)addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *) address;
++ (BOOL)addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address;
 
 @end

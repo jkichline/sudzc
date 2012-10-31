@@ -20,6 +20,6 @@
 @property (nonatomic, retain) id<SoapDelegate> defaultHandler;
 
 - (id) initWithUrl: (NSString*) url;
-- (id) initWithUsername: (NSString*) username andPassword: (NSString*) password;
+- (id)initWithUsername:(NSString *)username andPassword:(NSString *)password;
 
 @end

@@ -38,82 +38,82 @@
 
 - (id)initWithLibXMLNode:(xmlNodePtr)inLibXMLNode freeOnDealloc:(BOOL)infreeOnDealloc
 {
-if (inLibXMLNode == NULL)
-	return nil;
-
-if ((self = [super init]) != NULL)
-	{
-	_node = inLibXMLNode;
-	_freeNodeOnRelease = infreeOnDealloc;
-	}
-return(self);
+    if (inLibXMLNode == NULL)
+        return nil;
+    
+    if ((self = [super init]) != NULL)
+    {
+        _node = inLibXMLNode;
+        _freeNodeOnRelease = infreeOnDealloc;
+    }
+    return(self);
 }
 
 + (id)nodeWithLibXMLNode:(xmlNodePtr)inLibXMLNode freeOnDealloc:(BOOL)infreeOnDealloc
 {
-// TODO more checking.
-if (inLibXMLNode == NULL)
-	return nil;
-
-if (inLibXMLNode->_private)
-	return((__bridge id)inLibXMLNode->_private);
-
-Class theClass = [CXMLNode class];
-switch (inLibXMLNode->type)
-	{
-	case XML_ELEMENT_NODE:
-		theClass = [CXMLElement class];
-		break;
-	case XML_DOCUMENT_NODE:
-		theClass = [CXMLDocument class];
-		break;
-	case XML_ATTRIBUTE_NODE:
-	case XML_TEXT_NODE:
-	case XML_CDATA_SECTION_NODE:
-	case XML_COMMENT_NODE:
-		break;
-	default:
-		NSAssert1(NO, @"TODO Unhandled type (%d).", inLibXMLNode->type);
-		return(NULL);
-	}
-
-CXMLNode *theNode = [[theClass alloc] initWithLibXMLNode:inLibXMLNode freeOnDealloc:infreeOnDealloc];
-
-
-if (inLibXMLNode->doc != NULL)
-	{
-	CXMLDocument *theXMLDocument = (__bridge CXMLDocument *)inLibXMLNode->doc->_private;
-	if (theXMLDocument != NULL)
-		{
-		NSAssert([theXMLDocument isKindOfClass:[CXMLDocument class]] == YES, @"TODO");
-
-		[[theXMLDocument nodePool] addObject:theNode];
-
-		theNode->_node->_private = (__bridge void *)theNode;
-		}
-	}
-return(theNode);
+    // TODO more checking.
+    if (inLibXMLNode == NULL)
+        return nil;
+    
+    if (inLibXMLNode->_private)
+        return((__bridge id)inLibXMLNode->_private);
+    
+    Class theClass = [CXMLNode class];
+    switch (inLibXMLNode->type)
+    {
+        case XML_ELEMENT_NODE:
+            theClass = [CXMLElement class];
+            break;
+        case XML_DOCUMENT_NODE:
+            theClass = [CXMLDocument class];
+            break;
+        case XML_ATTRIBUTE_NODE:
+        case XML_TEXT_NODE:
+        case XML_CDATA_SECTION_NODE:
+        case XML_COMMENT_NODE:
+            break;
+        default:
+            NSAssert1(NO, @"TODO Unhandled type (%d).", inLibXMLNode->type);
+            return(NULL);
+    }
+    
+    CXMLNode *theNode = [[theClass alloc] initWithLibXMLNode:inLibXMLNode freeOnDealloc:infreeOnDealloc];
+    
+    
+    if (inLibXMLNode->doc != NULL)
+    {
+        CXMLDocument *theXMLDocument = (__bridge CXMLDocument *)inLibXMLNode->doc->_private;
+        if (theXMLDocument != NULL)
+        {
+            NSAssert([theXMLDocument isKindOfClass:[CXMLDocument class]] == YES, @"TODO");
+            
+            [[theXMLDocument nodePool] addObject:theNode];
+            
+            theNode->_node->_private = (__bridge void *)theNode;
+        }
+    }
+    return(theNode);
 }
 
 - (xmlNodePtr)node
 {
-return(_node);
+    return(_node);
 }
 
 - (void)invalidate;
-    {
+{
     if (_node)
-        {
+    {
         if (_node->_private == (__bridge void *)self)
             _node->_private = NULL;
-
+        
         if (_freeNodeOnRelease)
-            {
+        {
             xmlFreeNode(_node);
-            }
-
-        _node = NULL;
         }
+        
+        _node = NULL;
     }
+}
 
 @end

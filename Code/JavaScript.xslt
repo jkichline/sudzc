@@ -41,9 +41,9 @@
 		<package>
 			<xsl:attribute name="class"><xsl:value-of select="$serviceName"/></xsl:attribute>
 			<xsl:attribute name="name"><xsl:value-of select="$serviceName"/>.Javascript</xsl:attribute>
-			<folder copy="JavaScript/Source"/>
-			<folder copy="JavaScript/Documentation"/>
-			<folder copy="JavaScript/Examples"/>
+			<folder copy="Javascript/Source"/>
+			<folder copy="Javascript/Documentation"/>
+			<folder copy="Javascript/Examples"/>
 
 		<file>
 			<xsl:attribute name="filename">Examples/<xsl:value-of select="$serviceName"/>.html</xsl:attribute>&lt;html&gt;

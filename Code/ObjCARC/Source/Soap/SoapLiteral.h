@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) NSString* value;
 
--(id)initWithString:(NSString*)string;
-+(SoapLiteral*)literalWithString:(NSString*)string;
+- (id)initWithString:(NSString *)string;
++ (SoapLiteral *)literalWithString:(NSString *)string;
 
 @end

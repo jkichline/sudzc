@@ -1,28 +1,28 @@
 <html>
-	<head>
+    <head>
     <title>CXMLNode Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../assets/styles/default.css" />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
-		<script type="text/javascript" src="../assets/scripts/base.js"></script>
-	</head>
-	<body id="content">
-		<h1>CXMLNode Class Reference</h1>
-		<p>The CXMLNode class defines an XML node in the TouchXML library.</p>
-		<p>Inherits from NSObject*</p>
-		
-		<h2>Tasks</h2>
-		
-		<h3>Node attributes</h3>
-		<ul>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+        <script type="text/javascript" src="../assets/scripts/base.js"></script>
+    </head>
+    <body id="content">
+        <h1>CXMLNode Class Reference</h1>
+        <p>The CXMLNode class defines an XML node in the TouchXML library.</p>
+        <p>Inherits from NSObject*</p>
+        
+        <h2>Tasks</h2>
+        
+        <h3>Node attributes</h3>
+        <ul>
       <li><a href="#kind">- kind</a></li>
       <li><a href="#name">- name</a></li>
       <li><a href="#stringValue">- stringValue</a></li>
       <li><a href="#index">- index</a></li>
       <li><a href="#level">- level</a></li>
-		</ul>
-		
-		<h3>Traversing the hiearchy</h3>
-		<ul>
+        </ul>
+        
+        <h3>Traversing the hiearchy</h3>
+        <ul>
       <li><a href="#rootDocument">- rootDocument</a></li>
       <li><a href="#parent">- parent</a></li>
       <li><a href="#childCount">- childCount</a></li>
@@ -30,19 +30,19 @@
       <li><a href="#childAtIndex">- childAtIndex:</a></li>
       <li><a href="#previousSibling">- previousSibling</a></li>
       <li><a href="#nextSibling">- nextSibling</a></li>
-		</ul>
-		
-		<h3>Getting contents</h3>
-		<ul>
+        </ul>
+        
+        <h3>Getting contents</h3>
+        <ul>
       <li><a href="#description">- description</a></li>
       <li><a href="#XMLString">- XMLString</a></li>
       <li><a href="#XMLStringWithOptions:">- XMLStringWithOptions:</a></li>
       <li><a href="#nodesForXPath:error:">- nodesForXPath:error:</a></li>
       <li><a href="#nodesForXPath:namespaceMappings:error:">- nodesForXPath:namespaceMappings:error:</a></li>
       <li><a href="#_XMLStringWithOptions:appendingToString:">- _XMLStringWithOptions:appendingToString:</a></li>
-		</ul>
-		
-		<h2>Instance Methods</h2>
+        </ul>
+        
+        <h2>Instance Methods</h2>
 
     <h3 id="kind">kind</h3>
     <p>Defines the type of the XML node.</p>
@@ -155,18 +155,18 @@
     <p>Defines an enumeration of the types of nodes.</p>
     <pre>
 typedef enum {
-	CXMLInvalidKind,
-	CXMLElementKind,
-	CXMLAttributeKind,
-	CXMLTextKind,
-	CXMLProcessingInstructionKind,
-	CXMLCommentKind,
-	CXMLNotationDeclarationKind,
-	CXMLDTDKind,
-	CXMLElementDeclarationKind,
-	CXMLAttributeDeclarationKind,
-	CXMLEntityDeclarationKind,
-	CXMLNamespaceKind,
+    CXMLInvalidKind,
+    CXMLElementKind,
+    CXMLAttributeKind,
+    CXMLTextKind,
+    CXMLProcessingInstructionKind,
+    CXMLCommentKind,
+    CXMLNotationDeclarationKind,
+    CXMLDTDKind,
+    CXMLElementDeclarationKind,
+    CXMLAttributeDeclarationKind,
+    CXMLEntityDeclarationKind,
+    CXMLNamespaceKind,
 } CXMLNodeKind;
     </pre>
     <h4>Constants</h4>

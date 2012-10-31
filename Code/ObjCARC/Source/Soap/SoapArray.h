@@ -14,8 +14,8 @@
 @property (nonatomic, retain) NSMutableArray* items;
 
 + (id) newWithNode: (CXMLNode*) node;
-- (id) initWithNode: (CXMLNode*) node;
-+ (NSMutableString*) serialize: (NSArray*) array;
+- (id)initWithNode:(CXMLNode *)node;
++ (NSMutableString *)serialize:(NSArray *)array;
 
 - (NSUInteger)count;
 - (id)objectAtIndex:(NSUInteger)index;
@@ -39,7 +39,7 @@
 - (NSEnumerator *)objectEnumerator;
 - (NSEnumerator *)reverseObjectEnumerator;
 - (NSData *)sortedArrayHint;
-- (NSArray *)sortedArrayUsingFunction:(NSInteger (*)(id, id, void *))comparator context:(void *)context;
+- (NSArray *)sortedArrayUsingFunction:(NSInteger ( *)(id, id, void *))comparator context:(void *)context;
 - (NSArray *)sortedArrayUsingFunction:(NSInteger (*)(id, id, void *))comparator context:(void *)context hint:(NSData *)hint;
 - (NSArray *)sortedArrayUsingSelector:(SEL)comparator;
 - (NSArray *)subarrayWithRange:(NSRange)range;
@@ -85,7 +85,7 @@
 - (void)replaceObjectsInRange:(NSRange)range withObjectsFromArray:(NSArray *)otherArray range:(NSRange)otherRange;
 - (void)replaceObjectsInRange:(NSRange)range withObjectsFromArray:(NSArray *)otherArray;
 - (void)setArray:(NSArray *)otherArray;
-- (void)sortUsingFunction:(NSInteger (*)(id, id, void *))compare context:(void *)context;
+- (void)sortUsingFunction:(NSInteger ( *)(id, id, void *))compare context:(void *)context;
 - (void)sortUsingSelector:(SEL)comparator;
 
 - (void)insertObjects:(NSArray *)objects atIndexes:(NSIndexSet *)indexes;
@@ -102,5 +102,5 @@
 
 - (id)copyWithZone:(NSZone *)zone;
 - (id)mutableCopyWithZone:(NSZone *)zone;
-	
+
 @end

@@ -9,13 +9,13 @@ b, u, i, center,
 dl, dt, dd,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	background: transparent;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
 body { line-height: 1; }
 blockquote, q { quotes: none; }
@@ -28,11 +28,11 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 /* CLEARFIX */
 .clearfix:after {
-	content: "."; 
-	display: block; 
-	height: 0; 
-	clear: both; 
-	visibility: hidden;
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
 }
 .clearfix { display: inline-block; }
 /* Hides from IE-mac \*/
@@ -44,7 +44,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 body { margin: 0 0; width: auto; position: relative; background: #FFF url(../images/gradient-light.jpg) repeat-x; color: #398fc1; font-family: Helvetica, Arial, sans-serif; font-size: 62.5%; }
 #content {
-	width: auto; height: 830px;
+    width: auto; height: 830px;
 }
 #logo { margin: 15px 0 0 25px; }
 #form { margin: 35px 0 0 70px; padding-left: 140px; background: url(../images/icon.png) no-repeat 0 -10px; }

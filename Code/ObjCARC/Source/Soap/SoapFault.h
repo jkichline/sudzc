@@ -22,8 +22,8 @@
 @property (retain, nonatomic) NSString* detail;
 @property BOOL hasFault;
 
-+ (SoapFault*) faultWithData: (NSMutableData*) data;
-+ (SoapFault*) faultWithXMLDocument: (CXMLDocument*) document;
-+ (SoapFault*) faultWithXMLElement: (CXMLNode*) element;
++ (SoapFault *)faultWithData:(NSMutableData *)data;
++ (SoapFault *)faultWithXMLDocument:(CXMLDocument *)document;
++ (SoapFault *)faultWithXMLElement:(CXMLNode *)element;
 
 @end

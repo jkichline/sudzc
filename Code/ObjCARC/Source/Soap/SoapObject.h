@@ -13,10 +13,10 @@
 @property (readonly) id object;
 
 + (id) newWithNode: (CXMLNode*) node;
-- (id) initWithNode: (CXMLNode*) node;
-- (NSMutableString*) serialize;
-- (NSMutableString*) serialize: (NSString*) nodeName;
-- (NSMutableString*) serializeElements;
-- (NSMutableString*) serializeAttributes;
+- (id)initWithNode:(CXMLNode *)node;
+- (NSMutableString *)serialize;
+- (NSMutableString *)serialize:(NSString *)nodeName;
+- (NSMutableString *)serializeElements;
+- (NSMutableString *)serializeAttributes;
 
 @end

@@ -11,8 +11,8 @@
 {
 }
 
-- (void) onload: (id) value;
-- (void) onerror: (NSError*) error;
-- (void) onfault: (SoapFault*) fault;
+- (void)onload:(id)value;
+- (void)onerror:(NSError *)error;
+- (void)onfault:(SoapFault *)fault;
 
 @end

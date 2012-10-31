@@ -12,22 +12,22 @@
 @implementation NSMutableArray (Soap)
 
 +(NSMutableArray*)newWithNode: (CXMLNode*) node {
-	return [[self alloc] initWithNode:node];
+    return [[self alloc] initWithNode:node];
 }
 
 -(id)initWithNode:(CXMLNode*)node {
 	if(self = [self init]) {
-		for(CXMLNode* child in [node children]) {
-			[self addObject:[Soap deserialize:child]];
-		}
-	}
-	return self;
+        for (CXMLNode *child in [node children]) {
+            [self addObject:[Soap deserialize:child]];
+        }
+    }
+    return self;
 }
 
 -(id)object { return self; }
 
 + (NSMutableString*) serialize: (NSArray*) array {
-	return [NSMutableString stringWithString:[Soap serialize:array]];
+    return [NSMutableString stringWithString:[Soap serialize:array]];
 }
 
 @end

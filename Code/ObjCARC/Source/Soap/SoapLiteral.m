@@ -16,12 +16,12 @@
 -(id)initWithString:(NSString *)string {
 	if(self = [self init]) {
 		self.value = string;
-	}
-	return self;
+    }
+    return self;
 }
 
 +(SoapLiteral*)literalWithString:(NSString *)string {
-	return [[SoapLiteral alloc] initWithString:string];
+    return [[SoapLiteral alloc] initWithString:string];
 }
 
 @end

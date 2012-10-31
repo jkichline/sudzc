@@ -19,23 +19,23 @@
 		self.defaultHandler = nil;
 		self.username = nil;
 		self.password = nil;
-	}
-	return self;
+    }
+    return self;
 }
 
 - (id) initWithUrl: (NSString*) url {
 	if(self = [self init]) {
 		self.serviceUrl = url;
-	}
-	return self;
+    }
+    return self;
 }
 
 - (id) initWithUsername: (NSString*) username andPassword: (NSString*) password {
 	if(self = [self init]) {
 		self.username = username;
 		self.password = password;
-	}
-	return self;
+    }
+    return self;
 }
 
 @end

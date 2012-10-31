@@ -20,15 +20,15 @@
 }
 
 + (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
-	SoapRequest* request = [[SoapRequest alloc] init];
+    SoapRequest *request = [[SoapRequest alloc] init];
 	request.url = [NSURL URLWithString: urlString];
 	request.soapAction = soapAction;
 	request.postData = postData;
 	request.handler = handler;
-	request.deserializeTo = deserializeTo;
+    request.deserializeTo = deserializeTo;
 	request.action = action;
-	request.defaultHandler = nil;
-	return request;
+    request.defaultHandler = nil;
+    return request;
 }
 
 + (SoapRequest*) create: (SoapHandler*) handler action: (SEL) action service: (SoapService*) service soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
@@ -37,85 +37,85 @@
 	request.logging = service.logging;
 	request.username = service.username;
 	request.password = service.password;
-	return request;
+    return request;
 }
 
 // Sends the request via HTTP.
 - (void) send {
 	
-	// If we don't have a handler, create a default one
+    // If we don't have a handler, create a default one
 	if(handler == nil) {
 		handler = [[SoapHandler alloc] init];
-	}
-	
-	// Make sure the network is available
-	if([SoapReachability connectedToNetwork] == NO) {
+    }
+
+    // Make sure the network is available
+    if ([SoapReachability connectedToNetwork] == NO) {
 		NSError* error = [NSError errorWithDomain:@"SudzC" code:400 userInfo:[NSDictionary dictionaryWithObject:@"The network is not available" forKey:NSLocalizedDescriptionKey]];
-		[self handleError: error];
-	}
-	
-	// Make sure we can reach the host
+        [self handleError:error];
+    }
+
+    // Make sure we can reach the host
 	if([SoapReachability hostAvailable:url.host] == NO) {
 		NSError* error = [NSError errorWithDomain:@"SudzC" code:410 userInfo:[NSDictionary dictionaryWithObject:@"The host is not available" forKey:NSLocalizedDescriptionKey]];
-		[self handleError: error];
-	}
-	
-	// Output the URL if logging is enabled
+        [self handleError:error];
+    }
+
+    // Output the URL if logging is enabled
 	if(logging) {
 		NSLog(@"Loading: %@", url.absoluteString);
-	}
-	
-	// Create the request
+    }
+
+    // Create the request
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL: url];
 	if(soapAction != nil) {
 		[request addValue: soapAction forHTTPHeaderField: @"SOAPAction"];
-	}
+    }
 	if(postData != nil) {
-		[request setHTTPMethod: @"POST"];
-		[request addValue: @"text/xml; charset=utf-8" forHTTPHeaderField: @"Content-Type"];
+        [request setHTTPMethod:@"POST"];
+        [request addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 		[request setHTTPBody: [postData dataUsingEncoding: NSUTF8StringEncoding]];
-		if(self.logging) {
+        if (self.logging) {
 			NSLog(@"%@", postData);
-		}
-	}
-	
-	// Create the connection
+        }
+    }
+
+    // Create the connection
 	conn = [[NSURLConnection alloc] initWithRequest: request delegate: self];
 	if(conn) {
 		receivedData = [NSMutableData data];
-	} else {
-		// We will want to call the onerror method selector here...
-		if(self.handler != nil) {
+    } else {
+        // We will want to call the onerror method selector here...
+        if (self.handler != nil) {
 			NSError* error = [NSError errorWithDomain:@"SoapRequest" code:404 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not create connection", NSLocalizedDescriptionKey,nil]];
-			[self handleError: error];
-		}
-	}
+            [self handleError:error];
+        }
+    }
 }
 
 -(void)handleError:(NSError*)error{
-	SEL onerror = @selector(onerror:);
+    SEL onerror = @selector(onerror:);
 	if(self.action != nil) { onerror = self.action; }
-	if([self.handler respondsToSelector: onerror]) {
-		objc_msgSend(self.handler, onerror, error);
-	} else {
-		if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:onerror]) {
-			objc_msgSend(self.defaultHandler, onerror, error);
-		}
-	}
-	if(self.logging) {
-		NSLog(@"Error: %@", error.localizedDescription);
-	}
+    if ([self.handler respondsToSelector:onerror]) {
+        objc_msgSend(self.handler, onerror, error);
+    } else {
+        if (self.defaultHandler != nil && [self.defaultHandler respondsToSelector:onerror]) {
+            objc_msgSend(self.defaultHandler, onerror, error);
+        }
+    }
+    if (self.logging) {
+        NSLog(@"Error: %@", error.localizedDescription);
+    }
 }
 
 -(void)handleFault:(SoapFault*)fault{
-	if([self.handler respondsToSelector:@selector(onfault:)]) {
-		[self.handler onfault: fault];
-	} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onfault:)]) {
-		[self.defaultHandler onfault:fault];
-	}
-	if(self.logging) {
-		NSLog(@"Fault: %@", fault);
-	}
+    if ([self.handler respondsToSelector:@selector(onfault:)]) {
+        [self.handler onfault:fault];
+    } else if (self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onfault:)]) {
+        [self.defaultHandler onfault:fault];
+    }
+    if (self.logging) {
+        NSLog(@"Fault: %@", fault);
+    }
 }
 
 // Called when the HTTP socket gets a response.
@@ -131,70 +131,70 @@
 // Called when the HTTP request fails.
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	conn = nil;
-	[self handleError:error];
+    [self handleError:error];
 }
 
 // Called when the connection has finished loading.
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSError* error;
-	if(self.logging == YES) {
-		NSString* response = [[NSString alloc] initWithData: self.receivedData encoding: NSUTF8StringEncoding];
-		NSLog(@"%@", response);
-	}
+    if (self.logging == YES) {
+        NSString *response = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", response);
+    }
+
+    CXMLDocument *doc = [[CXMLDocument alloc] initWithData:self.receivedData options:0 error:&error];
+    if (doc == nil) {
+        [self handleError:error];
+        return;
+    }
+
+    id output = nil;
+    SoapFault *fault = [SoapFault faultWithXMLDocument:doc];
 	
-	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: self.receivedData options: 0 error: &error];
-	if(doc == nil) {
-		[self handleError:error];
-		return;
-	}
-	
-	id output = nil;
-	SoapFault* fault = [SoapFault faultWithXMLDocument: doc];
-	
-	if([fault hasFault]) {
-		if(self.action == nil) {
-			[self handleFault: fault];
-		} else {
-			if(self.handler != nil && [self.handler respondsToSelector: self.action]) {
-				objc_msgSend(self.handler, self.action, fault);
-			} else {
-				NSLog(@"SOAP Fault: %@", fault);
-			}
-		}
+    if ([fault hasFault]) {
+        if (self.action == nil) {
+            [self handleFault:fault];
+        } else {
+            if (self.handler != nil && [self.handler respondsToSelector:self.action]) {
+                objc_msgSend(self.handler, self.action, fault);
+            } else {
+                NSLog(@"SOAP Fault: %@", fault);
+            }
+        }
 	} else {
-		CXMLNode* element = [[Soap getNode: [doc rootElement] withName: @"Body"] childAtIndex:0];
+        CXMLNode *element = [[Soap getNode:[doc rootElement] withName:@"Body"] childAtIndex:0];
 		if(deserializeTo == nil) {
-			output = [Soap deserialize:element];
-		} else {
+            output = [Soap deserialize:element];
+        } else {
 			if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
-				element = [element childAtIndex:0];
+                element = [element childAtIndex:0];
 				output = [deserializeTo initWithNode: element];
-			} else {
-				NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
+            } else {
+                NSString *value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
 				output = [Soap convert: value toType: deserializeTo];
-			}
-		}
-		
+        }
+        }
+
 		if(self.action == nil) { self.action = @selector(onload:); }
-		if(self.handler != nil && [self.handler respondsToSelector: self.action]) {
-			objc_msgSend(self.handler, self.action, output);
-		} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onload:)]) {
-			[self.defaultHandler onload:output];
-		}
-	}
+        if (self.handler != nil && [self.handler respondsToSelector:self.action]) {
+            objc_msgSend(self.handler, self.action, output);
+        } else if (self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onload:)]) {
+            [self.defaultHandler onload:output];
+        }
+    }
 	conn = nil;
 }
 
 // Called if the HTTP request receives an authentication challenge.
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-	if([challenge previousFailureCount] == 0) {
+    if ([challenge previousFailureCount] == 0) {
 		NSURLCredential *newCredential;
         newCredential=[NSURLCredential credentialWithUser:self.username password:self.password persistence:NSURLCredentialPersistenceNone];
         [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
     } else {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
 		NSError* error = [NSError errorWithDomain:@"SoapRequest" code:403 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not authenticate this request", NSLocalizedDescriptionKey,nil]];
-		[self handleError:error];
+        [self handleError:error];
     }
 }
 
@@ -203,7 +203,7 @@
 	if(conn == nil) { return NO; }
 	[conn cancel];
 	conn = nil;
-	return YES;
+    return YES;
 }
 
 @end

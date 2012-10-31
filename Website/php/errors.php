@@ -6,7 +6,7 @@
     </head>
     <body onload="init();">
         <div id="content">
-            <a href="/"><img src="/assets/images/logo.png" alt="Sudzc" id="logo" /></a>
+            <a href="/"><img src="assets/images/logo.png" alt="Sudzc" id="logo" /></a>
             <form action="/" method="get" id="form">
                 <div>
                     <label>Problems Generating Your Code</label>

@@ -10,7 +10,7 @@
 }
 
 #content {
-	margin:30pt;
+    margin:30pt;
 }
 
 h1 {
@@ -105,7 +105,7 @@ a:visited {
 }
 
 #footer {
-	margin-top:30pt;
-	border:solid 0px #999;
-	border-top: 1px;
+    margin-top:30pt;
+    border:solid 0px #999;
+    border-top: 1px;
 }

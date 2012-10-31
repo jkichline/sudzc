@@ -21,6 +21,6 @@
 @property (readonly) BOOL null;
 @property (nonatomic, retain, readonly) NSString* xml;
 
--(id)initWithValue:(id)value forName: (NSString*) name;
+- (id)initWithValue:(id)value forName:(NSString *)name;
 
 @end

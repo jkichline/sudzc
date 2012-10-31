@@ -12,8 +12,8 @@
 // Initialization include for every object - important (NSString and NSDates's to nil) - Karl
 - (id) init {
 	if (self = [super init]) {
-	}
-	return self;
+    }
+    return self;
 }
 
 // Static method for initializing from a node.
@@ -24,33 +24,33 @@
 // Called when initializing the object from a node
 - (id) initWithNode: (CXMLNode*) node {
 	if(self = [self init]) {
-	}
-	return self;
+        }
+    return self;
 }
 
 // This will get called when traversing objects, returning nothing is ok - Karl
 - (NSMutableString*) serialize {
-	return [NSMutableString string];
+    return [NSMutableString string];
 }
 
 - (NSMutableString*) serialize: (NSString*) nodeName {
-	return [NSMutableString string];
+    return [NSMutableString string];
 }
 
 - (NSMutableString*) serializeElements {
-	return [NSMutableString string];
+    return [NSMutableString string];
 }
 
 - (NSMutableString*) serializeAttributes {
-	return [NSMutableString string];
+    return [NSMutableString string];
 }
 
 - (id) object {
-	return self;
+    return self;
 }
 
 - (NSString*) description {
-	return [Soap serialize:self];
+    return [Soap serialize:self];
 }
 
 @end

@@ -182,7 +182,6 @@
 + (NSMutableData*) callService: (NSString*) urlString data: (NSString*) data action: (NSString*) action delegate: (SEL) handler {
 	NSURL* url = [NSURL URLWithString: urlString];
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL: url];
-	NSMutableData* output;
 
 	if(action != nil) {
 		[request addValue: action forHTTPHeaderField: @"SOAPAction"];
@@ -193,17 +192,10 @@
 		[request addValue: @"text/xml" forHTTPHeaderField: @"Content-Type"];
 	}
 
-	NSURLConnection* conn = [[NSURLConnection alloc] initWithRequest: request delegate: self];
-	if(conn) {
-		output = [[NSMutableData data] retain];
-	}
-	[NSURLConnection connectionWithRequest: request delegate: self];
-	
 	NSError* error;
 	NSURLResponse* response;
 
 	return (NSMutableData*)[NSURLConnection sendSynchronousRequest: request returningResponse: &response error: &error];
-//	return output;
 }
 
 // Gets the node from another node by name.
@@ -324,7 +316,7 @@
 			}
 			Class cls = NSClassFromString([NSString stringWithFormat:@"%@%@", prefix, type]);
 			if(cls != nil ) {
-				return [cls newWithNode:element];
+				return [cls createWithNode:element];
 			} else {
 				return [Soap deserializeAsDictionary:element];
 
@@ -354,30 +346,6 @@
 		[d setObject:v forKey:[child name]];
 	}
 	return d;
-}
-
-// Deserializes a node into an object.
-+ (id) deserialize: (CXMLNode*) element forObject: (NSObject*) object {
-	NSError* error;
-	NSObject* value;
-	NSArray* nodes = [element nodesForXPath:@"*" error: &error];
-	for(CXMLNode* node in nodes) {
-		NSObject* property = [object valueForKey: [node name]];
-		Class cls = NSClassFromString([node name]);
-		id object = [[cls alloc] init];
-		if([Soap isArray: property]) {
-			// Fill as if an array
-		} else {
-			if([Soap isObject: property]) {
-				// Instantiate the object type from the node name and deserialize
-			} else {
-				// Figure out the value type and return it I think
-			}
-		}
-
-		[object setValue: [node stringValue] forKey: [node name]];
-	}
-	return value;
 }
 
 // Determines if an object is an array.
@@ -507,7 +475,7 @@
 
 // Creates dictionary of string values from the XML document.
 +(id)objectFromXMLString:(NSString*)xmlString {
-	CXMLDocument* doc = [[CXMLDocument alloc] initWithXMLString:xmlString options:0 error:nil];
+	CXMLDocument* doc = [[[CXMLDocument alloc] initWithXMLString:xmlString options:0 error:nil] autorelease];
 	return [Soap objectFromNode:doc];
 }
 

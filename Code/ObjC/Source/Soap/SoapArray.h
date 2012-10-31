@@ -13,7 +13,7 @@
 
 @property (nonatomic, retain) NSMutableArray* items;
 
-+ (id) newWithNode: (CXMLNode*) node;
++ (id) createWithNode: (CXMLNode*) node;
 - (id) initWithNode: (CXMLNode*) node;
 + (NSMutableString*) serialize: (NSArray*) array;
 

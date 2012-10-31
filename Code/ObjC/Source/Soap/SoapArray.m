@@ -16,7 +16,7 @@
 	return self;
 }
 
-+(SoapArray*)newWithNode: (CXMLNode*) node {
++(SoapArray*)createWithNode: (CXMLNode*) node {
 	return [[[self alloc] initWithNode:node] autorelease];
 }
 

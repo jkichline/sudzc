@@ -11,7 +11,7 @@
 
 @implementation NSMutableArray (Soap)
 
-+(NSMutableArray*)newWithNode: (CXMLNode*) node {
++(NSMutableArray*)createWithNode: (CXMLNode*) node {
 	return [[[self alloc] initWithNode:node] autorelease];
 }
 

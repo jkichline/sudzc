@@ -15,7 +15,7 @@
 
 + (SoapFault*) faultWithData: (NSMutableData*) data {
 	NSError* error;
-	CXMLDocument* doc = [[CXMLDocument alloc] initWithData: data options: 0 error: &error];
+	CXMLDocument* doc = [[[CXMLDocument alloc] initWithData: data options: 0 error: &error] autorelease];
 	if(doc == nil) {
 		return [[[SoapFault alloc] init] autorelease];
 	}

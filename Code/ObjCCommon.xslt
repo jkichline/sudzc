@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0"
 	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
 	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
@@ -507,13 +507,13 @@
 @class <xsl:value-of select="$baseType"/>;
 </xsl:if>
 
-@interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : <xsl:value-of select="$baseType"/>
+@interface <xsl:value-of select="$shortns"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template> : <xsl:value-of select="$baseType"/>
 {
 	<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="interface_variables"/>
 }
 		<xsl:apply-templates select="descendant::s:element|descendant::s:attribute" mode="interface_properties"/>
 
-	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) newWithNode: (CXMLNode*) node;
+	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) createWithNode: (CXMLNode*) node;
 	- (id) initWithNode: (CXMLNode*) node;
 	- (NSMutableString*) serialize;
 	- (NSMutableString*) serialize: (NSString*) nodeName;
@@ -554,7 +554,7 @@
 		return self;
 	}
 
-	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) newWithNode: (CXMLNode*) node
+	+ (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*) createWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
 		return (<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>*)[[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
@@ -638,9 +638,11 @@
 	</xsl:template>
 	
 	<xsl:template match="s:complexType" mode="interface_dictionary_internals"><xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
-@interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapDictionary
-{
-}
+@interface <xsl:value-of select="$shortns"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template> : NSMutableDictionary
+
++ (id)createWithNode:(CXMLNode *)node;
+- (id)initWithNode:(CXMLNode *)node;
++ (NSMutableString *)serialize:(NSDictionary *)dictionary;
 
 @end
 </xsl:if></xsl:template>
@@ -666,7 +668,7 @@
 	</xsl:template>
 	
 	<xsl:template match="s:complexType" mode="interface_array_internals"><xsl:if test="generate-id(.) = generate-id(key('className', @name)[1])">
-@interface <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> : SoapArray
+@interface <xsl:value-of select="$shortns"/><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template> : SoapArray
 {
 }
 
@@ -743,7 +745,7 @@
 			
 @implementation <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>
 
-	+ (id) newWithNode: (CXMLNode*) node
+	+ (id) createWithNode: (CXMLNode*) node
 	{
 		return [[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
 	}
@@ -766,7 +768,7 @@
 					<xsl:when test="$keyType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
 					<xsl:when test="$keyType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
 					<xsl:when test="$keyType = '' or $keyType = 'id'">[Soap objectFromNode: child];</xsl:when>
-					<xsl:otherwise>[[<xsl:value-of select="substring-before($keyObjectType, '*')"/> newWithNode: child] object];</xsl:otherwise>
+					<xsl:otherwise>[[<xsl:value-of select="substring-before($keyObjectType, '*')"/> createWithNode: child] object];</xsl:otherwise>
 				</xsl:choose>
 				
 				<xsl:value-of select="$valueObjectType"/> value = <xsl:choose>
@@ -782,7 +784,7 @@
 					<xsl:when test="$valueType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
 					<xsl:when test="$valueType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
 					<xsl:when test="$valueType = '' or $valueType = 'id'">[Soap objectFromNode: child];</xsl:when>
-					<xsl:otherwise>[[<xsl:value-of select="substring-before($valueObjectType, '*')"/> newWithNode: child] object];</xsl:otherwise>
+					<xsl:otherwise>[[<xsl:value-of select="substring-before($valueObjectType, '*')"/> createWithNode: child] object];</xsl:otherwise>
 				</xsl:choose>
 				if(value != nil) {
 					[self setObject: value forKey: key];
@@ -876,7 +878,7 @@
 			</xsl:variable>
 @implementation <xsl:value-of select="$shortns"/><xsl:value-of select="@name"/>
 
-	+ (id) newWithNode: (CXMLNode*) node
+	+ (id) createWithNode: (CXMLNode*) node
 	{
 		return [[[<xsl:value-of select="$shortns"/><xsl:value-of select="@name"/> alloc] initWithNode: node] autorelease];
 	}
@@ -899,7 +901,7 @@
 					<xsl:when test="$declaredType = 'NSDate*'">[Soap dateFromString: [child stringValue]];</xsl:when>
 					<xsl:when test="$declaredType = 'NSData*'">[Soap dataFromString: [child stringValue]];</xsl:when>
 					<xsl:when test="$declaredType = '' or $declaredType = 'id'">[Soap objectFromNode: child];</xsl:when>
-					<xsl:otherwise>[[<xsl:value-of select="substring-before($declaredType, '*')"/> newWithNode: child] object];</xsl:otherwise>
+					<xsl:otherwise>[[<xsl:value-of select="substring-before($declaredType, '*')"/> createWithNode: child] object];</xsl:otherwise>
 				</xsl:choose>
 				<xsl:choose>
 					<xsl:when test="$declaredType != 'id' and contains($declaredType, '*') and not(starts-with($declaredType, 'NS'))">
@@ -1021,7 +1023,7 @@
 			<xsl:variable name="type"><xsl:call-template name="getType"><xsl:with-param name="value" select="@type"/></xsl:call-template></xsl:variable>
 			<xsl:variable name="name"><xsl:call-template name="getName"><xsl:with-param name="value" select="@name"/></xsl:call-template></xsl:variable>
 			<xsl:if test="contains($type,'*') or $type = 'id'">
-		if(self.<xsl:value-of select="$name"/> != nil) { [self.<xsl:value-of select="$name"/> release]; }</xsl:if></xsl:if>
+		self.<xsl:value-of select="$name"/> = nil;</xsl:if></xsl:if>
 	</xsl:template>
 
 	
@@ -1053,7 +1055,7 @@
 			<xsl:when test="$declaredType = 'NSDate*'">[Soap dateFromString: [Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
 			<xsl:when test="$declaredType = 'NSData*'">[Soap dataFromString: [Soap getNodeValue: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
 			<xsl:when test="$declaredType = 'nil' or $declaredType = 'id'">[Soap deserialize: [Soap getNode: node withName: @"<xsl:value-of select="$name"/>"]]</xsl:when>
-			<xsl:otherwise>[[<xsl:value-of select="$shortns"/><xsl:value-of select="$modifiedType"/> newWithNode: [Soap getNode: node withName: @"<xsl:value-of select="$name"/>"]] object]</xsl:otherwise>
+			<xsl:otherwise>[[<xsl:value-of select="$shortns"/><xsl:value-of select="$modifiedType"/> createWithNode: [Soap getNode: node withName: @"<xsl:value-of select="$name"/>"]] object]</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
@@ -1082,7 +1084,7 @@
 			<xsl:when test="$value = 'oneway'">_<xsl:value-of select="$value"/></xsl:when>
 			<xsl:when test="$value = 'self'">_<xsl:value-of select="$value"/></xsl:when>
 			<xsl:when test="$value = 'super'">_<xsl:value-of select="$value"/></xsl:when>
-			<xsl:otherwise><xsl:value-of select="$value"/></xsl:otherwise>
+			<xsl:otherwise><xsl:value-of select="translate($value, '-', '_')"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 

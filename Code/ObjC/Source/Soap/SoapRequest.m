@@ -131,7 +131,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[conn release];
 	conn = nil;
-	[self.receivedData release];
+	self.receivedData = nil;
 	[self handleError:error];
 }
 
@@ -185,11 +185,11 @@
 		}
 	}
 
-	[self.handler release];
+	self.handler = nil;
 	[doc release];
 	[conn release];
 	conn = nil;
-	[self.receivedData release];
+	self.receivedData = nil;
 }
 
 // Called if the HTTP request receives an authentication challenge.

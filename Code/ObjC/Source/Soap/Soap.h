@@ -71,9 +71,6 @@
 // Deserializes an element to a string value.
 + (id) deserialize: (CXMLNode*) element;
 
-// Deserializes a node into an object.
-+ (id) deserialize: (CXMLNode*) element forObject: (NSObject*) object;
-
 // Deserializes the element in a dictionary.
 + (id) deserializeAsDictionary:(CXMLNode*)element ;
 

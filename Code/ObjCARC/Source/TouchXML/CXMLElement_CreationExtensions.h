@@ -34,7 +34,6 @@
 @interface CXMLElement (CXMLElement_CreationExtensions)
 
 - (void)addChild:(CXMLNode *)inNode;
-
 - (void)addNamespace:(CXMLNode *)inNamespace;
 
 @end

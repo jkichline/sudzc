@@ -1,19 +1,20 @@
-/*
- SoapArray.h
- Interface for the SoapArray base object.
- Authors: Jason Kichline, andCulture - Harrisburg, Pennsylvania USA
-*/
+//
+//  SoapArray.h
+//
+//  Interface for the SoapArray base object.
+//  Authors: Jason Kichline, andCulture - Harrisburg, Pennsylvania USA
+//
 
+#import <Foundation/Foundation.h>
 #import "SoapObject.h"
-#import "Soap.h"
+#import "TouchXML.h"
+@class CXMLNode;
 
-@interface SoapArray : SoapObject <NSCopying, NSMutableCopying, NSCoding, NSFastEnumeration> {
-	NSMutableArray* items;
-}
+@interface SoapArray : SoapObject <NSCopying, NSMutableCopying, NSCoding, NSFastEnumeration>
 
-@property (nonatomic, retain) NSMutableArray* items;
+@property(nonatomic, copy) NSMutableArray *items;
 
-+ (id) newWithNode: (CXMLNode*) node;
++ (id)createWithNode:(CXMLNode *)node;
 - (id)initWithNode:(CXMLNode *)node;
 + (NSMutableString *)serialize:(NSArray *)array;
 
@@ -40,7 +41,9 @@
 - (NSEnumerator *)reverseObjectEnumerator;
 - (NSData *)sortedArrayHint;
 - (NSArray *)sortedArrayUsingFunction:(NSInteger ( *)(id, id, void *))comparator context:(void *)context;
-- (NSArray *)sortedArrayUsingFunction:(NSInteger (*)(id, id, void *))comparator context:(void *)context hint:(NSData *)hint;
+- (NSArray *)sortedArrayUsingFunction:(NSInteger ( *)(id, id, void *))comparator
+                              context:(void *)context
+                                 hint:(NSData *)hint;
 - (NSArray *)sortedArrayUsingSelector:(SEL)comparator;
 - (NSArray *)subarrayWithRange:(NSRange)range;
 - (BOOL)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile;
@@ -95,7 +98,9 @@
 + (id)arrayWithCapacity:(NSUInteger)numItems;
 - (id)initWithCapacity:(NSUInteger)numItems;
 
-- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained *)stackbuf count:(NSUInteger)len;
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+                                  objects:(id __unsafe_unretained *)stackbuf
+                                    count:(NSUInteger)len;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder;
 - (id)initWithCoder:(NSCoder *)aDecoder;

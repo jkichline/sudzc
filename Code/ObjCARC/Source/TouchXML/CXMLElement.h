@@ -32,9 +32,7 @@
 #import "CXMLNode.h"
 
 // NSXMLElement
-@interface CXMLElement : CXMLNode {
-
-}
+@interface CXMLElement : CXMLNode
 
 - (NSArray *)elementsForName:(NSString *)name;
 - (NSArray *)elementsForLocalName:(NSString *)localName URI:(NSString *)URI;
@@ -48,5 +46,4 @@
 - (CXMLNode *)resolveNamespaceForName:(NSString *)name;
 - (NSString *)resolvePrefixForNamespaceURI:(NSString *)namespaceURI;
 
-//- (NSString*)_XMLStringWithOptions:(NSUInteger)options appendingToString:(NSMutableString*)str;
 @end

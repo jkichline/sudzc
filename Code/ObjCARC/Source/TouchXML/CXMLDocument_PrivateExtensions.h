@@ -35,8 +35,6 @@
 
 @interface CXMLDocument (CXMLDocument_PrivateExtensions)
 
-//- (id)initWithLibXmlParserContext:(xmlParserCtxtPtr)inContext options:(NSUInteger)inOptions error:(NSError **)outError;
-
 - (NSMutableSet *)nodePool;
 
 @end

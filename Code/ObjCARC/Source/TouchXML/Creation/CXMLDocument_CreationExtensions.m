@@ -1,5 +1,5 @@
 //
-//  CXMLDocument_CreationExtensions.h
+//  CXMLDocument_CreationExtensions.m
 //  TouchCode
 //
 //  Created by Jonathan Wight on 11/11/08.
@@ -29,21 +29,27 @@
 //  authors and should not be interpreted as representing official policies, either expressed
 //  or implied, of toxicsoftware.com.
 
-#import "CXMLDocument.h"
+#import "CXMLDocument_CreationExtensions.h"
 
-@interface CXMLDocument (CXMLDocument_CreationExtensions)
+#import "CXMLElement.h"
+#import "CXMLNode_PrivateExtensions.h"
+#import "CXMLDocument_PrivateExtensions.h"
 
-//- (void)setVersion:(NSString *)version; //primitive
-//- (void)setStandalone:(BOOL)standalone; //primitive
-//- (void)setDocumentContentKind:(CXMLDocumentContentKind)kind; //primitive
-//- (void)setMIMEType:(NSString *)MIMEType; //primitive
-//- (void)setDTD:(CXMLDTD *)documentTypeDeclaration; //primitive
-//- (void)setRootElement:(CXMLNode *)root;
-- (void)insertChild:(CXMLNode *)child atIndex:(NSUInteger)index;
-//- (void)insertChildren:(NSArray *)children atIndex:(NSUInteger)index;
-//- (void)removeChildAtIndex:(NSUInteger)index; //primitive
-//- (void)setChildren:(NSArray *)children; //primitive
-- (void)addChild:(CXMLNode *)child;
-//- (void)replaceChildAtIndex:(NSUInteger)index withNode:(CXMLNode *)node;
+@implementation CXMLDocument (CXMLDocument_CreationExtensions)
+
+- (void)insertChild:(CXMLNode *)child atIndex:(NSUInteger)index
+{
+    [self.nodePool addObject:child];
+    
+    CXMLNode *theCurrentNode = [self.children objectAtIndex:index];
+    xmlAddPrevSibling(theCurrentNode->_node, child->_node);
+}
+
+- (void)addChild:(CXMLNode *)child
+{
+    [self.nodePool addObject:child];
+    
+    xmlAddChild(self->_node, child->_node);
+}
 
 @end

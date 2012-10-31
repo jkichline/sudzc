@@ -7,17 +7,16 @@
 //
 
 #import "SoapReachability.h"
-#import <netinet/in.h>
+
 #import <netdb.h>
-#import <sys/socket.h>
-#import <sys/types.h>
 #import <arpa/inet.h>
-#import <netinet/in.h>
-#import <unistd.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+
 
 @implementation SoapReachability
 
-+ (BOOL) connectedToNetwork {
++ (BOOL)connectedToNetwork
+{
     // Create zero address
     struct sockaddr_in zeroAddress;
     bzero(&zeroAddress, sizeof(zeroAddress));
@@ -26,7 +25,9 @@
 
     // Recover reachability flags
     SCNetworkReachabilityRef defaultRouteReachability = SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&zeroAddress);
-	SCNetworkReachabilityFlags flags; BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags); CFRelease(defaultRouteReachability);
+    SCNetworkReachabilityFlags flags;
+    BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
+    CFRelease(defaultRouteReachability);
     if (!didRetrieveFlags) {
         printf("Error. Could not recover network reachability flags\n");
         return 0;
@@ -37,7 +38,8 @@
 }
 
 // Return the localized IP address
-+ (NSString*) localIPAddress {
++ (NSString *)localIPAddress
+{
     char baseHostName[255];
     gethostname(baseHostName, 255);
     char hn[255];
@@ -48,15 +50,17 @@
     if (host == NULL) {
         herror("resolv");
         return NULL;
-	} else {
+    }
+
     struct in_addr **list = (struct in_addr **) (host->h_addr_list);
     return [NSString stringWithCString:inet_ntoa(*list[0]) encoding:NSUTF8StringEncoding];
 }
-	return NULL;
-}
 
-+ (NSString*) getIPAddressForHost: (NSString*) theHost {
-	if(theHost == nil) { return nil; }
++ (NSString *)getIPAddressForHost:(NSString *)theHost
+{
+    if (theHost == nil) {
+        return nil;
+    }
     struct hostent *host = gethostbyname([theHost UTF8String]);
     if (host == NULL) {
         herror("resolv");
@@ -67,7 +71,8 @@
     return addressString;
 }
 
-+ (BOOL) hostAvailable: (NSString*) theHost {
++ (BOOL)hostAvailable:(NSString *)theHost
+{
     NSString *addressString = [SoapReachability getIPAddressForHost:theHost];
     if (!addressString) {
         printf("Error recovering IP address from host name\n");
@@ -95,7 +100,8 @@
 
 // Populating a sockaddr_in record.
 // Direct from Apple. Thank you Apple
-+ (BOOL)addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *) address {
++ (BOOL)addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address
+{
     if (!IPAddress || ![IPAddress length]) {
         return NO;
     }

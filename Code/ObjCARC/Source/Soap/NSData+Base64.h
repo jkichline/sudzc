@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 @interface NSData (Base64)
 
 + (NSData *)dataWithBase64EncodedString:(NSString *)string;

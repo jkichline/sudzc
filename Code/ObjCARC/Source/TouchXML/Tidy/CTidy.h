@@ -37,18 +37,19 @@
 #include "buffio.h"
 
 typedef enum {
-	TidyFormat_HTML,
-	TidyFormat_XML,
-	TidyFormat_XHTML,
+    TidyFormat_HTML,
+    TidyFormat_XML,
+    TidyFormat_XHTML,
 } CTidyFormat;
 
-@interface CTidy : NSObject {
-}
+@interface CTidy : NSObject
 
 + (CTidy *)tidy;
 
-- (NSData *)tidyData:(NSData *)inData inputFormat:(CTidyFormat)inInputFormat outputFormat:(CTidyFormat)inOutputFormat encoding:(const char *)encoding diagnostics:(NSString **)outDiagnostics error:(NSError **)outError;
-- (NSString *)tidyString:(NSString *)inString inputFormat:(CTidyFormat)inInputFormat outputFormat:(CTidyFormat)inOutputFormat encoding:(const char *)encoding diagnostics:(NSString **)outDiagnostics error:(NSError **)outError;
+- (NSData *)tidyData:(NSData *)inData inputFormat:(CTidyFormat)inInputFormat outputFormat:(CTidyFormat)inOutputFormat
+            encoding:(const char *)encoding diagnostics:(NSString **)outDiagnostics error:(NSError **)outError;
+- (NSString *)tidyString:(NSString *)inString inputFormat:(CTidyFormat)inInputFormat outputFormat:(CTidyFormat)inOutputFormat
+                encoding:(const char *)encoding diagnostics:(NSString **)outDiagnostics error:(NSError **)outError;
 
 @end
 

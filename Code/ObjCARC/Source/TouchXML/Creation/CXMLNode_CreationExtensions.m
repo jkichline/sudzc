@@ -41,64 +41,64 @@
 
 + (id)document;
 {
-xmlDocPtr theDocumentNode = xmlNewDoc((const xmlChar *)"1.0");
-NSAssert(theDocumentNode != NULL, @"xmlNewDoc failed");
-CXMLDocument *theDocument = [[CXMLDocument alloc] initWithLibXMLNode:(xmlNodePtr)theDocumentNode freeOnDealloc:NO];
-return(theDocument);
+    xmlDocPtr theDocumentNode = xmlNewDoc((const xmlChar *)"1.0");
+    NSAssert(theDocumentNode != NULL, @"xmlNewDoc failed");
+    CXMLDocument *theDocument = [[CXMLDocument alloc] initWithLibXMLNode:(xmlNodePtr)theDocumentNode freeOnDealloc:NO];
+    return(theDocument);
 }
 
 + (id)documentWithRootElement:(CXMLElement *)element;
 {
-xmlDocPtr theDocumentNode = xmlNewDoc((const xmlChar *)"1.0");
-NSAssert(theDocumentNode != NULL, @"xmlNewDoc failed");
-xmlDocSetRootElement(theDocumentNode, element.node);
-CXMLDocument *theDocument = [[CXMLDocument alloc] initWithLibXMLNode:(xmlNodePtr)theDocumentNode freeOnDealloc:NO];
-[theDocument.nodePool addObject:element];
-return(theDocument);
+    xmlDocPtr theDocumentNode = xmlNewDoc((const xmlChar *)"1.0");
+    NSAssert(theDocumentNode != NULL, @"xmlNewDoc failed");
+    xmlDocSetRootElement(theDocumentNode, element.node);
+    CXMLDocument *theDocument = [[CXMLDocument alloc] initWithLibXMLNode:(xmlNodePtr)theDocumentNode freeOnDealloc:NO];
+    [theDocument.nodePool addObject:element];
+    return(theDocument);
 }
 
 + (id)elementWithName:(NSString *)name
 {
-xmlNodePtr theElementNode = xmlNewNode(NULL, (const xmlChar *)[name UTF8String]);
-CXMLElement *theElement = [[CXMLElement alloc] initWithLibXMLNode:(xmlNodePtr)theElementNode freeOnDealloc:NO];
-return(theElement);
+    xmlNodePtr theElementNode = xmlNewNode(NULL, (const xmlChar *)[name UTF8String]);
+    CXMLElement *theElement = [[CXMLElement alloc] initWithLibXMLNode:(xmlNodePtr)theElementNode freeOnDealloc:NO];
+    return(theElement);
 }
 
 + (id)elementWithName:(NSString *)name URI:(NSString *)URI
 {
-xmlNodePtr theElementNode = xmlNewNode(NULL, (const xmlChar *)[name UTF8String]);
-xmlNsPtr theNSNode = xmlNewNs(theElementNode, (const xmlChar *)[URI UTF8String], NULL);
-theElementNode->ns = theNSNode;
-
-CXMLElement *theElement = [[CXMLElement alloc] initWithLibXMLNode:(xmlNodePtr)theElementNode freeOnDealloc:NO];
-return(theElement);
+    xmlNodePtr theElementNode = xmlNewNode(NULL, (const xmlChar *)[name UTF8String]);
+    xmlNsPtr theNSNode = xmlNewNs(theElementNode, (const xmlChar *)[URI UTF8String], NULL);
+    theElementNode->ns = theNSNode;
+    
+    CXMLElement *theElement = [[CXMLElement alloc] initWithLibXMLNode:(xmlNodePtr)theElementNode freeOnDealloc:NO];
+    return(theElement);
 }
 
 + (id)elementWithName:(NSString *)name stringValue:(NSString *)string
 {
-xmlNodePtr theElementNode = xmlNewNode(NULL, (const xmlChar *)[name UTF8String]);
-CXMLElement *theElement = [[CXMLElement alloc] initWithLibXMLNode:(xmlNodePtr)theElementNode freeOnDealloc:NO];
-theElement.stringValue = string;
-return(theElement);
+    xmlNodePtr theElementNode = xmlNewNode(NULL, (const xmlChar *)[name UTF8String]);
+    CXMLElement *theElement = [[CXMLElement alloc] initWithLibXMLNode:(xmlNodePtr)theElementNode freeOnDealloc:NO];
+    theElement.stringValue = string;
+    return(theElement);
 }
 
 + (id)namespaceWithName:(NSString *)name stringValue:(NSString *)stringValue
 {
-	return [[CXMLNamespaceNode alloc] initWithPrefix:name URI:stringValue parentElement:nil];
+    return [[CXMLNamespaceNode alloc] initWithPrefix:name URI:stringValue parentElement:nil];
 }
 
 + (id)processingInstructionWithName:(NSString *)name stringValue:(NSString *)stringValue;
 {
-xmlNodePtr theNode = xmlNewPI((const xmlChar *)[name UTF8String], (const xmlChar *)[stringValue UTF8String]);
-NSAssert(theNode != NULL, @"xmlNewPI failed");
-CXMLNode *theNodeObject = [[CXMLNode alloc] initWithLibXMLNode:theNode freeOnDealloc:NO];
-return(theNodeObject);
+    xmlNodePtr theNode = xmlNewPI((const xmlChar *)[name UTF8String], (const xmlChar *)[stringValue UTF8String]);
+    NSAssert(theNode != NULL, @"xmlNewPI failed");
+    CXMLNode *theNodeObject = [[CXMLNode alloc] initWithLibXMLNode:theNode freeOnDealloc:NO];
+    return(theNodeObject);
 }
 
 - (void)setStringValue:(NSString *)inStringValue
 {
-NSAssert(_node->type == XML_TEXT_NODE, @"CNode setStringValue only implemented for text nodes");    
-xmlNodeSetContent(_node, (const xmlChar *)[inStringValue UTF8String]);
+    NSAssert(_node->type == XML_TEXT_NODE, @"CNode setStringValue only implemented for text nodes");    
+    xmlNodeSetContent(_node, (const xmlChar *)[inStringValue UTF8String]);
 }
 
 @end

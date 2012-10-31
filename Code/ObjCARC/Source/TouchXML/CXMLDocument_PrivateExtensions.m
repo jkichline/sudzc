@@ -33,22 +33,12 @@
 
 @implementation CXMLDocument (CXMLDocument_PrivateExtensions)
 
-/*
-- (id)initWithLibXmlParserContext:(xmlParserCtxtPtr)inContext options:(NSUInteger)inOptions error:(NSError **)outError
-{
-
-xmlParseDocument(inContext);
-
-}
-*/
-
 - (NSMutableSet *)nodePool
-    {
+{
     if (nodePool == NULL)
-        {
         nodePool = [[NSMutableSet alloc] init];
-        }
-    return(nodePool);
-    }
+
+    return nodePool;
+}
 
 @end

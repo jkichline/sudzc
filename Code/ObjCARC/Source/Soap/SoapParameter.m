@@ -11,27 +11,28 @@
 
 @implementation SoapParameter
 
-@synthesize name, value, null, xml;
-
--(void)setValue:(id)valueParam{
-	value = valueParam;
-	null = (value == nil);
-}
-
--(id)initWithValue:(id)valueParam forName: (NSString*) nameValue {
-	if(self = [super init]) {
-		self.name = nameValue;
-		self.value = valueParam;
+- (id)initWithValue:(id)valueParam forName:(NSString *)nameValue
+{
+    self = [super init];
+    if (self) {
+        _name = nameValue;
+        _value = valueParam;
     }
     return self;
 }
 
--(NSString*)xml{
+- (NSString *)xml
+{
     if (self.value == nil) {
-		return [NSString stringWithFormat:@"<%@ xsi:nil=\"true\"/>", name];
-	} else {
-		return [Soap serialize: self.value withName: name];
+        return [NSString stringWithFormat:@"<%@ xsi:nil=\"true\"/>", self.name];
     }
+
+    return [Soap serialize:self.value withName:self.name];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@: %@", self.name, self.value];
 }
 
 @end

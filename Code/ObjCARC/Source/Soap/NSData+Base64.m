@@ -8,7 +8,8 @@ static char encodingTable[64] = {
 
 @implementation NSData (VQBase64)
 
-- (id)initWithString:(NSString *)string {
+- (id)initWithString:(NSString *)string
+{
     if (self = [super init]) {
         self = [self initWithBase64EncodedString:string];
     }
@@ -16,12 +17,13 @@ static char encodingTable[64] = {
 
 }
 
-
-+ (NSData *) dataWithBase64EncodedString:(NSString *) string {
++ (NSData *)dataWithBase64EncodedString:(NSString *)string
+{
     return [[NSData allocWithZone:nil] initWithBase64EncodedString:string];
 }
 
-- (id) initWithBase64EncodedString:(NSString *) string {
+- (id)initWithBase64EncodedString:(NSString *)string
+{
     NSMutableData *mutableData = nil;
 
     if (string) {
@@ -42,26 +44,41 @@ static char encodingTable[64] = {
         lentext = [base64Data length];
 
         while (YES) {
-			if( ixtext >= lentext ) break;
+            if (ixtext >= lentext) {
+                break;
+            }
             ch = base64Bytes[ixtext++];
             flignore = NO;
 
-			if( ( ch >= 'A' ) && ( ch <= 'Z' ) ) ch = ch - 'A';
-			else if( ( ch >= 'a' ) && ( ch <= 'z' ) ) ch = ch - 'a' + 26;
-			else if( ( ch >= '0' ) && ( ch <= '9' ) ) ch = ch - '0' + 52;
-			else if( ch == '+' ) ch = 62;
-			else if( ch == '=' ) flendtext = YES;
-			else if( ch == '/' ) ch = 63;
-			else flignore = YES;
+            if ((ch >= 'A') && (ch <= 'Z')) {
+                ch = ch - 'A';
+            } else if ((ch >= 'a') && (ch <= 'z')) {
+                ch = ch - 'a' + 26;
+            } else if ((ch >= '0') && (ch <= '9')) {
+                ch = ch - '0' + 52;
+            } else if (ch == '+') {
+                ch = 62;
+            } else if (ch == '=') {
+                flendtext = YES;
+            } else if (ch == '/') {
+                ch = 63;
+            } else {
+                flignore = YES;
+            }
 
             if (!flignore) {
                 short ctcharsinbuf = 3;
                 BOOL flbreak = NO;
 
                 if (flendtext) {
-					if( ! ixinbuf ) break;
-					if( ( ixinbuf == 1 ) || ( ixinbuf == 2 ) ) ctcharsinbuf = 1;
-					else ctcharsinbuf = 2;
+                    if (!ixinbuf) {
+                        break;
+                    }
+                    if ((ixinbuf == 1) || (ixinbuf == 2)) {
+                        ctcharsinbuf = 1;
+                    } else {
+                        ctcharsinbuf = 2;
+                    }
                     ixinbuf = 3;
                     flbreak = YES;
                 }
@@ -78,7 +95,9 @@ static char encodingTable[64] = {
                         [mutableData appendBytes:&outbuf[i] length:1];
                 }
 
-				if( flbreak )  break;
+                if (flbreak) {
+                    break;
+                }
             }
         }
     }
@@ -89,11 +108,13 @@ static char encodingTable[64] = {
 
 #pragma mark -
 
-- (NSString *) base64Encoding {
+- (NSString *)base64Encoding
+{
     return [self base64EncodingWithLineLength:0];
 }
 
-- (NSString *) base64EncodingWithLineLength:(unsigned int) lineLength {
+- (NSString *)base64EncodingWithLineLength:(unsigned int)lineLength
+{
     const unsigned char *bytes = [self bytes];
     NSMutableString *result = [NSMutableString stringWithCapacity:[self length]];
     unsigned long ixtext = 0;
@@ -106,12 +127,17 @@ static char encodingTable[64] = {
 
     while (YES) {
         ctremaining = lentext - ixtext;
-		if( ctremaining <= 0 ) break;
+        if (ctremaining <= 0) {
+            break;
+        }
 
         for (i = 0; i < 3; i++) {
             ix = ixtext + i;
-			if( ix < lentext ) inbuf[i] = bytes[ix];
-			else inbuf [i] = 0;
+            if (ix < lentext) {
+                inbuf[i] = bytes[ix];
+            } else {
+                inbuf [i] = 0;
+            }
         }
 
         outbuf [0] = (inbuf [0] & 0xFC) >> 2;

@@ -8,7 +8,5 @@
 
 #import "SoapNil.h"
 
-
 @implementation SoapNil
-
 @end

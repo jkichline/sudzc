@@ -8,9 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-
-@interface SoapNil : NSObject {
-
-}
-
+@interface SoapNil : NSObject
 @end

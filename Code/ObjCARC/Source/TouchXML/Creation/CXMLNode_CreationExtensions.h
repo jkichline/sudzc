@@ -1,8 +1,8 @@
 //
-//  CXMLDocument_CreationExtensions.m
+//  CXMLNode_CreationExtensions.h
 //  TouchCode
 //
-//  Created by Jonathan Wight on 11/11/08.
+//  Created by Jonathan Wight on 04/01/08.
 //  Copyright 2011 toxicsoftware.com. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are
@@ -29,27 +29,19 @@
 //  authors and should not be interpreted as representing official policies, either expressed
 //  or implied, of toxicsoftware.com.
 
-#import "CXMLDocument_CreationExtensions.h"
+#import "CXMLNode.h"
 
-#import "CXMLElement.h"
-#import "CXMLNode_PrivateExtensions.h"
-#import "CXMLDocument_PrivateExtensions.h"
+@class CXMLElement;
 
-@implementation CXMLDocument (CXMLDocument_CreationExtensions)
+@interface CXMLNode (CXMLNode_CreationExtensions)
 
-- (void)insertChild:(CXMLNode *)child atIndex:(NSUInteger)index
-{
-[self.nodePool addObject:child];
-
-CXMLNode *theCurrentNode = [self.children objectAtIndex:index];
-xmlAddPrevSibling(theCurrentNode->_node, child->_node);
-}
-
-- (void)addChild:(CXMLNode *)child
-{
-[self.nodePool addObject:child];
-
-xmlAddChild(self->_node, child->_node);
-}
++ (id)document;
++ (id)documentWithRootElement:(CXMLElement *)element;
++ (id)elementWithName:(NSString *)name;
++ (id)elementWithName:(NSString *)name URI:(NSString *)URI;
++ (id)elementWithName:(NSString *)name stringValue:(NSString *)string;
++ (id)namespaceWithName:(NSString *)name stringValue:(NSString *)stringValue;
++ (id)processingInstructionWithName:(NSString *)name stringValue:(NSString *)stringValue;
+- (void)setStringValue:(NSString *)inStringValue;
 
 @end

@@ -7,12 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SystemConfiguration/SystemConfiguration.h>
 #import <netinet/in.h>
 
-@interface SoapReachability : NSObject {
-
-}
+@interface SoapReachability : NSObject
 
 // Determines if we are connected to the network
 + (BOOL)connectedToNetwork;

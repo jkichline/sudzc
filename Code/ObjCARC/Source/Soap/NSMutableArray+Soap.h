@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "TouchXML.h"
+@class CXMLNode;
 
 @interface NSMutableArray (Soap)
 
-+(NSMutableArray*)newWithNode: (CXMLNode*) node;
++ (NSMutableArray *)createWithNode:(CXMLNode *)node;
 - (id)initWithNode:(CXMLNode *)node;
 + (NSMutableString *)serialize:(NSArray *)array;
 - (id)object;

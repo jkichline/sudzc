@@ -1,51 +1,67 @@
-/*
- Soap.h
- Provides method for serializing and deserializing values to and from the web service.
- Authors:	Jason Kichline, andCulture - Harrisburg, Pennsylvania USA
-          Karl Schulenburg, UMAI Development - Shoreditch, London UK
-*/
+//
+//  Soap.h
+//
+//  Provides method for serializing and deserializing values to and from the web service.
+//  Authors: Jason Kichline, andCulture - Harrisburg, Pennsylvania USA
+//           Karl Schulenburg, UMAI Development - Shoreditch, London UK
+//
+
+#import <Foundation/Foundation.h>
 
 #import "TouchXML.h"
-#import "SoapArray.h"
 #import "SoapDelegate.h"
-#import "SoapFault.h"
+
 #import "SoapHandler.h"
 #import "SoapLiteral.h"
 #import "SoapNil.h"
 #import "SoapObject.h"
 #import "SoapParameter.h"
-#import "SoapRequest.h"
-#import "SoapService.h"
 #import "SoapReachability.h"
-#import "NSMutableArray+Soap.h"
 
-@interface Soap : NSObject {
+#import "SoapArray.h"
+#import "SoapRequest.h"
 
-}
+#import "SoapFault.h"
+#import "SoapService.h"
+
+@class CXMLNode;
+@class SoapObject;
+
+@interface Soap : NSObject
 
 // Creates the XML request for the SOAP envelope.
 + (NSString *)createEnvelope:(NSString *)method forNamespace:(NSString *)ns forParameters:(NSString *)params;
 
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
-+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns forParameters: (NSString*) params withHeaders: (NSDictionary*) headers;
++ (NSString *)createEnvelope:(NSString *)method
+                forNamespace:(NSString *)ns
+               forParameters:(NSString *)params
+                 withHeaders:(NSDictionary *)headers;
 
 // Creates the XML request for the SOAP envelope.
 + (NSString *)createEnvelope:(NSString *)method forNamespace:(NSString *)ns containing:(NSDictionary *)containing;
 
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
-+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns containing: (NSDictionary*) containing withHeaders: (NSDictionary*) headers;
++ (NSString *)createEnvelope:(NSString *)method
+                forNamespace:(NSString *)ns
+                  containing:(NSDictionary *)containing
+                 withHeaders:(NSDictionary *)headers;
 
 // Creates the XML request for the SOAP envelope.
 + (NSString *)createEnvelope:(NSString *)method forNamespace:(NSString *)ns withParameters:(NSArray *)params;
 
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
-+ (NSString*) createEnvelope: (NSString*) method forNamespace: (NSString*) ns withParameters: (NSArray*) params withHeaders: (NSDictionary*) headers;
-
-// Creates the XML request for the SOAP envelope. - Karl
-+ (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing;
++ (NSString *)createEnvelope:(NSString *)method
+                forNamespace:(NSString *)ns
+              withParameters:(NSArray *)params
+                 withHeaders:(NSDictionary *)headers;
 
 // Creates the XML request for the SOAP envelope with optional SOAP headers.
-+ (NSString*) createEnvelope: (NSString*) method ofAction: (NSString*) action forNamespace: (NSString*) ns containing: (SoapObject*) containing withHeaders: (NSDictionary*) headers;
++ (NSString *)createEnvelope:(NSString *)method
+                    ofAction:(NSString *)action
+                forNamespace:(NSString *)ns
+                  containing:(SoapObject *)containing
+                 withHeaders:(NSDictionary *)headers;
 
 // Serializes an object to a string, XML representation.
 + (NSString *)serialize:(id)object;
@@ -57,7 +73,10 @@
 + (NSString *)serializeHeader:(NSDictionary *)headers forKey:(NSString *)key;
 
 // Calls an HTTP service
-+ (NSMutableData*) callService: (NSString*) service data: (NSString*) data action: (NSString*) action delegate: (SEL) delegate;
++ (NSMutableData *)callService:(NSString *)service
+                          data:(NSString *)data
+                        action:(NSString *)action
+                      delegate:(SEL)delegate;
 
 // Gets the node from another node by name
 + (CXMLNode *)getNode:(CXMLNode *)element withName:(NSString *)name;
@@ -70,9 +89,6 @@
 
 // Deserializes an element to a string value.
 + (id)deserialize:(CXMLNode *)element;
-
-// Deserializes a node into an object.
-+ (id) deserialize: (CXMLNode*) element forObject: (NSObject*) object;
 
 // Deserializes the element in a dictionary.
 + (id)deserializeAsDictionary:(CXMLNode *)element;

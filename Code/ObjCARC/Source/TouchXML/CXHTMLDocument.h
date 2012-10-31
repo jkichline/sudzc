@@ -32,9 +32,7 @@
 #import "CXMLDocument.h"
 
 
-@interface CXHTMLDocument : CXMLDocument {
-
-}
+@interface CXHTMLDocument : CXMLDocument
 
 - (id)initWithXHTMLData:(NSData *)inData encoding:(NSStringEncoding)encoding options:(NSUInteger)inOptions error:(NSError **)outError;
 - (id)initWithXHTMLString:(NSString *)inString options:(NSUInteger)inOptions error:(NSError **)outError;

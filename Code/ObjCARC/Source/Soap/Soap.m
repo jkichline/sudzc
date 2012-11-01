@@ -469,13 +469,19 @@
 
 + (NSDateFormatter *)dateFormatter
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-    [formatter setLocale:enUS];
-    [formatter setLenient:YES];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+    NSMutableDictionary *threadDictionary = [[NSThread currentThread] threadDictionary];
+    NSString *threadDictionaryKey = [NSString stringWithFormat:@"SoapDateFormatter"];
 
-    return formatter;
+    NSDateFormatter *dateFormatter = [threadDictionary objectForKey:threadDictionaryKey];
+    if (dateFormatter == nil) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+        dateFormatter.lenient = YES;
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS";
+        [threadDictionary setObject:dateFormatter forKey:threadDictionaryKey];
+    }
+
+    return dateFormatter;
 }
 
 // Converts a string to a date.

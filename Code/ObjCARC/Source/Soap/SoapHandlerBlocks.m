@@ -24,9 +24,9 @@
         _canCallbackOnBackgroundThread = NO; // Default, special cases like Adapters will set this to YES.
         _queuePriority = NSOperationQueuePriorityNormal;
 
-		    _onLoadBlock = onLoad;
-		    _onErrorBlock = onError;
-		    _onFaultBlock = onFault;
+		    _onLoadBlock = [onLoad copy];
+		    _onErrorBlock = [onError copy];
+		    _onFaultBlock = [onFault copy];
 	}
 	return self;
 }
@@ -48,7 +48,7 @@
 
 - (void)onload:(id)value
 {
-    if (self.canCallbackOnBackgroundThread == NO && [NSThread isMainThread] == NO) {
+    if (!self.canCallbackOnBackgroundThread && ![NSThread isMainThread]) {
         // Wait until done to avoid memory allocation problems. This is a background thread, so there shouldn't be an impact on the UI.
         [self performSelectorOnMainThread:@selector(onload:) withObject:value waitUntilDone:YES];
         return;

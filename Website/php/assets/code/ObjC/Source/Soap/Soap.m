@@ -303,6 +303,11 @@
 			return [Soap dateFromString:value];
 		}
 		
+		// Return as a duration
+		if([type isEqualToString:@"duration"]) {
+			return [NSNumber numberWithDouble:[Soap durationFromString:value]];
+		}
+		
 		// Return as data
 		if([type isEqualToString:@"base64binary"]) {
 			return [Soap dataFromString:value];
@@ -437,6 +442,9 @@
 	if([toType isEqualToString: @"nsdate*"]) {
 		return [Soap dateFromString: value];
 	}
+	if([toType isEqualToString: @"nstimeinterval"]) {
+		return [NSNumber numberWithDouble:[Soap durationFromString: value]];
+	}
 	if([toType isEqualToString: @"nsdata*"]) {
 		return [Soap dataFromString: value];
 	}
@@ -471,6 +479,112 @@
 
 + (NSString*) getDateString: (NSDate*) value {
 	return [[Soap dateFormatter] stringFromDate:value];
+}
+
++(NSTimeInterval) durationFromString:(NSString*)value {
+	
+	// Set up the variables
+	int y = 0;
+	int m = 0;
+	int w = 0;
+	int d = 0;
+	BOOL t = NO;
+	int h = 0;
+	int n = 0;
+	int s = 0;
+	
+	// Let's parse the value by character
+	NSCharacterSet* numbers = [NSCharacterSet decimalDigitCharacterSet];
+	NSMutableString* tmp = [NSMutableString string];
+	for(int i=0;i<value.length;i++) {
+		unichar c = [value characterAtIndex:i];
+		if([numbers characterIsMember:c]) {
+			[tmp appendFormat:@"%c", c];
+		} else {
+			double v = [tmp doubleValue];
+			if(c == 'Y') {
+				y = v;
+			} else if(c == 'M') {
+				if(t) {
+					n = v;
+				} else {
+					m = v;
+				}
+			} else if(c == 'W') {
+				w = v;
+			} else if(c == 'D') {
+				d = v;
+			} else if(c == 'T') {
+				t = YES;
+			} else if(c == 'H') {
+				h = v;
+			} else if(c == 'S') {
+				s = v;
+			}
+			[tmp deleteCharactersInRange:NSMakeRange(0, tmp.length)];
+		}
+	}
+	return (y * 31557600.0) + (m * 2592000.0) + (w * 604800.0) + (d * 86400.0) + (h * 3600.0) + (n * 60.0) + s;
+}
+
++ (NSString*) getDurationString: (NSTimeInterval) value {
+	NSMutableString* o = [NSMutableString stringWithString:@"P"];
+	
+	// Handle years
+	int y = (int)floor(value/31557600.0);
+	value -= (y * 31557600.0);
+	
+	// Handle months
+	int m = (int)floor(value/2592000.0);
+	value -= (m * 2592000.0);
+	
+	// Handle weeks
+	int w = (int)floor(value/604800.0);
+	value -= (w * 604800.0);
+
+	// Handle days
+	int d = (int)floor(value/86400.0);
+	value -= (d * 86400.0);
+
+	// Handle hours
+	int h = (int)floor(value/3600.0);
+	value -= (h * 3600.0);
+	
+	// Handle minutes
+	int n = (int)floor(value/60.0);
+	value -= (n * 60.0);
+
+	// Handle seconds
+	int s = (int)floor(value);
+	
+	// Generate the output
+	if(y > 0) {
+		[o appendFormat:@"%dY", y];
+	}
+	if(m > 0) {
+		[o appendFormat:@"%dM", m];
+	}
+	if(w > 0) {
+		[o appendFormat:@"%dW", w];
+	}
+	if(d > 0) {
+		[o appendFormat:@"%dD", d];
+	}
+	if(h > 0 || n > 0 || s > 0) {
+		[o appendString:@"T"];
+	}
+	if(h > 0) {
+		[o appendFormat:@"%dH", h];
+	}
+	if(n > 0) {
+		[o appendFormat:@"%dM", n];
+	}
+	if(s > 0) {
+		[o appendFormat:@"%dS", s];
+	}
+
+	// Return the output
+	return o;
 }
 
 +(NSData*) dataFromString:(NSString*) value{

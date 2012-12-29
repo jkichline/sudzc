@@ -1,5 +1,5 @@
 <?php
-
+// error_reporting(-1);
     /**
     * Class used to convert WSDL files into generated Objective-C code.
      * @property mixed OutputDirectory
@@ -96,7 +96,7 @@
 			if(empty($value)) {
 				if ($this->wsdlFiles == null && strlen($this->wsdlPaths) > 0) {
 					$this->wsdlFiles = WsdlFile::FromString($this->wsdlPaths, $this->username, $this->password, $this->domain);
-					if($this->wsdlFiles == null) {
+					if($this->wsdlFiles == null || $this->wsdlFiles == false) {
 						if($this->errors == null) { $this->errors = array(); }
 						array_push($this->errors, "Could not create WSDL");
 					}
@@ -152,7 +152,7 @@
 	                $ext = substr($file, -6);
 					if($ext == ".sudzc") {
 	                    if ((time() - filemtime($path)) > $olderThan) {
-	                        delete($path);
+	                        unlink($path);
 	                        $removed++;
 	                    }
 	                } else if($ext == ".sudzd") {
@@ -185,13 +185,15 @@
 	
 			// Save each package files
 			foreach ($this->ConvertToPackages() as $package) {
-				$packageName = $this->SavePackageToDirectory($package, $this->OutputDirectory());
-                array_push($packages, $packageName);
-                $xpath = new DOMXPath($package);
-	            $list = $xpath->query("/package/@class"); // TODO: Make sure we are using XPATH correctly
-	            if($list->length > 0) {
-                    array_push($classes, $list->item(0)->nodeValue);
-	            }
+//				if($package) {
+					$packageName = $this->SavePackageToDirectory($package, $this->OutputDirectory());
+	                array_push($packages, $packageName);
+	                $xpath = new DOMXPath($package);
+		            $list = $xpath->query("/package/@class"); // TODO: Make sure we are using XPATH correctly
+		            if($list->length > 0) {
+	                    array_push($classes, $list->item(0)->nodeValue);
+		            }
+//		        }
 			}
 	
 			// Create the index XML document
@@ -233,7 +235,8 @@
          */
         public function ConvertToPackage($file) {
             $this->errors = array();
-            return $this->Transform($file->Document());
+            $o = $this->Transform($file->Document());
+            return $o;
 		}
 
 		/** Saves the index XML file to the directory.
@@ -257,7 +260,7 @@
 			$xslFile->load($xsl);
 			$xslt = new XSLTProcessor();
 			$xslt->importStylesheet($xslFile);
-			
+
 			// Loop through all params and add as arguments
 			foreach($_REQUEST as $key => $value) {
 				$xslt->setParameter('', $key, $value);

@@ -8,6 +8,7 @@
 #import "TouchXML.h"
 #import "SoapArray.h"
 #import "SoapDelegate.h"
+#import "SoapDictionary.h"
 #import "SoapFault.h"
 #import "SoapHandler.h"
 #import "SoapLiteral.h"
@@ -94,6 +95,12 @@
 
 // Converts a date to a string.
 + (NSString*) getDateString: (NSDate*) value;
+
+// Converts a string to a duration.
++ (NSTimeInterval) durationFromString: (NSString*) value;
+
+// Converts a duration to a string.
++ (NSString*) getDurationString: (NSTimeInterval) value;
 
 // Return NSData from a string.
 +(NSData*) dataFromString:(NSString*) value;

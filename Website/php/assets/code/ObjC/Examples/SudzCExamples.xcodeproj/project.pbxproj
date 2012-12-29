@@ -14,6 +14,7 @@
 		10C72023110C0A71008E8718 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F93110C0A71008E8718 /* NSData+Base64.m */; };
 		10C72024110C0A71008E8718 /* Soap.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F95110C0A71008E8718 /* Soap.m */; };
 		10C72025110C0A71008E8718 /* SoapArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F97110C0A71008E8718 /* SoapArray.m */; };
+		10C72026110C0A71008E8718 /* SoapDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9A110C0A71008E8718 /* SoapDictionary.m */; };
 		10C72027110C0A71008E8718 /* SoapFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9C110C0A71008E8718 /* SoapFault.m */; };
 		10C72028110C0A71008E8718 /* SoapHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9E110C0A71008E8718 /* SoapHandler.m */; };
 		10C72029110C0A71008E8718 /* SoapNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA0110C0A71008E8718 /* SoapNil.m */; };
@@ -49,6 +50,8 @@
 		10C71F95110C0A71008E8718 /* Soap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Soap.m; sourceTree = "<group>"; };
 		10C71F96110C0A71008E8718 /* SoapArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapArray.h; sourceTree = "<group>"; };
 		10C71F97110C0A71008E8718 /* SoapArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapArray.m; sourceTree = "<group>"; };
+		10C71F99110C0A71008E8718 /* SoapDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapDictionary.h; sourceTree = "<group>"; };
+		10C71F9A110C0A71008E8718 /* SoapDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapDictionary.m; sourceTree = "<group>"; };
 		10C71F98110C0A71008E8718 /* SoapDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapDelegate.h; sourceTree = "<group>"; };
 		10C71F9B110C0A71008E8718 /* SoapFault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapFault.h; sourceTree = "<group>"; };
 		10C71F9C110C0A71008E8718 /* SoapFault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapFault.m; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				10C71F96110C0A71008E8718 /* SoapArray.h */,
 				10C71F97110C0A71008E8718 /* SoapArray.m */,
 				10C71F98110C0A71008E8718 /* SoapDelegate.h */,
+				10C71F99110C0A71008E8718 /* SoapDictionary.h */,
+				10C71F9A110C0A71008E8718 /* SoapDictionary.m */,
 				10C71F9B110C0A71008E8718 /* SoapFault.h */,
 				10C71F9C110C0A71008E8718 /* SoapFault.m */,
 				10C71F9D110C0A71008E8718 /* SoapHandler.h */,
@@ -314,6 +319,7 @@
 				10C72023110C0A71008E8718 /* NSData+Base64.m in Sources */,
 				10C72024110C0A71008E8718 /* Soap.m in Sources */,
 				10C72025110C0A71008E8718 /* SoapArray.m in Sources */,
+				10C72026110C0A71008E8718 /* SoapDictionary.m in Sources */,
 				10C72027110C0A71008E8718 /* SoapFault.m in Sources */,
 				10C72028110C0A71008E8718 /* SoapHandler.m in Sources */,
 				10C72029110C0A71008E8718 /* SoapNil.m in Sources */,

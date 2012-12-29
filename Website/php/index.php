@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head runat="server">
+	<head>
 		<title>SudzC | clean source code from your web services</title>
 		<link rel="stylesheet" href="/assets/styles/default.css" type="text/css" />
 		<script type="text/javascript">
@@ -74,7 +74,7 @@
 				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
-			<a href="~/" runat="server"><img src="assets/images/logo.png" alt="Sudzc" id="logo" /></a>
+			<a href="/"><img src="assets/images/logo.png" alt="Sudzc" id="logo" /></a>
 			<form action="convert.php" method="post" id="form" enctype="multipart/form-data">
 				<div id="remote">
 					<label for="wsdl">Type the web address of the WSDL to convert<a onclick="doFileMode('local');">upload a WSDL</a></label>
@@ -111,10 +111,6 @@
 					<input type="image" src="assets/images/generate-button.png" value="Generate" id="submit" />
 				</div>
 			</form>
-			<div id="tutorial">
-				<h2>SudzC Tutorials</h2>
-				<a href="Tutorial/ObjC.mov" title="SudzC Tutorial"><img src="assets/images/objc-tutorial.jpg" /></a>
-			</div>
 		</div>
 	</body>
 </html>

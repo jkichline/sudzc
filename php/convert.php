@@ -38,8 +38,6 @@
   }
   if(isset($_REQUEST['type'])) {
     $converter->Type($_REQUEST['type']);
-  } else {
-    $converter->Type("ObjCFiles");
   }
 
   // Set the output directory

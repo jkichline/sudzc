@@ -4,7 +4,7 @@ focus is on Objective-C.
 
 To generate the source code, you can either visit
 [http://sudzc.com](http://sudzc.com) or download this code. Make sure your code
-is accessible by your web server. Open the `Website/php/index.php` page in your
+is accessible by your web server. Open the `php/index.php` page in your
 browser to locally generate your code.
 
 You might also find the [`flatten-

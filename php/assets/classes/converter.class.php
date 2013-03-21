@@ -5,7 +5,8 @@
    * @property mixed OutputDirectory
    * @property mixed Type
    */
-  class Converter {
+  class Converter
+  {
     private $type = null;
     private $wsdlPaths = null;
     private $username = null;
@@ -108,31 +109,31 @@
 
     /**
      * Creates and archive of the generated code.
-     * @param string $packageName The name of the package.
+     * @param string $outputPath The path of the output zipfile
      * @return string The filepath pointing to the created ZIP file.
      */
-    public function CreateArchive($packageName = null) {
+    public function CreateArchive($outputPath = null) {
       // Convert the WSDLs
       $packages = $this->Convert();
-      if (empty($packageName) && $packages != null && count($packages) > 0) {
-        $packageName = $packages[0];
+      if (empty($outputPath) && $packages != null && count($packages) > 0) {
+        $outputPath = $packages[0].".zip";
       }
 
       // Zip everything up
-      $path =  $this->OutputDirectory() . ".sudzc";
-      createZip($this->OutputDirectory(), $path, true, $this->OutputDirectory());
+      HZip::zipDir($this->OutputDirectory(), $outputPath);
 
       // Deliver the ZIP file to the browser
-      header("Content-Type: application/zip");
-      header("Content-Disposition: attachment;filename=\"". $packageName .".zip\"");
-      echo file_get_contents($path);
+      if (php_sapi_name() != "cli") {
+        header("Content-Type: application/zip");
+        header("Content-Disposition: attachment;filename=\"". $outputPath ."\"");
+        echo file_get_contents($path);
+      }
 
       // Delete the output directory
-      // system("rm -rf ". escapeshellarg($this->OutputDirectory()));
-      // rmdir($this->OutputDirectory());
+      system("rm -rf ". escapeshellarg($this->OutputDirectory()));
 
       // Return the ZIP file
-      return $path;
+      return $outputPath;
     }
 
     /**
@@ -818,104 +819,6 @@
       $host .= $_SERVER["SERVER_NAME"];
     }
     return $host;
-  }
-
-  /**
-   * Return a list of all files within a directory
-   *
-   * @param string $directory The directory to search
-   * @param bool $recursive Go through child directories as well
-   * @return array
-   */
-  function dirList($directory, $recursive = true) {
-
-    // create an array to hold directory list
-    $results = array();
-
-    // create a handler for the directory
-    $handler = opendir($directory);
-
-    // keep going until all files in directory have been read
-    while (false !== ($file = readdir($handler))) {
-      // if $file isn't this directory or its parent, add it to the results array
-      if ($file != '.' && $file != '..') {
-        // if the file is a directory, add contents of that directory
-        if (is_dir($directory."/".$file) && $recursive === true) {
-          $results[] = array($file => dirList($directory."/".$file));
-        } else {
-          $results[] = $file;
-        }
-      }
-    }
-
-    // close the handler
-    closedir($handler);
-
-    // done!
-    return $results;
-  }
-
-  /* creates a compressed zip file */
-  function flattenFilesInDirectory($source, &$paths) {
-    $handle = opendir($source);
-    while($entry = readdir($handle)) {
-      if($entry != "." && $entry != "..") {
-        $path = $source . "/" . $entry;
-        if(is_dir($path)) {
-          flattenFilesInDirectory($path, $paths);
-        } else {
-          array_push($paths, $path);
-        }
-      }
-    }
-  }
-
-  function createZip($files = array(), $destination = '', $overwrite = false, $baseDirectory = null) {
-
-    // if the zip file already exists and overwrite is false, return false
-    if (file_exists($destination) && !$overwrite) { return false; }
-
-    // if files is a directory, then make the files the contents of the directory
-    if (is_dir($files)) {
-      $paths = array();
-      flattenFilesInDirectory($files, $paths);
-      $files = $paths;
-    }
-
-    // vars
-    $valid_files = array();
-    // if files were passed in...
-    if (is_array($files)) {
-      // cycle through each file
-      foreach($files as $file) {
-        // make sure the file exists
-        if (file_exists($file)) {
-          $valid_files[] = $file;
-        }
-      }
-    }
-
-    // if we have good files...
-    if (count($valid_files)) {
-      // create the archive
-      $zip = new ZipArchive();
-      if($zip->open($destination, $overwrite ? ZIPARCHIVE::OVERWRITE : ZIPARCHIVE::CREATE) !== true) {
-        return false;
-      }
-
-      // add the files
-      foreach($valid_files as $file) {
-        $zip->addFile($file, substr($file, strlen($baseDirectory)));
-      }
-
-      // close the zip -- done!
-      $zip->close();
-
-      // check to make sure the file exists
-      return file_exists($destination);
-    }
-
-    return false;
   }
 
   function lastIndexOf($haystack, $search) {

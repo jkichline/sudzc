@@ -1,3 +1,3 @@
 <?php
-	$tempDirectory = "/Users/jkichline/Sites/sudzc.com/temp/";
+	$tempDirectory = "/var/tmp/sudzc";
 ?>

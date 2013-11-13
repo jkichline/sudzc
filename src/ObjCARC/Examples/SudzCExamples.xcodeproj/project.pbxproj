@@ -16,20 +16,18 @@
 		10C72025110C0A71008E8718 /* SoapArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F97110C0A71008E8718 /* SoapArray.m */; };
 		10C72027110C0A71008E8718 /* SoapFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9C110C0A71008E8718 /* SoapFault.m */; };
 		10C72028110C0A71008E8718 /* SoapHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9E110C0A71008E8718 /* SoapHandler.m */; };
-		4FA157E61641318200A926BA /* SoapHandlerBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA157E51641318200A926BA /* SoapHandlerBlocks.m */; };
 		10C72029110C0A71008E8718 /* SoapNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA0110C0A71008E8718 /* SoapNil.m */; };
 		10C7202A110C0A71008E8718 /* SoapObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA2110C0A71008E8718 /* SoapObject.m */; };
 		10C7202B110C0A71008E8718 /* SoapParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA4110C0A71008E8718 /* SoapParameter.m */; };
 		10C7202C110C0A71008E8718 /* SoapReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA6110C0A71008E8718 /* SoapReachability.m */; };
 		10C7202D110C0A71008E8718 /* SoapRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA8110C0A71008E8718 /* SoapRequest.m */; };
 		10C7202E110C0A71008E8718 /* SoapService.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FAA110C0A71008E8718 /* SoapService.m */; };
-/***PBXBuildFile***/
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		4F5CC6FC164035C8002D33A8 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5CC6FB164035C8002D33A8 /* libxml2.dylib */; };
+		4F3A1B53183340F200628EAF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3A1B52183340F200628EAF /* Images.xcassets */; };
 		4F62F43E152DE47A00DB7E33 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62F423152DE47A00DB7E33 /* CXMLDocument_CreationExtensions.m */; };
 		4F62F43F152DE47A00DB7E33 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62F425152DE47A00DB7E33 /* CXMLNode_CreationExtensions.m */; };
 		4F62F440152DE47A00DB7E33 /* CXHTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62F427152DE47A00DB7E33 /* CXHTMLDocument.m */; };
@@ -43,6 +41,8 @@
 		4F62F448152DE47A00DB7E33 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62F437152DE47A00DB7E33 /* CXMLNode_PrivateExtensions.m */; };
 		4F62F449152DE47A00DB7E33 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62F439152DE47A00DB7E33 /* CXMLNode_XPathExtensions.m */; };
 		4F62F44A152DE47A00DB7E33 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62F43C152DE47A00DB7E33 /* CTidy.m */; };
+		4FA157E61641318200A926BA /* SoapHandlerBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA157E51641318200A926BA /* SoapHandlerBlocks.m */; };
+/***PBXBuildFile***/
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,8 +64,6 @@
 		10C71F9C110C0A71008E8718 /* SoapFault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapFault.m; sourceTree = "<group>"; };
 		10C71F9D110C0A71008E8718 /* SoapHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapHandler.h; sourceTree = "<group>"; };
 		10C71F9E110C0A71008E8718 /* SoapHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapHandler.m; sourceTree = "<group>"; };
-		4FA157E41641318100A926BA /* SoapHandlerBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapHandlerBlocks.h; sourceTree = "<group>"; };
-		4FA157E51641318200A926BA /* SoapHandlerBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapHandlerBlocks.m; sourceTree = "<group>"; };
 		10C71F9F110C0A71008E8718 /* SoapNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapNil.h; sourceTree = "<group>"; };
 		10C71FA0110C0A71008E8718 /* SoapNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapNil.m; sourceTree = "<group>"; };
 		10C71FA1110C0A71008E8718 /* SoapObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapObject.h; sourceTree = "<group>"; };
@@ -78,7 +76,6 @@
 		10C71FA8110C0A71008E8718 /* SoapRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapRequest.m; sourceTree = "<group>"; };
 		10C71FA9110C0A71008E8718 /* SoapService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapService.h; sourceTree = "<group>"; };
 		10C71FAA110C0A71008E8718 /* SoapService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapService.m; sourceTree = "<group>"; };
-/***PBXFileReference***/
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* SudzCExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudzCExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -86,7 +83,7 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SudzCExamples_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudzCExamples_Prefix.pch; sourceTree = "<group>"; };
-		4F5CC6FB164035C8002D33A8 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		4F3A1B52183340F200628EAF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SudzCExamples/Images.xcassets; sourceTree = "<group>"; };
 		4F62F422152DE47A00DB7E33 /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
 		4F62F423152DE47A00DB7E33 /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
 		4F62F424152DE47A00DB7E33 /* CXMLNode_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_CreationExtensions.h; sourceTree = "<group>"; };
@@ -114,7 +111,10 @@
 		4F62F43B152DE47A00DB7E33 /* CTidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTidy.h; sourceTree = "<group>"; };
 		4F62F43C152DE47A00DB7E33 /* CTidy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTidy.m; sourceTree = "<group>"; };
 		4F62F43D152DE47A00DB7E33 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
+		4FA157E41641318100A926BA /* SoapHandlerBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapHandlerBlocks.h; sourceTree = "<group>"; };
+		4FA157E51641318200A926BA /* SoapHandlerBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapHandlerBlocks.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SudzCExamples-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SudzCExamples-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/***PBXFileReference***/
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F5CC6FC164035C8002D33A8 /* libxml2.dylib in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -239,6 +238,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4F3A1B52183340F200628EAF /* Images.xcassets */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* SudzCExamples-Info.plist */,
 			);
@@ -332,7 +332,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SudzCExamples" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -355,6 +355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F3A1B53183340F200628EAF /* Images.xcassets in Resources */,
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +369,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				10C71DCE110B5D9F008E8718 /* SudzCExamplesAppDelegate.m in Sources */,
-/***PBXSourcesBuildPhase***/
 				1067D05812B7BA3D005BBFFD /* NSMutableArray+Soap.m in Sources */,
 				10C72023110C0A71008E8718 /* NSData+Base64.m in Sources */,
 				10C72024110C0A71008E8718 /* Soap.m in Sources */,
@@ -396,6 +396,7 @@
 				4F62F448152DE47A00DB7E33 /* CXMLNode_PrivateExtensions.m in Sources */,
 				4F62F449152DE47A00DB7E33 /* CXMLNode_XPathExtensions.m in Sources */,
 				4F62F44A152DE47A00DB7E33 /* CTidy.m in Sources */,
+/***PBXSourcesBuildPhase***/
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +407,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -413,7 +416,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SudzCExamples_Prefix.pch;
 				INFOPLIST_FILE = "SudzCExamples-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = SudzCExamples;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -423,12 +426,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SudzCExamples_Prefix.pch;
 				INFOPLIST_FILE = "SudzCExamples-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = SudzCExamples;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -437,13 +442,13 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
 			};
@@ -452,13 +457,12 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
 			};

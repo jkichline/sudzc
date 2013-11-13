@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>362BF2C9-21DE-4637-8619-61D5A46AEB5B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SudzCExamples</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1D7797DE-387D-4663-AF8D-56D107D674BB</key>
+		<string>https://github.com/amaechler/sudzc.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>src/ObjCARC/Examples/SudzCExamples.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1D7797DE-387D-4663-AF8D-56D107D674BB</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/amaechler/sudzc.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1D7797DE-387D-4663-AF8D-56D107D674BB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1D7797DE-387D-4663-AF8D-56D107D674BB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>sudzc</string>
+		</dict>
+	</array>
+</dict>
+</plist>

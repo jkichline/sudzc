@@ -90,13 +90,13 @@
 
     function displayHelp()
     {
-      LogInfo("You can use script with following switches: \n");
+      LogInfo("You can use script with following switches:");
       foreach (self::$ACCEPTED[0] as $key => $value) {
-        LogInfo(sprintf(" --%-18s%s", $key, $value));
+        LogInfo(sprintf(" --%-22s%s", $key, $value));
       }
 
       foreach (self::$ACCEPTED[1] as $key => $value) {
-        LogInfo(sprintf(" --%-9s%-9s%s", $key, " [param]", $value));
+        LogInfo(sprintf(" --%-10s%-12s%s", $key, " [param]", $value));
       }
     }
   }
@@ -157,7 +157,7 @@
     }
 
     // Add the WSDL to the converter
-    if(isset($_REQUEST['wsdl']) && $_REQUEST['wsdl'] != "http://") {
+    if (isset($_REQUEST['wsdl']) && $_REQUEST['wsdl'] != "http://") {
       $wsdls = $_REQUEST['wsdl'];
     }
 

@@ -1,4 +1,5 @@
 <?php
+  // error_reporting(-1);
 
   /**
    * Class used to convert WSDL files into generated Objective-C code.
@@ -18,7 +19,7 @@
 
     // The type of code to generate.
     public function Type($value = "") {
-      if(empty($value)) {
+      if (empty($value)) {
         return $this->type;
       } else {
         $this->type = $value;
@@ -28,7 +29,7 @@
 
     // The paths to the WSDL files.
     public function WsdlPaths($value = "") {
-      if(empty($value)) {
+      if (empty($value)) {
         return $this->wsdlPaths;
       } else {
         $this->wsdlPaths = $value;
@@ -38,7 +39,7 @@
 
     // The username used to authenticate the retrieval of WSDL files.
     public function Username($value = "") {
-      if(empty($value)) {
+      if (empty($value)) {
         return $this->username;
       } else {
         $this->username = $value;
@@ -48,7 +49,7 @@
 
     // The password used to authenticate the retrieval of WSDL files.
     public function Password($value = "") {
-      if(empty($value)) {
+      if (empty($value)) {
         return $this->password;
       } else {
         $this->password = $value;
@@ -58,7 +59,7 @@
 
     // The domain used to authenticate the retrieval of WSDL files.
     public function Domain($value = "") {
-      if(empty($value)) {
+      if (empty($value)) {
         return $this->domain;
       } else {
         $this->domain = $value;
@@ -77,7 +78,7 @@
         // Create the output directory if needed.
         if ($this->outputDirectory == null) {
           $this->outputDirectory = sys_get_temp_dir() ."/". uniqid() . ".sudzd";
-          if (!file_exists($this->outputDirectory)) {
+          if(!file_exists($this->outputDirectory)) {
             mkdir($this->outputDirectory);
           }
         }
@@ -95,7 +96,7 @@
       if(empty($value)) {
         if ($this->wsdlFiles == null && strlen($this->wsdlPaths) > 0) {
           $this->wsdlFiles = WsdlFile::FromString($this->wsdlPaths, $this->username, $this->password, $this->domain);
-          if($this->wsdlFiles == null) {
+          if($this->wsdlFiles == null || $this->wsdlFiles == false) {
             if($this->errors == null) { $this->errors = array(); }
             array_push($this->errors, "Could not create WSDL");
           }
@@ -148,12 +149,13 @@
         if ($file != "." && $file != "..") {
           $path = $this->outputDirectory . "/" . $file;
           $ext = substr($file, -6);
+
           if ($ext == ".sudzc") {
             if ((time() - filemtime($path)) > $olderThan) {
               unlink($path);
               $removed++;
             }
-          } else if ($ext == ".sudzd") {
+          } else if($ext == ".sudzd") {
             system("rm -rf ". escapeshellarg($path), $retval);
             // rmdir($path);
           }
@@ -169,7 +171,6 @@
      * @return string Returns the path where the generated code is to be saved.
      */
     public function Convert(&$packages = array(), &$classes = array()) {
-
       // Instantiate the WSDL directory
       $wsdlDirectory = $this->outputDirectory . "/WSDL";
       if(file_exists($wsdlDirectory) == false) {
@@ -183,13 +184,15 @@
 
       // Save each package files
       foreach ($this->ConvertToPackages() as $package) {
+        // if($package) {
         $packageName = $this->SavePackageToDirectory($package, $this->OutputDirectory());
         array_push($packages, $packageName);
         $xpath = new DOMXPath($package);
         $list = $xpath->query("/package/@class"); // TODO: Make sure we are using XPATH correctly
-        if($list->length > 0) {
+        if ($list->length > 0) {
           array_push($classes, $list->item(0)->nodeValue);
         }
+        // }
       }
 
       // Create the index XML document
@@ -231,11 +234,11 @@
      */
     public function ConvertToPackage($file) {
       $this->errors = array();
-      return $this->Transform($file->Document());
+      $o = $this->Transform($file->Document());
+      return $o;
     }
 
-    /**
-     * Saves the index XML file to the directory.
+    /** Saves the index XML file to the directory.
      * @param DOMDocument $document The index XmlDocument to be saved.
      * @param string $directory The path where the generated code is saved.
      */
@@ -243,8 +246,7 @@
       $this->SavePackageToDirectory($this->Transform($document), $directory);
     }
 
-    /**
-     * Transforms the XML document
+    /** Transforms the XML document
      * @param DOMDocument $document the document to be transformed
      * @return DOMDocument Returns the resulting XmlDocument
      */
@@ -266,8 +268,7 @@
       return $result;
     }
 
-    /**
-     * Creates a UUID for generating PBX files.
+    /** Creates a UUID for generating PBX files.
      * @param int $id The ID to convert.
      * @return string Returns the 24 character UUID.
      */
@@ -321,9 +322,9 @@
 
       // Add generated files
       $handle = opendir($generatedDirectory);
-      if ($handle) {
+      if($handle) {
         while (false !== ($file = readdir($handle))){
-          if ($file != "." && $file != "..") {
+          if($file != "." && $file != "..") {
             $uuid = $this->MakeUUID($id);
             $type = "objc";
             if (substr($file, -2) === ".h") { $type = "h"; }
@@ -393,7 +394,6 @@
       // Review each child node and…
       foreach($document->documentElement->childNodes as $child) {
         switch (strtolower($child->localName)) {
-
           // If a folder is to be included, copy the whole folder
           case "folder":
             try {
@@ -444,15 +444,14 @@
             if (file_exists($dir) == false) {
               mkdir($dir, 0777, true);
             }
-            if ($child->firstChild != null && $child->firstChild->nodeType == 1) {
+            if($child->firstChild != null && $child->firstChild->nodeType == 1) {
               file_put_contents($filePath, $child->ownerDocument->saveXml($child->firstChild, LIBXML_NOEMPTYTAG));
             } else {
               file_put_contents($filePath, $child->textContent);
             }
             break;
+          }
         }
-      }
-
       return $packageName;
     }
 
@@ -463,22 +462,21 @@
      * @param $overwrite boolean Determines if the destination directory is overwritten.
      */
     public function copyDirectory($source, $destination, $overwrite) {
-
       // Throw an error is the source directory does not exist
       if (file_exists($source) == false) {
-        throw new Exception("Directory not found");
+          throw new Exception("Directory not found");
       }
 
       // Create the destination directory
       if (file_exists($destination) == false) {
-        mkdir($destination, 0777, true);
+          mkdir($destination, 0777, true);
       }
 
       if ($handle = opendir($source)) {
         while (false !== ($entry = readdir($handle))) {
-          if ($entry != "." && $entry != "..") {
+          if($entry != "." && $entry != "..") {
             $path = $source . '/' . $entry;
-            if(is_dir($path)) {
+            if (is_dir($path)) {
               $newDirectory = $destination . '/' . $entry;
               $this->copyDirectory($path, $newDirectory, $overwrite);
             } else {
@@ -500,34 +498,37 @@
         return implode("_", $namespaceUri);
       }
 
-      if (strlen($namespaceUri) == 0) { return null; }
+      if (strlen($namespaceUri) == 0) {
+        return null;
+      }
+
       $at = strpos($namespaceUri, "://");
       if ($at > 0) {
         $namespaceUri = substr($namespaceUri, $at + 3) . "?";
       }
+
       $at = strpos($namespaceUri, "?");
       if ($at > 0) {
         $namespaceUri = substr($namespaceUri, $at);
       }
 
-        // Replace special characters with a period
+      // Replace special characters with a period
       $s = $namespaceUri;
       $s = str_replace("/", ".", $s);
       $s = str_replace("\\", ".", $s);
       $s = str_replace(":", ".", $s);
       $s = str_replace(";", ".", $s);
 
-        // Split on period
+      // Split on period
       $p1 = explode(".", $s);
       return implode("_", $p1);
     }
   }
 
   /**
-   * Class that defines a WSDL file to be processed.
+   * Defines a WSDL file to be processed.
    */
   class WsdlFile {
-
     /// <summary>
     /// The path to the file.
     /// </summary>
@@ -562,9 +563,9 @@
      * @return bool|string The name of the file.
      */
     public function Name($value = null) {
-      if($value == null) {
+      if ($value == null) {
         if (strlen($this->name) == 0 && strlen($this->path) > 0) {
-                // Create the name
+          // Create the name
           $this->name = $this->path;
           if (contains($this->name, "/")) {
             $this->name = substr($this->name, lastIndexOf($this->name, "/") + 1);
@@ -589,7 +590,7 @@
      * @return bool|DOMDocument The XML representation of the file.
      */
     public function Document($value = null) {
-      if($value == null) {
+      if ($value == null) {
         return $this->document;
       } else {
         $this->document = $value;
@@ -613,13 +614,13 @@
         $path = trim($path, " \r\n\t");
 
         // If we have no path, just continue
-        if (strlen($path) == 0) { continue; }
+        if (strlen($path) == 0) {
+          continue;
+        }
 
         // Load from the local file system
-        if(strpos($path, "://") === false) {
-
-          $wsdlDocument = new DOMDocument();
-          $wsdlDocument->load($path);
+        if (strpos($path, "://") === false) {
+          $wsdlDocument = DOMDocument::load($path);
           if (!$wsdlDocument) {
             $wsdlDocument = null;
           }
@@ -649,7 +650,7 @@
 
         // Otherwise, import the XML WSDL document
         else {
-          if($wsdlDocument != null) {
+          if ($wsdlDocument != null) {
             $file = new WsdlFile();
             $file->Path($path);
             $file->Document($wsdlDocument);
@@ -673,9 +674,9 @@
       $url = GetAbsoluteUrl($path);
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
-      if(strlen($username) > 0) {
+      if (strlen($username) > 0) {
         $up = $username . ":";
-        if($password != null) {
+        if ($password != null) {
           $up .= $password;
         }
         curl_setopt($ch, CURLOPT_USERPWD, $up);
@@ -739,7 +740,7 @@
         $importedUris = array();
       }
 
-        // Expand the schema imports
+      // Expand the schema imports
       foreach ($schemaImports as $importNode) {
         $a = $importNode->attributes->getNamedItem("schemaLocation");
         if ($a != null) {
@@ -760,7 +761,7 @@
         }
       }
 
-        // Expand the WSDL imports
+      // Expand the WSDL imports
       foreach ($wsdlImports as $importNode) {
         $a = $importNode->attributes->getNamedItem("location");
         if ($a != null) {
@@ -778,7 +779,7 @@
         }
       }
 
-        // Recursively add nodes
+      // Recursively add nodes
       if ($continueExpanding) {
         WsdlFile::_expandImports($doc);
       }
@@ -811,13 +812,17 @@
    */
   function getDomain() {
     $host = 'http';
-    if(isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") { $host .= "s"; }
+    if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {
+      $host .= "s";
+    }
+
     $host .= "://";
-    if($_SERVER["SERVER_PORT"] != "80") {
+    if ($_SERVER["SERVER_PORT"] != "80") {
       $host .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"];
     } else {
       $host .= $_SERVER["SERVER_NAME"];
     }
+
     return $host;
   }
 
@@ -827,8 +832,8 @@
   }
 
   function contains($haystack, $search) {
-    if(strpos($haystack, $search) === false) {
-      return false;
+    if (strpos($haystack, $search) === false) {
+        return false;
     }
     return true;
   }
@@ -838,7 +843,7 @@
   }
 
   function endsWith($haystack, $search) {
-    if(substr($haystack, strlen($search) * -1) == $search);
+    if (substr($haystack, strlen($search) * -1) == $search);
   }
 
 ?>

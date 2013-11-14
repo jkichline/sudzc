@@ -104,7 +104,9 @@
   /**
    * Setup variables
    */
-  $packageName = 'WS'; // The namespace to be used for the package, or package name for Javascript code
+  $packageName = null; // The namespace to be used for the package, or package name for Javascript code
+  $namespace = 'SDZ'; // The prefix used for the generated classes
+
   $username = null;
   $password = null;
   $codeType = null; // The code type to generate. The value must match the main XSLT file in the src/ directory
@@ -124,7 +126,7 @@
 
     // Process command line options
     if ($cli->getParam('namespace')) {
-      $packageName = $cli->getParam('namespace');
+      $namespace = $cli->getParam('namespace');
     }
     if ($cli->getParam('outputFile')) {
       $outputFile = $cli->getParam('outputFile');
@@ -138,11 +140,10 @@
   }
   else {
     // PHP script NOT executed from command line
-    $packageName = null;
     if(isset($_REQUEST["shortns"])) {
-      $packageName = $_REQUEST["shortns"];
+      $namespace = $_REQUEST["shortns"];
     } else {
-      $packageName = $_REQUEST["ns"];
+      $namespace = $_REQUEST["ns"];
     }
 
     if (isset($_REQUEST['username'])) {

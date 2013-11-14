@@ -251,7 +251,7 @@
      * @return DOMDocument Returns the resulting XmlDocument
      */
     public function Transform($document) {
-      global $_REQUEST;
+      global $_REQUEST, $namespace;
 
       // Create the XSLT
       $xsl = dirname(__FILE__) . '/../code/' . $this->Type() . '.xslt';
@@ -261,9 +261,15 @@
       $xslt->importStylesheet($xslFile);
 
       // Loop through all params and add as arguments
-      foreach($_REQUEST as $key => $value) {
-        $xslt->setParameter('', $key, $value);
+      $php_type = php_sapi_name();
+      if ($php_type == "cli") {
+        $xslt->setParameter('', "shortns", $namespace);
+      } else {
+        foreach($_REQUEST as $key => $value) {
+          $xslt->setParameter('', $key, $value);
+        }
       }
+
       $result = $xslt->transformToDoc($document);
       return $result;
     }

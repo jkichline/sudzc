@@ -75,7 +75,7 @@
     if (self) {
         // Set the main parent properties
         self.serviceUrlString = @"<xsl:value-of select="$url"/>";
-        self.serviceNamespace = @"<xsl:value-of select="substring-before(/wsdl:definitions/wsdl:types/s:schema/@targetNamespace, 'Imports')"/>";
+        self.serviceNamespace = @"<xsl:value-of select="/wsdl:definitions/@targetNamespace"/>";
         self.headers = nil;
         self.logging = NO;
     }

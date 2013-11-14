@@ -1,30 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Website", "http://localhost:57492", "{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		ProjectReferences = "{d3173d35-982e-4a08-87ca-7de94cdb7afa}|ConvertLib.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_57492"
-		Debug.AspNetCompiler.PhysicalPath = "Website\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57492\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_57492"
-		Release.AspNetCompiler.PhysicalPath = "Website\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57492\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "Website\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertLib", "ConvertLib\ConvertLib.csproj", "{D3173D35-982E-4A08-87CA-7DE94CDB7AFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertLib", "Converter\ConvertLib.csproj", "{D3173D35-982E-4A08-87CA-7DE94CDB7AFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{24553183-01E6-47BE-9075-98B9AD225C15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,16 +15,6 @@ Global
 		Release|Mixed Platforms = Release|Mixed Platforms
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Release|.NET.ActiveCfg = Debug|Any CPU
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E7ABC5AC-CB11-48B0-A07E-D36D0F5DB7AE}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{D3173D35-982E-4A08-87CA-7DE94CDB7AFA}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{D3173D35-982E-4A08-87CA-7DE94CDB7AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D3173D35-982E-4A08-87CA-7DE94CDB7AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -56,6 +25,16 @@ Global
 		{D3173D35-982E-4A08-87CA-7DE94CDB7AFA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D3173D35-982E-4A08-87CA-7DE94CDB7AFA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D3173D35-982E-4A08-87CA-7DE94CDB7AFA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Release|.NET.ActiveCfg = Release|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{24553183-01E6-47BE-9075-98B9AD225C15}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

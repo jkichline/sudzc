@@ -22,6 +22,8 @@ namespace ConvertLib {
     private List<WsdlFile> wsdlFiles;
     private string wsdlPaths;
 
+    private const string kXSLTPath = "xslt/";
+
     /// <summary>
     /// The type of code to generate.
     /// </summary>
@@ -326,7 +328,7 @@ namespace ConvertLib {
     /// </returns>
     public XmlDocument Transform(XmlDocument document) {
       var xslt = new XslCompiledTransform();
-      xslt.Load(HttpContext.Current.Server.MapPath(Type + ".xslt"));
+      xslt.Load(HttpContext.Current.Server.MapPath(kXSLTPath + Type + ".xslt"));
       var args = new XsltArgumentList();
       foreach (string key in HttpContext.Current.Request.Params.AllKeys) {
         args.AddParam(key, String.Empty, HttpContext.Current.Request.Params[key]);
@@ -468,14 +470,14 @@ namespace ConvertLib {
         string source;
         string target;
         switch (child.Name.ToLower()) {
-            // If a folder is to be included, copy the whole folder
+          // If a folder is to be included, copy the whole folder
           case "folder":
             try {
               source = child.Attributes["copy"].Value;
             } catch (Exception ex) {
               throw new Exception("Required 'copy' attribute not encountered in the 'folder' element", ex);
             }
-            var sourceDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath(source));
+            var sourceDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath(kXSLTPath + source));
             if (sourceDirectory.Exists == false) {
               throw new Exception("The source folder '" + source + "' does not exist.");
             }
@@ -486,14 +488,14 @@ namespace ConvertLib {
             copyDirectory(sourceDirectory.FullName, Path.Combine(directory.FullName, target), true);
             break;
 
-            // If an include, copy the file into the folder
+          // If an include, copy the file into the folder
           case "include":
             try {
               source = child.Attributes["copy"].Value;
             } catch (Exception ex) {
               throw new Exception("Required 'copy' attribute not encountered in the 'include' element", ex);
             }
-            var sourceFile = new FileInfo(HttpContext.Current.Server.MapPath(source));
+            var sourceFile = new FileInfo(HttpContext.Current.Server.MapPath(kXSLTPath + source));
             if (sourceFile.Exists == false) {
               throw new Exception("The source file '" + sourceFile + "' does not exist.");
             }
@@ -504,11 +506,16 @@ namespace ConvertLib {
             sourceFile.CopyTo(Path.Combine(directory.FullName, target), true);
             break;
 
-            // If a file, write the contents into the folder
+          // If a file, write the contents into the folder
           case "file":
             string filename;
             try {
               filename = child.Attributes["filename"].Value;
+
+              // Cleanup string
+              filename = filename.Replace("\n", "");
+              filename = filename.Replace("\r", "");
+              filename = filename.Trim();
             } catch (Exception ex) {
               throw new Exception("Required attribute 'filename' not encountered in the 'file' element", ex);
             }

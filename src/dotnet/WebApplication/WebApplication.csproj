@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{24553183-01E6-47BE-9075-98B9AD225C15}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication</RootNamespace>
+    <AssemblyName>WebApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\images\bkg.png" />
+    <Content Include="assets\images\generate-button.png" />
+    <Content Include="assets\images\gradient-light.jpg" />
+    <Content Include="assets\images\gradient.jpg" />
+    <Content Include="assets\images\icon.png" />
+    <Content Include="assets\images\locked.png" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\objc-tutorial.jpg" />
+    <Content Include="assets\images\unlocked.png" />
+    <Content Include="assets\styles\default.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Errors.aspx" />
+    <Content Include="SignIn.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="xslt\ActionScript.xslt" />
+    <Content Include="xslt\ExpandImports.xslt" />
+    <Content Include="xslt\JavaScript.xslt" />
+    <Content Include="xslt\Javascript\Documentation\assets\images\arrow.png" />
+    <Content Include="xslt\Javascript\Documentation\assets\images\icon.png" />
+    <Content Include="xslt\Javascript\Documentation\assets\scripts\base.js" />
+    <Content Include="xslt\Javascript\Documentation\assets\styles\default.css" />
+    <Content Include="xslt\Javascript\Documentation\classes\array.html" />
+    <Content Include="xslt\Javascript\Documentation\classes\boolean.html" />
+    <Content Include="xslt\Javascript\Documentation\classes\date.html" />
+    <Content Include="xslt\Javascript\Documentation\classes\dictionary.html" />
+    <Content Include="xslt\Javascript\Documentation\classes\null.html" />
+    <Content Include="xslt\Javascript\Documentation\classes\number.html" />
+    <Content Include="xslt\Javascript\Documentation\classes\string.html" />
+    <Content Include="xslt\Javascript\Documentation\classes\var.html" />
+    <Content Include="xslt\Javascript\Documentation\classes\void.html" />
+    <Content Include="xslt\Javascript\Documentation\framework\Soap.html" />
+    <Content Include="xslt\Javascript\Documentation\framework\SoapFault.html" />
+    <Content Include="xslt\Javascript\Documentation\framework\SoapHandler.html" />
+    <Content Include="xslt\Javascript\Documentation\index.html" />
+    <Content Include="xslt\Javascript\Documentation\tutorial\index.html" />
+    <Content Include="xslt\Javascript\Source\Soap.js" />
+    <Content Include="xslt\ObjCARCCommon.xslt" />
+    <Content Include="xslt\ObjCARCFiles.xslt" />
+    <Content Include="xslt\ObjCARC\Documentation\assets\images\arrow.png" />
+    <Content Include="xslt\ObjCARC\Documentation\assets\images\icon.png" />
+    <Content Include="xslt\ObjCARC\Documentation\assets\scripts\base.js" />
+    <Content Include="xslt\ObjCARC\Documentation\assets\styles\default.css" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\CXMLDocument.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\CXMLElement.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\CXMLNode.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\Soap.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapArray.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapDelegate.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapFault.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapHandler.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapNil.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapObject.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapParameter.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapReachability.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapRequest.html" />
+    <Content Include="xslt\ObjCARC\Documentation\framework\SoapService.html" />
+    <Content Include="xslt\ObjCARC\Documentation\index.html" />
+    <Content Include="xslt\ObjCARC\Documentation\tutorial\index.html" />
+    <Content Include="xslt\ObjCARC\Examples\SudzCExamplesAppDelegate.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\NSData+Base64.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\NSMutableArray+Soap.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\Soap.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapArray.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapDelegate.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapFault.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapHandler.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapHandlerBlocks.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapLiteral.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapNil.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapObject.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapParameter.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapReachability.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapRequest.h" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapService.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\Creation\CXMLDocument_CreationExtensions.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\Creation\CXMLNode_CreationExtensions.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXHTMLDocument.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLDocument.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLDocument_PrivateExtensions.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLElement.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLElement_CreationExtensions.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLElement_ElementTreeExtensions.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLNamespaceNode.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLNode.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLNode_PrivateExtensions.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLNode_XPathExtensions.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\Tidy\CTidy.h" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\TouchXML.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors.aspx.cs">
+      <DependentUpon>Errors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Convert.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="xslt\ActionScript\src\com\sudzc\flash\soap\Soap.as" />
+    <Content Include="xslt\ActionScript\src\com\sudzc\flash\soap\SoapDelegate.as" />
+    <Content Include="xslt\ActionScript\src\com\sudzc\flash\soap\SoapFault.as" />
+    <Content Include="xslt\ObjCARC\Examples\main.m" />
+    <Content Include="xslt\ObjCARC\Examples\MainWindow.xib" />
+    <Content Include="xslt\ObjCARC\Examples\SudzCExamples-Info.plist" />
+    <Content Include="xslt\ObjCARC\Examples\SudzCExamples.xcodeproj\project.pbxproj" />
+    <Content Include="xslt\ObjCARC\Examples\SudzCExamples.xcodeproj\project.xcworkspace\contents.xcworkspacedata" />
+    <Content Include="xslt\ObjCARC\Examples\SudzCExamples.xcodeproj\project.xcworkspace\xcshareddata\SudzCExamples.xccheckout" />
+    <Content Include="xslt\ObjCARC\Examples\SudzCExamplesAppDelegate.m" />
+    <Content Include="xslt\ObjCARC\Examples\SudzCExamples\Images.xcassets\AppIcon.appiconset\Contents.json" />
+    <Content Include="xslt\ObjCARC\Examples\SudzCExamples\Images.xcassets\LaunchImage.launchimage\Contents.json" />
+    <Content Include="xslt\ObjCARC\Examples\SudzCExamples_Prefix.pch" />
+    <Content Include="xslt\ObjCARC\HOWTO.rtf" />
+    <Content Include="xslt\ObjCARC\README.rtf" />
+    <Content Include="xslt\ObjCARC\Source\Soap\NSData+Base64.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\NSMutableArray+Soap.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\Soap.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapArray.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapFault.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapHandler.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapHandlerBlocks.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapLiteral.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapNil.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapObject.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapParameter.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapReachability.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapRequest.m" />
+    <Content Include="xslt\ObjCARC\Source\Soap\SoapService.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\Creation\CXMLDocument_CreationExtensions.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\Creation\CXMLNode_CreationExtensions.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXHTMLDocument.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLDocument.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLDocument_PrivateExtensions.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLElement.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLElement_CreationExtensions.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLElement_ElementTreeExtensions.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLNamespaceNode.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLNode.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLNode_PrivateExtensions.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\CXMLNode_XPathExtensions.m" />
+    <Content Include="xslt\ObjCARC\Source\TouchXML\Tidy\CTidy.m" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)\ConvertLib\ConvertLib.csproj">
+      <Project>{d3173d35-982e-4a08-87ca-7de94cdb7afa}</Project>
+      <Name>ConvertLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61729</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61726/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

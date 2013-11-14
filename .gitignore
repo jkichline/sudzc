@@ -3,7 +3,10 @@ php/temp
 
 xcuserdata*
 
-src/dotnet/Website/Bin/
-src/dotnet/Converter/obj/
-src/dotnet/Converter/bin/
+
 *.suo
+src/dotnet/WebApplication/bin/
+src/dotnet/WebApplication/obj/
+src/dotnet/WebApplication/xslt/
+src/dotnet/ConvertLib/bin/
+src/dotnet/ConvertLib/obj/

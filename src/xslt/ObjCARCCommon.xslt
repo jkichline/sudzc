@@ -33,7 +33,7 @@
   <xsl:variable name="soapPortName" select="substring-after($soapPortType, ':')"/>
   <xsl:variable name="portType" select="(/wsdl:definitions/wsdl:portType[@name = $soapPortName]|/wsdl:definitions/wsdl:portType[1])[1]"/>
 
-  <!-- Mute text nodes by default so they have to be handled explicitely, to address proper white-space handling -->
+  <!-- Mute text nodes by default so they have to be handled explicitly, to address proper white-space handling -->
   <xsl:template match="text()" />
 
   <!-- SETUP KEYS -->

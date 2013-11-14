@@ -17,7 +17,7 @@ public class Convert : IHttpHandler {
       Username = context.Request["username"], 
       Password = context.Request["password"], 
       Domain = context.Request["domain"],
-      Type = (String.IsNullOrEmpty(context.Request["type"])) ? "ObjCFiles" : context.Request["type"]
+      Type = (String.IsNullOrEmpty(context.Request["type"])) ? "ObjCARCFiles" : context.Request["type"]
     };
 
     // Add the WSDLs to the converter

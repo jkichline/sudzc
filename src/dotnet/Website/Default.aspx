@@ -120,7 +120,6 @@
                 <div>
                     <label for="type">Choose the type of code bundle to create</label>
                     <select id="type" name="type" onchange=" adjustNS(this); ">
-                        <option value="ObjCFiles">Objective-C for iOS</option>
                         <option value="ObjCARCFiles">Objective-C for iOS (Automatic Reference Counting)</option>
                         <option value="Javascript">Javascript for web development (alpha)</option>
                         <option value="ActionScript">ActionScript for Flash/Flex (alpha)</option>

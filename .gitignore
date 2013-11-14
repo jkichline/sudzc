@@ -1,4 +1,4 @@
 .DS_Store
 php/temp
-src/ObjCARC/Examples/SudzCExamples.xcodeproj/project.xcworkspace/xcuserdata
-src/ObjCARC/Examples/SudzCExamples.xcodeproj/xcuserdata
+
+xcuserdata*

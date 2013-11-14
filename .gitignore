@@ -2,3 +2,8 @@
 php/temp
 
 xcuserdata*
+
+src/dotnet/Website/Bin/
+src/dotnet/Converter/obj/
+src/dotnet/Converter/bin/
+*.suo

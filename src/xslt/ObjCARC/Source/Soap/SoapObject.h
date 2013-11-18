@@ -14,7 +14,7 @@
 
 @interface SoapObject : NSObject
 
-@property(nonatomic, copy) NSMutableArray *nanObjects;
+@property (nonatomic, copy) NSMutableArray *nanObjects;
 
 + (id)createWithNode:(CXMLNode *)node;
 - (id)initWithNode:(CXMLNode *)node;
@@ -24,6 +24,7 @@
 - (NSMutableString *)serialize:(NSString *)nodeName;
 - (NSMutableString *)serializeElements;
 - (NSMutableString *)serializeAttributes;
+
 - (BOOL)isNaNProperty:(NSString *)propertyName;
 
 @end

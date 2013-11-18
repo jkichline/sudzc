@@ -1461,7 +1461,7 @@
 
   <!-- DOCUMENT SELECTORS -->
 
-    <xsl:template match="wsdl:input|wsdl:output|wsdl:fault" mode="param_signature">
+  <xsl:template match="wsdl:input|wsdl:output|wsdl:fault" mode="param_signature">
     <xsl:variable name="messageName">
       <xsl:value-of select="substring-after(@message, ':')"/>
     </xsl:variable>

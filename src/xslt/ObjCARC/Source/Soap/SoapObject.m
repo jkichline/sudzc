@@ -43,10 +43,10 @@
             NSString *tempName = @(property_getName(property));
             char typeChar = ' ';
             if (strlen(property_getAttributes(property)) > 2) {
-                typeChar = property_getAttributes(property)[1]; //get type character
+                typeChar = property_getAttributes(property)[1]; // get type character
             }
-            if ([[Soap getNodeValue:node withName:tempName]
-                    isEqualToString:@"NaN"] && typeChar != '@' && typeChar != '*' && typeChar != '#' && typeChar != ':') {
+            if ([[Soap getNodeValue:node withName:tempName] isEqualToString:@"NaN"] &&
+                (typeChar != '@' && typeChar != '*' && typeChar != '#' && typeChar != ':')) {
                 [self.nanObjects addObject:tempName];
             }
         }

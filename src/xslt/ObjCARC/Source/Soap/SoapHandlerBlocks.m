@@ -24,11 +24,11 @@
         _canCallbackOnBackgroundThread = NO; // Default, special cases like Adapters will set this to YES.
         _queuePriority = NSOperationQueuePriorityNormal;
 
-		    _onLoadBlock = [onLoad copy];
-		    _onErrorBlock = [onError copy];
-		    _onFaultBlock = [onFault copy];
-	}
-	return self;
+        _onLoadBlock = [onLoad copy];
+        _onErrorBlock = [onError copy];
+        _onFaultBlock = [onFault copy];
+  }
+  return self;
 }
 
 + (SoapHandlerBlocks *)noOpHandler
@@ -54,12 +54,12 @@
         return;
     }
 
-	if (self.onLoadBlock) {
-		self.onLoadBlock(value);
-	}
-	else {
-		[super onload:value];
-	}
+  if (self.onLoadBlock) {
+      self.onLoadBlock(value);
+  }
+  else {
+      [super onload:value];
+  }
 }
 
 - (void)onerror:(NSError *)error
@@ -70,12 +70,12 @@
         return;
     }
 
-	if (self.onErrorBlock) {
-		self.onErrorBlock(error);
-	}
-	else {
-		[super onerror:error];
-	}
+  if (self.onErrorBlock) {
+      self.onErrorBlock(error);
+  }
+  else {
+      [super onerror:error];
+  }
 }
 
 - (void)onfault:(SoapFault *)fault
@@ -86,16 +86,16 @@
         return;
     }
 
-	if (self.onFaultBlock) {
-		self.onFaultBlock(fault);
-	}
-	else if (self.onErrorBlock) {
-		// TODO: Convert fault to an NSError?
-		self.onErrorBlock(nil);
-	}
-	else {
-		[super onfault:fault];
-	}
+  if (self.onFaultBlock) {
+      self.onFaultBlock(fault);
+  }
+  else if (self.onErrorBlock) {
+      // TODO: Convert fault to an NSError?
+      self.onErrorBlock(nil);
+  }
+  else {
+      [super onfault:fault];
+  }
 }
 
 @end

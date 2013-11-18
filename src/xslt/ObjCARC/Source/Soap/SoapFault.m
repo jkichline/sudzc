@@ -51,4 +51,16 @@
     }
 }
 
+- (NSError *)NSError
+{
+    NSString * const kSoapErrorDomain = @"SoapFault";
+    const NSUInteger kSoapErrorCode = 1;
+
+    NSError *error = [NSError errorWithDomain:kSoapErrorDomain
+                                         code:kSoapErrorCode
+                                     userInfo:@{ NSLocalizedDescriptionKey: self.faultString }];
+
+    return error;
+}
+
 @end

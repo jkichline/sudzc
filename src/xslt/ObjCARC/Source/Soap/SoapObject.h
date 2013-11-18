@@ -26,5 +26,6 @@
 - (NSMutableString *)serializeAttributes;
 
 - (BOOL)isNaNProperty:(NSString *)propertyName;
+- (NSNumber *)numberForPrimitiveSelector:(SEL)selector;
 
 @end

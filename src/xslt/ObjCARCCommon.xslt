@@ -971,7 +971,7 @@
           <xsl:with-param name="name">item</xsl:with-param>
           <xsl:with-param name="type"><xsl:value-of select="$arrayType"/></xsl:with-param>
           <xsl:with-param name="xsdType"><xsl:value-of select="$actualType"/></xsl:with-param>
-          <xsl:with-param name="elementPrefix">a:<xsl:value-of select="$actualType"/></xsl:with-param>
+          <xsl:with-param name="elementPrefix"><xsl:value-of select="$actualType"/></xsl:with-param>
         </xsl:call-template>];
     }
     return s;

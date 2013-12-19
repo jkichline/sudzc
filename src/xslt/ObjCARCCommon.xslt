@@ -802,7 +802,7 @@
               <xsl:when test="$keyType = 'int'">[NSNumber numberWithInt:[[child stringValue] intValue]];</xsl:when>
               <xsl:when test="$keyType = 'short'">[NSNumber numberWithInt:[[child stringValue] shortValue]];</xsl:when>
               <xsl:when test="$keyType = 'char'">[NSNumber numberWithInt:[[child stringValue] intValue]];</xsl:when>
-              <xsl:when test="$keyType = 'long'">[NSNumber numberWithLong:[[child stringValue] longLongValue]];</xsl:when>
+              <xsl:when test="$keyType = 'long'">[NSNumber numberWithLongLong:[[child stringValue] longLongValue]];</xsl:when>
               <xsl:when test="$keyType = 'double'">[NSNumber numberWithDouble:[[child stringValue] doubleValue]];</xsl:when>
               <xsl:when test="$keyType = 'float'">[NSNumber numberWithFloat:[[child stringValue] floatValue]];</xsl:when>
               <xsl:when test="$keyType = 'NSDecimalNumber *'">[NSDecimalNumber decimalNumberWithString:[child stringValue]];</xsl:when>
@@ -819,7 +819,7 @@
               <xsl:when test="$valueType = 'int'">[NSNumber numberWithInt:[[child stringValue] intValue]];</xsl:when>
               <xsl:when test="$valueType = 'short'">[NSNumber numberWithInt:[[child stringValue] shortValue]];</xsl:when>
               <xsl:when test="$valueType = 'char'">[NSNumber numberWithInt:[[child stringValue] intValue]];</xsl:when>
-              <xsl:when test="$valueType = 'long'">[NSNumber numberWithLong:[[child stringValue] longLongValue]];</xsl:when>
+              <xsl:when test="$valueType = 'long'">[NSNumber numberWithLongLong:[[child stringValue] longLongValue]];</xsl:when>
               <xsl:when test="$valueType = 'double'">[NSNumber numberWithDouble:[[child stringValue] doubleValue]];</xsl:when>
               <xsl:when test="$valueType = 'float'">[NSNumber numberWithFloat:[[child stringValue] floatValue]];</xsl:when>
               <xsl:when test="$valueType = 'NSDecimalNumber *'">[NSDecimalNumber decimalNumberWithString:[child stringValue]];</xsl:when>
@@ -942,7 +942,7 @@
               <xsl:when test="$declaredType = 'int'">[NSNumber numberWithInt:[[child stringValue] intValue]];</xsl:when>
               <xsl:when test="$declaredType = 'short'">[NSNumber numberWithInt:[[child stringValue] shortValue]];</xsl:when>
               <xsl:when test="$declaredType = 'char'">[NSNumber numberWithInt:[[child stringValue] intValue]];</xsl:when>
-              <xsl:when test="$declaredType = 'long'">[NSNumber numberWithLong:[[child stringValue] longLongValue]];</xsl:when>
+              <xsl:when test="$declaredType = 'long'">[NSNumber numberWithLongLong:[[child stringValue] longLongValue]];</xsl:when>
               <xsl:when test="$declaredType = 'double'">[NSNumber numberWithDouble:[[child stringValue] doubleValue]];</xsl:when>
               <xsl:when test="$declaredType = 'float'">[NSNumber numberWithFloat:[[child stringValue] floatValue]];</xsl:when>
               <xsl:when test="$declaredType = 'NSDecimalNumber *'">[NSDecimalNumber decimalNumberWithString:[child stringValue]];</xsl:when>
@@ -1247,8 +1247,8 @@
               <xsl:when test="$type = 'negativeInteger'">int</xsl:when>
               <xsl:when test="$type = 'nonPositiveInteger'">int</xsl:when>
               <xsl:when test="$type = 'nonNegativeInteger'">int</xsl:when>
-              <xsl:when test="$type = 'long'">long</xsl:when>
-              <xsl:when test="$type = 'unsignedLong'">long</xsl:when>
+              <xsl:when test="$type = 'long'">long long</xsl:when>
+              <xsl:when test="$type = 'unsignedLong'">unsigned long long</xsl:when>
               <xsl:when test="$type = 'short'">short</xsl:when>
               <xsl:when test="$type = 'unsignedShort'">short</xsl:when>
               <xsl:when test="$type = 'float'">float</xsl:when>

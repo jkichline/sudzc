@@ -20,4 +20,6 @@
 + (SoapFault *)faultWithXMLDocument:(CXMLDocument *)document;
 + (SoapFault *)faultWithXMLElement:(CXMLNode *)element;
 
+- (NSError *)NSError;
+
 @end

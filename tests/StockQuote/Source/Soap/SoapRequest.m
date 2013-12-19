@@ -235,15 +235,13 @@
 }
 
 // WARNING (macadamian): Added method below
-- (BOOL)connection:(NSURLConnection *)connection
-    canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
 {
     return YES;
 }
 
 // Called if the HTTP request receives an authentication challenge.
-- (void)connection:(NSURLConnection *)connection
-    didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
     if ([challenge previousFailureCount] == 0) {
         NSURLCredential *newCredential = [NSURLCredential credentialWithUser:self.username
@@ -256,7 +254,7 @@
         [[challenge sender] cancelAuthenticationChallenge:challenge];
         NSError *error = [NSError errorWithDomain:@"SoapRequest"
                                              code:403
-                                         userInfo:@{NSLocalizedDescriptionKey: @"Could not authenticate this request"}];
+                                         userInfo:@{ NSLocalizedDescriptionKey: @"Could not authenticate this request" }];
         [self handleError:error];
     }
 }

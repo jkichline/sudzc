@@ -12,7 +12,7 @@
 
 + (NSString *)prefix
 {
-    return @"";
+    return @"SDZ";
 }
 
 @end

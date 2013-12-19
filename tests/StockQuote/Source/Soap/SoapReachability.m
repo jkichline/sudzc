@@ -56,19 +56,53 @@
     return [NSString stringWithCString:inet_ntoa(*list[0]) encoding:NSUTF8StringEncoding];
 }
 
-+ (NSString *)getIPAddressForHost:(NSString *)theHost
++ (NSString *)getIPAddressForHost:(NSString *)hostname
 {
-    if (theHost == nil) {
+    NSArray *addresses = [[self class] allAddressesForHostname:hostname];
+    if ([addresses count] > 0)
+        return [addresses objectAtIndex:0];
+    else
+        return nil;
+}
+
++ (NSArray *)allAddressesForHostname:(NSString *)hostname
+{
+    // Get the addresses for the given hostname.
+    CFHostRef hostRef = CFHostCreateWithName(kCFAllocatorDefault, (__bridge CFStringRef)hostname);
+    BOOL isSuccess = CFHostStartInfoResolution(hostRef, kCFHostAddresses, nil);
+    if (!isSuccess) {
+        CFRelease(hostRef);
         return nil;
     }
-    struct hostent *host = gethostbyname([theHost UTF8String]);
-    if (host == NULL) {
-        herror("resolv");
-        return NULL;
+
+    CFArrayRef addressesRef = CFHostGetAddressing(hostRef, nil);
+    if (addressesRef == nil) {
+        CFRelease(hostRef);
+        return nil;
     }
-    struct in_addr **list = (struct in_addr **) host->h_addr_list;
-    NSString *addressString = [NSString stringWithCString:inet_ntoa(*list[0]) encoding:NSUTF8StringEncoding];
-    return addressString;
+
+    // Convert these addresses into strings.
+    char ipAddress[INET6_ADDRSTRLEN];
+    NSMutableArray *addresses = [NSMutableArray array];
+    CFIndex numAddresses = CFArrayGetCount(addressesRef);
+    for (CFIndex currentIndex = 0; currentIndex < numAddresses; currentIndex++) {
+        struct sockaddr *address = (struct sockaddr *)CFDataGetBytePtr(CFArrayGetValueAtIndex(addressesRef, currentIndex));
+        if (address == nil)  {
+            CFRelease(hostRef);
+            return nil;
+        }
+
+        getnameinfo(address, address->sa_len, ipAddress, INET6_ADDRSTRLEN, nil, 0, NI_NUMERICHOST);
+        if (ipAddress == nil) {
+            CFRelease(hostRef);
+            return nil;
+        }
+        [addresses addObject:[NSString stringWithCString:ipAddress encoding:NSASCIIStringEncoding]];
+    }
+
+    CFRelease(hostRef);
+
+    return addresses;
 }
 
 + (BOOL)hostAvailable:(NSString *)theHost

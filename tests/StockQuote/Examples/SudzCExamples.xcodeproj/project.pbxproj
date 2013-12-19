@@ -42,14 +42,14 @@
 		4F62F449152DE47A00DB7E33 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62F439152DE47A00DB7E33 /* CXMLNode_XPathExtensions.m */; };
 		4F62F44A152DE47A00DB7E33 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62F43C152DE47A00DB7E33 /* CTidy.m */; };
 		4FA157E61641318200A926BA /* SoapHandlerBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA157E51641318200A926BA /* SoapHandlerBlocks.m */; };
-    52844c8914254cad7f400000 /* StockQuoteExample.h in Sources */ = {isa = PBXBuildFile; fileRef = 52844c8114254cad7f300000 /* StockQuoteExample.h */; };
-    52844c8a14254cad7f400000 /* StockQuoteExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 52844c8214254cad7f300000 /* StockQuoteExample.m */; };
-    52844c8b14254cad7f400000 /* Services.h in Sources */ = {isa = PBXBuildFile; fileRef = 52844c8314254cad7f300000 /* Services.h */; };
-    52844c8c14254cad7f400000 /* Services.m in Sources */ = {isa = PBXBuildFile; fileRef = 52844c8414254cad7f300000 /* Services.m */; };
-    52844c8d14254cad7f400000 /* Soap+Prefix.h in Sources */ = {isa = PBXBuildFile; fileRef = 52844c8514254cad7f300000 /* Soap+Prefix.h */; };
-    52844c8e14254cad7f400000 /* Soap+Prefix.m in Sources */ = {isa = PBXBuildFile; fileRef = 52844c8614254cad7f300000 /* Soap+Prefix.m */; };
-    52844c8f14254cad7f400000 /* StockQuote.h in Sources */ = {isa = PBXBuildFile; fileRef = 52844c8714254cad7f300000 /* StockQuote.h */; };
-    52844c9014254cad7f400000 /* StockQuote.m in Sources */ = {isa = PBXBuildFile; fileRef = 52844c8814254cad7f400000 /* StockQuote.m */; };
+    52b35a751430c993a9c00000 /* SDZStockQuoteExample.h in Sources */ = {isa = PBXBuildFile; fileRef = 52b35a6d1430c993a9c00000 /* SDZStockQuoteExample.h */; };
+    52b35a761430c993a9c00000 /* SDZStockQuoteExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 52b35a6e1430c993a9c00000 /* SDZStockQuoteExample.m */; };
+    52b35a771430c993a9c00000 /* SDZServices.h in Sources */ = {isa = PBXBuildFile; fileRef = 52b35a6f1430c993a9c00000 /* SDZServices.h */; };
+    52b35a781430c993a9c00000 /* SDZServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 52b35a701430c993a9c00000 /* SDZServices.m */; };
+    52b35a791430c993a9c00000 /* SDZStockQuote.h in Sources */ = {isa = PBXBuildFile; fileRef = 52b35a711430c993a9c00000 /* SDZStockQuote.h */; };
+    52b35a7a1430c993a9c00000 /* SDZStockQuote.m in Sources */ = {isa = PBXBuildFile; fileRef = 52b35a721430c993a9c00000 /* SDZStockQuote.m */; };
+    52b35a7b1430c993a9c00000 /* Soap+Prefix.h in Sources */ = {isa = PBXBuildFile; fileRef = 52b35a731430c993a9c00000 /* Soap+Prefix.h */; };
+    52b35a7c1430c993a9c00000 /* Soap+Prefix.m in Sources */ = {isa = PBXBuildFile; fileRef = 52b35a741430c993a9c00000 /* Soap+Prefix.m */; };
 
 /* End PBXBuildFile section */
 
@@ -122,14 +122,14 @@
 		4FA157E41641318100A926BA /* SoapHandlerBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapHandlerBlocks.h; sourceTree = "<group>"; };
 		4FA157E51641318200A926BA /* SoapHandlerBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapHandlerBlocks.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SudzCExamples-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SudzCExamples-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-    52844c8114254cad7f300000 /* StockQuoteExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StockQuoteExample.h"; sourceTree = "<group>"; };
-    52844c8214254cad7f300000 /* StockQuoteExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "StockQuoteExample.m"; sourceTree = "<group>"; };
-    52844c8314254cad7f300000 /* Services.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Services.h"; sourceTree = "<group>"; };
-    52844c8414254cad7f300000 /* Services.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Services.m"; sourceTree = "<group>"; };
-    52844c8514254cad7f300000 /* Soap+Prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Soap+Prefix.h"; sourceTree = "<group>"; };
-    52844c8614254cad7f300000 /* Soap+Prefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Soap+Prefix.m"; sourceTree = "<group>"; };
-    52844c8714254cad7f300000 /* StockQuote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StockQuote.h"; sourceTree = "<group>"; };
-    52844c8814254cad7f400000 /* StockQuote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "StockQuote.m"; sourceTree = "<group>"; };
+    52b35a6d1430c993a9c00000 /* SDZStockQuoteExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDZStockQuoteExample.h"; sourceTree = "<group>"; };
+    52b35a6e1430c993a9c00000 /* SDZStockQuoteExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDZStockQuoteExample.m"; sourceTree = "<group>"; };
+    52b35a6f1430c993a9c00000 /* SDZServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDZServices.h"; sourceTree = "<group>"; };
+    52b35a701430c993a9c00000 /* SDZServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDZServices.m"; sourceTree = "<group>"; };
+    52b35a711430c993a9c00000 /* SDZStockQuote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDZStockQuote.h"; sourceTree = "<group>"; };
+    52b35a721430c993a9c00000 /* SDZStockQuote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDZStockQuote.m"; sourceTree = "<group>"; };
+    52b35a731430c993a9c00000 /* Soap+Prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Soap+Prefix.h"; sourceTree = "<group>"; };
+    52b35a741430c993a9c00000 /* Soap+Prefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Soap+Prefix.m"; sourceTree = "<group>"; };
 
 /* End PBXFileReference section */
 
@@ -151,8 +151,8 @@
 		1027CDDE110CDB4A00147F52 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-        52844c8114254cad7f300000 /* StockQuoteExample.h */,
-        52844c8214254cad7f300000 /* StockQuoteExample.m */,
+        52b35a6d1430c993a9c00000 /* SDZStockQuoteExample.h */,
+        52b35a6e1430c993a9c00000 /* SDZStockQuoteExample.m */,
 
 			);
 			path = Examples;
@@ -182,12 +182,12 @@
 		10C71EBC110C0A71008E8718 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-       52844c8314254cad7f300000 /* Services.h */,
-       52844c8414254cad7f300000 /* Services.m */,
-       52844c8514254cad7f300000 /* Soap+Prefix.h */,
-       52844c8614254cad7f300000 /* Soap+Prefix.m */,
-       52844c8714254cad7f300000 /* StockQuote.h */,
-       52844c8814254cad7f400000 /* StockQuote.m */,
+       52b35a6f1430c993a9c00000 /* SDZServices.h */,
+       52b35a701430c993a9c00000 /* SDZServices.m */,
+       52b35a711430c993a9c00000 /* SDZStockQuote.h */,
+       52b35a721430c993a9c00000 /* SDZStockQuote.m */,
+       52b35a731430c993a9c00000 /* Soap+Prefix.h */,
+       52b35a741430c993a9c00000 /* Soap+Prefix.m */,
 
 			);
 			path = Generated;
@@ -420,10 +420,10 @@
 				4F62F448152DE47A00DB7E33 /* CXMLNode_PrivateExtensions.m in Sources */,
 				4F62F449152DE47A00DB7E33 /* CXMLNode_XPathExtensions.m in Sources */,
 				4F62F44A152DE47A00DB7E33 /* CTidy.m in Sources */,
-        52844c8a14254cad7f400000 /* StockQuoteExample.m in Sources */,
-        52844c8c14254cad7f400000 /* Services.m in Sources */,
-        52844c8e14254cad7f400000 /* Soap+Prefix.m in Sources */,
-        52844c9014254cad7f400000 /* StockQuote.m in Sources */,
+        52b35a761430c993a9c00000 /* SDZStockQuoteExample.m in Sources */,
+        52b35a781430c993a9c00000 /* SDZServices.m in Sources */,
+        52b35a7a1430c993a9c00000 /* SDZStockQuote.m in Sources */,
+        52b35a7c1430c993a9c00000 /* Soap+Prefix.m in Sources */,
 
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,13 +6,13 @@
 //
 
 #import "SudzCExamplesAppDelegate.h"
-#import "StockQuoteExample.h"
+#import "SDZStockQuoteExample.h"
 
 @implementation SudzCExamplesAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-    StockQuoteExample *example1 = [[StockQuoteExample alloc] init];
+    SDZStockQuoteExample *example1 = [[SDZStockQuoteExample alloc] init];
     [example1 run];
 }
 

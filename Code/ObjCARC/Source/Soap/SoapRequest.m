@@ -96,10 +96,12 @@
 	SEL onerror = @selector(onerror:);
 	if(self.action != nil) { onerror = self.action; }
 	if([self.handler respondsToSelector: onerror]) {
-		objc_msgSend(self.handler, onerror, error);
+        void (*msgSend)(id, SEL, NSError*) = (void (*)(id, SEL, NSError*)) objc_msgSend;
+        msgSend(self.handler, onerror, error);
 	} else {
 		if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:onerror]) {
-			objc_msgSend(self.defaultHandler, onerror, error);
+            void (*msgSend)(id, SEL, NSError*) = (void (*)(id, SEL, NSError*)) objc_msgSend;
+            msgSend(self.defaultHandler, onerror, error);
 		}
 	}
 	if(self.logging) {
@@ -156,7 +158,8 @@
 			[self handleFault: fault];
 		} else {
 			if(self.handler != nil && [self.handler respondsToSelector: self.action]) {
-				objc_msgSend(self.handler, self.action, fault);
+                void (*msgSend)(id, SEL, SoapFault*) = (void (*)(id, SEL, SoapFault*)) objc_msgSend;
+                msgSend(self.handler, self.action, fault);
 			} else {
 				NSLog(@"SOAP Fault: %@", fault);
 			}
@@ -177,7 +180,8 @@
 		
 		if(self.action == nil) { self.action = @selector(onload:); }
 		if(self.handler != nil && [self.handler respondsToSelector: self.action]) {
-			objc_msgSend(self.handler, self.action, output);
+			void (*msgSend)(id, SEL, id) = (void (*)(id, SEL, id)) objc_msgSend;
+            msgSend(self.handler, self.action, output);
 		} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onload:)]) {
 			[self.defaultHandler onload:output];
 		}
